@@ -38,6 +38,5 @@ public class Courses {
   @JoinColumn(name = "course_language")
   private Language language;//(fk to language)
 
-  //private List<Users> usersList;
 
 }
