@@ -1,22 +1,26 @@
 package com.itacademy.cms.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
+import com.itacademy.cms.model.Discipline;
+import com.itacademy.cms.model.Language;
+import com.itacademy.cms.model.CourseTags;
+
+@Data
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-//@Table(name = "courses")
+@Table(name = "courses")
 public class Courses {
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   @Column(name = "course_name")
   private String courseName;
@@ -37,6 +41,13 @@ public class Courses {
   @ManyToOne
   @JoinColumn(name = "course_language")
   private Language language;//(fk to language)
-
+  @JsonIgnore
+  @OneToMany(orphanRemoval = true)
+  @JoinColumn(name = "courses_id")
+  private List<UsersCourses> userCourses;
+  @JsonIgnore
+  @OneToMany(orphanRemoval = true)
+  @JoinColumn(name = "courses_id")
+  private List<CourseTags> courseTags;
 
 }
