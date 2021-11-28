@@ -28,7 +28,7 @@ public class User {
     @NotNull
     private String email;
 
-    //Should be NotNull?
+    @NotNull
     private String password;
 
     private double accountCard;
