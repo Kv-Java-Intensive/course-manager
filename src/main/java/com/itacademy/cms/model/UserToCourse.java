@@ -1,15 +1,12 @@
 package com.itacademy.cms.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import lombok.*;
 
 import javax.persistence.*;
 import com.itacademy.cms.model.User;
-import com.itacademy.cms.model.Course_status;
-import com.itacademy.cms.model.Group;
 import com.itacademy.cms.model.Course;
 import org.hibernate.annotations.Immutable;
+import com.itacademy.cms.model.enums.CourseStatus;
 
 import java.io.Serializable;
 
@@ -44,25 +41,25 @@ public class UserToCourse {
   @EmbeddedId
   protected Id id = new Id();
 
-  // private UsersCoursesCompositeKey usersCoursesCompositeKey;
-//  @ManyToOne
-//  @JoinColumn(name = "users_courses_groups")
-//  private Group group; //fk to groups
-
   @ManyToOne
   @JoinColumn(name = "user_id", insertable = false, updatable = false)
   private User user; //fk to users
+
   @ManyToOne
   @JoinColumn(name = "course_id", insertable = false, updatable = false)
   private Course course; //fk to course
 
-  //  @ManyToOne ///Enum status course
-//  @JoinColumn(name = "users_courses_course_status")
-//  private Course_status course_status; //fk to course_status
-  //роль автор курса?
-  public UserToCourse(User user, Course course) {
+  @Column(name = "course_status")
+  private CourseStatus courseStatus;
+
+  @Column(name = "is_author")
+  private boolean isAuthor;
+
+  public UserToCourse(User user, Course course, CourseStatus courseStatus, boolean isAuthor) {
     this.user = user;
     this.course = course;
+    this.courseStatus = courseStatus;
+    this.isAuthor = isAuthor;
     this.id.userId = user.getId();
     this.id.courseId = course.getId();
     user.getUserToCourse().add(this);
