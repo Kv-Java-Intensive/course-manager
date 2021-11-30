@@ -5,28 +5,32 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "certificates")
 @NoArgsConstructor
-public class Certificate {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Getter
-    @Setter
-    private Long id;
+@Getter
+@Setter
+public class Certificate extends BaseEntity{
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+//    private Long id;
 
     @Column
-    @Getter
-    @Setter
+    @NotNull(message = "Certificate name should be present")
+    @Size(min = 10, max = 30, message = "Certificate name length should be in scope between 10 and 30 letters")
     private String name;
 
     @Column
-    @Getter
-    @Setter
-    private Integer course_id;
+    @OneToOne
+    @JoinColumn(name = "id")
+    private Course course;
 
-    @OneToOne(mappedBy = "certificate")
-    private UserCertificates userCertificates;
+    @Column
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private User user;
 
 }
