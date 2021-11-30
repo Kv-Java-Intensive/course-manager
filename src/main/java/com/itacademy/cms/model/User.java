@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -16,6 +17,8 @@ import javax.validation.constraints.NotNull;
 @Table(name = "users")
 public class User extends BaseEntity {
 
+    @NotNull
+    private String name;
     @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "user_id")
     private List<UserToCourse> userCourse;
@@ -24,14 +27,13 @@ public class User extends BaseEntity {
     private List<Group> groups;
 
     @NotNull
-    private String name;
-
+    @Column(name = "first_name")
+    private String firstName;
     @NotNull
-    private String surname;
-
+    @Column(name = "last_name")
+    private String lastName;
     @NotNull
     private String email;
-
     @NotNull
     private String password;
 
@@ -41,6 +43,5 @@ public class User extends BaseEntity {
     @NotNull
     @Enumerated(EnumType.STRING)
     private Role role;
-
     private String about;
 }
