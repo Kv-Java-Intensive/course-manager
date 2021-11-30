@@ -14,6 +14,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,23 +31,27 @@ public class User extends BaseEntity {
   private List<Group> groups;
 
   @NotNull
-  private String name;
-
+  @Column(name = "first_name")
+  private String firstName;
+  
   @NotNull
-  private String surname;
-
+  @Column(name = "last_name")
+  private String lastName;
+  
   @NotNull
   private String email;
 
   @NotNull
   private String password;
 
+
   @Column(name = "account_card")
   private double accountCard;
-
+  
   @NotNull
   @Enumerated(EnumType.STRING)
   private Role role;
 
   private String about;
 }
+
