@@ -3,8 +3,7 @@ package com.itacademy.cms.model;
 import lombok.*;
 
 import javax.persistence.*;
-import com.itacademy.cms.model.User;
-import com.itacademy.cms.model.Course;
+
 import org.hibernate.annotations.Immutable;
 import com.itacademy.cms.model.enums.CourseStatus;
 
