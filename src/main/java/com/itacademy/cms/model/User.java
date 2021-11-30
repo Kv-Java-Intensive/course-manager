@@ -1,3 +1,5 @@
+package com.itacademy.cms.model;
+
 import com.itacademy.cms.model.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -23,7 +26,10 @@ public class User extends BaseEntity {
 
     @NotNull
     private String name;
-    
+    @NotNull
+    private String surname;
+    @NotNull
+    private String email;
     @NotNull
     private String password;
 
