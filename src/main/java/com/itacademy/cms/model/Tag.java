@@ -1,7 +1,10 @@
 package com.itacademy.cms.model;
 
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -12,13 +15,9 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder
 @Table(name = "tags")
-public class Tags {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+public class Tag extends BaseEntity{
+
 
     @NotNull
     @Column(name = "name")
@@ -29,5 +28,5 @@ public class Tags {
             name = "course_tags"
             , joinColumns = @JoinColumn(name = "tags")
             , inverseJoinColumns = @JoinColumn(name = "course"))
-    private List<Courses> courses;
+    private List<Course> courses;
 }
