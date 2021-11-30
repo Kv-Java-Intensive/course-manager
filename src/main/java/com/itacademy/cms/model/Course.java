@@ -52,7 +52,6 @@ public class Course extends BaseEntity{
 //  @OneToMany(orphanRemoval = true)
 //  @JoinColumn(name = "courses_id")
   private List<Tag> courseTags;
-  //certificate one to one
   @OneToMany(mappedBy = "courses")
   private List<Group> groups;
 
