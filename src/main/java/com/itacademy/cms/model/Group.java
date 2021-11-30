@@ -1,36 +1,41 @@
 package com.itacademy.cms.model;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.time.LocalTime;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-@Builder
 @Table(name = "groups")
-public class Group {
+public class Group extends BaseEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @ManyToMany
+    @JoinTable(
+            name = "users",
+            joinColumns = {@JoinColumn(name = "group_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")}
+    )
+    private List<User> users;
 
     @NotNull
     private String name;
 
-    @NotNull
-    private Date startDate;
+    @Column(name = "start_date")
+    private LocalDateTime startDate;
 
     @NotNull
     private int capacity;
 
-    @NotNull
-    private LocalTime startLesson;
+    @ManyToOne
+    @JoinColumn(name = "course_id", nullable = false)
+    private Course course;
 }
