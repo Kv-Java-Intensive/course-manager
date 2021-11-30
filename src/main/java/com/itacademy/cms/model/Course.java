@@ -1,7 +1,7 @@
 package com.itacademy.cms.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jdk.jfr.Category;
+
 import lombok.*;
 
 import javax.persistence.*;
@@ -9,10 +9,12 @@ import java.util.Date;
 import java.util.List;
 
 import com.itacademy.cms.model.Category;
-import com.itacademy.cms.model.CourseTags;
-import org.springframework.data.annotation.CreatedDate;
+import com.itacademy.cms.model.Category;
+import com.itacademy.cms.model.Tag;
+import com.itacademy.cms.model.enums.Language;
+import com.itacademy.cms.model.UserToCourse;
+import com.itacademy.cms.model.Group;
 
-//@Data
 @Getter
 @Setter
 @AllArgsConstructor
@@ -20,12 +22,12 @@ import org.springframework.data.annotation.CreatedDate;
 @EqualsAndHashCode
 @Entity
 @Table(name = "courses")
-public class Courses {
-  @Id
-  @CreatedDate
-  //@Date
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+public class Course extends BaseEntity{
+//  @Id
+//  @CreatedDate
+//  //@Date
+//  @GeneratedValue(strategy = GenerationType.IDENTITY)
+//  private Long id;
   @Column(name = "course_name")
   private String courseName;
   @Column(name = "description")
@@ -39,17 +41,19 @@ public class Courses {
   @Temporal(TemporalType.DATE)
   private Date updateDate;
   @Column(name = "duration")
-  private Double duration; //hours
+  @Temporal(TemporalType.TIME)
+  private Date duration; //hours
   @Column(name = "language")
-//  private Enum language;//(fk to language)  ///??
-  @JsonIgnore
+  private Language language;
   @OneToMany(orphanRemoval = true)
   @JoinColumn(name = "courses_id")
   private List<UserToCourse> userCourses;
-  //@JsonIgnore
-  @OneToMany(orphanRemoval = true)
-  @JoinColumn(name = "courses_id")
-  private List<CourseTags> courseTags;  //???
+  @ManyToMany(mappedBy = "tags")
+//  @OneToMany(orphanRemoval = true)
+//  @JoinColumn(name = "courses_id")
+  private List<Tag> courseTags;
   //certificate one to one
+  @OneToMany(mappedBy = "courses")
+  private List<Group> groups;
 
 }
