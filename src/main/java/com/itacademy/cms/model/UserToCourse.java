@@ -43,15 +43,17 @@ public class UserToCourse {
 
   @ManyToOne
   @JoinColumn(name = "user_id", insertable = false, updatable = false)
-  private User user; //fk to users
+  private User user;
 
   @ManyToOne
   @JoinColumn(name = "course_id", insertable = false, updatable = false)
-  private Course course; //fk to course
+  private Course course;
 
+  @NonNull
   @Column(name = "course_status")
   private CourseStatus courseStatus;
 
+  @NonNull
   @Column(name = "is_author")
   private boolean isAuthor;
 
