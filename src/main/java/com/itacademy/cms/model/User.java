@@ -25,9 +25,11 @@ public class User extends BaseEntity {
     private List<Group> groups;
 
     @NotNull
-    private String name;
+    @Column(name = "first_name")
+    private String firstName;
     @NotNull
-    private String surname;
+    @Column(name = "last_name")
+    private String lastName;
     @NotNull
     private String email;
     @NotNull
