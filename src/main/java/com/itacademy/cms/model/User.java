@@ -1,7 +1,10 @@
 package com.itacademy.cms.model;
 
 import com.itacademy.cms.model.enums.Role;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -9,15 +12,16 @@ import javax.validation.constraints.NotNull;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 @Builder
 @Table(name = "users")
-public class User {
+public class User extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "user_id")
+    private List<UserToCourse> userCourse;
+
+    @ManyToMany(mappedBy = "users")
+    private List<Group> groups;
 
     @NotNull
     private String name;
@@ -31,6 +35,7 @@ public class User {
     @NotNull
     private String password;
 
+    @Column(name = "account_card")
     private double accountCard;
 
     @NotNull

@@ -12,12 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Table(name = "modules")
-public class Module {
-
-    @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+public class Module extends BaseEntity{
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "course_id")
