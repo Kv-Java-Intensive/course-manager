@@ -26,11 +26,7 @@ import com.itacademy.cms.model.Certificate;
 @Entity
 @Table(name = "courses")
 public class Course extends BaseEntity{
-//  @Id
-//  @CreatedDate
-//  //@Date
-//  @GeneratedValue(strategy = GenerationType.IDENTITY)
-//  private Long id;
+
   @Column(name = "course_name")
   @NotNull
   private String courseName;
