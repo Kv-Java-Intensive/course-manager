@@ -25,8 +25,8 @@ public class Tag extends BaseEntity{
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
-            name = "course_tags"
-            , joinColumns = @JoinColumn(name = "tags")
-            , inverseJoinColumns = @JoinColumn(name = "course"))
+            name = "courses"
+            , joinColumns = @JoinColumn(name = "tag_id")
+            , inverseJoinColumns = @JoinColumn(name = "course_id"))
     private List<Course> courses;
 }
