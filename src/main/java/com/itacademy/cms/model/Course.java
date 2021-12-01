@@ -1,22 +1,12 @@
 package com.itacademy.cms.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import com.itacademy.cms.model.enums.Language;
 import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-
-import com.itacademy.cms.model.Category;
-import com.itacademy.cms.model.Category;
-import com.itacademy.cms.model.Tag;
-import com.itacademy.cms.model.enums.Language;
-import com.itacademy.cms.model.UserToCourse;
-import com.itacademy.cms.model.Group;
-import com.itacademy.cms.model.Module;
-import com.itacademy.cms.model.Certificate;
 
 @Getter
 @Setter
