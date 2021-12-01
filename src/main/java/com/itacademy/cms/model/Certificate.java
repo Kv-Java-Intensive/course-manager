@@ -23,14 +23,14 @@ public class Certificate extends BaseEntity{
     @Size(min = 10, max = 30, message = "Certificate name length should be in scope between 10 and 30 letters")
     private String name;
 
-    @Column
+//    @Column
     @OneToOne
-    @JoinColumn(name = "id")
+    //@JoinColumn(name = "id")
     private Course course;
 
-    @Column
+//    @Column
     @ManyToOne
-    @JoinColumn(name = "id")
+    //@JoinColumn(name = "id")
     private User user;
 
 }
