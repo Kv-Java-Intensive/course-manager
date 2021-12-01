@@ -1,12 +1,14 @@
 package com.itacademy.cms.model;
 
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "categories")
@@ -14,9 +16,9 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Category extends BaseEntity{
+public class Category extends BaseEntity {
 
-    @OneToMany (mappedBy="category", fetch=FetchType.LAZY)
-    private List<Course> courses;
-    private String category;
+  @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+  private List<Course> courses;
+  private String category;
 }
