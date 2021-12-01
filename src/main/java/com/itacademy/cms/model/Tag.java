@@ -30,8 +30,8 @@ public class Tag extends BaseEntity {
 
   @ManyToMany(cascade = CascadeType.ALL)
   @JoinTable(
-      name = "courses"
-      , joinColumns = @JoinColumn(name = "tag_id")
-      , inverseJoinColumns = @JoinColumn(name = "course_id"))
+      name = "courses",
+      joinColumns = @JoinColumn(name = "tag_id"),
+      inverseJoinColumns = @JoinColumn(name = "course_id"))
   private List<Course> courses;
 }
