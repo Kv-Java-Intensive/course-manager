@@ -1,6 +1,8 @@
 package com.itacademy.cms.model;
 
 import com.itacademy.cms.model.enums.Role;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -14,8 +16,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,17 +27,17 @@ public class User extends BaseEntity {
   @JoinColumn(name = "user_id")
   private List<UserToCourse> userCourse;
 
-  @ManyToMany(mappedBy = "users")
+  @ManyToMany(cascade = CascadeType.ALL)
   private List<Group> groups;
 
   @NotNull
   @Column(name = "first_name")
   private String firstName;
-  
+
   @NotNull
   @Column(name = "last_name")
   private String lastName;
-  
+
   @NotNull
   private String email;
 
@@ -47,7 +47,7 @@ public class User extends BaseEntity {
 
   @Column(name = "account_card")
   private double accountCard;
-  
+
   @NotNull
   @Enumerated(EnumType.STRING)
   private Role role;
