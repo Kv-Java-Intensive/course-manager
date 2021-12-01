@@ -23,7 +23,7 @@ public class Tag extends BaseEntity{
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "courses"
             , joinColumns = @JoinColumn(name = "tag_id")

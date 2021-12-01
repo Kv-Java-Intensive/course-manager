@@ -16,7 +16,7 @@ import java.util.List;
 @Setter
 public class Category extends BaseEntity{
 
-    @OneToMany (mappedBy="category_id", fetch=FetchType.LAZY)
+    @OneToMany (mappedBy="category", fetch=FetchType.LAZY)
     private List<Course> courses;
     private String category;
 }

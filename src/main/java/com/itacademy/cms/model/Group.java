@@ -18,7 +18,7 @@ import java.util.List;
 @Table(name = "groups")
 public class Group extends BaseEntity{
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "users",
             joinColumns = {@JoinColumn(name = "group_id")},
