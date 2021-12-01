@@ -19,6 +19,9 @@ import java.io.Serializable;
 @Table(name = "user_course")
 @Immutable
 public class UserToCourse {
+
+//  public UserToCourse() {}
+
   @Embeddable
   public static class Id implements Serializable {
 
@@ -63,7 +66,7 @@ public class UserToCourse {
     this.isAuthor = isAuthor;
     this.id.userId = user.getId();
     this.id.courseId = course.getId();
-    user.getUserToCourse().add(this);
-    course.getUserToCourse().add(this);
+//    user.getUserToCourse().add(this);
+//    course.getUserToCourse().add(this);
   }
 }
