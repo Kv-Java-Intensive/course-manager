@@ -1,7 +1,7 @@
 package com.itacademy.cms.model;
 
 import com.itacademy.cms.model.enums.CourseStatus;
-
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -18,9 +17,6 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 import org.hibernate.annotations.Immutable;
-
-
-import java.io.Serializable;
 
 @Data
 @Getter
@@ -33,51 +29,49 @@ import java.io.Serializable;
 @Immutable
 public class UserToCourse {
 
-    @EmbeddedId
-    protected Id id = new Id();
+  @EmbeddedId
+  protected Id id = new Id();
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", insertable = false, updatable = false)
-    private User user;
+  @ManyToOne
+  @JoinColumn(name = "user_id", insertable = false, updatable = false)
+  private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "course_id", insertable = false, updatable = false)
-    private Course course;
+  @ManyToOne
+  @JoinColumn(name = "course_id", insertable = false, updatable = false)
+  private Course course;
 
-    @NonNull
-    @Column(name = "course_status")
-    private CourseStatus courseStatus;
+  @NonNull
+  @Column(name = "course_status")
+  private CourseStatus courseStatus;
 
-    @NonNull
-    @Column(name = "is_author")
-    private boolean isAuthor;
+  @NonNull
+  @Column(name = "is_author")
+  private boolean isAuthor;
 
-    public UserToCourse(User user, Course course, CourseStatus courseStatus, boolean isAuthor) {
-        this.user = user;
-        this.course = course;
-        this.courseStatus = courseStatus;
-        this.isAuthor = isAuthor;
-        this.id.userId = user.getId();
-        this.id.courseId = course.getId();
-//    user.getUserToCourse().add(this);
-//    course.getUserToCourse().add(this);
+  public UserToCourse(User user, Course course, CourseStatus courseStatus, boolean isAuthor) {
+    this.user = user;
+    this.course = course;
+    this.courseStatus = courseStatus;
+    this.isAuthor = isAuthor;
+    this.id.userId = user.getId();
+    this.id.courseId = course.getId();
+  }
+
+  @Embeddable
+  public static class Id implements Serializable {
+
+    @Column(name = "user_id")
+    protected Long userId;
+
+    @Column(name = "course_id")
+    protected Long courseId;
+
+    public Id() {
     }
 
-    @Embeddable
-    public static class Id implements Serializable {
-
-        @Column(name = "user_id")
-        protected Long userId;
-
-        @Column(name = "course_id")
-        protected Long courseId;
-
-        public Id() {
-        }
-
-        public Id(Long userId, Long courseId) {
-            this.userId = userId;
-            this.courseId = courseId;
-        }
+    public Id(Long userId, Long courseId) {
+      this.userId = userId;
+      this.courseId = courseId;
     }
+  }
 }

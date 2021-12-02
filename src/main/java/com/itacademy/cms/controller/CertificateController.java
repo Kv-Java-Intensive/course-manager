@@ -2,49 +2,55 @@ package com.itacademy.cms.controller;
 
 import com.itacademy.cms.model.Certificate;
 import com.itacademy.cms.service.CertificateService;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
 public class CertificateController {
 
-    private CertificateService certificateService;
+  private final CertificateService certificateService;
 
-    public CertificateController(CertificateService certificateService) {
-        this.certificateService = certificateService;
-    }
+  public CertificateController(CertificateService certificateService) {
+    this.certificateService = certificateService;
+  }
 
-    @GetMapping("/certificates")
-    public List<Certificate> showAllCertificates() {
-        List<Certificate> allCertificates = certificateService.getAllCertificates();
-        return allCertificates;
-    }
+  @GetMapping("/certificates")
+  public List<Certificate> showAllCertificates() {
+    List<Certificate> allCertificates = certificateService.getAllCertificates();
+    return allCertificates;
+  }
 
-    @GetMapping("/certificates/{id}")
-    public Optional<Certificate> getCertificate(@PathVariable long id) {
-        Optional<Certificate> certificate = certificateService.findCertificateById(id);
-        return certificate;
-    }
+  @GetMapping("/certificates/{id}")
+  public Optional<Certificate> getCertificate(@PathVariable long id) {
+    Optional<Certificate> certificate = certificateService.findCertificateById(id);
+    return certificate;
+  }
 
-    @PostMapping("/certificates")
-    public Certificate addNewCertificate(@RequestBody Certificate certificate) {
-        certificateService.saveCertificate(certificate);
-        return certificate;
-    }
+  @PostMapping("/certificates")
+  public Certificate addNewCertificate(@RequestBody Certificate certificate) {
+    certificateService.saveCertificate(certificate);
+    return certificate;
+  }
 
-    @PutMapping("/employees")
-    public Certificate updateCertificate(@RequestBody Certificate certificate) {
-        certificateService.saveCertificate(certificate);
-        return certificate;
-    }
+  @PutMapping("/employees")
+  public Certificate updateCertificate(@RequestBody Certificate certificate) {
+    certificateService.saveCertificate(certificate);
+    return certificate;
+  }
 
-    @DeleteMapping("certificates/{id}")
-    public String deleteCertificate(@PathVariable long id) {
-        certificateService.findCertificateById(id);
-        certificateService.deleteCertificate(id);
-        return "Certificate with Id " + id + " was deleted";
-    }
+  @DeleteMapping("certificates/{id}")
+  public String deleteCertificate(@PathVariable long id) {
+    certificateService.findCertificateById(id);
+    certificateService.deleteCertificate(id);
+    return "Certificate with Id " + id + " was deleted";
+  }
 }

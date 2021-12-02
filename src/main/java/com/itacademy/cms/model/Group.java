@@ -11,7 +11,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,24 +24,24 @@ import lombok.Setter;
 @Table(name = "groups")
 public class Group extends BaseEntity {
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "users",
-            joinColumns = {@JoinColumn(name = "group_id")},
-            inverseJoinColumns = {@JoinColumn(name = "user_id")}
-    )
-    private List<User> users;
+  @ManyToMany(cascade = CascadeType.ALL)
+  @JoinTable(
+      name = "users",
+      joinColumns = {@JoinColumn(name = "group_id")},
+      inverseJoinColumns = {@JoinColumn(name = "user_id")}
+  )
+  private List<User> users;
 
-    @NotNull
-    private String name;
+  @NotNull
+  private String name;
 
-    @Column(name = "start_date")
-    private LocalDateTime startDate;
+  @Column(name = "start_date")
+  private LocalDateTime startDate;
 
-    @NotNull
-    private int capacity;
+  @NotNull
+  private int capacity;
 
-    @ManyToOne
-    @JoinColumn(name = "course_id", nullable = false)
-    private Course course;
+  @ManyToOne
+  @JoinColumn(name = "course_id", nullable = false)
+  private Course course;
 }

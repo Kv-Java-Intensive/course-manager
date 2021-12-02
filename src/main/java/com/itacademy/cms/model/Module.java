@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,16 +22,16 @@ import lombok.ToString;
 @Table(name = "modules")
 public class Module extends BaseEntity {
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "course_id")
-    private Course course;
+  @ManyToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "course_id")
+  private Course course;
 
-    @Column(name = "lesson_num")
-    private int lessonNumber;
+  @Column(name = "lesson_num")
+  private int lessonNumber;
 
-    @Column(name = "description")
-    private String description;
+  @Column(name = "description")
+  private String description;
 
-    @Column(name = "content")
-    private String content;
+  @Column(name = "content")
+  private String content;
 }
