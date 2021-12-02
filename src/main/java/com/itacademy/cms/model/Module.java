@@ -1,8 +1,17 @@
 package com.itacademy.cms.model;
 
-import lombok.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 
 @Entity
@@ -12,7 +21,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Table(name = "modules")
-public class Module extends BaseEntity{
+public class Module extends BaseEntity {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "course_id")
