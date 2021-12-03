@@ -17,13 +17,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Certificate extends BaseEntity {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-//    private Long id;
+
 
   @Column
   @NotNull(message = "Certificate name should be present")
-  @Size(min = 10, max = 30, message = "Certificate name length should be in scope between 10 and 30 letters")
+  @Size(min = 10, max = 30,
+      message = "Certificate name length should be in scope between 10 and 30 letters")
   private String name;
 
   //    @Column

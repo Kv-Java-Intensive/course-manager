@@ -1,17 +1,19 @@
 package com.itacademy.cms.service;
 
 import com.itacademy.cms.model.Tag;
-
+import com.itacademy.cms.model.dto.TagDto;
 import java.util.List;
 
 public interface TagService {
-    public List<Tag> getAllTags();
+  List<Tag> getAllTags();
 
-    public void saveTag(Tag tag);
+  void saveTag(TagDto tagDto);
 
-    public void findTagbyId(long id);
+  Tag findTagbyId(long id);
 
-    public void deleteTag(long id);
+  void updateTag(TagDto tagDto, Long id);
+
+  void deleteTag(long id);
 
 
 }
