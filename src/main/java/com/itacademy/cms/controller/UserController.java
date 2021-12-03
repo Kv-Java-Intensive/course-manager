@@ -3,9 +3,9 @@ package com.itacademy.cms.controller;
 import com.itacademy.cms.exeption.UserNotFoundException;
 import com.itacademy.cms.mapper.UserMapper;
 import com.itacademy.cms.model.dto.UserDto;
-import com.itacademy.cms.service.impl.UserServiceImpl;
+import com.itacademy.cms.service.UserService;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,35 +14,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 public class UserController {
 
-  private final UserServiceImpl userServiceImpl;
+  private final UserService userService;
   private final UserMapper userMapper;
-
-  @Autowired
-  public UserController(UserServiceImpl userServiceImpl, UserMapper userMapper) {
-    this.userServiceImpl = userServiceImpl;
-    this.userMapper = userMapper;
-  }
 
   @GetMapping("/users")
   public List<UserDto> getAllUser() throws UserNotFoundException {
-    return userMapper.userToUserDtoList(userServiceImpl.findAll());
+    return userMapper.userToUserDtoList(userService.findAll());
   }
 
   @GetMapping("/users/{id}")
   public UserDto getUserById(@PathVariable("id") Long id) throws UserNotFoundException {
-    return userMapper.userToUserDto(userServiceImpl.findById(id));
+    return userMapper.userToUserDto(userService.findById(id));
   }
 
   @PostMapping("/users")
   public void saveUser(@RequestBody UserDto userDto) {
-    userServiceImpl.saveUser(userDto);
+    userService.saveUser(userDto);
   }
 
   @PutMapping("/users/{id}")
   public void updateUser(@RequestBody UserDto userDto, @PathVariable Long id)
       throws UserNotFoundException {
-    userServiceImpl.updateUser(userDto, id);
+    userService.updateUser(userDto, id);
   }
 }

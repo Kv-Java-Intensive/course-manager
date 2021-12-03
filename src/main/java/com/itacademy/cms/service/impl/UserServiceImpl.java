@@ -8,20 +8,15 @@ import com.itacademy.cms.repository.UserRepository;
 import com.itacademy.cms.service.UserService;
 import java.util.List;
 import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
   private final UserRepository userRepository;
   private final UserMapper userMapper;
-
-  @Autowired
-  public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
-    this.userRepository = userRepository;
-    this.userMapper = userMapper;
-  }
 
   @Override
   public List<User> findAll() throws UserNotFoundException {

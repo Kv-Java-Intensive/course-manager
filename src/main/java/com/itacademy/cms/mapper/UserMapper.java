@@ -5,13 +5,11 @@ import com.itacademy.cms.model.dto.UserDto;
 import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import org.springframework.stereotype.Component;
 
-@Component
-@Mapper
+@Mapper(componentModel = "spring")
 public interface UserMapper {
 
-  UserMapper userMapper = Mappers.getMapper(UserMapper.class);
+  UserMapper MAPPER = Mappers.getMapper(UserMapper.class);
 
   User userDtoToUser(UserDto userDto);
 
