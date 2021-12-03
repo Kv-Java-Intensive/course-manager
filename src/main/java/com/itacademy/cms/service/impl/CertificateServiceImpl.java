@@ -1,34 +1,38 @@
 package com.itacademy.cms.service.impl;
 
 import com.itacademy.cms.jparepository.CertificateRepository;
+import com.itacademy.cms.mapper.CertificateMapper;
 import com.itacademy.cms.model.Certificate;
+import com.itacademy.cms.model.dto.CertificateDto;
 import com.itacademy.cms.service.CertificateService;
 import java.util.List;
 import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class CertificateServiceImpl implements CertificateService {
 
   private final CertificateRepository certificatesRepository;
+  private final CertificateMapper certificateMapper;
 
-  public CertificateServiceImpl(CertificateRepository certificatesRepository) {
-    this.certificatesRepository = certificatesRepository;
-  }
 
   @Override
-  public List<Certificate> getAllCertificates() {
+  public List<Certificate> findAll() {
     return certificatesRepository.findAll();
   }
 
   @Override
-  public void saveCertificate(Certificate certificate) {
-    certificatesRepository.save(certificate);
+  public void saveCertificate(CertificateDto certificateDto) {
+    certificatesRepository.save(
+        certificateMapper.certificateDtoToCertificate(certificateDto));
   }
 
   @Override
-  public Optional<Certificate> findCertificateById(long id) {
-    return certificatesRepository.findById(id);
+  public Certificate findById(long id) {
+    Optional<Certificate> certificate = certificatesRepository.findById(id);
+    return certificatesRepository.getById(id);
   }
 
   @Override

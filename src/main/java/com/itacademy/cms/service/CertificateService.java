@@ -1,15 +1,16 @@
 package com.itacademy.cms.service;
 
 import com.itacademy.cms.model.Certificate;
+import com.itacademy.cms.model.dto.CertificateDto;
 import java.util.List;
 import java.util.Optional;
 
 public interface CertificateService {
-  List<Certificate> getAllCertificates();
+  List<Certificate> findAll();
 
-  void saveCertificate(Certificate certificate);
+  void saveCertificate(CertificateDto certificateDto);
 
-  Optional<Certificate> findCertificateById(long id);
+  Certificate findById(long id);
 
   void deleteCertificate(long id);
 }
