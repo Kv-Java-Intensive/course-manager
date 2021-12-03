@@ -28,23 +28,22 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public void updateUser(UserDto userDto, Long id) throws UserNotFoundException {
+  public void updateUser(UserDto userDto, Long id) {
     Optional<User> userOptional = userRepository.findById(id);
-    if (userOptional.isPresent()) {
-      User userFromDb = userOptional.get();
-      userFromDb.setGroups(userDto.getGroups());
-      userFromDb.setUserCourse(userDto.getUserCourse());
-      userFromDb.setFirstName(userDto.getFirstName());
-      userFromDb.setLastName(userDto.getLastName());
-      userFromDb.setEmail(userDto.getEmail());
-      userFromDb.setPassword(userDto.getPassword());
-      userFromDb.setRole(userDto.getRole());
-      userFromDb.setAccountCard(userDto.getAccountCard());
-      userFromDb.setAbout(userDto.getAbout());
-      userRepository.save(userFromDb);
-    }
-    throw new UserNotFoundException("User with id " + id + "not found!");
+    userOptional.ifPresent(user -> {
+      user.setGroups(userDto.getGroups());
+      user.setUserCourse(userDto.getUserCourse());
+      user.setFirstName(userDto.getFirstName());
+      user.setLastName(userDto.getLastName());
+      user.setEmail(userDto.getEmail());
+      user.setPassword(userDto.getPassword());
+      user.setRole(userDto.getRole());
+      user.setAccountCard(userDto.getAccountCard());
+      user.setAbout(userDto.getAbout());
+      userRepository.save(user);
+    });
   }
+
 
   @Override
   public User findById(Long id) throws UserNotFoundException {
@@ -52,7 +51,7 @@ public class UserServiceImpl implements UserService {
     if (user.isPresent()) {
       return userRepository.getById(id);
     }
-    throw new UserNotFoundException("User with id " + id + "not found!");
+    throw new UserNotFoundException("User with id " + id + " not found!");
   }
 
   @Override
