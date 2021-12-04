@@ -1,14 +1,14 @@
 package com.itacademy.cms.model.dto;
 
 import com.itacademy.cms.model.Course;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
 @Getter
 @Setter
 public class CategoryDto {
 
-    private List<Course> courses;
-    private String category;
+  private List<Course> courses;
+  private String category;
 }

@@ -8,11 +8,11 @@ import org.mapstruct.factory.Mappers;
 @Mapper(componentModel = "spring")
 public interface CategoryMapper {
 
-    CategoryMapper INSTANCE = Mappers.getMapper(CategoryMapper.class);
+  CategoryMapper categoryMapper = Mappers.getMapper(CategoryMapper.class);
 
 
-    CategoryDto categoryToDTO(Category category);
+  CategoryDto categoryToDTO(Category category);
 
 
-    Category dtoToCategory(CategoryDto categoryDTO);
+  Category dtoToCategory(CategoryDto categoryDTO);
 }
