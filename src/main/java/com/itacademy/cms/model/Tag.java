@@ -1,5 +1,9 @@
 package com.itacademy.cms.model;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

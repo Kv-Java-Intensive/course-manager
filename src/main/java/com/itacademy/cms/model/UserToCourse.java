@@ -31,19 +31,15 @@ public class UserToCourse {
 
   @EmbeddedId
   protected Id id = new Id();
-
   @ManyToOne
   @JoinColumn(name = "user_id", insertable = false, updatable = false)
   private User user;
-
   @ManyToOne
   @JoinColumn(name = "course_id", insertable = false, updatable = false)
   private Course course;
-
   @NonNull
   @Column(name = "course_status")
   private CourseStatus courseStatus;
-
   @NonNull
   @Column(name = "is_author")
   private boolean isAuthor;
@@ -55,6 +51,11 @@ public class UserToCourse {
     this.isAuthor = isAuthor;
     this.id.userId = user.getId();
     this.id.courseId = course.getId();
+<<<<<<< HEAD
+=======
+    //    user.getUserToCourse().add(this);
+    //    course.getUserToCourse().add(this);
+>>>>>>> main
   }
 
   @Embeddable
