@@ -2,6 +2,7 @@ package com.itacademy.cms.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -26,7 +27,7 @@ public class Certificate extends BaseEntity {
 
 
   @OneToOne
-  //@JoinColumn(name = "id")
+  @JoinColumn(name = "certificate")
   private Course course;
 
   //    @Column
