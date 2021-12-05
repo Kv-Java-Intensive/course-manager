@@ -48,8 +48,8 @@ public class GroupServiceImpl implements GroupService {
   }
 
   @Override
-  public void saveGroup(GroupDto groupDto) {
-    groupRepository.save(groupMapper.groupDto2Group(groupDto));
+  public void saveGroup(Group group) {
+    groupRepository.save(group);
   }
 
   @Override

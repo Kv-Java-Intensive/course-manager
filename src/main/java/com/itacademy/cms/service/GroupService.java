@@ -13,7 +13,7 @@ public interface GroupService {
 
   void updateGroup(GroupDto groupDto, Long id) throws NoSuchGroupException;
 
-  void saveGroup(GroupDto groupDto);
+  void saveGroup(Group group);
 
   void deleteGroup(Long id) throws NoSuchGroupException;
 
