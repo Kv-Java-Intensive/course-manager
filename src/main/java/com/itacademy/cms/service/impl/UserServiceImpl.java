@@ -1,5 +1,6 @@
 package com.itacademy.cms.service.impl;
 
+import com.itacademy.cms.exeption.ParameterMissingException;
 import com.itacademy.cms.exeption.UserNotFoundException;
 import com.itacademy.cms.mapper.UserMapper;
 import com.itacademy.cms.model.User;
@@ -57,5 +58,15 @@ public class UserServiceImpl implements UserService {
   @Override
   public void saveUser(UserDto userDto) {
     userRepository.save(userMapper.userDtoToUser(userDto));
+  }
+
+  @Override
+  public void deleteUserById(Long id) throws UserNotFoundException {
+    if (id == null) {
+      throw new ParameterMissingException("User id is missing");
+    } else if (userRepository.existsById(id)) {
+      userRepository.deleteById(id);
+    }
+    throw new UserNotFoundException("User with id " + id + " not found!");
   }
 }

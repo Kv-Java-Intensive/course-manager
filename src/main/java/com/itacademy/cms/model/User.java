@@ -27,11 +27,10 @@ import lombok.Setter;
 @Table(name = "users")
 public class User extends BaseEntity {
 
-  @OneToMany(orphanRemoval = true)
-  @JoinColumn(name = "user_id")
+  @OneToMany(mappedBy = "user", orphanRemoval = true)
   private List<UserToCourse> userCourse;
 
-  @ManyToMany(cascade = CascadeType.ALL)
+  @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
   private List<Group> groups;
 
   @NotNull

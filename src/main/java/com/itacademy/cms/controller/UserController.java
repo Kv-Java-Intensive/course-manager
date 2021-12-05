@@ -7,6 +7,7 @@ import com.itacademy.cms.service.UserService;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,5 +42,10 @@ public class UserController {
   public void updateUser(@RequestBody UserDto userDto, @PathVariable Long id)
       throws UserNotFoundException {
     userService.updateUser(userDto, id);
+  }
+
+  @DeleteMapping("/users/{id}")
+  public void deleteUser(@PathVariable("id") Long id) throws UserNotFoundException {
+    userService.deleteUserById(id);
   }
 }
