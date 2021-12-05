@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 public class CategoryDto {
 
-  private List<Course> courses;
+  public List<Course> courses;
   private String category;
 }
