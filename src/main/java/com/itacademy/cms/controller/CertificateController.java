@@ -4,6 +4,7 @@ import com.itacademy.cms.mapper.CertificateMapper;
 import com.itacademy.cms.model.dto.CertificateDto;
 import com.itacademy.cms.service.CertificateService;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,14 +26,17 @@ public class CertificateController {
 
   @GetMapping("/certificates")
   public List<CertificateDto> showAllCertificates() {
-    return certificateMapper.certificateToCertificateDtoList(
-        certificateService.findAll());
+//    return certificateMapper.certificateToCertificateDtoList(
+//        certificateService.findAll());
+    return certificateService.findAll().stream()
+        .map(certificateMapper::certificateToCertificateDto).collect(Collectors.toList());
   }
 
   @GetMapping("/certificates/{id}")
   public CertificateDto getCertificateById(@PathVariable long id) {
-    return certificateMapper.certificateToCertificateDto(
-        certificateService.findById(id));
+//    return certificateMapper.certificateToCertificateDto(
+//        certificateService.findById(id));
+    return certificateMapper.certificateToCertificateDto(certificateService.findById(id));
   }
 
   @PostMapping("/certificates")
