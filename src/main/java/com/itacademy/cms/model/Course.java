@@ -65,12 +65,9 @@ public class Course extends BaseEntity {
   @JoinColumn(name = "course_id")
   private List<UserToCourse> userCourses;
 
-<<<<<<< HEAD
-  @ManyToMany(cascade = CascadeType.ALL)
 
-=======
   @ManyToMany(cascade = CascadeType.ALL) //, mappedBy = "course")
->>>>>>> main
+
   private List<Tag> courseTags;
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")

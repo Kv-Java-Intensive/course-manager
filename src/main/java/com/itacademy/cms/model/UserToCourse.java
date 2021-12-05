@@ -51,11 +51,10 @@ public class UserToCourse {
     this.isAuthor = isAuthor;
     this.id.userId = user.getId();
     this.id.courseId = course.getId();
-<<<<<<< HEAD
-=======
+
     //    user.getUserToCourse().add(this);
     //    course.getUserToCourse().add(this);
->>>>>>> main
+
   }
 
   @Embeddable
