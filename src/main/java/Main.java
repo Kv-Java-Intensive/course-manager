@@ -1,11 +1,10 @@
+import javax.persistence.metamodel.EntityType;
 import org.hibernate.HibernateException;
 import org.hibernate.Metamodel;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
-
-import javax.persistence.metamodel.EntityType;
 
 public class Main {
   private static final SessionFactory ourSessionFactory;

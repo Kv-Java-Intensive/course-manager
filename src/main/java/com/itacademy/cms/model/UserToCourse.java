@@ -1,13 +1,22 @@
 package com.itacademy.cms.model;
 
-import lombok.*;
-
-import javax.persistence.*;
-
-import org.hibernate.annotations.Immutable;
 import com.itacademy.cms.model.enums.CourseStatus;
-
 import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
+import org.hibernate.annotations.Immutable;
 
 @Data
 @Getter
@@ -20,7 +29,31 @@ import java.io.Serializable;
 @Immutable
 public class UserToCourse {
 
-//  public UserToCourse() {}
+  @EmbeddedId
+  protected Id id = new Id();
+  @ManyToOne
+  @JoinColumn(name = "user_id", insertable = false, updatable = false)
+  private User user;
+  @ManyToOne
+  @JoinColumn(name = "course_id", insertable = false, updatable = false)
+  private Course course;
+  @NonNull
+  @Column(name = "course_status")
+  private CourseStatus courseStatus;
+  @NonNull
+  @Column(name = "is_author")
+  private boolean isAuthor;
+
+  public UserToCourse(User user, Course course, CourseStatus courseStatus, boolean isAuthor) {
+    this.user = user;
+    this.course = course;
+    this.courseStatus = courseStatus;
+    this.isAuthor = isAuthor;
+    this.id.userId = user.getId();
+    this.id.courseId = course.getId();
+    //    user.getUserToCourse().add(this);
+    //    course.getUserToCourse().add(this);
+  }
 
   @Embeddable
   public static class Id implements Serializable {
@@ -38,35 +71,5 @@ public class UserToCourse {
       this.userId = userId;
       this.courseId = courseId;
     }
-  }
-
-  @EmbeddedId
-  protected Id id = new Id();
-
-  @ManyToOne
-  @JoinColumn(name = "user_id", insertable = false, updatable = false)
-  private User user;
-
-  @ManyToOne
-  @JoinColumn(name = "course_id", insertable = false, updatable = false)
-  private Course course;
-
-  @NonNull
-  @Column(name = "course_status")
-  private CourseStatus courseStatus;
-
-  @NonNull
-  @Column(name = "is_author")
-  private boolean isAuthor;
-
-  public UserToCourse(User user, Course course, CourseStatus courseStatus, boolean isAuthor) {
-    this.user = user;
-    this.course = course;
-    this.courseStatus = courseStatus;
-    this.isAuthor = isAuthor;
-    this.id.userId = user.getId();
-    this.id.courseId = course.getId();
-//    user.getUserToCourse().add(this);
-//    course.getUserToCourse().add(this);
   }
 }
