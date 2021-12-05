@@ -15,8 +15,11 @@ import com.itacademy.cms.model.Tag;
 import com.itacademy.cms.model.UserToCourse;
 import com.itacademy.cms.model.dto.CategoryDto;
 import com.itacademy.cms.model.enums.Language;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
@@ -27,6 +30,22 @@ public class CategoryTest {
   //  private static final String DATE_FORMAT = "dd-MM-yyyy";
 //  private static final String DATE_FORMAT_HOUR = "HH:mm:ss";
   CategoryMapper categoryMapper = Mappers.getMapper(CategoryMapper.class);
+
+  String startDate = "2021-12-03";
+  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+  String duration = "12:00:00";
+  SimpleDateFormat dur = new SimpleDateFormat("HH:mm:ss");
+  Date date;
+  Date courseDuration;
+
+  {
+    try {
+      date = sdf.parse(startDate);
+      courseDuration = dur.parse(duration);
+    } catch (ParseException e) {
+      e.printStackTrace();
+    }
+  }
 
   @Test
   public void shouldMapCategoryToDto() {
@@ -39,8 +58,8 @@ public class CategoryTest {
         "Java Core",
         20D,
         null,
-        "2021-12-03",
-        "12:00:00",
+        date,
+        courseDuration,
         Language.ENGLISH,
         Collections.singletonList(userCourses),
         Collections.singletonList(courseTags),
@@ -60,9 +79,9 @@ public class CategoryTest {
     assertThat(courses.get(0).getDescription().isEqualTo("Java Core"));
     assertThat(courses.get(0).getPrice().isEqualTo(20D));
     assertThat(courses.get(0).getCategory.isEqualTo(category));
-    assertThat(courses.get(0).getUpdateDate.isEqualTo("2021-12-03"));
-    assertThat(courses.get(0).getDuration.isEqualTo("12:00:00"));
-    assertThat(courses.get(0).getLanguage.isEqualTo(Language.ENGLISH);
+    assertThat(courses.get(0).getUpdateDate.isEqualTo(date));
+    assertThat(courses.get(0).getDuration.isEqualTo(courseDuration));
+    assertThat(courses.get(0).getLanguage.isEqualTo(Language.ENGLISH));
     assertThat(courses.get(0).getCertificate.isEqualTo(certificate));
 
     assertEquals(categoryDto.getCategory(), category.getCategory());
@@ -79,8 +98,8 @@ public class CategoryTest {
         "Java Core",
         20D,
         null,
-        "2021-12-03",
-        "12:00:00",
+        date,
+        courseDuration,
         Language.ENGLISH,
         null,
         null,
@@ -103,13 +122,13 @@ public class CategoryTest {
 
     assertThat(category.getCategory()).isEqualTo("Programming");
     assertThat(category.getCourses())
-        .extracting("courseName", "description", "price", "category", "updateDate", "duration"
+        .extracting("courseName", "description", "price", "category", "updateDate", "duration",
             "language", "certificate")
         .containsExactly(tuple("Java Core",
             20D,
             categoryDto,
-            "2021-12-03",
-            "12:00:00",
+            date,
+            courseDuration,
             Language.ENGLISH,
             certificateDto));
 
