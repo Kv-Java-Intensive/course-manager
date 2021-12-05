@@ -1,10 +1,12 @@
 package com.itacademy.cms.controller;
 
+import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.dto.CourseDto;
 import com.itacademy.cms.model.Course;
 import com.itacademy.cms.service.CourseService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,7 +45,8 @@ public class CourseController {
   }
 
   @PostMapping
-  public List<Course> addNewCourse(@RequestBody CourseDto courseDto) {
+  public List<Course> addNewCourse(@AuthenticationPrincipal User user,
+                                   @RequestBody CourseDto courseDto) {
     courseService.addCourse(courseDto);
     return courseService.getAllCourses();
   }

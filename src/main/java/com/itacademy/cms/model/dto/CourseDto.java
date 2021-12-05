@@ -1,6 +1,7 @@
 package com.itacademy.cms.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.enums.Language;
 import java.util.Date;
 import java.util.List;
@@ -11,6 +12,7 @@ import lombok.Setter;
 @Setter
 @JsonIgnoreProperties
 public class CourseDto {
+  private UserDto userDto;
 
   private String courseName;
 
@@ -20,13 +22,13 @@ public class CourseDto {
 
   private CategoryDto categoryDto;
 
-  private Date updateDate;
+  private String updateDate;
 
   private Double duration; //hours
 
-  private Language language;
+  private String language;
 
-  //private UserToCourseDto userToCourseDTo;
+  // private List<UserToCourseDto> userToCourseDTo;
 
   private List<TagDto> tagDto;
 

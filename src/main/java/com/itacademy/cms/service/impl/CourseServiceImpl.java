@@ -1,6 +1,8 @@
 package com.itacademy.cms.service.impl;
 
 import com.itacademy.cms.dao.CourseDAO;
+import com.itacademy.cms.mapper.CategoryMapperImpl;
+import com.itacademy.cms.mapper.CourseMapperImpl;
 import com.itacademy.cms.model.dto.CourseDto;
 import com.itacademy.cms.model.Category;
 import com.itacademy.cms.model.Certificate;
@@ -20,6 +22,8 @@ public class CourseServiceImpl implements CourseService {
   private TagDAO tagDAO;
   @Autowired
   private CertificateDAO certificateDAO;
+  @Autowired
+  private CourseMapperImpl courseMapper;
 
   @Override
   public List<Course> getAllCourses() {
@@ -33,18 +37,8 @@ public class CourseServiceImpl implements CourseService {
 
   @Override
   public List<Course> addCourse(CourseDto courseDto) {
-    Course course = new Course();
-    course.setCourseName(courseDto.getCourseName());
-    course.setDescription(courseDto.getDescription());
-    course.setPrice(courseDto.getPrice());
-    Category category = categoryDAO.findByCategory(courseDto.getCategoryDto().getCategory());
-    course.setCategory(category);
-    course.setUpdateDate(courseDto.getUpdateDate()); //time
-    course.setDuration(courseDto.getDuration());
-    course.setLanguage(courseDto.getLanguage());
-    //course.setCourseTags(courseDto.getCourseTags);
-    Certificate certificate = certificateDAO.findByName(courseDto.getCertificateDto().getName());
-    course.setCertificate(certificate);
+    Course course = courseMapper.courseDtoToCourse(courseDto);
+    ;
     courseDAO.save(course);
     return courseDAO.findAll();
   }
