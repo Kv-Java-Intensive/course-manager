@@ -2,7 +2,6 @@ package com.itacademy.cms.mapper;
 
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.dto.UserDto;
-import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
