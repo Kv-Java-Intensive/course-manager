@@ -1,5 +1,6 @@
 package com.itacademy.cms.service;
 
+import com.itacademy.cms.exeption.CertificateNotFoundException;
 import com.itacademy.cms.model.Certificate;
 import com.itacademy.cms.model.dto.CertificateDto;
 import java.util.List;
@@ -7,9 +8,12 @@ import java.util.List;
 public interface CertificateService {
   List<Certificate> findAll();
 
-  void saveCertificate(CertificateDto certificateDto);
+  Certificate findById(Long id) throws CertificateNotFoundException;
 
-  Certificate findById(long id);
+  void updateCertificate(CertificateDto certificateDto, Long id);
 
-  void deleteCertificate(long id);
+  Certificate saveCertificate(CertificateDto certificateDto);
+
+  void deleteCertificateById(Long id) throws CertificateNotFoundException;
+
 }

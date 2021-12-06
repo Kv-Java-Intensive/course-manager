@@ -1,5 +1,6 @@
 package com.itacademy.cms.controller;
 
+import com.itacademy.cms.exeption.CertificateNotFoundException;
 import com.itacademy.cms.mapper.CertificateMapper;
 import com.itacademy.cms.model.dto.CertificateDto;
 import com.itacademy.cms.service.CertificateService;
@@ -25,17 +26,14 @@ public class CertificateController {
 
 
   @GetMapping("/certificates")
-  public List<CertificateDto> showAllCertificates() {
-//    return certificateMapper.certificateToCertificateDtoList(
-//        certificateService.findAll());
+  public List<CertificateDto> getAllCertificates() {
     return certificateService.findAll().stream()
         .map(certificateMapper::certificateToCertificateDto).collect(Collectors.toList());
   }
 
   @GetMapping("/certificates/{id}")
-  public CertificateDto getCertificateById(@PathVariable long id) {
-//    return certificateMapper.certificateToCertificateDto(
-//        certificateService.findById(id));
+  public CertificateDto getCertificateById(@PathVariable long id)
+      throws CertificateNotFoundException {
     return certificateMapper.certificateToCertificateDto(certificateService.findById(id));
   }
 
@@ -46,14 +44,13 @@ public class CertificateController {
   }
 
   @PutMapping("/employees")
-  public CertificateDto updateCertificate(@RequestBody CertificateDto certificateDto) {
-    certificateService.saveCertificate(certificateDto);
-    return certificateDto;
+  public void updateCertificate(@RequestBody CertificateDto certificateDto, @PathVariable Long id) {
+    certificateService.updateCertificate(certificateDto, id);
   }
 
   @DeleteMapping("certificates/{id}")
-  public void deleteCertificate(@PathVariable long id) {
+  public void deleteCertificate(@PathVariable long id) throws CertificateNotFoundException {
     certificateService.findById(id);
-    certificateService.deleteCertificate(id);
+    certificateService.deleteCertificateById(id);
   }
 }

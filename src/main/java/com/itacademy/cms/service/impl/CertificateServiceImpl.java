@@ -1,5 +1,7 @@
 package com.itacademy.cms.service.impl;
 
+import com.itacademy.cms.exeption.CertificateNotFoundException;
+import com.itacademy.cms.exeption.ParameterMissingException;
 import com.itacademy.cms.jparepository.CertificateRepository;
 import com.itacademy.cms.mapper.CertificateMapper;
 import com.itacademy.cms.model.Certificate;
@@ -24,19 +26,37 @@ public class CertificateServiceImpl implements CertificateService {
   }
 
   @Override
-  public void saveCertificate(CertificateDto certificateDto) {
-    certificatesRepository.save(
+  public Certificate saveCertificate(CertificateDto certificateDto) {
+    return certificatesRepository.save(
         certificateMapper.certificateDtoToCertificate(certificateDto));
   }
 
   @Override
-  public Certificate findById(long id) {
+  public Certificate findById(Long id) {
     Optional<Certificate> certificate = certificatesRepository.findById(id);
-    return certificatesRepository.getById(id);
+    return certificate.orElseThrow(
+        () -> new CertificateNotFoundException("Certificate with id " + id + " not found!"));
   }
 
   @Override
-  public void deleteCertificate(long id) {
+  public void updateCertificate(CertificateDto certificateDto, Long id) {
+    Optional<Certificate> certificateOptional = certificatesRepository.findById(id);
+    certificateOptional.ifPresent(certificate -> {
+          certificate.setName(certificateDto.getName());
+          certificatesRepository.save(certificate);
+        }
+    );
+  }
+
+  @Override
+  public void deleteCertificateById(Long id) {
     certificatesRepository.deleteById(id);
+    if (id == null) {
+      throw new ParameterMissingException("Certificate id is missing");
+    } else if (certificatesRepository.existsById(id)) {
+      certificatesRepository.deleteById(id);
+      return;
+    }
+    throw new CertificateNotFoundException("Certificate with id " + id + " not found!");
   }
 }

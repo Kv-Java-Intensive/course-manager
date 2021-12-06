@@ -1,27 +1,23 @@
 package com.itacademy.cms.service;
 
 import com.itacademy.cms.exeption.CertificateNotFoundException;
-import com.itacademy.cms.model.Certificate;
 import com.itacademy.cms.repository.CertificateRepository;
 import com.itacademy.cms.service.impl.CertificateServiceImpl;
-import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 @ExtendWith(MockitoExtension.class)
 public class CertificateServiceTest {
 
-  @Mock
-  CertificateRepository certificateRepository;
-
-  @InjectMocks
   CertificateServiceImpl certificateServiceImpl;
+  @Autowired
+  private CertificateRepository certificateRepository;
 
   @Test
   void findAllTest() {
@@ -48,6 +44,7 @@ public class CertificateServiceTest {
 //    certificate.setName("test");
 //
 //    Optional<Certificate> optionalCertificate = Optional.of(certificate);
+//
 //    Mockito.when(certificateRepository.findById(id)).thenReturn(optionalCertificate);
 //    Certificate savedCertificate = certificateServiceImpl.findById(id);
 //
