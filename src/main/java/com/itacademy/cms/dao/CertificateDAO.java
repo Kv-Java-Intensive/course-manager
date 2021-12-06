@@ -6,4 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface CertificateDAO extends CrudRepository<Certificate, Long> {
 
+  Certificate getById(long id);
 }

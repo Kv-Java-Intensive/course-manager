@@ -25,7 +25,7 @@ public class CertificateServiceImpl implements CertificateService {
 
   @Override
   public List<Certificate> findAll() {
-    return certificatesRepository.findAll();
+    return (List<Certificate>) certificatesRepository.findAll();
   }
 
   @Override

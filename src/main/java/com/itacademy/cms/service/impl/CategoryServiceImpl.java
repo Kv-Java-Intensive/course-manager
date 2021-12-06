@@ -25,7 +25,7 @@ public class CategoryServiceImpl implements CategoryService {
 
   @Override
   public List<Category> findAll() throws CategoryNotFoundException {
-    List<Category> categoriesList = categoryRepository.findAll();
+    List<Category> categoriesList = (List<Category>) categoryRepository.findAll();
     if (categoriesList.isEmpty()) {
       throw new CategoryNotFoundException("No categories found!");
     }
