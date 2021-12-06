@@ -19,10 +19,6 @@ public class TagServiceImpl implements TagService {
   private final TagRepository tagRepository;
   private final TagMapper tagMapper;
 
-//  public TagServiceImpl(TagRepository tagRepository, TagMapper tagMapper) {
-//    this.tagRepository = tagRepository;
-//    this.tagMapper = tagMapper;
-//  }
 
   @Override
   public List<Tag> getAllTags() {
