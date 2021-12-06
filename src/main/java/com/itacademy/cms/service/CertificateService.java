@@ -1,6 +1,5 @@
 package com.itacademy.cms.service;
 
-import com.itacademy.cms.exeption.CertificateNotFoundException;
 import com.itacademy.cms.model.Certificate;
 import com.itacademy.cms.model.dto.CertificateDto;
 import java.util.List;
