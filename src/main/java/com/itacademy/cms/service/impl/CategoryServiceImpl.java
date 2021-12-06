@@ -2,7 +2,7 @@ package com.itacademy.cms.service.impl;
 
 import com.itacademy.cms.exeption.CategoryNotFoundException;
 import com.itacademy.cms.exeption.ParameterMissingException;
-import com.itacademy.cms.mapper.CategoryMapper;
+import com.itacademy.cms.mapper.EntityMapper;
 import com.itacademy.cms.model.Category;
 import com.itacademy.cms.model.dto.CategoryDto;
 import com.itacademy.cms.repository.CategoryRepository;
@@ -18,7 +18,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 
   private final CategoryRepository categoryRepository;
-  private final CategoryMapper categoryMapper;
+  private final EntityMapper entityMapper;
 
 
   @Override
@@ -31,7 +31,7 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public void updateCategory(CategoryDto categoryDto, Long id) throws CategoryNotFoundException {
+  public void updateCategory(CategoryDto categoryDto, Long id) {
     Optional<Category> categoryOptional = categoryRepository.findById(id);
     categoryOptional.ifPresent(category -> {
       category.setCourses(categoryDto.getCourses());
@@ -51,7 +51,7 @@ public class CategoryServiceImpl implements CategoryService {
 
   @Override
   public void saveCategory(CategoryDto categoryDto) {
-    categoryRepository.save(categoryMapper.categoryDtoToCategory(categoryDto));
+    categoryRepository.save(entityMapper.categoryDtoToCategory(categoryDto));
   }
 
   @Override

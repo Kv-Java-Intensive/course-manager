@@ -1,7 +1,7 @@
 package com.itacademy.cms.controller;
 
 import com.itacademy.cms.exeption.CategoryNotFoundException;
-import com.itacademy.cms.mapper.CategoryMapper;
+import com.itacademy.cms.mapper.EntityMapper;
 import com.itacademy.cms.model.dto.CategoryDto;
 import com.itacademy.cms.service.CategoryService;
 import java.util.List;
@@ -20,17 +20,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class CategoryController {
 
   private final CategoryService categoryService;
-  private final CategoryMapper categoryMapper;
+  private final EntityMapper entityMapper;
 
   @GetMapping("/categories")
   public List<CategoryDto> getAllCategories() throws CategoryNotFoundException {
     return categoryService.findAll().stream()
-        .map(categoryMapper::categoryToCategoryDto).collect(Collectors.toList());
+        .map(entityMapper::categoryToCategoryDto).collect(Collectors.toList());
   }
 
   @GetMapping("/categories/{id}")
   public CategoryDto getCategoryById(@PathVariable("id") Long id) throws CategoryNotFoundException {
-    return categoryMapper.categoryToCategoryDto(categoryService.findById(id));
+    return entityMapper.categoryToCategoryDto(categoryService.findById(id));
   }
 
   @PostMapping("/categories")

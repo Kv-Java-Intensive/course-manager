@@ -5,7 +5,7 @@
 //import static org.assertj.core.api.Assertions.tuple;
 //import static org.junit.jupiter.api.Assertions.assertEquals;
 //
-//import com.itacademy.cms.mapper.CategoryMapper;
+//import com.itacademy.cms.mapper.EntityMapper;
 //import com.itacademy.cms.model.Category;
 //import com.itacademy.cms.model.Certificate;
 //import com.itacademy.cms.model.Course;
@@ -21,15 +21,15 @@
 //import java.util.Collections;
 //import java.util.Date;
 //import java.util.List;
+//import org.junit.Ignore;
 //import org.junit.jupiter.api.Test;
 //import org.mapstruct.factory.Mappers;
 //
 //public class CategoryTest {
 //
-//
 //  //  private static final String DATE_FORMAT = "dd-MM-yyyy";
 ////  private static final String DATE_FORMAT_HOUR = "HH:mm:ss";
-//  CategoryMapper categoryMapper = Mappers.getMapper(CategoryMapper.class);
+//  EntityMapper entityMapper = Mappers.getMapper(EntityMapper.class);
 //
 //  String startDate = "2021-12-03";
 //  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -47,6 +47,7 @@
 //    }
 //  }
 //
+//  @Ignore("Waiting for the CourseDto to be added for testing")
 //  @Test
 //  public void shouldMapCategoryToDto() {
 //    UserToCourse userCourses = new UserToCourse();
@@ -71,7 +72,7 @@
 //        "Programming");
 //    course.setCategory(category);
 //
-//    CategoryDto categoryDto = categoryMapper.categoryToDto(category);
+//    CategoryDto categoryDto = entityMapper.categoryToCategoryDto(category);
 //
 //    List<CourseDto> courses = categoryDto.getCourses();
 ////    assertThat(courses).hasSize(1);
@@ -87,6 +88,8 @@
 //    assertEquals(categoryDto.getCategory(), category.getCategoryName());
 //  }
 //
+//  @Ignore("Waiting for the UserToCourseDto, TagDto, GroupDto," +
+//      " ModuleDto, CertificateDto, CourseDto to be added for testing")
 //  @Test
 //  public void shouldMapDtoToCategory() {
 //    UserToCourseDto userCoursesDto = new UserToCourseDto();
@@ -117,7 +120,7 @@
 //    courseDto.modules = new ArrayList<>(Collections.singleton(modulesDto));
 //
 //
-//    Category category = categoryMapper.dtoToCategory(categoryDto);
+//    Category category = entityMapper.categoryDtoToCategory(categoryDto);
 //
 //
 //    assertThat(category.getCategoryName()).isEqualTo("Programming");
