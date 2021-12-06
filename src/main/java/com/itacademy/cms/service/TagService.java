@@ -5,6 +5,7 @@ import com.itacademy.cms.model.dto.TagDto;
 import java.util.List;
 
 public interface TagService {
+
   List<Tag> getAllTags();
 
   void saveTag(TagDto tagDto);

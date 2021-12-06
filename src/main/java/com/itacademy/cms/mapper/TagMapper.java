@@ -5,9 +5,9 @@ import com.itacademy.cms.model.dto.TagDto;
 import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import org.springframework.stereotype.Component;
 
-@Component
+
+//@Component
 @Mapper(componentModel = "spring")
 public interface TagMapper {
 
