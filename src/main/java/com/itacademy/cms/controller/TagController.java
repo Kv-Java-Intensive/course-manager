@@ -1,9 +1,11 @@
 package com.itacademy.cms.controller;
 
+
 import com.itacademy.cms.mapper.TagMapper;
 import com.itacademy.cms.model.dto.TagDto;
 import com.itacademy.cms.service.TagService;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,15 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TagController {
 
-
   private final TagService tagService;
   private final TagMapper tagMapper;
 
 
   @GetMapping("/tags")
   public List<TagDto> showAllTags() {
-    List<TagDto> tagsDto = tagMapper.listTagToListTagDto(tagService.getAllTags());
-    return tagsDto;
+    return tagService.getAllTags().stream()
+        .map(tagMapper::tagToTagDto).collect(Collectors.toList());
   }
 
   @GetMapping("/tags/{id}")

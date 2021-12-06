@@ -1,7 +1,7 @@
 package com.itacademy.cms.service.impl;
 
-import static com.itacademy.cms.mapper.TagMapper.tagMapper;
-
+import com.itacademy.cms.exeption.ParameterMissingException;
+import com.itacademy.cms.exeption.TagNotFoundException;
 import com.itacademy.cms.mapper.TagMapper;
 import com.itacademy.cms.model.Tag;
 import com.itacademy.cms.model.dto.TagDto;
@@ -22,7 +22,11 @@ public class TagServiceImpl implements TagService {
 
   @Override
   public List<Tag> getAllTags() {
-    return tagRepository.findAll();
+    List<Tag> tagList = tagRepository.findAll();
+    if (tagList.isEmpty()) {
+      throw new TagNotFoundException("No tags found!");
+    }
+    return tagList;
   }
 
   @Override
@@ -30,23 +34,32 @@ public class TagServiceImpl implements TagService {
     tagRepository.save(tagMapper.tagDtoToTag(tagDto));
   }
 
+
   @Override
-  public Tag findTagbyId(long id) {
-    return tagRepository.getById(id);
+  public Tag findTagbyId(Long id) {
+    Optional<Tag> tag = tagRepository.findById(id);
+    return tag.orElseThrow(() -> new TagNotFoundException("Tag with id " + id + " not found!"));
   }
 
   @Override
   public void updateTag(TagDto tagDto, Long id) {
     Optional<Tag> tagOptional = tagRepository.findById(id);
-    if (tagOptional.isPresent()) {
-      Tag tag = tagOptional.get();
+    tagOptional.ifPresent(tag -> {
       tag.setName(tagDto.getName());
       tagRepository.save(tag);
-    }
+    });
   }
 
   @Override
-  public void deleteTag(long id) {
-    tagRepository.deleteById(id);
+  public void deleteTag(Long id) {
+    if (id == null) {
+      throw new ParameterMissingException("Tag id is missing!");
+    } else if (tagRepository.existsById(id)) {
+      tagRepository.deleteById(id);
+      return;
+    }
+    throw new TagNotFoundException("Tag with id " + id + " not found!");
   }
+
+
 }
