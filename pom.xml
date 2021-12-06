@@ -72,6 +72,7 @@
             <artifactId>checkstyle</artifactId>
             <version>9.1</version>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
