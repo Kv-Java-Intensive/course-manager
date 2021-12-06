@@ -16,10 +16,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 public class CertificateServiceTest {
-//  @Autowired
-//  CertificateService certificateService;
-//  @Autowired
-//  private CertificateRepository certificateRepository;
 
   @Mock
   CertificateRepository certificateRepository;
@@ -42,20 +38,20 @@ public class CertificateServiceTest {
     Mockito.verify(certificateRepository).findById(id);
   }
 
-//  @Test
-//  void findByIdTestExpectedCertificate() {
-//    Long id = 1L;
-//
-//    Certificate certificate = new Certificate();
-//    certificate.setId(id);
-//    certificate.setName("test");
-//
-//    Optional<Certificate> optionalCertificate = Optional.of(certificate);
-//
-//    Mockito.when(certificateRepository.findById(id)).thenReturn(optionalCertificate);
-//    Certificate savedCertificate = certificateServiceImpl.findById(id);
-//
-//    Assertions.assertEquals(certificate.getId(), savedCertificate.getId());
-//    Assertions.assertEquals(certificate.getName(), savedCertificate.getName());
-//  }
+  @Test
+  void findByIdTestExpectedCertificate() {
+    Long id = 1L;
+
+    Certificate certificate = new Certificate();
+    certificate.setId(id);
+    certificate.setName("test");
+
+    Optional<Certificate> optionalCertificate = Optional.of(certificate);
+
+    Mockito.when(certificateRepository.findById(id)).thenReturn(optionalCertificate);
+    Certificate savedCertificate = certificateServiceImpl.findById(id);
+
+    Assertions.assertEquals(certificate.getId(), savedCertificate.getId());
+    Assertions.assertEquals(certificate.getName(), savedCertificate.getName());
+  }
 }

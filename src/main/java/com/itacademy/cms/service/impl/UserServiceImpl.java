@@ -5,7 +5,7 @@ import com.itacademy.cms.exeption.UserNotFoundException;
 import com.itacademy.cms.mapper.UserMapper;
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.dto.UserDto;
-import com.itacademy.cms.repository.CertificateRepository;
+import com.itacademy.cms.repository.UserRepository;
 import com.itacademy.cms.service.UserService;
 import java.util.List;
 import java.util.Optional;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-  private final CertificateRepository userRepository;
+  private final UserRepository userRepository;
   private final UserMapper userMapper;
 
   @Override

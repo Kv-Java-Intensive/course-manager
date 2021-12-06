@@ -1,6 +1,5 @@
 package com.itacademy.cms.controller;
 
-import com.itacademy.cms.exeption.CertificateNotFoundException;
 import com.itacademy.cms.mapper.CertificateMapper;
 import com.itacademy.cms.model.dto.CertificateDto;
 import com.itacademy.cms.service.CertificateService;

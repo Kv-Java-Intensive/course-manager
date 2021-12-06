@@ -2,10 +2,10 @@ package com.itacademy.cms.service.impl;
 
 import com.itacademy.cms.exeption.CertificateNotFoundException;
 import com.itacademy.cms.exeption.ParameterMissingException;
-import com.itacademy.cms.jparepository.CertificateRepository;
 import com.itacademy.cms.mapper.CertificateMapper;
 import com.itacademy.cms.model.Certificate;
 import com.itacademy.cms.model.dto.CertificateDto;
+import com.itacademy.cms.repository.CertificateRepository;
 import com.itacademy.cms.service.CertificateService;
 import java.util.List;
 import java.util.Optional;
@@ -54,7 +54,6 @@ public class CertificateServiceImpl implements CertificateService {
 
   @Override
   public void deleteCertificateById(Long id) {
-    certificatesRepository.deleteById(id);
     if (id == null) {
       throw new ParameterMissingException("Certificate id is missing");
     } else if (certificatesRepository.existsById(id)) {

@@ -8,11 +8,10 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
 public interface CertificateMapper {
-  CertificateMapper MAPPER =
+  CertificateMapper CERTIFICATE_MAPPER =
       Mappers.getMapper(CertificateMapper.class);
 
   Certificate certificateDtoToCertificate(CertificateDto certificateDto);
 
   CertificateDto certificateToCertificateDto(Certificate Certificate);
-
 }

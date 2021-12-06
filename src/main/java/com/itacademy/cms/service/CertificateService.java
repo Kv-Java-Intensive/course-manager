@@ -6,6 +6,7 @@ import com.itacademy.cms.model.dto.CertificateDto;
 import java.util.List;
 
 public interface CertificateService {
+
   List<Certificate> findAll();
 
   Certificate findById(Long id);
@@ -15,5 +16,4 @@ public interface CertificateService {
   Certificate saveCertificate(CertificateDto certificateDto);
 
   void deleteCertificateById(Long id);
-
 }
