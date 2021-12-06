@@ -1,6 +1,7 @@
 package com.itacademy.cms.model;
 
 import com.itacademy.cms.model.enums.Role;
+import com.sun.istack.NotNull;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,23 +12,25 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Builder
 @Table(name = "users")
 public class User extends BaseEntity {
 
-  @OneToMany(orphanRemoval = true)
-  @JoinColumn(name = "user_id")
+  @OneToMany(mappedBy = "user", orphanRemoval = true)
   private List<UserToCourse> userCourse;
 
-  @ManyToMany(cascade = CascadeType.ALL)
+  @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
   private List<Group> groups;
 
   @NotNull
