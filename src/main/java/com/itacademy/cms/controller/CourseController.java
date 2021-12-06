@@ -1,18 +1,15 @@
 package com.itacademy.cms.controller;
 
+import com.itacademy.cms.exeption.CourseNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.User;
-import com.itacademy.cms.model.dto.CourseDto;
 import com.itacademy.cms.model.Course;
 import com.itacademy.cms.model.dto.CourseGetDto;
 import com.itacademy.cms.model.dto.CoursePostDto;
 import com.itacademy.cms.service.CourseService;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,63 +17,64 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("/course")
+@RequiredArgsConstructor
 public class CourseController {
 
-  @Autowired
-  private CourseService courseService;
+  //@Autowired
+  private final CourseService courseService;
 
   //private Category category;
-  @Autowired
-  private MapStructMapper mapper;
+  //@Autowired
+  private final MapStructMapper mapStructMapper;
+
+//  public CourseController(CourseService courseService,
+//                          MapStructMapper mapStructMapper) {
+//    this.courseService = courseService;
+//    this.mapStructMapper = mapStructMapper;
+//  }
 
   @GetMapping
-  public ResponseEntity<List<CourseGetDto>> showAllCourses() {
-    return new ResponseEntity<List<CourseGetDto>>(mapper
-        .courseAllToCourseGetDto(courseService.getAllCourses()), HttpStatus.OK);
+  public List<CourseGetDto> showAllCourses() throws CourseNotFoundException {
+    return mapStructMapper.courseAllToCourseGetDto(courseService.getAllCourses());
   }
 
   @GetMapping(value = "/search/{category}")
-  public ResponseEntity<List<CourseGetDto>> showAllCoursesByCategory(@PathVariable("category")
-                                                                           String categoryName) {
-    return new ResponseEntity<List<CourseGetDto>>(mapper
-        .courseAllToCourseGetDto(courseService.getAllCoursesByCategory(categoryName)),
-        HttpStatus.OK);
+  public List<CourseGetDto> showAllCoursesByCategory(@PathVariable("category")
+                                                         String categoryName)
+      throws CourseNotFoundException {
+    return mapStructMapper.courseAllToCourseGetDto(
+        courseService.getAllCoursesByCategory(categoryName));
   }
 
   @GetMapping("/search/{tag}")
-  public ResponseEntity<List<CourseGetDto>> showAllCourseByTag(@PathVariable("tag")
-                                                                     String tagName) {
-    return new ResponseEntity<List<CourseGetDto>>(mapper
-        .courseAllToCourseGetDto(courseService.getAllCoursesByTag(tagName)), HttpStatus.OK);
+  public List<CourseGetDto> showAllCourseByTag(@PathVariable("tag")
+                                                   String tagName) throws CourseNotFoundException {
+    return mapStructMapper.courseAllToCourseGetDto(courseService.getAllCoursesByTag(tagName));
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<CourseGetDto> showCourseById(@PathVariable("id") Long id) {
-    return new ResponseEntity<>(mapper.courseToCourseGetDto(courseService.getCourseById(id)),
-        HttpStatus.OK);
+  public CourseGetDto showCourseById(@PathVariable("id") Long id) throws CourseNotFoundException {
+    return mapStructMapper.courseToCourseGetDto(courseService.getCourseById(id));
   }
 
   @PostMapping
-  public ResponseEntity<Void> addNewCourse(@AuthenticationPrincipal User user,
-                                           @RequestBody CoursePostDto coursePostDto) {
-    courseService.addCourse(coursePostDto);
-    return new ResponseEntity<>(HttpStatus.CREATED);
+  public void addNewCourse(@AuthenticationPrincipal User user,
+                           @RequestBody CoursePostDto coursePostDto) {
+    courseService.addCourse(coursePostDto, user);
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<Course> updateCourseById(@RequestBody CoursePostDto coursePostDto,
-                                 @PathVariable("id") Long id) {
+  public void updateCourseById(@RequestBody CoursePostDto coursePostDto,
+                               @PathVariable("id") Long id) {
     courseService.updateCourse(coursePostDto, id);
-    return new ResponseEntity<>(mapper.courseToCourseGetDto(courseService.getCourseById(id)),
-        HttpStatus.OK);
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<Void> deleteCourseById(@PathVariable("id") Long id) {
+  public void deleteCourseById(@PathVariable("id") Long id) throws CourseNotFoundException {
     courseService.deleteCourseById(id);
-    return new ResponseEntity<>(HttpStatus.OK);
   }
 }

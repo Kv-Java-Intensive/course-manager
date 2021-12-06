@@ -1,15 +1,24 @@
 package com.itacademy.cms.mapper;
 
+import com.itacademy.cms.model.Category;
+import com.itacademy.cms.model.Certificate;
 import com.itacademy.cms.model.Course;
+import com.itacademy.cms.model.Group;
+import com.itacademy.cms.model.User;
+import com.itacademy.cms.model.dto.CategoryDto;
+import com.itacademy.cms.model.dto.CertificateDto;
 import com.itacademy.cms.model.dto.CourseGetDto;
 import com.itacademy.cms.model.dto.CoursePostDto;
+import com.itacademy.cms.model.dto.GroupDto;
+import com.itacademy.cms.model.dto.ModuleDto;
+import com.itacademy.cms.model.dto.UserDto;
 import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
 public interface MapStructMapper {
-  //MapStructMapper INSTANCE = Mappers.getMapper(MapStructMapper.class);
+  MapStructMapper MAPPER = Mappers.getMapper(MapStructMapper.class);
 
   Course courseDtoToCourse(CoursePostDto coursePostDto);
 
@@ -18,4 +27,34 @@ public interface MapStructMapper {
   List<CourseGetDto> courseAllToCourseGetDto(List<Course> courseList);
 
 
+//  CertificateMapper MAPPER =
+//      Mappers.getMapper(CertificateMapper.class);
+
+  Certificate certificateDtoToCertificate(CertificateDto certificateDto);
+
+  CertificateDto certificateToCertificateDto(Certificate Certificate);
+
+  List<CertificateDto> certificateToCertificateDtoList(List<Certificate> certificateList);
+
+  //UserMapper MAPPER = Mappers.getMapper(UserMapper.class);
+
+  User userDtoToUser(UserDto userDto);
+
+  UserDto userToUserDto(User user);
+
+  //EntityMapper MAPPER = Mappers.getMapper(EntityMapper.class);
+
+  Category categoryDtoToCategory(CategoryDto categoryDto);
+
+  CategoryDto categoryToCategoryDto(Category category);
+
+  // ModuleMapper MAPPER = Mappers.getMapper(ModuleMapper.class);
+
+  Module moduleDtoToModule(ModuleDto moduleDto);
+
+  ModuleDto moduleToModuleDto(Module module);
+
+  Group groupDto2Group(GroupDto dto);
+
+  GroupDto group2GroupDto(Group group);
 }

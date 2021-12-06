@@ -1,7 +1,8 @@
 package com.itacademy.cms.model.enums;
 
 public enum CourseStatus {
-  FINISHED("Finished"), DEFAULT("Default"), IN_WISHLIST("InWishList"), IN_PROGRESS("InProgress");
+  FINISHED("Finished"), DEFAULT("Default"), IN_WISHLIST("InWishList"),
+  IN_PROGRESS("InProgress");
   private String name;
 
   CourseStatus(String name) {

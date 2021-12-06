@@ -1,8 +1,6 @@
 package com.itacademy.cms.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.itacademy.cms.model.dto.GroupDto;
-import com.itacademy.cms.model.dto.ModuleDto;
 import com.itacademy.cms.model.UserToCourse;
 import java.util.Date;
 import java.util.List;
@@ -39,9 +37,6 @@ public class CourseGetDto {
 
   @JsonProperty("certificate")
   private CertificateDto certificateDto;
-
-  @JsonProperty("users")
-  private List<UserToCourseDto> users;
 
   @JsonProperty("groups")
   private List<GroupDto> groups;

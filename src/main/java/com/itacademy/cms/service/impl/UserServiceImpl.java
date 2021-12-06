@@ -1,11 +1,12 @@
 package com.itacademy.cms.service.impl;
 
+import com.itacademy.cms.dao.UserDAO;
 import com.itacademy.cms.exeption.ParameterMissingException;
 import com.itacademy.cms.exeption.UserNotFoundException;
-import com.itacademy.cms.mapper.UserMapper;
+import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.dto.UserDto;
-import com.itacademy.cms.repository.UserRepository;
+//import com.itacademy.cms.dao.UserRepository;
 import com.itacademy.cms.service.UserService;
 import java.util.List;
 import java.util.Optional;
@@ -16,12 +17,12 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-  private final UserRepository userRepository;
-  private final UserMapper userMapper;
+  private final UserDAO userRepository;
+  private final MapStructMapper userMapper;
 
   @Override
   public List<User> findAll() {
-    List<User> userList = userRepository.findAll();
+    List<User> userList = (List) userRepository.findAll();
     if (userList.isEmpty()) {
       throw new UserNotFoundException("No users found!");
     }
