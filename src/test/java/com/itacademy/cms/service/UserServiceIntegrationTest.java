@@ -4,23 +4,31 @@ import com.itacademy.cms.exeption.UserNotFoundException;
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.dto.UserDto;
 import com.itacademy.cms.model.enums.Role;
+import com.itacademy.cms.repository.UserRepository;
 import javax.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
 @Transactional(Transactional.TxType.REQUIRED)
 @ActiveProfiles(profiles = "test")
-@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class UserServiceIntegrationTest {
 
   @Autowired
   UserService userService;
 
+  @Autowired
+  UserRepository userRepository;
+
+  @BeforeEach
+  void cleanTable() {
+    userRepository.deleteAll();
+  }
+  
   @Test
   void userSaveAndFindByIdTest() {
     User savedUser = getSavedUser();
