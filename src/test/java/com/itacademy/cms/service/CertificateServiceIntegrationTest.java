@@ -3,25 +3,33 @@ package com.itacademy.cms.service;
 import com.itacademy.cms.exeption.CertificateNotFoundException;
 import com.itacademy.cms.model.Certificate;
 import com.itacademy.cms.model.dto.CertificateDto;
-import javax.persistence.EntityManager;
+import com.itacademy.cms.repository.CertificateRepository;
 import javax.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
-@Transactional
+@Transactional(Transactional.TxType.REQUIRED)
+@ActiveProfiles(profiles = "test")
 public class CertificateServiceIntegrationTest {
 
   @Autowired
   CertificateService certificateService;
 
   @Autowired
-  EntityManager entityManager;
+  CertificateRepository certificateRepository;
+
+  @BeforeEach
+  void cleanTable() {
+    certificateRepository.deleteAll();
+  }
 
   @Test
-  void certificateSaveAndFindByIdTest() throws CertificateNotFoundException {
+  void certificateSaveAndFindByIdTest() {
     Certificate savedCertificate = getSavedCertificate();
 
     Certificate certificateById = certificateService.findById(savedCertificate.getId());
@@ -30,7 +38,7 @@ public class CertificateServiceIntegrationTest {
   }
 
   @Test
-  void certificateDeleteTest() throws CertificateNotFoundException {
+  void certificateDeleteTest() {
     Certificate initCertificate = getSavedCertificate();
 
     Assertions.assertNotNull(
@@ -48,24 +56,20 @@ public class CertificateServiceIntegrationTest {
     return certificateService.saveCertificate(certificateDto);
   }
 
-//  @Test
-//  void certificateUpdateTest() throws CertificateNotFoundException {
-//    CertificateDto certificateDtoToUpdate = new CertificateDto();
-//
-//    certificateDtoToUpdate.setName("updated");
-//
-//    Certificate initCertificate = getSavedCertificate();
-//
-//    certificateService.updateCertificate(
-//        Certificate(certificateDtoToUpdate, initCertificate.getId());
-//
-//    entityManager.flush();
-//    entityManager.clear();
-//
-//    Certificate updatedCertificate =
-//        certificateService.findById(initCertificate.getId());
-//
-//    Assertions.assertEquals(certificateDtoToUpdate.getName(),
-//        updatedCertificate.getName());
-//  }
+  @Test
+  void certificateUpdateTest() {
+    CertificateDto certificateDtoToUpdate = new CertificateDto();
+
+    certificateDtoToUpdate.setName("updated");
+
+    Certificate initCertificate = getSavedCertificate();
+
+    certificateService.updateCertificate(certificateDtoToUpdate, initCertificate.getId());
+
+    Certificate updatedCertificate =
+        certificateService.findById(initCertificate.getId());
+
+    Assertions.assertEquals(certificateDtoToUpdate.getName(),
+        updatedCertificate.getName());
+  }
 }

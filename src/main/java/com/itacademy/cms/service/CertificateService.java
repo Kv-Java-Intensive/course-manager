@@ -8,12 +8,12 @@ import java.util.List;
 public interface CertificateService {
   List<Certificate> findAll();
 
-  Certificate findById(Long id) throws CertificateNotFoundException;
+  Certificate findById(Long id);
 
   void updateCertificate(CertificateDto certificateDto, Long id);
 
   Certificate saveCertificate(CertificateDto certificateDto);
 
-  void deleteCertificateById(Long id) throws CertificateNotFoundException;
+  void deleteCertificateById(Long id);
 
 }

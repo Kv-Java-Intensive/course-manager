@@ -32,8 +32,7 @@ public class CertificateController {
   }
 
   @GetMapping("/certificates/{id}")
-  public CertificateDto getCertificateById(@PathVariable long id)
-      throws CertificateNotFoundException {
+  public CertificateDto getCertificateById(@PathVariable("id") Long id) {
     return certificateMapper.certificateToCertificateDto(certificateService.findById(id));
   }
 
@@ -43,13 +42,13 @@ public class CertificateController {
     return certificateDto;
   }
 
-  @PutMapping("/employees")
+  @PutMapping("/employees/{id}")
   public void updateCertificate(@RequestBody CertificateDto certificateDto, @PathVariable Long id) {
     certificateService.updateCertificate(certificateDto, id);
   }
 
   @DeleteMapping("certificates/{id}")
-  public void deleteCertificate(@PathVariable long id) throws CertificateNotFoundException {
+  public void deleteCertificate(@PathVariable("id") Long id) {
     certificateService.findById(id);
     certificateService.deleteCertificateById(id);
   }

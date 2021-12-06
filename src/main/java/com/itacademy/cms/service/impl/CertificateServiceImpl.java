@@ -22,7 +22,11 @@ public class CertificateServiceImpl implements CertificateService {
 
   @Override
   public List<Certificate> findAll() {
-    return certificatesRepository.findAll();
+    List<Certificate> certificateList = certificatesRepository.findAll();
+    if (certificateList.isEmpty()) {
+      throw new CertificateNotFoundException("No certificates found!");
+    }
+    return certificateList;
   }
 
   @Override

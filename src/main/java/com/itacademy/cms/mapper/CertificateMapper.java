@@ -14,4 +14,5 @@ public interface CertificateMapper {
   Certificate certificateDtoToCertificate(CertificateDto certificateDto);
 
   CertificateDto certificateToCertificateDto(Certificate Certificate);
+
 }
