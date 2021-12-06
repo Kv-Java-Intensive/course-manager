@@ -1,6 +1,7 @@
 package com.itacademy.cms.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.enums.Language;
 import java.util.Date;
@@ -10,31 +11,32 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@JsonIgnoreProperties
-public class CourseDto {
-  private UserDto userDto;
+public class CoursePostDto {
 
+  @JsonProperty("courseName")
   private String courseName;
 
+  @JsonProperty("description")
   private String description;
 
+  @JsonProperty("price")
   private Double price;
 
+  @JsonProperty("category")
   private CategoryDto categoryDto;
 
-  private String updateDate;
+  @JsonProperty("updateDate")
+  private Date updateDate;
 
-  private Double duration; //hours
+  @JsonProperty("duration")
+  private Double duration;
 
+  @JsonProperty("language")
   private String language;
 
-  // private List<UserToCourseDto> userToCourseDTo;
+  @JsonProperty("tags")
+  private List<TagPostDto> tags;
 
-  private List<TagDto> tagDto;
-
+  @JsonProperty("certificate")
   private CertificateDto certificateDto;
-
-  //private GroupDto groupDto;
-
-  //private ModuleDto moduleDto;
 }

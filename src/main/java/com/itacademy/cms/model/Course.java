@@ -82,15 +82,4 @@ public class Course extends BaseEntity {
   @NotNull
   @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "course")
   private Certificate certificate;
-
-//  public Course(String courseName, String description, Double price,
-//                Category category, Date updateDate, Date duration,
-//                Language language) {
-//    this.courseName = courseName;
-//    this.description = description;
-//    this.price = price;
-//    this.category = category;
-//    this.updateDate = updateDate;
-//    this.duration = duration;
-//    this.language = language;
 }
