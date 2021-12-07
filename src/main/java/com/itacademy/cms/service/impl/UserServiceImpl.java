@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
   private final EntityMapper userMapper;
 
   @Override
-  public List<User> findAll() throws UserNotFoundException {
+  public List<User> findAll() {
     List<User> userList = userRepository.findAll();
     if (userList.isEmpty()) {
       throw new UserNotFoundException("No users found!");
@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 
 
   @Override
-  public User findById(Long id) throws UserNotFoundException {
+  public User findById(Long id) {
     Optional<User> user = userRepository.findById(id);
     if (user.isPresent()) {
       return userRepository.getById(id);
@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public void deleteUserById(Long id) throws UserNotFoundException {
+  public void deleteUserById(Long id) {
     if (id == null) {
       throw new ParameterMissingException("User id is missing");
     } else if (userRepository.existsById(id)) {

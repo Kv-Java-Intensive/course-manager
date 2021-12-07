@@ -20,7 +20,7 @@ public class ModuleServiceImpl implements ModuleService {
   private final EntityMapper moduleMapper;
 
   @Override
-  public List<Module> findAll() throws EntityNotFoundException {
+  public List<Module> findAll() {
     List<Module> moduleList = moduleRepository.findAll();
     if (moduleList.isEmpty()) {
       throw new EntityNotFoundException("No module found!");
@@ -42,7 +42,7 @@ public class ModuleServiceImpl implements ModuleService {
 
 
   @Override
-  public Module findById(Long id) throws EntityNotFoundException {
+  public Module findById(Long id) {
     Optional<Module> module = moduleRepository.findById(id);
     if (module.isPresent()) {
       return moduleRepository.getById(id);
@@ -56,7 +56,7 @@ public class ModuleServiceImpl implements ModuleService {
   }
 
   @Override
-  public void deleteModuleById(Long id) throws EntityNotFoundException {
+  public void deleteModuleById(Long id) {
     if (id == null) {
       throw new ParameterMissingException("Module id is missing");
     } else if (moduleRepository.existsById(id)) {

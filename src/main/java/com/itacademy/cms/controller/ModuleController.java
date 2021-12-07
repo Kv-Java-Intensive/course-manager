@@ -25,13 +25,13 @@ public class ModuleController {
   private final EntityMapper moduleMapper;
 
   @GetMapping("/modules")
-  public List<ModuleDto> getAllModules() throws EntityNotFoundException {
+  public List<ModuleDto> getAllModules() {
     return moduleService.findAll().stream()
         .map(moduleMapper::moduleToModuleDto).collect(Collectors.toList());
   }
 
   @GetMapping("/modules/{id}")
-  public ModuleDto getModuleById(@PathVariable("id") Long id) throws EntityNotFoundException {
+  public ModuleDto getModuleById(@PathVariable("id") Long id) {
     return moduleMapper.moduleToModuleDto(moduleService.findById(id));
   }
 
@@ -47,7 +47,7 @@ public class ModuleController {
   }
 
   @DeleteMapping("/modules/{id}")
-  public void deleteModule(@PathVariable("id") Long id) throws EntityNotFoundException {
+  public void deleteModule(@PathVariable("id") Long id) {
     moduleService.deleteModuleById(id);
   }
 }
