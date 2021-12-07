@@ -1,6 +1,6 @@
 package com.itacademy.cms.controller;
 
-import com.itacademy.cms.mapper.CertificateMapper;
+import com.itacademy.cms.mapper.EntityMapper;
 import com.itacademy.cms.model.dto.CertificateDto;
 import com.itacademy.cms.service.CertificateService;
 import java.util.List;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CertificateController {
 
   private final CertificateService certificateService;
-  private final CertificateMapper certificateMapper;
+  private final EntityMapper certificateMapper;
 
 
   @GetMapping("/certificates")

@@ -2,7 +2,7 @@ package com.itacademy.cms.service.impl;
 
 import com.itacademy.cms.exeption.CertificateNotFoundException;
 import com.itacademy.cms.exeption.ParameterMissingException;
-import com.itacademy.cms.mapper.CertificateMapper;
+import com.itacademy.cms.mapper.EntityMapper;
 import com.itacademy.cms.model.Certificate;
 import com.itacademy.cms.model.dto.CertificateDto;
 import com.itacademy.cms.repository.CertificateRepository;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class CertificateServiceImpl implements CertificateService {
 
   private final CertificateRepository certificatesRepository;
-  private final CertificateMapper certificateMapper;
+  private final EntityMapper certificateMapper;
 
 
   @Override

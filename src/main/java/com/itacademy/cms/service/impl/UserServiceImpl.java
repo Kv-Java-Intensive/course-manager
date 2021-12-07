@@ -2,7 +2,7 @@ package com.itacademy.cms.service.impl;
 
 import com.itacademy.cms.exeption.ParameterMissingException;
 import com.itacademy.cms.exeption.UserNotFoundException;
-import com.itacademy.cms.mapper.UserMapper;
+import com.itacademy.cms.mapper.EntityMapper;
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.dto.UserDto;
 import com.itacademy.cms.repository.UserRepository;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
   private final UserRepository userRepository;
-  private final UserMapper userMapper;
+  private final EntityMapper entityMapper;
 
   @Override
   public List<User> findAll() {
@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public User saveUser(UserDto userDto) {
-    return userRepository.save(userMapper.userDtoToUser(userDto));
+    return userRepository.save(entityMapper.userDtoToUser(userDto));
   }
 
   @Override
