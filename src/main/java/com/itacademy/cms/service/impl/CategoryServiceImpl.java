@@ -6,7 +6,7 @@ import com.itacademy.cms.exeption.ParameterMissingException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Category;
 import com.itacademy.cms.model.dto.CategoryDto;
-import com.itacademy.cms.repository.CategoryDAO;
+import com.itacademy.cms.repository.CategoryRepository;
 //import com.itacademy.cms.repository.CategoryRepository;
 import com.itacademy.cms.service.CategoryService;
 import java.util.List;
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 public class CategoryServiceImpl implements CategoryService {
 
 
-  private final CategoryDAO categoryRepository;
+  private final CategoryRepository categoryRepository;
   private final MapStructMapper entityMapper;
 
 

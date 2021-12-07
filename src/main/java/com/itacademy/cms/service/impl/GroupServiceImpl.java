@@ -5,7 +5,7 @@ import com.itacademy.cms.exeption.NoSuchGroupException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Group;
 import com.itacademy.cms.model.dto.GroupDto;
-import com.itacademy.cms.repository.GroupDAO;
+import com.itacademy.cms.repository.GroupRepository;
 //import com.itacademy.cms.repository.GroupRepository;
 import com.itacademy.cms.service.GroupService;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public class GroupServiceImpl implements GroupService {
 
-  private GroupDAO groupRepository;
+  private GroupRepository groupRepository;
   private MapStructMapper groupMapper;
 
   public List<Group> getGroupsByUserId(Long id) {

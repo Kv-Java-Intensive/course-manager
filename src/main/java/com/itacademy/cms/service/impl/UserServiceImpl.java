@@ -1,6 +1,6 @@
 package com.itacademy.cms.service.impl;
 
-import com.itacademy.cms.repository.UserDAO;
+import com.itacademy.cms.repository.UserRepository;
 import com.itacademy.cms.exeption.ParameterMissingException;
 import com.itacademy.cms.exeption.UserNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-  private final UserDAO userRepository;
+  private final UserRepository userRepository;
   private final MapStructMapper userMapper;
 
   @Override

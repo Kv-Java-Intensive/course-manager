@@ -4,7 +4,7 @@ import com.itacademy.cms.exeption.UserNotFoundException;
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.dto.UserDto;
 import com.itacademy.cms.model.enums.Role;
-import com.itacademy.cms.repository.UserDAO;
+import com.itacademy.cms.repository.UserRepository;
 import javax.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,7 +22,7 @@ public class UserServiceIntegrationTest {
   UserService userService;
 
   @Autowired
-  UserDAO userRepository;
+  UserRepository userRepository;
 
   @BeforeEach
   void cleanTable() {

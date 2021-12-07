@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CourseDAO extends CrudRepository<Course, Long> {
+public interface CourseRepository extends CrudRepository<Course, Long> {
   public List<Course> findCourseByCategory(Category category);
 
   public List<Course> findCourseByCourseTags(Tag tag);

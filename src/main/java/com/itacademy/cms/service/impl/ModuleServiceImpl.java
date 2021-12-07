@@ -6,7 +6,7 @@ import com.itacademy.cms.mapper.MapStructMapper;
 //import com.itacademy.cms.mapper.ModuleMapper;
 import com.itacademy.cms.model.Module;
 import com.itacademy.cms.model.dto.ModuleDto;
-import com.itacademy.cms.repository.ModuleDAO;
+import com.itacademy.cms.repository.ModuleRepository;
 //mport com.itacademy.cms.repository.ModuleRepository;
 import com.itacademy.cms.service.ModuleService;
 import java.util.List;
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ModuleServiceImpl implements ModuleService {
 
-  private final ModuleDAO moduleRepository;
+  private final ModuleRepository moduleRepository;
   private final MapStructMapper moduleMapper;
 
   @Override
