@@ -2,7 +2,7 @@ package com.itacademy.cms.service.impl;
 
 import com.itacademy.cms.exeption.CategoryNotFoundException;
 import com.itacademy.cms.exeption.ParameterMissingException;
-import com.itacademy.cms.mapper.MapStructMapper;
+import com.itacademy.cms.mapper.EntityMapper;
 import com.itacademy.cms.model.Category;
 import com.itacademy.cms.model.dto.CategoryDto;
 import com.itacademy.cms.repository.CategoryRepository;
@@ -18,12 +18,12 @@ public class CategoryServiceImpl implements CategoryService {
 
 
   private final CategoryRepository categoryRepository;
-  private final MapStructMapper entityMapper;
+  private final EntityMapper entityMapper;
 
 
   @Override
-  public List<Category> findAll() throws CategoryNotFoundException {
-    List<Category> categoriesList = (List<Category>) categoryRepository.findAll();
+  public List<Category> findAll() {
+    List<Category> categoriesList = categoryRepository.findAll();
     if (categoriesList.isEmpty()) {
       throw new CategoryNotFoundException("No categories found!");
     }
@@ -35,31 +35,30 @@ public class CategoryServiceImpl implements CategoryService {
     Optional<Category> categoryOptional = categoryRepository.findById(id);
     categoryOptional.ifPresent(category -> {
       category.setCourses(categoryDto.getCourses());
-      category.setCategory(categoryDto.getCategoryName());
+      category.setCategoryName(categoryDto.getCategoryName());
       categoryRepository.save(category);
     });
   }
 
   @Override
-  public Category findById(Long id) throws CategoryNotFoundException {
+  public Category findById(Long id) {
     Optional<Category> category = categoryRepository.findById(id);
-    if (category.isPresent()) {
-      return categoryRepository.getById(id);
-    }
-    throw new CategoryNotFoundException("Category with id " + id + " not found!");
+    return category.orElseThrow(
+        () -> new CategoryNotFoundException("Category with id " + id + " not found!"));
   }
 
   @Override
-  public void saveCategory(CategoryDto categoryDto) {
-    categoryRepository.save(entityMapper.categoryDtoToCategory(categoryDto));
+  public Category saveCategory(CategoryDto categoryDto) {
+    return categoryRepository.save(entityMapper.categoryDtoToCategory(categoryDto));
   }
 
   @Override
-  public void deleteCategoryById(Long id) throws CategoryNotFoundException {
+  public void deleteCategoryById(Long id) {
     if (id == null) {
       throw new ParameterMissingException("Category id is missing");
     } else if (categoryRepository.existsById(id)) {
       categoryRepository.deleteById(id);
+      return;
     }
     throw new CategoryNotFoundException("Category with id " + id + " not found!");
   }
