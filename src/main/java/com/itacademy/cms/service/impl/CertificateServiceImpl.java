@@ -1,48 +1,75 @@
 package com.itacademy.cms.service.impl;
 
-//import com.itacademy.cms.jparepository.CertificateRepository;
-//import com.itacademy.cms.mapper.CertificateMapper;
+
 
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Certificate;
 import com.itacademy.cms.model.dto.CertificateDto;
+
 import com.itacademy.cms.service.CertificateService;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-import org.checkerframework.checker.units.qual.A;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class CertificateServiceImpl implements CertificateService {
-  //@Autowired
-  private final com.itacademy.cms.jparepository.CertificateDAO certificatesRepository;
+
+  
+  private final com.itacademy.cms.repository.CertificateDAO certificatesRepository;
 
   private final MapStructMapper certificateMapper;
 
 
+  private final CertificateRepository certificatesRepository;
+
+
+
+
   @Override
   public List<Certificate> findAll() {
-    return (List<Certificate>) certificatesRepository.findAll();
+
+    List<Certificate> certificateList = certificatesRepository.findAll();
+    if (certificateList.isEmpty()) {
+      throw new CertificateNotFoundException("No certificates found!");
+    }
+    return certificateList;
   }
 
   @Override
-  public void saveCertificate(CertificateDto certificateDto) {
-    certificatesRepository.save(
+  public Certificate saveCertificate(CertificateDto certificateDto) {
+    return certificatesRepository.save(
         certificateMapper.certificateDtoToCertificate(certificateDto));
   }
 
-  @Override
-  public Certificate findById(long id) {
+
+  public Certificate findById(Long id) {
     Optional<Certificate> certificate = certificatesRepository.findById(id);
-    return certificatesRepository.getById(id);
+    return certificate.orElseThrow(
+        () -> new CertificateNotFoundException("Certificate with id " + id + " not found!"));
   }
 
   @Override
-  public void deleteCertificate(long id) {
-    certificatesRepository.deleteById(id);
+  public void updateCertificate(CertificateDto certificateDto, Long id) {
+    Optional<Certificate> certificateOptional = certificatesRepository.findById(id);
+    certificateOptional.ifPresent(certificate -> {
+          certificate.setName(certificateDto.getName());
+          certificatesRepository.save(certificate);
+        }
+    );
+  }
+
+  @Override
+  public void deleteCertificateById(Long id) {
+    if (id == null) {
+      throw new ParameterMissingException("Certificate id is missing");
+    } else if (certificatesRepository.existsById(id)) {
+      certificatesRepository.deleteById(id);
+      return;
+    }
+    throw new CertificateNotFoundException("Certificate with id " + id + " not found!");
   }
 }
 

@@ -3,10 +3,12 @@ package com.itacademy.cms.service.impl;
 import com.itacademy.cms.repository.UserDAO;
 import com.itacademy.cms.exeption.ParameterMissingException;
 import com.itacademy.cms.exeption.UserNotFoundException;
+
 import com.itacademy.cms.mapper.MapStructMapper;
+
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.dto.UserDto;
-//import com.itacademy.cms.dao.UserRepository;
+
 import com.itacademy.cms.service.UserService;
 import java.util.List;
 import java.util.Optional;
@@ -17,8 +19,9 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-  private final UserDAO userRepository;
+private final UserDAO userRepository;
   private final MapStructMapper userMapper;
+
 
   @Override
   public List<User> findAll() {
@@ -55,7 +58,7 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public User saveUser(UserDto userDto) {
-    return userRepository.save(userMapper.userDtoToUser(userDto));
+    return userRepository.save(entityMapper.userDtoToUser(userDto));
   }
 
   @Override

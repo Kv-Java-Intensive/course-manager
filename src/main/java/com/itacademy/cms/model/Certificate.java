@@ -12,12 +12,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Entity
 @Table(name = "certificates")
 @NoArgsConstructor
 @Getter
 @Setter
 public class Certificate extends BaseEntity {
+
 
   @Column
   @NotNull(message = "Certificate name should be present")
@@ -34,5 +36,6 @@ public class Certificate extends BaseEntity {
   @ManyToOne
   //@JoinColumn(name = "id")
   private User user;
+
 
 }
