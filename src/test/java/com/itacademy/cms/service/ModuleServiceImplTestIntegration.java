@@ -9,6 +9,7 @@ import com.itacademy.cms.repository.ModuleRepository;
 import com.itacademy.cms.service.impl.ModuleServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -31,6 +32,11 @@ public class ModuleServiceImplTestIntegration {
   public void mockRepository() {
     MockitoAnnotations.initMocks(this);
     moduleService = new ModuleServiceImpl(moduleRepository, moduleMapper);
+  }
+
+  @BeforeEach
+  void cleanTable() {
+    moduleRepository.deleteAll();
   }
 
   @Test
