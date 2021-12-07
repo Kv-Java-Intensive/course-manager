@@ -2,7 +2,7 @@ package com.itacademy.cms.service.impl;
 
 import com.itacademy.cms.exeption.ParameterMissingException;
 import com.itacademy.cms.exeption.TagNotFoundException;
-import com.itacademy.cms.mapper.TagMapper;
+import com.itacademy.cms.mapper.EntityMapper;
 import com.itacademy.cms.model.Tag;
 import com.itacademy.cms.model.dto.TagDto;
 import com.itacademy.cms.repository.TagRepository;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class TagServiceImpl implements TagService {
 
   private final TagRepository tagRepository;
-  private final TagMapper tagMapper;
+  private final EntityMapper entityMapper;
 
 
   @Override
@@ -31,7 +31,7 @@ public class TagServiceImpl implements TagService {
 
   @Override
   public void saveTag(TagDto tagDto) {
-    tagRepository.save(tagMapper.tagDtoToTag(tagDto));
+    tagRepository.save(entityMapper.tagDtoToTag(tagDto));
   }
 
 

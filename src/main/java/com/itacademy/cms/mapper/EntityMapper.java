@@ -7,9 +7,9 @@ import org.mapstruct.factory.Mappers;
 
 
 @Mapper(componentModel = "spring")
-public interface TagMapper {
+public interface EntityMapper {
 
-  TagMapper tagMapper = Mappers.getMapper(TagMapper.class);
+  EntityMapper ENTITY_MAPPER = Mappers.getMapper(EntityMapper.class);
 
   TagDto tagToTagDto(Tag tag);
 

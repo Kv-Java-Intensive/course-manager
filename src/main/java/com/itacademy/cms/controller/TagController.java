@@ -1,7 +1,7 @@
 package com.itacademy.cms.controller;
 
 
-import com.itacademy.cms.mapper.TagMapper;
+import com.itacademy.cms.mapper.EntityMapper;
 import com.itacademy.cms.model.dto.TagDto;
 import com.itacademy.cms.service.TagService;
 import java.util.List;
@@ -20,18 +20,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class TagController {
 
   private final TagService tagService;
-  private final TagMapper tagMapper;
+  private final EntityMapper entityMapper;
 
 
   @GetMapping("/tags")
   public List<TagDto> showAllTags() {
     return tagService.getAllTags().stream()
-        .map(tagMapper::tagToTagDto).collect(Collectors.toList());
+        .map(entityMapper::tagToTagDto).collect(Collectors.toList());
   }
 
   @GetMapping("/tags/{id}")
   public TagDto getTagById(@PathVariable("id") Long tagId) {
-    return tagMapper.tagToTagDto(tagService.findTagbyId(tagId));
+    return entityMapper.tagToTagDto(tagService.findTagbyId(tagId));
   }
 
   @PostMapping("/tags")
