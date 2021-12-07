@@ -1,5 +1,6 @@
 package com.itacademy.cms.controller;
 
+
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.dto.CertificateDto;
 import com.itacademy.cms.service.CertificateService;
@@ -19,20 +20,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class CertificateController {
 
-  private final CertificateService certificateService;
   private final MapStructMapper certificateMapper;
 
 
+
+
+
   @GetMapping("/certificates")
-  public List<CertificateDto> showAllCertificates() {
-    return certificateMapper.certificateToCertificateDtoList(
-        certificateService.findAll());
+  public List<CertificateDto> getAllCertificates() {
+    return certificateService.findAll().stream()
+        .map(certificateMapper::certificateToCertificateDto).collect(Collectors.toList());
   }
 
   @GetMapping("/certificates/{id}")
-  public CertificateDto getCertificateById(@PathVariable long id) {
-    return certificateMapper.certificateToCertificateDto(
-        certificateService.findById(id));
+  public CertificateDto getCertificateById(@PathVariable("id") Long id) {
+    return certificateMapper.certificateToCertificateDto(certificateService.findById(id));
+
   }
 
   @PostMapping("/certificates")
@@ -41,15 +44,16 @@ public class CertificateController {
     return certificateDto;
   }
 
-  @PutMapping("/employees")
-  public CertificateDto updateCertificate(@RequestBody CertificateDto certificateDto) {
-    certificateService.saveCertificate(certificateDto);
-    return certificateDto;
+
+  @PutMapping("/employees/{id}")
+  public void updateCertificate(@RequestBody CertificateDto certificateDto, @PathVariable Long id) {
+    certificateService.updateCertificate(certificateDto, id);
   }
 
   @DeleteMapping("certificates/{id}")
-  public void deleteCertificate(@PathVariable long id) {
+  public void deleteCertificate(@PathVariable("id") Long id) {
     certificateService.findById(id);
-    certificateService.deleteCertificate(id);
+    certificateService.deleteCertificateById(id);
   }
 }
+

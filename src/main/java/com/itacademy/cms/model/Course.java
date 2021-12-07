@@ -65,6 +65,7 @@ public class Course extends BaseEntity {
       CascadeType.PERSIST, CascadeType.REFRESH})
   private List<UserToCourse> userCourses;
 
+
   @ManyToMany(cascade = CascadeType.ALL)
   @JoinTable(name = "course_tags", joinColumns = @JoinColumn(name = "tag_id"),
       inverseJoinColumns = @JoinColumn(name = "course_id"))

@@ -1,5 +1,6 @@
 package com.itacademy.cms.controller;
 
+
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.dto.UserDto;
 import com.itacademy.cms.service.UserService;
@@ -19,17 +20,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
   private final UserService userService;
+
   private final MapStructMapper userMapper;
+
 
   @GetMapping("/users")
   public List<UserDto> getAllUser() {
     return userService.findAll().stream()
-        .map(userMapper::userToUserDto).collect(Collectors.toList());
+        .map(entityMapper::userToUserDto).collect(Collectors.toList());
   }
 
   @GetMapping("/users/{id}")
   public UserDto getUserById(@PathVariable("id") Long id) {
-    return userMapper.userToUserDto(userService.findById(id));
+    return entityMapper.userToUserDto(userService.findById(id));
   }
 
   @PostMapping("/users")

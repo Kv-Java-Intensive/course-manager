@@ -17,6 +17,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,7 +30,9 @@ public class User extends BaseEntity {
   @OneToMany(mappedBy = "user", orphanRemoval = true)
   private List<UserToCourse> userCourse;
 
+
   @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
+
   private List<Group> groups;
 
   @NotNull

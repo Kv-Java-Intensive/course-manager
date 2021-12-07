@@ -5,11 +5,16 @@ import com.itacademy.cms.model.dto.CertificateDto;
 import java.util.List;
 
 public interface CertificateService {
+
+
   List<Certificate> findAll();
 
-  void saveCertificate(CertificateDto certificateDto);
+  Certificate findById(Long id);
 
-  Certificate findById(long id);
+  void updateCertificate(CertificateDto certificateDto, Long id);
 
-  void deleteCertificate(long id);
+  Certificate saveCertificate(CertificateDto certificateDto);
+
+  void deleteCertificateById(Long id);
 }
+
