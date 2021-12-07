@@ -1,7 +1,7 @@
 package com.itacademy.cms.controller;
 
 import com.itacademy.cms.exeption.EntityNotFoundException;
-import com.itacademy.cms.mapper.ModuleMapper;
+import com.itacademy.cms.mapper.EntityMapper;
 import com.itacademy.cms.model.dto.ModuleDto;
 import com.itacademy.cms.service.ModuleService;
 import java.util.List;
@@ -19,9 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class ModuleController {
 
-
   private final ModuleService moduleService;
-  private final ModuleMapper moduleMapper;
+  private final EntityMapper moduleMapper;
 
   @GetMapping("/modules")
   public List<ModuleDto> getAllModules() throws EntityNotFoundException {
@@ -49,6 +48,4 @@ public class ModuleController {
   public void deleteModule(@PathVariable("id") Long id) throws EntityNotFoundException {
     moduleService.deleteModuleById(id);
   }
-
 }
-
