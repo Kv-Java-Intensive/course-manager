@@ -6,6 +6,7 @@ package com.itacademy.cms.service.impl;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Certificate;
 import com.itacademy.cms.model.dto.CertificateDto;
+import com.itacademy.cms.repository.CertificateDAO;
 import com.itacademy.cms.service.CertificateService;
 import java.util.List;
 import java.util.Optional;
@@ -18,7 +19,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CertificateServiceImpl implements CertificateService {
   //@Autowired
-  private final com.itacademy.cms.jparepository.CertificateDAO certificatesRepository;
+  private final CertificateDAO certificatesRepository;
 
   private final MapStructMapper certificateMapper;
 

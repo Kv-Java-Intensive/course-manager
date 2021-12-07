@@ -45,7 +45,7 @@ public class CourseServiceImpl implements CourseService {
   @Override
   public List<Course> getAllCoursesByCategory(String categoryName) throws CourseNotFoundException {
     Optional<List<Course>> courses = Optional.ofNullable(courseDAO.findCourseByCategory(
-        categoryDAO.findByCategory()));
+        categoryDAO.findByCategory(categoryName)));
     if (courses.isEmpty()) {
       throw new CourseNotFoundException("Courses were not found");
     }
@@ -94,7 +94,7 @@ public class CourseServiceImpl implements CourseService {
       courseOld.setCourseName(courseNew.getCourseName());
       courseOld.setDescription(courseNew.getDescription());
       courseOld.setPrice(courseNew.getPrice());
-      Category category = categoryDAO.findByCategory(courseNew.getCategory());
+      Category category = categoryDAO.findByCategory(courseNew.getCategory().getCategory());
       courseOld.setCategory(category);
       courseOld.setUpdateDate(courseNew.getUpdateDate());
       courseOld.setDuration(courseNew.getDuration());

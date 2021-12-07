@@ -4,6 +4,7 @@ import com.itacademy.cms.model.Category;
 import com.itacademy.cms.model.Certificate;
 import com.itacademy.cms.model.Course;
 import com.itacademy.cms.model.Group;
+import com.itacademy.cms.model.Module;
 import com.itacademy.cms.model.Tag;
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.dto.CategoryDto;
@@ -44,13 +45,9 @@ public interface MapStructMapper {
 
   UserDto userToUserDto(User user);
 
-  //EntityMapper MAPPER = Mappers.getMapper(EntityMapper.class);
-
   Category categoryDtoToCategory(CategoryDto categoryDto);
 
   CategoryDto categoryToCategoryDto(Category category);
-
-  // ModuleMapper MAPPER = Mappers.getMapper(ModuleMapper.class);
 
   Module moduleDtoToModule(ModuleDto moduleDto);
 

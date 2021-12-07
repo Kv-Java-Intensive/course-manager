@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CategoryDAO extends CrudRepository<Category, Long> {
-  Category findByCategory();
+  Category findByCategory(String category);
 
   Category getById(Long id);
 }

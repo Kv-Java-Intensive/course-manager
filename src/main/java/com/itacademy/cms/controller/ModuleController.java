@@ -3,10 +3,10 @@ package com.itacademy.cms.controller;
 import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
 //import com.itacademy.cms.mapper.ModuleMapper;
+import com.itacademy.cms.model.Module;
 import com.itacademy.cms.model.dto.ModuleDto;
 import com.itacademy.cms.service.ModuleService;
 import java.util.List;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,9 +25,8 @@ public class ModuleController {
   private final MapStructMapper moduleMapper;
 
   @GetMapping("/modules")
-  public List<ModuleDto> getAllModules() throws EntityNotFoundException {
-    return moduleService.findAll().stream()
-        .map(moduleMapper::moduleToModuleDto).collect(Collectors.toList());
+  public List<Module> getAllModules() throws EntityNotFoundException {
+    return moduleService.findAll();
   }
 
   @GetMapping("/modules/{id}")
