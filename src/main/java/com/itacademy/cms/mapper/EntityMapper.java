@@ -4,6 +4,7 @@ import com.itacademy.cms.model.Category;
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.dto.CategoryDto;
 import com.itacademy.cms.model.Certificate;
+
 import com.itacademy.cms.model.dto.CertificateDto;
 import com.itacademy.cms.model.dto.UserDto;
 import org.mapstruct.Mapper;
@@ -22,6 +23,7 @@ public interface EntityMapper {
   User userDtoToUser(UserDto userDto);
 
   UserDto userToUserDto(User user);
+
 
   Category categoryDtoToCategory(CategoryDto categoryDto);
 

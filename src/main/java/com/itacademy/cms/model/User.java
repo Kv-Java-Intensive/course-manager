@@ -8,7 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -17,6 +16,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 
 @Entity
 @NoArgsConstructor
@@ -30,7 +30,9 @@ public class User extends BaseEntity {
   @OneToMany(mappedBy = "user", orphanRemoval = true)
   private List<UserToCourse> userCourse;
 
+
   @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
+
   private List<Group> groups;
 
   @NotNull
