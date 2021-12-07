@@ -2,12 +2,10 @@ package com.itacademy.cms.service.impl;
 
 import com.itacademy.cms.exeption.CategoryNotFoundException;
 import com.itacademy.cms.exeption.ParameterMissingException;
-//import com.itacademy.cms.mapper.EntityMapper;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Category;
 import com.itacademy.cms.model.dto.CategoryDto;
 import com.itacademy.cms.repository.CategoryRepository;
-//import com.itacademy.cms.repository.CategoryRepository;
 import com.itacademy.cms.service.CategoryService;
 import java.util.List;
 import java.util.Optional;

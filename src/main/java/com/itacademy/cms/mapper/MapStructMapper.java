@@ -29,17 +29,11 @@ public interface MapStructMapper {
 
   List<CourseGetDto> courseAllToCourseGetDto(List<Course> courseList);
 
-
-//  CertificateMapper MAPPER =
-//      Mappers.getMapper(CertificateMapper.class);
-
   Certificate certificateDtoToCertificate(CertificateDto certificateDto);
 
   CertificateDto certificateToCertificateDto(Certificate Certificate);
 
   List<CertificateDto> certificateToCertificateDtoList(List<Certificate> certificateList);
-
-  //UserMapper MAPPER = Mappers.getMapper(UserMapper.class);
 
   User userDtoToUser(UserDto userDto);
 

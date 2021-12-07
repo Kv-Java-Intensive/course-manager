@@ -30,9 +30,8 @@ public class Certificate extends BaseEntity {
   @JoinColumn(name = "certificate")
   private Course course;
 
-  //    @Column
+
   @ManyToOne
-  //@JoinColumn(name = "id")
   private User user;
 
 }

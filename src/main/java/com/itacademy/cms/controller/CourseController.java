@@ -24,18 +24,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class CourseController {
 
-  //@Autowired
   private final CourseService courseService;
-
-  //private Category category;
-  //@Autowired
   private final MapStructMapper mapStructMapper;
 
-//  public CourseController(CourseService courseService,
-//                          MapStructMapper mapStructMapper) {
-//    this.courseService = courseService;
-//    this.mapStructMapper = mapStructMapper;
-//  }
 
   @GetMapping
   public List<CourseGetDto> showAllCourses() throws CourseNotFoundException {

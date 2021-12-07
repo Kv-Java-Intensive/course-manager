@@ -22,15 +22,10 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class CourseServiceImpl implements CourseService {
-  //@Autowired
   private final CourseRepository courseDAO;
-  //@Autowired
   private final CategoryRepository categoryDAO;
-  //@Autowired
   private final TagRepository tagDAO;
-  //@Autowired
   private final CertificateRepository certificateDAO;
-
   private final MapStructMapper mapper;
 
   @Override

@@ -44,7 +44,7 @@ public class Course extends BaseEntity {
   private Double price;
 
   @NotNull
-  @ManyToOne//(cascade = CascadeType.ALL, mappedBy = "category")
+  @ManyToOne
   @JoinColumn(name = "course_category")
   private Category category;
 
@@ -63,7 +63,6 @@ public class Course extends BaseEntity {
 
   @OneToMany(mappedBy = "course", cascade = {CascadeType.MERGE, CascadeType.DETACH,
       CascadeType.PERSIST, CascadeType.REFRESH})
-  //@JoinColumn(name = "course_id")
   private List<UserToCourse> userCourses;
 
   @ManyToMany(cascade = CascadeType.ALL)

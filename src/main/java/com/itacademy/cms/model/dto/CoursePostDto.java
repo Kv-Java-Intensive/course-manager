@@ -1,9 +1,6 @@
 package com.itacademy.cms.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.itacademy.cms.model.User;
-import com.itacademy.cms.model.enums.Language;
 import java.util.Date;
 import java.util.List;
 import lombok.Getter;
