@@ -1,7 +1,10 @@
 package com.itacademy.cms.service;
 
+import com.itacademy.cms.exeption.UserNotFoundException;
 import com.itacademy.cms.model.User;
+import com.itacademy.cms.model.dto.UserDto;
 import com.itacademy.cms.model.enums.Role;
+import com.itacademy.cms.repository.UserRepository;
 import javax.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
