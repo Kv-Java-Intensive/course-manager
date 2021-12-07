@@ -2,7 +2,7 @@ package com.itacademy.cms.service.impl;
 
 import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.exeption.ParameterMissingException;
-import com.itacademy.cms.mapper.ModuleMapper;
+import com.itacademy.cms.mapper.EntityMapper;
 import com.itacademy.cms.model.Module;
 import com.itacademy.cms.model.dto.ModuleDto;
 import com.itacademy.cms.repository.ModuleRepository;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class ModuleServiceImpl implements ModuleService {
 
   private final ModuleRepository moduleRepository;
-  private final ModuleMapper moduleMapper;
+  private final EntityMapper moduleMapper;
 
   @Override
   public List<Module> findAll() throws EntityNotFoundException {
@@ -51,8 +51,8 @@ public class ModuleServiceImpl implements ModuleService {
   }
 
   @Override
-  public void saveModule(ModuleDto moduleDto) {
-    moduleRepository.save(moduleMapper.moduleDtoToModule(moduleDto));
+  public Module saveModule(ModuleDto moduleDto) {
+    return moduleRepository.save(moduleMapper.moduleDtoToModule(moduleDto));
   }
 
   @Override

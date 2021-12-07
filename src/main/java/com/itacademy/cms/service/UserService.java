@@ -13,7 +13,7 @@ public interface UserService {
 
   void updateUser(UserDto userDto, Long id) throws UserNotFoundException;
 
-  void saveUser(UserDto userDto);
+  User saveUser(UserDto userDto);
 
   void deleteUserById(Long id) throws UserNotFoundException;
 }

@@ -13,7 +13,7 @@ public interface ModuleService {
 
   void updateModule(ModuleDto moduleDto, Long id) throws EntityNotFoundException;
 
-  void saveModule(ModuleDto moduleDto);
+  Module saveModule(ModuleDto moduleDto);
 
   void deleteModuleById(Long id) throws EntityNotFoundException;
 }
