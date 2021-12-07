@@ -50,8 +50,6 @@ public class UserToCourse {
     this.course = course;
     this.courseStatus = courseStatus;
     this.isAuthor = isAuthor;
-//    this.id.userId = user.getId();
-//    this.id.courseId = course.getId();
 
   }
 

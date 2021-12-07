@@ -1,61 +1,65 @@
 package com.itacademy.cms.service;
 
+import com.itacademy.cms.exeption.TagNotFoundException;
 import com.itacademy.cms.model.Tag;
-import com.itacademy.cms.model.dto.TagDto;
+import com.itacademy.cms.repository.TagRepository;
+import com.itacademy.cms.service.impl.TagServiceImpl;
 import java.util.ArrayList;
 import java.util.List;
-import javax.transaction.Transactional;
+import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ActiveProfiles;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 
-@SpringBootTest
-@Transactional(Transactional.TxType.REQUIRED)
-@ActiveProfiles(profiles = "test")
-//@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+
+@ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 public class TagServiceTest {
-  public static Long ID = 1L;
 
-  @Autowired
-  TagService tagService;
+  static List<Tag> tagList;
+
+  @Mock
+  TagRepository tagRepository;
+
+  @InjectMocks
+  TagServiceImpl tagServiceImpl;
 
 
-  private Tag createAndGetTag() {
-    TagDto tagDto = new TagDto();
-    tagDto.setName("tagTest");
-    tagService.saveTag(tagDto);
-    return tagService.findTagbyId(ID++);
+  @BeforeAll
+  static void createTags() {
+    tagList = new ArrayList<>();
+    for (int i = 1; i < 5; i++) {
+      Tag tag = new Tag();
+      tag.setName(1 + " tagExample");
+      tagList.add(tag);
+    }
   }
 
   @Test
-  void findTagbyIdTest() {
-    Tag actualTag = createAndGetTag();
-    Tag expectedTag = tagService.findTagbyId(actualTag.getId());
-    Assertions.assertEquals(actualTag.getName(), expectedTag.getName());
-  }
-
-
-  @Test
-  void updateTagTest() {
-
-    TagDto newTag = new TagDto();
-    newTag.setName("newName");
-    Tag actualTag = createAndGetTag();
-    tagService.updateTag(newTag, actualTag.getId());
-    Tag expectedTag = tagService.findTagbyId(actualTag.getId());
-    Assertions.assertEquals(newTag.getName(), expectedTag.getName());
-
+  void findAllTagsTest() {
+    Mockito.when(tagRepository.findAll()).thenReturn(tagList);
   }
 
   @Test
-  void tagDeleteTest() {
-    Tag actualTag = createAndGetTag();
-    Assertions.assertNotNull(tagService.findTagbyId(actualTag.getId()));
-    tagService.deleteTag(actualTag.getId());
-
+  void findTagByIdExpectedExceptionTest() {
+    Long id = 1L;
+    Assertions.assertThrows(TagNotFoundException.class, () -> tagServiceImpl.findTagbyId(id));
+    Mockito.verify(tagRepository).findById(id);
   }
+
+  @Test
+  void findTagByIdTest() {
+    Long id = 2L;
+    Optional<Tag> optionalTag = Optional.of(tagList.get(id.intValue()));
+    Mockito.when(tagRepository.findById(id)).thenReturn(optionalTag);
+  }
+
 
 }
