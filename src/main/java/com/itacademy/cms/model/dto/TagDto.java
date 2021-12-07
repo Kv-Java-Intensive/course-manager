@@ -1,12 +1,16 @@
-//package com.itacademy.cms.model.dto;
+package com.itacademy.cms.model.dto;
 
-//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-//import lombok.Getter;
-//import lombok.Setter;
-//
-//@Getter
-//@Setter
-//@JsonIgnoreProperties
-//public class TagDto {
-//  private String name;
-//}
+import com.itacademy.cms.model.Course;
+import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class TagDto {
+
+  private String name;
+  private List<Course> courses;
+
+}
+

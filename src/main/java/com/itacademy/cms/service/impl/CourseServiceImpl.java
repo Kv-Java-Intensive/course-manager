@@ -1,6 +1,6 @@
 package com.itacademy.cms.service.impl;
 
-import com.itacademy.cms.dao.CourseDAO;
+import com.itacademy.cms.repository.CourseDAO;
 import com.itacademy.cms.exeption.CourseNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Category;
@@ -8,12 +8,13 @@ import com.itacademy.cms.model.Course;
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.UserToCourse;
 import com.itacademy.cms.model.dto.CoursePostDto;
-import com.itacademy.cms.dao.CategoryDAO;
+import com.itacademy.cms.repository.CategoryDAO;
 
 import com.itacademy.cms.model.enums.CourseStatus;
+import com.itacademy.cms.repository.TagDAO;
 import com.itacademy.cms.service.CourseService;
 import java.util.List;
-import com.itacademy.cms.dao.CertificateDAO;
+import com.itacademy.cms.repository.CertificateDAO;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.itacademy.cms.dao;
+package com.itacademy.cms.repository;
 
 import com.itacademy.cms.model.Category;
 import com.itacademy.cms.model.Course;

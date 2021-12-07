@@ -4,6 +4,7 @@ import com.itacademy.cms.model.Category;
 import com.itacademy.cms.model.Certificate;
 import com.itacademy.cms.model.Course;
 import com.itacademy.cms.model.Group;
+import com.itacademy.cms.model.Tag;
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.dto.CategoryDto;
 import com.itacademy.cms.model.dto.CertificateDto;
@@ -11,6 +12,7 @@ import com.itacademy.cms.model.dto.CourseGetDto;
 import com.itacademy.cms.model.dto.CoursePostDto;
 import com.itacademy.cms.model.dto.GroupDto;
 import com.itacademy.cms.model.dto.ModuleDto;
+import com.itacademy.cms.model.dto.TagDto;
 import com.itacademy.cms.model.dto.UserDto;
 import java.util.List;
 import org.mapstruct.Mapper;
@@ -57,4 +59,8 @@ public interface MapStructMapper {
   Group groupDto2Group(GroupDto dto);
 
   GroupDto group2GroupDto(Group group);
+
+  TagDto tagToTagDto(Tag tag);
+
+  Tag tagDtoToTag(TagDto tagDto);
 }

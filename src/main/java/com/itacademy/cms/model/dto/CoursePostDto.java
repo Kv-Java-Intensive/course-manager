@@ -35,7 +35,7 @@ public class CoursePostDto {
   private String language;
 
   @JsonProperty("tags")
-  private List<TagPostDto> tags;
+  private List<TagDto> tags;
 
   @JsonProperty("certificate")
   private CertificateDto certificateDto;

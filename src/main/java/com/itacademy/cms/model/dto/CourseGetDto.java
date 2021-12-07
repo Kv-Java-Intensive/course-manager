@@ -33,7 +33,7 @@ public class CourseGetDto {
   private String language;
 
   @JsonProperty("tags")
-  private List<TagGetDto> tags;
+  private List<TagDto> tags;
 
   @JsonProperty("certificate")
   private CertificateDto certificateDto;

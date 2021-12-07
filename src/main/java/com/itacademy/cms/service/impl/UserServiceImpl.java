@@ -1,6 +1,6 @@
 package com.itacademy.cms.service.impl;
 
-import com.itacademy.cms.dao.UserDAO;
+import com.itacademy.cms.repository.UserDAO;
 import com.itacademy.cms.exeption.ParameterMissingException;
 import com.itacademy.cms.exeption.UserNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
