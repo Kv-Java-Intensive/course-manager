@@ -2,7 +2,7 @@ package com.itacademy.cms.service;
 
 import static org.junit.Assert.assertEquals;
 
-import com.itacademy.cms.mapper.ModuleMapper;
+import com.itacademy.cms.mapper.EntityMapper;
 import com.itacademy.cms.model.Module;
 import com.itacademy.cms.model.dto.ModuleDto;
 import com.itacademy.cms.repository.ModuleRepository;
@@ -10,6 +10,7 @@ import com.itacademy.cms.service.impl.ModuleServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,7 +25,7 @@ public class ModuleServiceImplTestIntegration {
   @Autowired
   private ModuleRepository moduleRepository;
   @Autowired
-  private ModuleMapper moduleMapper;
+  private EntityMapper moduleMapper;
 
   @Before
   public void mockRepository() {
