@@ -4,6 +4,7 @@ package com.itacademy.cms;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Category;
 import com.itacademy.cms.model.dto.CategoryDto;
 import org.junit.jupiter.api.Test;
@@ -11,7 +12,7 @@ import org.mapstruct.factory.Mappers;
 
 public class CategoryTest {
 
-  EntityMapper entityMapper = Mappers.getMapper(EntityMapper.class);
+  MapStructMapper entityMapper = Mappers.getMapper(MapStructMapper.class);
 
   @Test
   public void shouldMapCategoryToDto() {

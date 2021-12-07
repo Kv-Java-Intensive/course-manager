@@ -20,5 +20,5 @@ public class Category extends BaseEntity {
 
   @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
   private List<Course> courses;
-  private String category;
+  private String categoryName;
 }

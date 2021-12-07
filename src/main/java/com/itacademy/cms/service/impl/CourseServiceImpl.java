@@ -89,7 +89,7 @@ public class CourseServiceImpl implements CourseService {
       courseOld.setCourseName(courseNew.getCourseName());
       courseOld.setDescription(courseNew.getDescription());
       courseOld.setPrice(courseNew.getPrice());
-      Category category = categoryDAO.findByCategory(courseNew.getCategory().getCategory());
+      Category category = categoryDAO.findByCategory(courseNew.getCategory().getCategoryName());
       courseOld.setCategory(category);
       courseOld.setUpdateDate(courseNew.getUpdateDate());
       courseOld.setDuration(courseNew.getDuration());
