@@ -26,7 +26,9 @@ public class Group extends BaseEntity {
 
   @ManyToMany(cascade = CascadeType.ALL)
   @JoinTable(
-      name = "users",
+
+      name = "users_groups",
+
       joinColumns = {@JoinColumn(name = "group_id")},
       inverseJoinColumns = {@JoinColumn(name = "user_id")}
   )

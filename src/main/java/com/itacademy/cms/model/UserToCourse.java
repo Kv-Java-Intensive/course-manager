@@ -29,7 +29,6 @@ import org.hibernate.annotations.Immutable;
 @Immutable
 public class UserToCourse {
 
-
   @EmbeddedId
   protected Id id = new Id();
   @ManyToOne
@@ -50,6 +49,13 @@ public class UserToCourse {
     this.course = course;
     this.courseStatus = courseStatus;
     this.isAuthor = isAuthor;
+
+    this.id.userId = user.getId();
+    this.id.courseId = course.getId();
+
+    //    user.getUserToCourse().add(this);
+    //    course.getUserToCourse().add(this);
+
 
   }
 

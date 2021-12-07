@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Entity
 @Table(name = "certificates")
 @NoArgsConstructor
@@ -21,11 +22,11 @@ public class Certificate extends BaseEntity {
 
   @Column
   @NotNull(message = "Certificate name should be present")
-  @Size(min = 10, max = 30,
-      message = "Certificate name length should be in scope between 10 and 30 letters")
+  @Size(min = 10, max = 30, message =
+      "Certificate name length should be in scope between 10 and 30 letters")
   private String name;
 
-  //    @Column
+
   @OneToOne
   //@JoinColumn(name = "id")
   private Course course;
@@ -34,5 +35,6 @@ public class Certificate extends BaseEntity {
   @ManyToOne
   //@JoinColumn(name = "id")
   private User user;
+
 
 }
