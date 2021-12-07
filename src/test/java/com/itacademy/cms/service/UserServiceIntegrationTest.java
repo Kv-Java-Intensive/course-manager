@@ -28,7 +28,7 @@ public class UserServiceIntegrationTest {
   void cleanTable() {
     userRepository.deleteAll();
   }
-  
+
   @Test
   void userSaveAndFindByIdTest() {
     User savedUser = getSavedUser();
