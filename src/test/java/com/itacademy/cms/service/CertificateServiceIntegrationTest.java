@@ -1,9 +1,6 @@
 package com.itacademy.cms.service;
 
-import com.itacademy.cms.exeption.CertificateNotFoundException;
 import com.itacademy.cms.model.Certificate;
-import com.itacademy.cms.model.dto.CertificateDto;
-import com.itacademy.cms.repository.UserRepository;
 import javax.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
