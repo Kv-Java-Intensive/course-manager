@@ -1,7 +1,9 @@
 package com.itacademy.cms.controller;
 
 import com.itacademy.cms.exeption.CategoryNotFoundException;
+
 import com.itacademy.cms.mapper.MapStructMapper;
+
 import com.itacademy.cms.model.dto.CategoryDto;
 import com.itacademy.cms.service.CategoryService;
 import java.util.List;
@@ -24,6 +26,9 @@ public class CategoryController {
 
   @GetMapping("/categories")
   public List<CategoryDto> getAllCategories() throws CategoryNotFoundException {
+
+
+
     return categoryService.findAll().stream()
         .map(entityMapper::categoryToCategoryDto).collect(Collectors.toList());
   }
@@ -41,6 +46,7 @@ public class CategoryController {
   @PutMapping("/categories/{id}")
   public void updateCategory(@RequestBody CategoryDto categoryDto, @PathVariable Long id)
       throws CategoryNotFoundException {
+
     categoryService.updateCategory(categoryDto, id);
   }
 

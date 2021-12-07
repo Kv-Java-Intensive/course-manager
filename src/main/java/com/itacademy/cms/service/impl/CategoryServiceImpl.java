@@ -3,6 +3,7 @@ package com.itacademy.cms.service.impl;
 import com.itacademy.cms.exeption.CategoryNotFoundException;
 import com.itacademy.cms.exeption.ParameterMissingException;
 import com.itacademy.cms.mapper.MapStructMapper;
+
 import com.itacademy.cms.model.Category;
 import com.itacademy.cms.model.dto.CategoryDto;
 import com.itacademy.cms.repository.CategoryRepository;
@@ -24,7 +25,8 @@ public class CategoryServiceImpl implements CategoryService {
   @Override
   public List<Category> findAll() throws CategoryNotFoundException {
     List<Category> categoriesList = (List<Category>) categoryRepository.findAll();
-    if (categoriesList.isEmpty()) {
+
+   if (categoriesList.isEmpty()) {
       throw new CategoryNotFoundException("No categories found!");
     }
     return categoriesList;
@@ -36,6 +38,7 @@ public class CategoryServiceImpl implements CategoryService {
     categoryOptional.ifPresent(category -> {
       category.setCourses(categoryDto.getCourses());
       category.setCategory(categoryDto.getCategoryName());
+
       categoryRepository.save(category);
     });
   }
@@ -65,3 +68,5 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
 }
+
+
