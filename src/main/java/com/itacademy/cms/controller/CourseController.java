@@ -3,7 +3,6 @@ package com.itacademy.cms.controller;
 import com.itacademy.cms.exeption.CourseNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.User;
-import com.itacademy.cms.model.Course;
 import com.itacademy.cms.model.dto.CourseGetDto;
 import com.itacademy.cms.model.dto.CoursePostDto;
 import com.itacademy.cms.service.CourseService;

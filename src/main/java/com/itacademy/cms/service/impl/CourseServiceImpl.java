@@ -1,6 +1,5 @@
 package com.itacademy.cms.service.impl;
 
-import com.itacademy.cms.repository.CourseRepository;
 import com.itacademy.cms.exeption.CourseNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Category;
@@ -8,13 +7,13 @@ import com.itacademy.cms.model.Course;
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.UserToCourse;
 import com.itacademy.cms.model.dto.CoursePostDto;
-import com.itacademy.cms.repository.CategoryRepository;
-
 import com.itacademy.cms.model.enums.CourseStatus;
+import com.itacademy.cms.repository.CategoryRepository;
+import com.itacademy.cms.repository.CertificateRepository;
+import com.itacademy.cms.repository.CourseRepository;
 import com.itacademy.cms.repository.TagRepository;
 import com.itacademy.cms.service.CourseService;
 import java.util.List;
-import com.itacademy.cms.repository.CertificateRepository;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -40,7 +39,7 @@ public class CourseServiceImpl implements CourseService {
   @Override
   public List<Course> getAllCoursesByCategory(String categoryName) throws CourseNotFoundException {
     Optional<List<Course>> courses = Optional.ofNullable(courseDAO.findCourseByCategory(
-        categoryDAO.findByCategory(categoryName)));
+        categoryDAO.findByCategoryName(categoryName)));
     if (courses.isEmpty()) {
       throw new CourseNotFoundException("Courses were not found");
     }
@@ -62,7 +61,7 @@ public class CourseServiceImpl implements CourseService {
   @Override
   public List<Course> getAllCoursesByTag(String tagName) throws CourseNotFoundException {
     Optional<List<Course>> courses = Optional.ofNullable(courseDAO.findCourseByCourseTags(
-        tagDAO.findByName()));
+        tagDAO.findByName(tagName)));
     if (courses.isEmpty()) {
       throw new CourseNotFoundException("Courses were not found");
     }
@@ -89,7 +88,7 @@ public class CourseServiceImpl implements CourseService {
       courseOld.setCourseName(courseNew.getCourseName());
       courseOld.setDescription(courseNew.getDescription());
       courseOld.setPrice(courseNew.getPrice());
-      Category category = categoryDAO.findByCategory(courseNew.getCategory().getCategoryName());
+      Category category = categoryDAO.findByCategoryName(courseNew.getCategory().getCategoryName());
       courseOld.setCategory(category);
       courseOld.setUpdateDate(courseNew.getUpdateDate());
       courseOld.setDuration(courseNew.getDuration());

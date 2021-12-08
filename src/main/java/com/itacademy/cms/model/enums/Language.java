@@ -3,7 +3,7 @@ package com.itacademy.cms.model.enums;
 public enum Language {
   ENGLISH("English"), RUSSIAN("Russian"), UKRAINIAN("Ukrainian"), SPANISH("Spanish"),
   ITALIAN("Italian"), GERMAN("German");
-  private String name;
+  private final String name;
 
   Language(String name) {
     this.name = name;
