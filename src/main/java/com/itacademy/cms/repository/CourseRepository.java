@@ -4,18 +4,17 @@ import com.itacademy.cms.model.Category;
 import com.itacademy.cms.model.Course;
 import com.itacademy.cms.model.Tag;
 import java.util.List;
-import java.util.UUID;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CourseRepository extends CrudRepository<Course, UUID> {
+public interface CourseRepository extends CrudRepository<Course, Long> {
   List<Course> findCourseByCategory(Category category);
 
   List<Course> findCourseByCourseTags(Tag tag);
 
   List<Course> findAll();
 
-  Course findCourseById(UUID id);
+  Course findCourseById(Long id);
 
 }

@@ -8,14 +8,13 @@ import com.itacademy.cms.repository.GroupRepository;
 import com.itacademy.cms.service.GroupService;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 public class GroupServiceImpl implements GroupService {
 
   private GroupRepository groupRepository;
   private MapStructMapper groupMapper;
 
-  public List<Group> getGroupsByUserId(UUID id) {
+  public List<Group> getGroupsByUserId(Long id) {
     return groupRepository.getAllByUser(id);
   }
 
@@ -26,7 +25,7 @@ public class GroupServiceImpl implements GroupService {
   }
 
   @Override
-  public Group findById(UUID id) throws NoSuchGroupException {
+  public Group findById(Long id) throws NoSuchGroupException {
     Group group = groupRepository.getById(id);
     if (group != null) {
       return group;
@@ -36,7 +35,7 @@ public class GroupServiceImpl implements GroupService {
   }
 
   @Override
-  public void updateGroup(GroupDto groupDto, UUID id) throws NoSuchGroupException {
+  public void updateGroup(GroupDto groupDto, Long id) throws NoSuchGroupException {
     Optional<Group> opt = groupRepository.findById(id);
     opt.ifPresent(group -> {
       group.setName(groupDto.getName());
@@ -54,7 +53,7 @@ public class GroupServiceImpl implements GroupService {
   }
 
   @Override
-  public void deleteGroup(UUID id) throws NoSuchGroupException {
+  public void deleteGroup(Long id) throws NoSuchGroupException {
     Group group = groupRepository.getById(id);
     groupRepository.delete(group);
   }

@@ -6,7 +6,6 @@ import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.dto.TagDto;
 import com.itacademy.cms.service.TagService;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,7 +32,7 @@ public class TagController {
   }
 
   @GetMapping("/tags/{id}")
-  public TagDto getTagById(@PathVariable("id") UUID tagId) throws TagNotFoundException {
+  public TagDto getTagById(@PathVariable("id") Long tagId) throws TagNotFoundException {
     return tagMapper.tagToTagDto(tagService.findTagbyId(tagId));
 
   }
@@ -44,12 +43,12 @@ public class TagController {
   }
 
   @PutMapping("/tags/{id}")
-  public void updateUser(@RequestBody TagDto tagDto, @PathVariable UUID id) {
+  public void updateUser(@RequestBody TagDto tagDto, @PathVariable Long id) {
     tagService.updateTag(tagDto, id);
   }
 
   @DeleteMapping("/tags/{id}")
-  public void delete(@PathVariable UUID id) throws TagNotFoundException {
+  public void delete(@PathVariable Long id) throws TagNotFoundException {
     tagService.deleteTag(id);
   }
 }

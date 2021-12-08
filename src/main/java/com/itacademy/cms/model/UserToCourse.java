@@ -2,7 +2,6 @@ package com.itacademy.cms.model;
 
 import com.itacademy.cms.model.enums.CourseStatus;
 import java.io.Serializable;
-import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
@@ -60,15 +59,15 @@ public class UserToCourse {
   public static class Id implements Serializable {
 
     @Column(name = "user_id")
-    protected UUID userId;
+    protected Long userId;
 
     @Column(name = "course_id")
-    protected UUID courseId;
+    protected Long courseId;
 
     public Id() {
     }
 
-    public Id(UUID userId, UUID courseId) {
+    public Id(Long userId, Long courseId) {
       this.userId = userId;
       this.courseId = courseId;
     }

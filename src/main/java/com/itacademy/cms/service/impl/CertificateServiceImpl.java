@@ -9,7 +9,6 @@ import com.itacademy.cms.repository.CertificateRepository;
 import com.itacademy.cms.service.CertificateService;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -37,14 +36,14 @@ public class CertificateServiceImpl implements CertificateService {
   }
 
   @Override
-  public Certificate findById(UUID id) {
+  public Certificate findById(Long id) {
     Optional<Certificate> certificate = certificatesRepository.findById(id);
     return certificate.orElseThrow(
         () -> new CertificateNotFoundException("Certificate with id " + id + " not found!"));
   }
 
   @Override
-  public void updateCertificate(CertificateDto certificateDto, UUID id) {
+  public void updateCertificate(CertificateDto certificateDto, Long id) {
     Optional<Certificate> certificateOptional = certificatesRepository.findById(id);
     certificateOptional.ifPresent(certificate -> {
           certificate.setName(certificateDto.getName());
@@ -54,7 +53,7 @@ public class CertificateServiceImpl implements CertificateService {
   }
 
   @Override
-  public void deleteCertificateById(UUID id) {
+  public void deleteCertificateById(Long id) {
     if (id == null) {
       throw new ParameterMissingException("Certificate id is missing");
     } else if (certificatesRepository.existsById(id)) {

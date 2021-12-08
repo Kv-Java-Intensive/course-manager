@@ -42,14 +42,14 @@ public class TagServiceTest {
 
   @Test
   void findByIdTestExpectedException() {
-    UUID id = UUID.randomUUID();
+    Long id = 1L;
     Assertions.assertThrows(TagNotFoundException.class, () -> tagServiceImpl.findTagbyId(id));
     Mockito.verify(tagRepository).findById(id);
   }
 
   @Test
   void findByIdTestExpectedTag() {
-    UUID id = UUID.randomUUID();
+    Long id = 1L;
 
     Tag tag = new Tag();
     tag.setId(id);

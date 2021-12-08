@@ -31,14 +31,14 @@ public class UserServiceTest {
 
   @Test
   void findByIdTestExpectedException() {
-    UUID id = UUID.randomUUID();
+    Long id = 1L;
     Assertions.assertThrows(UserNotFoundException.class, () -> userServiceImpl.findById(id));
     Mockito.verify(userRepository).findById(id);
   }
 
   @Test
   void findByIdTestExpectedUser() {
-    UUID id = UUID.randomUUID();
+    Long id = 1L;
 
     User user = new User();
     user.setId(id);

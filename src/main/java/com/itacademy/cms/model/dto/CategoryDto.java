@@ -11,6 +11,6 @@ import lombok.Setter;
 public class CategoryDto {
 
   public List<Course> courses;
-  //  private UUID id;
+
   private String categoryName;
 }

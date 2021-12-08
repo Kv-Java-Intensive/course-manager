@@ -7,7 +7,6 @@ import com.itacademy.cms.model.dto.CourseGetDto;
 import com.itacademy.cms.model.dto.CoursePostDto;
 import com.itacademy.cms.service.CourseService;
 import java.util.List;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -48,7 +47,7 @@ public class CourseController {
   }
 
   @GetMapping("/{id}")
-  public CourseGetDto showCourseById(@PathVariable("id") UUID id) throws CourseNotFoundException {
+  public CourseGetDto showCourseById(@PathVariable("id") Long id) throws CourseNotFoundException {
     return mapStructMapper.courseToCourseGetDto(courseService.getCourseById(id));
   }
 
@@ -60,12 +59,12 @@ public class CourseController {
 
   @PutMapping("/{id}")
   public void updateCourseById(@RequestBody CoursePostDto coursePostDto,
-                               @PathVariable("id") UUID id) {
+                               @PathVariable("id") Long id) {
     courseService.updateCourse(coursePostDto, id);
   }
 
   @DeleteMapping("/{id}")
-  public void deleteCourseById(@PathVariable("id") UUID id) throws CourseNotFoundException {
+  public void deleteCourseById(@PathVariable("id") Long id) throws CourseNotFoundException {
     courseService.deleteCourseById(id);
   }
 }

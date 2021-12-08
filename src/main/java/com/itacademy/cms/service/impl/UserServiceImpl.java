@@ -9,7 +9,6 @@ import com.itacademy.cms.repository.UserRepository;
 import com.itacademy.cms.service.UserService;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +29,7 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public void updateUser(UserDto userDto, UUID id) {
+  public void updateUser(UserDto userDto, Long id) {
     Optional<User> userOptional = userRepository.findById(id);
     userOptional.ifPresent(user -> {
       user.setGroups(userDto.getGroups());
@@ -48,7 +47,7 @@ public class UserServiceImpl implements UserService {
 
 
   @Override
-  public User findById(UUID id) {
+  public User findById(Long id) {
     Optional<User> user = userRepository.findById(id);
     return user.orElseThrow(() -> new UserNotFoundException("User with id " + id + " not found!"));
   }
@@ -59,7 +58,7 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public void deleteUserById(UUID id) {
+  public void deleteUserById(Long id) {
     if (id == null) {
       throw new ParameterMissingException("User id is missing");
     } else if (userRepository.existsById(id)) {

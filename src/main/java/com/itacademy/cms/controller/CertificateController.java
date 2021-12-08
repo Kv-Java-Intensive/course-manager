@@ -4,7 +4,6 @@ import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.dto.CertificateDto;
 import com.itacademy.cms.service.CertificateService;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,7 +31,7 @@ public class CertificateController {
   }
 
   @GetMapping("/certificates/{id}")
-  public CertificateDto getCertificateById(@PathVariable("id") UUID id) {
+  public CertificateDto getCertificateById(@PathVariable("id") Long id) {
     return certificateMapper.certificateToCertificateDto(certificateService.findById(id));
   }
 
@@ -43,12 +42,12 @@ public class CertificateController {
   }
 
   @PutMapping("/employees/{id}")
-  public void updateCertificate(@RequestBody CertificateDto certificateDto, @PathVariable UUID id) {
+  public void updateCertificate(@RequestBody CertificateDto certificateDto, @PathVariable Long id) {
     certificateService.updateCertificate(certificateDto, id);
   }
 
   @DeleteMapping("certificates/{id}")
-  public void deleteCertificate(@PathVariable("id") UUID id) {
+  public void deleteCertificate(@PathVariable("id") Long id) {
     certificateService.findById(id);
     certificateService.deleteCertificateById(id);
   }

@@ -5,7 +5,6 @@ import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.dto.UserDto;
 import com.itacademy.cms.service.UserService;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,7 +31,7 @@ public class UserController {
   }
 
   @GetMapping("/users/{id}")
-  public UserDto getUserById(@PathVariable("id") UUID id) {
+  public UserDto getUserById(@PathVariable("id") Long id) {
     return entityMapper.userToUserDto(userService.findById(id));
   }
 
@@ -42,12 +41,12 @@ public class UserController {
   }
 
   @PutMapping("/users/{id}")
-  public void updateUser(@RequestBody UserDto userDto, @PathVariable UUID id) {
+  public void updateUser(@RequestBody UserDto userDto, @PathVariable Long id) {
     userService.updateUser(userDto, id);
   }
 
   @DeleteMapping("/users/{id}")
-  public void deleteUser(@PathVariable("id") UUID id) {
+  public void deleteUser(@PathVariable("id") Long id) {
     userService.deleteUserById(id);
   }
 }

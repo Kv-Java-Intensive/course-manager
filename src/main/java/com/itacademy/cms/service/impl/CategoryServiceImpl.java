@@ -9,7 +9,6 @@ import com.itacademy.cms.repository.CategoryRepository;
 import com.itacademy.cms.service.CategoryService;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +31,7 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public void updateCategory(CategoryDto categoryDto, UUID id) {
+  public void updateCategory(CategoryDto categoryDto, Long id) {
     Optional<Category> categoryOptional = categoryRepository.findById(id);
     categoryOptional.ifPresent(category -> {
       category.setCourses(categoryDto.getCourses());
@@ -42,7 +41,7 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public Category findById(UUID id) throws CategoryNotFoundException {
+  public Category findById(Long id) throws CategoryNotFoundException {
     Optional<Category> category = categoryRepository.findById(id);
     return category.orElseThrow(
         () -> new CategoryNotFoundException("Category with id " + id + " not found!"));
@@ -54,7 +53,7 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public void deleteCategoryById(UUID id) throws CategoryNotFoundException {
+  public void deleteCategoryById(Long id) throws CategoryNotFoundException {
     if (id == null) {
       throw new ParameterMissingException("Category id is missing");
     } else if (categoryRepository.existsById(id)) {

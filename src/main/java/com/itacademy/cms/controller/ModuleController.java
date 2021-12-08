@@ -6,7 +6,6 @@ import com.itacademy.cms.model.Module;
 import com.itacademy.cms.model.dto.ModuleDto;
 import com.itacademy.cms.service.ModuleService;
 import java.util.List;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +29,7 @@ public class ModuleController {
   }
 
   @GetMapping("/modules/{id}")
-  public ModuleDto getModuleById(@PathVariable("id") UUID id) throws EntityNotFoundException {
+  public ModuleDto getModuleById(@PathVariable("id") Long id) throws EntityNotFoundException {
     return moduleMapper.moduleToModuleDto(moduleService.findById(id));
   }
 
@@ -40,13 +39,13 @@ public class ModuleController {
   }
 
   @PutMapping("/modules/{id}")
-  public void updateModule(@RequestBody ModuleDto moduleDto, @PathVariable UUID id)
+  public void updateModule(@RequestBody ModuleDto moduleDto, @PathVariable Long id)
       throws EntityNotFoundException {
     moduleService.updateModule(moduleDto, id);
   }
 
   @DeleteMapping("/modules/{id}")
-  public void deleteModule(@PathVariable("id") UUID id) throws EntityNotFoundException {
+  public void deleteModule(@PathVariable("id") Long id) throws EntityNotFoundException {
     moduleService.deleteModuleById(id);
   }
 

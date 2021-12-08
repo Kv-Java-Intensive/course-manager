@@ -31,7 +31,7 @@ public class CategoryServiceTest {
 
   @Test
   void findByIdTestExpectedException() {
-    UUID id = UUID.randomUUID();
+    Long id = 1L;
     Assertions.assertThrows(CategoryNotFoundException.class,
         () -> categoryServiceImpl.findById(id));
     Mockito.verify(categoryRepository).findById(id);
@@ -39,7 +39,7 @@ public class CategoryServiceTest {
 
   @Test
   void findByIdTestExpectedCategory() throws CategoryNotFoundException {
-    UUID id = UUID.randomUUID();
+    Long id = 1L;
 
     Category category = new Category();
     category.setId(id);

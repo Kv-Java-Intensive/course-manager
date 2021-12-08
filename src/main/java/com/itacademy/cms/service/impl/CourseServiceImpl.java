@@ -15,7 +15,6 @@ import com.itacademy.cms.repository.TagRepository;
 import com.itacademy.cms.service.CourseService;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -70,7 +69,7 @@ public class CourseServiceImpl implements CourseService {
   }
 
   @Override
-  public Course getCourseById(UUID id) throws CourseNotFoundException {
+  public Course getCourseById(Long id) throws CourseNotFoundException {
     Optional<Course> course = Optional.ofNullable(courseDao.findCourseById(id));
     if (course.isEmpty()) {
       throw new CourseNotFoundException("This course was not found");
@@ -80,7 +79,7 @@ public class CourseServiceImpl implements CourseService {
 
   @Override
 
-  public void updateCourse(CoursePostDto coursePostDto, UUID id) {
+  public void updateCourse(CoursePostDto coursePostDto, Long id) {
     Optional<Course> course = Optional.ofNullable(courseDao.findCourseById(id));
 
     if (course.isEmpty()) {
@@ -102,7 +101,7 @@ public class CourseServiceImpl implements CourseService {
 
   @Override
 
-  public void deleteCourseById(UUID id) throws CourseNotFoundException {
+  public void deleteCourseById(Long id) throws CourseNotFoundException {
     Optional<Course> course = Optional.ofNullable(courseDao.findCourseById(id));
 
     if (course.isEmpty()) {
