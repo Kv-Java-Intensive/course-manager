@@ -6,13 +6,15 @@ import java.util.List;
 
 public interface CertificateService {
 
+
   List<Certificate> findAll();
 
   Certificate findById(Long id);
 
-  void updateCertificate(CertificateDto certificateDto, Long id);
+  // void updateCertificate(CertificateDto certificateDto, Long id);
 
-  Certificate saveCertificate(CertificateDto certificateDto);
+  void saveCertificate(CertificateDto certificateDto);
 
   void deleteCertificateById(Long id);
 }
+

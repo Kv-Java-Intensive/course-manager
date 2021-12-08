@@ -1,7 +1,7 @@
 package com.itacademy.cms.controller;
 
 import com.itacademy.cms.exeption.CategoryNotFoundException;
-import com.itacademy.cms.mapper.EntityMapper;
+import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.dto.CategoryDto;
 import com.itacademy.cms.service.CategoryService;
 import java.util.List;
@@ -20,16 +20,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class CategoryController {
 
   private final CategoryService categoryService;
-  private final EntityMapper entityMapper;
+  private final MapStructMapper entityMapper;
 
   @GetMapping("/categories")
-  public List<CategoryDto> getAllCategories() {
+  public List<CategoryDto> getAllCategories() throws CategoryNotFoundException {
     return categoryService.findAll().stream()
         .map(entityMapper::categoryToCategoryDto).collect(Collectors.toList());
   }
 
   @GetMapping("/categories/{id}")
-  public CategoryDto getCategoryById(@PathVariable("id") Long id) {
+  public CategoryDto getCategoryById(@PathVariable("id") Long id) throws CategoryNotFoundException {
     return entityMapper.categoryToCategoryDto(categoryService.findById(id));
   }
 
@@ -39,12 +39,13 @@ public class CategoryController {
   }
 
   @PutMapping("/categories/{id}")
-  public void updateCategory(@RequestBody CategoryDto categoryDto, @PathVariable Long id) {
+  public void updateCategory(@RequestBody CategoryDto categoryDto, @PathVariable Long id)
+      throws CategoryNotFoundException {
     categoryService.updateCategory(categoryDto, id);
   }
 
   @DeleteMapping("/categories/{id}")
-  public void deleteCategory(@PathVariable("id") Long id) {
+  public void deleteCategory(@PathVariable("id") Long id) throws CategoryNotFoundException {
     categoryService.deleteCategoryById(id);
   }
 }

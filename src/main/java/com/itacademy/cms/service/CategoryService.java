@@ -13,7 +13,7 @@ public interface CategoryService {
 
   void updateCategory(CategoryDto categoryDto, Long id) throws CategoryNotFoundException;
 
-  Category saveCategory(CategoryDto categoryDto);
+  void saveCategory(CategoryDto categoryDto);
 
   void deleteCategoryById(Long id) throws CategoryNotFoundException;
 }

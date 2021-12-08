@@ -20,7 +20,7 @@ import lombok.Setter;
 @Setter
 public class Category extends BaseEntity {
 
-  @OneToMany(cascade = CascadeType.ALL)//mappedBy = "category", fetch = FetchType.LAZY)
+  @OneToMany(cascade = CascadeType.ALL)
   private List<Course> courses;
 
   @Column(name = "category_name")
