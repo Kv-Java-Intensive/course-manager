@@ -43,11 +43,6 @@ public class CertificateController {
   }
 
 
-//  @PutMapping("/employees/{id}")
-//  public void updateCertificate(@RequestBody CertificateDto certificateDto, @PathVariable Long id) {
-//    certificateService.updateCertificate(certificateDto, id);
-//  }
-
   @DeleteMapping("certificates/{id}")
   public void deleteCertificate(@PathVariable("id") Long id) {
     certificateService.findById(id);
