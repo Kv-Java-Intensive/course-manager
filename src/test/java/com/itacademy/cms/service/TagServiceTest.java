@@ -11,6 +11,7 @@ import com.itacademy.cms.service.impl.UserServiceImpl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -41,14 +42,14 @@ public class TagServiceTest {
 
   @Test
   void findByIdTestExpectedException() {
-    Long id = 1L;
+    UUID id = UUID.randomUUID();
     Assertions.assertThrows(TagNotFoundException.class, () -> tagServiceImpl.findTagbyId(id));
     Mockito.verify(tagRepository).findById(id);
   }
 
   @Test
   void findByIdTestExpectedTag() {
-    Long id = 1L;
+    UUID id = UUID.randomUUID();
 
     Tag tag = new Tag();
     tag.setId(id);
