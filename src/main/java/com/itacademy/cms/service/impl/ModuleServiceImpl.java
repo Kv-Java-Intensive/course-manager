@@ -44,16 +44,14 @@ public class ModuleServiceImpl implements ModuleService {
   @Override
   public Module findById(Long id) throws EntityNotFoundException {
     Optional<Module> module = moduleRepository.findById(id);
-    if (module.isPresent()) {
-      return moduleRepository.getById(id);
-    }
-    throw new EntityNotFoundException("Module with id " + id + " not found!");
+    return module.orElseThrow(
+        () -> new EntityNotFoundException("Module with id " + id + " not found!"));
   }
 
   @Override
   public Module saveModule(ModuleDto moduleDto) {
-    moduleRepository.save(moduleMapper.moduleDtoToModule(moduleDto));
-    return null;
+    return moduleRepository.save(moduleMapper.moduleDtoToModule(moduleDto));
+
   }
 
   @Override
@@ -62,6 +60,7 @@ public class ModuleServiceImpl implements ModuleService {
       throw new ParameterMissingException("Module id is missing");
     } else if (moduleRepository.existsById(id)) {
       moduleRepository.deleteById(id);
+      return;
     }
     throw new EntityNotFoundException("Module with id " + id + " not found!");
   }

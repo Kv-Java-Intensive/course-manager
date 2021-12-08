@@ -1,6 +1,7 @@
 package com.itacademy.cms.service;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 import com.itacademy.cms.mapper.MapStructMapper;
@@ -8,6 +9,8 @@ import com.itacademy.cms.model.Module;
 import com.itacademy.cms.model.dto.ModuleDto;
 import com.itacademy.cms.repository.ModuleRepository;
 import com.itacademy.cms.service.impl.ModuleServiceImpl;
+import java.util.Optional;
+import javax.transaction.Transactional;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,11 +19,14 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ModuleServiceImplTestIntegration {
+@Transactional(Transactional.TxType.REQUIRED)
+@ActiveProfiles(profiles = "test")
+public class ModuleServiceImplIntegrationTest {
 
   private ModuleService moduleService;
 
@@ -47,8 +53,9 @@ public class ModuleServiceImplTestIntegration {
     Module module = new Module();
     module.setId(moduleId);
     moduleRepository.save(module);
-    Module moduleExisted = moduleRepository.getById(moduleId);
-    assertEquals(moduleId, moduleExisted.getId().longValue());
+    Optional<Module> moduleExisted = moduleRepository.findById(moduleId);
+    assertTrue(moduleExisted.isPresent());
+    assertEquals(moduleId, moduleExisted.get().getId().longValue());
   }
 
   @Test

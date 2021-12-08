@@ -1,13 +1,14 @@
 package com.itacademy.cms.service;
 
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import com.itacademy.cms.exeption.EntityNotFoundException;
+import com.itacademy.cms.exeption.UserNotFoundException;
 import com.itacademy.cms.model.Module;
 import com.itacademy.cms.model.dto.ModuleDto;
+import com.itacademy.cms.model.dto.UserDto;
+import com.itacademy.cms.model.enums.Role;
 import com.itacademy.cms.repository.ModuleRepository;
 import javax.transaction.Transactional;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,40 +33,51 @@ public class ModuleServiceIntegrationTest {
 
   @Test
   void moduleSaveAndFindByIdTest() throws EntityNotFoundException {
-    Module savedModule = getModule();
+    Module savedModule = getSavedModule();
 
-    Module module = moduleService.findById(savedModule.getId());
+    Module moduleById = moduleService.findById(savedModule.getId());
 
-    assertEquals(savedModule.getContent(), module.getContent());
-    assertEquals(savedModule.getDescription(), module.getDescription());
-    assertEquals(savedModule.getLessonNumber(), module.getLessonNumber());
-    assertEquals(savedModule.getCourse(), module.getCourse());
+    Assertions.assertEquals(savedModule.getContent(), moduleById.getContent());
+    Assertions.assertEquals(savedModule.getDescription(), moduleById.getDescription());
+    Assertions.assertEquals(savedModule.getLessonNumber(), moduleById.getLessonNumber());
   }
 
   @Test
   void moduleUpdateTest() throws EntityNotFoundException {
     ModuleDto moduleDtoToUpdate = new ModuleDto();
 
-    moduleDtoToUpdate.setDescription("Some updated description");
-    moduleDtoToUpdate.setContent("Some updated content");
-    moduleDtoToUpdate.setLessonNumber(3);
+    moduleDtoToUpdate.setContent("updated");
+    moduleDtoToUpdate.setDescription("updated");
+    moduleDtoToUpdate.setLessonNumber(2);
 
-    Module module = getModule();
+    Module initModule = getSavedModule();
 
-    moduleService.updateModule(moduleDtoToUpdate, module.getId());
+    moduleService.updateModule(moduleDtoToUpdate, initModule.getId());
 
-    Module updatedModule = moduleService.findById(module.getId());
+    Module updatedModule = moduleService.findById(initModule.getId());
 
-    assertEquals(moduleDtoToUpdate.getContent(), updatedModule.getContent());
-    assertEquals(moduleDtoToUpdate.getDescription(), updatedModule.getDescription());
-    assertEquals(moduleDtoToUpdate.getLessonNumber(), updatedModule.getLessonNumber());
+    Assertions.assertEquals(moduleDtoToUpdate.getContent(), updatedModule.getContent());
+    Assertions.assertEquals(moduleDtoToUpdate.getDescription(), updatedModule.getDescription());
+    Assertions.assertEquals(moduleDtoToUpdate.getLessonNumber(), updatedModule.getLessonNumber());
   }
 
-  private Module getModule() {
+  @Test
+  void moduleDeleteTest() throws EntityNotFoundException {
+    Module initModule = getSavedModule();
+
+    Assertions.assertNotNull(moduleService.findById(initModule.getId()));
+
+    moduleService.deleteModuleById(initModule.getId());
+
+    Assertions.assertThrows(EntityNotFoundException.class,
+        () -> moduleService.findById(initModule.getId()));
+  }
+
+  private Module getSavedModule() {
     ModuleDto moduleDto = new ModuleDto();
 
-    moduleDto.setContent("Some content");
-    moduleDto.setDescription("Some description");
+    moduleDto.setContent("some content");
+    moduleDto.setDescription("some description");
     moduleDto.setLessonNumber(2);
 
     return moduleService.saveModule(moduleDto);
