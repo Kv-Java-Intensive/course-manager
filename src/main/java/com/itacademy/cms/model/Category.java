@@ -1,6 +1,8 @@
 package com.itacademy.cms.model;
 
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
@@ -18,7 +20,9 @@ import lombok.Setter;
 @Setter
 public class Category extends BaseEntity {
 
-  @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+  @OneToMany(cascade = CascadeType.ALL)
   private List<Course> courses;
-  private String category;
+
+  @Column(name = "category_name")
+  private String categoryName;
 }

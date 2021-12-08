@@ -1,7 +1,8 @@
 package com.itacademy.cms.controller;
 
 
-import com.itacademy.cms.mapper.EntityMapper;
+import com.itacademy.cms.exeption.TagNotFoundException;
+import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.dto.TagDto;
 import com.itacademy.cms.service.TagService;
 import java.util.List;
@@ -20,18 +21,20 @@ import org.springframework.web.bind.annotation.RestController;
 public class TagController {
 
   private final TagService tagService;
-  private final EntityMapper entityMapper;
+
+  private final MapStructMapper tagMapper;
 
 
   @GetMapping("/tags")
-  public List<TagDto> showAllTags() {
+  public List<TagDto> showAllTags() throws TagNotFoundException {
     return tagService.getAllTags().stream()
-        .map(entityMapper::tagToTagDto).collect(Collectors.toList());
+        .map(tagMapper::tagToTagDto).collect(Collectors.toList());
   }
 
   @GetMapping("/tags/{id}")
-  public TagDto getTagById(@PathVariable("id") Long tagId) {
-    return entityMapper.tagToTagDto(tagService.findTagbyId(tagId));
+  public TagDto getTagById(@PathVariable("id") Long tagId) throws TagNotFoundException {
+    return tagMapper.tagToTagDto(tagService.findTagbyId(tagId));
+
   }
 
   @PostMapping("/tags")
@@ -45,7 +48,7 @@ public class TagController {
   }
 
   @DeleteMapping("/tags/{id}")
-  public void delete(@PathVariable Long id) {
+  public void delete(@PathVariable Long id) throws TagNotFoundException {
     tagService.deleteTag(id);
   }
 }

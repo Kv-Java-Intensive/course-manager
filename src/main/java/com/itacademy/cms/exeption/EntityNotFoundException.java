@@ -1,0 +1,8 @@
+package com.itacademy.cms.exeption;
+
+public class EntityNotFoundException extends Exception {
+  public EntityNotFoundException(String errorMessage) {
+    super(errorMessage);
+  }
+}
+

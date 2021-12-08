@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -43,7 +44,7 @@ public class Course extends BaseEntity {
   private Double price;
 
   @NotNull
-  @ManyToOne//(cascade = CascadeType.ALL, mappedBy = "category")
+  @ManyToOne
   @JoinColumn(name = "course_category")
   private Category category;
 
@@ -54,29 +55,31 @@ public class Course extends BaseEntity {
 
   @NotNull
   @Column(name = "duration")
-  @Temporal(TemporalType.TIME)
-  private Date duration; //hours
+  private Double duration;
 
   @NotNull
   @Column(name = "language")
   private Language language;
 
-  @OneToMany(orphanRemoval = true)
-  @JoinColumn(name = "course_id")
+  @OneToMany(mappedBy = "course", cascade = {CascadeType.MERGE, CascadeType.DETACH,
+      CascadeType.PERSIST, CascadeType.REFRESH})
   private List<UserToCourse> userCourses;
 
 
-  @ManyToMany(cascade = CascadeType.ALL) //, mappedBy = "course")
-
+  @ManyToMany(cascade = CascadeType.ALL)
+  @JoinTable(name = "course_tags", joinColumns = @JoinColumn(name = "tag_id"),
+      inverseJoinColumns = @JoinColumn(name = "course_id"))
   private List<Tag> courseTags;
 
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
+  @OneToMany(cascade = {CascadeType.MERGE, CascadeType.DETACH,
+      CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "course")
   private List<Group> groups;
 
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
+  @OneToMany(cascade = {CascadeType.MERGE, CascadeType.DETACH,
+      CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "course")
   private List<Module> modules;
 
   @NotNull
-  @OneToOne(cascade = CascadeType.ALL, mappedBy = "course")
+  @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "course")
   private Certificate certificate;
 }

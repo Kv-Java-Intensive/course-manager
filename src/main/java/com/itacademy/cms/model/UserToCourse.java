@@ -53,10 +53,6 @@ public class UserToCourse {
     this.id.userId = user.getId();
     this.id.courseId = course.getId();
 
-    //    user.getUserToCourse().add(this);
-    //    course.getUserToCourse().add(this);
-
-
   }
 
   @Embeddable

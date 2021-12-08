@@ -7,10 +7,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class TagDto {
+public class CategoryDto {
 
-  private String name;
-  private List<Course> courses;
-
+  public List<Course> courses;
+  private String categoryName;
 }
-

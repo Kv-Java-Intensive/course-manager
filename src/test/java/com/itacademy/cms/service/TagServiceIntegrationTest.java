@@ -30,7 +30,7 @@ public class TagServiceIntegrationTest {
   }
 
 
-  private Tag createAndGetTag() {
+  private Tag createAndGetTag() throws TagNotFoundException {
     TagDto tagDto = new TagDto();
     tagDto.setName("tagTest");
     tagService.saveTag(tagDto);
@@ -38,7 +38,7 @@ public class TagServiceIntegrationTest {
   }
 
   @Test
-  void findTagbyIdTest() {
+  void findTagbyIdTest() throws TagNotFoundException {
     Tag actualTag = createAndGetTag();
     Tag expectedTag = tagService.findTagbyId(actualTag.getId());
     Assertions.assertEquals(actualTag.getName(), expectedTag.getName());
@@ -46,7 +46,7 @@ public class TagServiceIntegrationTest {
 
 
   @Test
-  void updateTagTest() {
+  void updateTagTest() throws TagNotFoundException {
 
     TagDto newTag = new TagDto();
     newTag.setName("newName");
@@ -58,7 +58,7 @@ public class TagServiceIntegrationTest {
   }
 
   @Test
-  void tagDeleteTest() {
+  void tagDeleteTest() throws TagNotFoundException {
     Tag actualTag = createAndGetTag();
     Assertions.assertNotNull(tagService.findTagbyId(actualTag.getId()));
     tagService.deleteTag(actualTag.getId());
