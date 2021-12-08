@@ -1,9 +1,9 @@
 package com.itacademy.cms.service;
 
-import com.itacademy.cms.exeption.UserNotFoundException;
+import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.repository.UserRepository;
-import com.itacademy.cms.service.impl.UserServiceImpl;
+
 import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -20,18 +20,18 @@ public class UserServiceTest {
   UserRepository userRepository;
 
   @InjectMocks
-  UserServiceImpl userServiceImpl;
+  UserService userService;
 
   @Test
   void findAllTest() {
-    Assertions.assertThrows(UserNotFoundException.class, () -> userServiceImpl.findAll());
+    Assertions.assertThrows(EntityNotFoundException.class, () -> userService.findAll());
     Mockito.verify(userRepository).findAll();
   }
 
   @Test
   void findByIdTestExpectedException() {
     Long id = 1L;
-    Assertions.assertThrows(UserNotFoundException.class, () -> userServiceImpl.findById(id));
+    Assertions.assertThrows(EntityNotFoundException.class, () -> userService.findById(id));
     Mockito.verify(userRepository).findById(id);
   }
 
@@ -45,7 +45,7 @@ public class UserServiceTest {
 
     Optional<User> optionalUser = Optional.of(user);
     Mockito.when(userRepository.findById(id)).thenReturn(optionalUser);
-    User savedUser = userServiceImpl.findById(id);
+    User savedUser = userService.findById(id);
 
     Assertions.assertEquals(user.getId(), savedUser.getId());
     Assertions.assertEquals(user.getFirstName(), savedUser.getFirstName());

@@ -1,6 +1,6 @@
 package com.itacademy.cms.service.impl;
 
-import com.itacademy.cms.exeption.CertificateNotFoundException;
+import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.exeption.ParameterMissingException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Certificate;
@@ -24,7 +24,7 @@ public class CertificateServiceImpl implements CertificateService {
   public List<Certificate> findAll() {
     List<Certificate> certificateList = certificatesRepository.findAll();
     if (certificateList.isEmpty()) {
-      throw new CertificateNotFoundException("No certificates found!");
+      throw new EntityNotFoundException("No certificates found!");
     }
     return certificateList;
   }
@@ -39,7 +39,7 @@ public class CertificateServiceImpl implements CertificateService {
   public Certificate findById(Long id) {
     Optional<Certificate> certificate = certificatesRepository.findById(id);
     return certificate.orElseThrow(
-        () -> new CertificateNotFoundException("Certificate with id " + id + " not found!"));
+        () -> new EntityNotFoundException("Certificate with id " + id + " not found!"));
   }
 
   @Override
@@ -60,6 +60,6 @@ public class CertificateServiceImpl implements CertificateService {
       certificatesRepository.deleteById(id);
       return;
     }
-    throw new CertificateNotFoundException("Certificate with id " + id + " not found!");
+    throw new EntityNotFoundException("Certificate with id " + id + " not found!");
   }
 }
