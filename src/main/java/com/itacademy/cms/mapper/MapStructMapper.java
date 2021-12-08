@@ -31,7 +31,7 @@ public interface MapStructMapper {
 
   Certificate certificateDtoToCertificate(CertificateDto certificateDto);
 
-  CertificateDto certificateToCertificateDto(Certificate Certificate);
+  CertificateDto certificateToCertificateDto(Certificate certificate);
 
   List<CertificateDto> certificateToCertificateDtoList(List<Certificate> certificateList);
 
