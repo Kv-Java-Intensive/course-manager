@@ -1,9 +1,8 @@
 package com.itacademy.cms.repository;
 
 import com.itacademy.cms.model.Certificate;
-import org.springframework.data.repository.CrudRepository;
+import java.util.UUID;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CertificateRepository extends CrudRepository<Certificate, Long> {
-
-  Certificate getById(long id);
+public interface CertificateRepository extends JpaRepository<Certificate, UUID> {
 }

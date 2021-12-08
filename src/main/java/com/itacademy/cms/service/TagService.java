@@ -4,6 +4,7 @@ import com.itacademy.cms.exeption.TagNotFoundException;
 import com.itacademy.cms.model.Tag;
 import com.itacademy.cms.model.dto.TagDto;
 import java.util.List;
+import java.util.UUID;
 
 public interface TagService {
 
@@ -12,11 +13,11 @@ public interface TagService {
 
   Tag saveTag(TagDto tagDto);
 
-  Tag findTagbyId(Long id) throws TagNotFoundException;
+  Tag findTagbyId(UUID id) throws TagNotFoundException;
 
-  void updateTag(TagDto tagDto, Long id);
+  void updateTag(TagDto tagDto, UUID id);
 
-  void deleteTag(Long id) throws TagNotFoundException;
+  void deleteTag(UUID id) throws TagNotFoundException;
 
 
 }
