@@ -1,19 +1,12 @@
 package com.itacademy.cms.service;
 
-import com.itacademy.cms.exeption.TagNotFoundException;
-import com.itacademy.cms.exeption.UserNotFoundException;
+import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.model.Tag;
-import com.itacademy.cms.model.User;
 import com.itacademy.cms.repository.TagRepository;
-import com.itacademy.cms.repository.UserRepository;
 import com.itacademy.cms.service.impl.TagServiceImpl;
-import com.itacademy.cms.service.impl.UserServiceImpl;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -36,14 +29,14 @@ public class TagServiceTest {
 
   @Test
   void findAllTest() {
-    Assertions.assertThrows(TagNotFoundException.class, () -> tagServiceImpl.getAllTags());
+    Assertions.assertThrows(EntityNotFoundException.class, () -> tagServiceImpl.getAllTags());
     Mockito.verify(tagRepository).findAll();
   }
 
   @Test
   void findByIdTestExpectedException() {
     UUID id = UUID.randomUUID();
-    Assertions.assertThrows(TagNotFoundException.class, () -> tagServiceImpl.findTagbyId(id));
+    Assertions.assertThrows(EntityNotFoundException.class, () -> tagServiceImpl.findTagbyId(id));
     Mockito.verify(tagRepository).findById(id);
   }
 

@@ -1,6 +1,5 @@
 package com.itacademy.cms.controller;
 
-import com.itacademy.cms.exeption.CourseNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.dto.CourseGetDto;
@@ -29,26 +28,25 @@ public class CourseController {
 
 
   @GetMapping
-  public List<CourseGetDto> showAllCourses() throws CourseNotFoundException {
+  public List<CourseGetDto> showAllCourses() {
     return mapStructMapper.courseAllToCourseGetDto(courseService.getAllCourses());
   }
 
   @GetMapping(value = "/search/{category}")
   public List<CourseGetDto> showAllCoursesByCategory(@PathVariable("category")
-                                                         String categoryName)
-      throws CourseNotFoundException {
+                                                         String categoryName) {
     return mapStructMapper.courseAllToCourseGetDto(
         courseService.getAllCoursesByCategory(categoryName));
   }
 
   @GetMapping("/search/{tag}")
   public List<CourseGetDto> showAllCourseByTag(@PathVariable("tag")
-                                                   String tagName) throws CourseNotFoundException {
+                                                   String tagName) {
     return mapStructMapper.courseAllToCourseGetDto(courseService.getAllCoursesByTag(tagName));
   }
 
   @GetMapping("/{id}")
-  public CourseGetDto showCourseById(@PathVariable("id") UUID id) throws CourseNotFoundException {
+  public CourseGetDto showCourseById(@PathVariable("id") UUID id) {
     return mapStructMapper.courseToCourseGetDto(courseService.getCourseById(id));
   }
 
@@ -65,7 +63,7 @@ public class CourseController {
   }
 
   @DeleteMapping("/{id}")
-  public void deleteCourseById(@PathVariable("id") UUID id) throws CourseNotFoundException {
+  public void deleteCourseById(@PathVariable("id") UUID id) {
     courseService.deleteCourseById(id);
   }
 }

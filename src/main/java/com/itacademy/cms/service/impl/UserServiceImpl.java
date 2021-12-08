@@ -1,7 +1,7 @@
 package com.itacademy.cms.service.impl;
 
+import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.exeption.ParameterMissingException;
-import com.itacademy.cms.exeption.UserNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.dto.UserDto;
@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
   public List<User> findAll() {
     List<User> userList = (List) userRepository.findAll();
     if (userList.isEmpty()) {
-      throw new UserNotFoundException("No users found!");
+      throw new EntityNotFoundException("No users found!");
     }
     return userList;
   }
@@ -50,7 +50,8 @@ public class UserServiceImpl implements UserService {
   @Override
   public User findById(UUID id) {
     Optional<User> user = userRepository.findById(id);
-    return user.orElseThrow(() -> new UserNotFoundException("User with id " + id + " not found!"));
+    return user.orElseThrow(
+        () -> new EntityNotFoundException("User with id " + id + " not found!"));
   }
 
   @Override
@@ -66,6 +67,6 @@ public class UserServiceImpl implements UserService {
       userRepository.deleteById(id);
       return;
     }
-    throw new UserNotFoundException("User with id " + id + " not found!");
+    throw new EntityNotFoundException("User with id " + id + " not found!");
   }
 }

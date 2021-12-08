@@ -1,6 +1,6 @@
 package com.itacademy.cms.service;
 
-import com.itacademy.cms.exeption.CertificateNotFoundException;
+import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.model.Certificate;
 import com.itacademy.cms.repository.CertificateRepository;
 import com.itacademy.cms.service.impl.CertificateServiceImpl;
@@ -25,7 +25,7 @@ public class CertificateServiceTest {
 
   @Test
   void findAllTest() {
-    Assertions.assertThrows(CertificateNotFoundException.class,
+    Assertions.assertThrows(EntityNotFoundException.class,
         () -> certificateServiceImpl.findAll());
     Mockito.verify(certificateRepository).findAll();
   }
@@ -34,7 +34,7 @@ public class CertificateServiceTest {
   @Test
   void findByIdTestExpectedException() {
     UUID id = UUID.randomUUID();
-    Assertions.assertThrows(CertificateNotFoundException.class,
+    Assertions.assertThrows(EntityNotFoundException.class,
         () -> certificateServiceImpl.findById(id));
     Mockito.verify(certificateRepository).findById(id);
   }
