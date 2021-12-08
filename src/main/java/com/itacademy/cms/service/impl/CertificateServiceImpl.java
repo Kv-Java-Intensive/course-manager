@@ -7,6 +7,7 @@ import com.itacademy.cms.repository.CertificateRepository;
 import com.itacademy.cms.service.CertificateService;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,13 +31,13 @@ public class CertificateServiceImpl implements CertificateService {
   }
 
   @Override
-  public Certificate findById(Long id) {
+  public Certificate findById(UUID id) {
     Optional<Certificate> certificate = certificatesRepository.findById(id);
     return certificatesRepository.getById(id);
   }
 
   @Override
-  public void deleteCertificateById(Long id) {
+  public void deleteCertificateById(UUID id) {
     certificatesRepository.deleteById(id);
   }
 }

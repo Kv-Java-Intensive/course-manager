@@ -29,7 +29,7 @@
 //  }
 //
 //  @Test
-//  void categorySaveAndFindByIdTest() {
+//  void categorySaveAndFindByIdTest() throws CategoryNotFoundException {
 //    Category savedCategory = getSavedCategory();
 //
 //    Category categoryById = categoryService.findById(savedCategory.getId());
@@ -38,7 +38,7 @@
 //  }
 //
 //  @Test
-//  void categoryUpdateTest() {
+//  void categoryUpdateTest() throws CategoryNotFoundException {
 //    CategoryDto categoryDtoUpdate = new CategoryDto();
 //
 //    categoryDtoUpdate.setCategoryName("testName");
@@ -53,7 +53,7 @@
 //  }
 //
 //  @Test
-//  void categoryDeleteTest() {
+//  void categoryDeleteTest() throws CategoryNotFoundException {
 //    Category initCategory = getSavedCategory();
 //
 //    Assertions.assertNotNull(categoryService.findById(initCategory.getId()));

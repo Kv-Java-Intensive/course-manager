@@ -5,6 +5,7 @@ import com.itacademy.cms.model.User;
 import com.itacademy.cms.repository.UserRepository;
 import com.itacademy.cms.service.impl.UserServiceImpl;
 import java.util.Optional;
+import java.util.UUID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -30,14 +31,14 @@ public class UserServiceTest {
 
   @Test
   void findByIdTestExpectedException() {
-    Long id = 1L;
+    UUID id = UUID.randomUUID();
     Assertions.assertThrows(UserNotFoundException.class, () -> userServiceImpl.findById(id));
     Mockito.verify(userRepository).findById(id);
   }
 
   @Test
   void findByIdTestExpectedUser() {
-    Long id = 1L;
+    UUID id = UUID.randomUUID();
 
     User user = new User();
     user.setId(id);

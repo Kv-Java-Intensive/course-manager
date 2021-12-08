@@ -5,6 +5,7 @@ import com.itacademy.cms.model.Certificate;
 import com.itacademy.cms.repository.CertificateRepository;
 import com.itacademy.cms.service.impl.CertificateServiceImpl;
 import java.util.Optional;
+import java.util.UUID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,7 +33,8 @@ public class CertificateServiceTest {
 
   @Test
   void findByIdTestExpectedException() {
-    Long id = 1L;
+    UUID id = UUID.randomUUID();
+    ;
     Assertions.assertThrows(CertificateNotFoundException.class,
         () -> certificateServiceImpl.findById(id));
     Mockito.verify(certificateRepository).findById(id);
@@ -40,7 +42,8 @@ public class CertificateServiceTest {
 
   @Test
   void findByIdTestExpectedCertificate() {
-    Long id = 1L;
+    UUID id = UUID.randomUUID();
+    ;
 
     Certificate certificate = new Certificate();
     certificate.setId(id);

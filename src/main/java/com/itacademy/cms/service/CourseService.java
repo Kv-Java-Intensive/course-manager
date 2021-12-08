@@ -6,6 +6,7 @@ import com.itacademy.cms.model.Course;
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.dto.CoursePostDto;
 import java.util.List;
+import java.util.UUID;
 
 public interface CourseService {
 
@@ -17,9 +18,9 @@ public interface CourseService {
 
   List<Course> getAllCoursesByTag(String tagName) throws CourseNotFoundException;
 
-  Course getCourseById(Long id) throws CourseNotFoundException;
+  Course getCourseById(UUID id) throws CourseNotFoundException;
 
-  void updateCourse(CoursePostDto coursePostDto, Long id);
+  void updateCourse(CoursePostDto coursePostDto, UUID id);
 
-  void deleteCourseById(Long id) throws CourseNotFoundException;
+  void deleteCourseById(UUID id) throws CourseNotFoundException;
 }
