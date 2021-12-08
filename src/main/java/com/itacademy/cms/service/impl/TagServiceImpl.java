@@ -33,9 +33,9 @@ public class TagServiceImpl implements TagService {
   }
 
   @Override
-  public void saveTag(TagDto tagDto) {
+  public Tag saveTag(TagDto tagDto) {
 
-    tagRepository.save(tagMapper.tagDtoToTag(tagDto));
+    return tagRepository.save(tagMapper.tagDtoToTag(tagDto));
 
   }
 

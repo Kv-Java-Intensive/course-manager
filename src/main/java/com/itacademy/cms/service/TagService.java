@@ -11,7 +11,7 @@ public interface TagService {
 
   List<Tag> getAllTags() throws TagNotFoundException;
 
-  void saveTag(TagDto tagDto);
+  Tag saveTag(TagDto tagDto);
 
   Tag findTagbyId(UUID id) throws TagNotFoundException;
 
