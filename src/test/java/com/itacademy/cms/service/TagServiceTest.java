@@ -1,9 +1,13 @@
 package com.itacademy.cms.service;
 
 import com.itacademy.cms.exeption.TagNotFoundException;
+import com.itacademy.cms.exeption.UserNotFoundException;
 import com.itacademy.cms.model.Tag;
+import com.itacademy.cms.model.User;
 import com.itacademy.cms.repository.TagRepository;
+import com.itacademy.cms.repository.UserRepository;
 import com.itacademy.cms.service.impl.TagServiceImpl;
+import com.itacademy.cms.service.impl.UserServiceImpl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -23,43 +27,39 @@ import org.mockito.quality.Strictness;
 @MockitoSettings(strictness = Strictness.LENIENT)
 public class TagServiceTest {
 
-  static List<Tag> tagList;
-
   @Mock
   TagRepository tagRepository;
 
   @InjectMocks
   TagServiceImpl tagServiceImpl;
 
-
-  @BeforeAll
-  static void createTags() {
-    tagList = new ArrayList<>();
-    for (int i = 1; i < 5; i++) {
-      Tag tag = new Tag();
-      tag.setName(1 + " tagExample");
-      tagList.add(tag);
-    }
+  @Test
+  void findAllTest() {
+    Assertions.assertThrows(TagNotFoundException.class, () -> tagServiceImpl.getAllTags());
+    Mockito.verify(tagRepository).findAll();
   }
 
   @Test
-  void findAllTagsTest() {
-    Mockito.when(tagRepository.findAll()).thenReturn(tagList);
-  }
-
-  @Test
-  void findTagByIdExpectedExceptionTest() {
+  void findByIdTestExpectedException() {
     Long id = 1L;
     Assertions.assertThrows(TagNotFoundException.class, () -> tagServiceImpl.findTagbyId(id));
     Mockito.verify(tagRepository).findById(id);
   }
 
   @Test
-  void findTagByIdTest() {
-    Long id = 2L;
-    Optional<Tag> optionalTag = Optional.of(tagList.get(id.intValue()));
-    Mockito.when(tagRepository.findById(id)).thenReturn(optionalTag);
-  }
+  void findByIdTestExpectedTag() {
+    Long id = 1L;
 
+    Tag tag = new Tag();
+    tag.setId(id);
+    tag.setName("newName");
+
+    Optional<Tag> optionalTag = Optional.of(tag);
+    Mockito.when(tagRepository.findById(id)).thenReturn(optionalTag);
+    Tag savedTag = tagServiceImpl.findTagbyId(id);
+
+    Assertions.assertEquals(tag.getId(), savedTag.getId());
+    Assertions.assertEquals(tag.getName(), savedTag.getName());
+  }
 
 }
