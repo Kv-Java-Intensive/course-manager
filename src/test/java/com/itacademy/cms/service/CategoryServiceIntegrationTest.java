@@ -72,3 +72,4 @@ public class CategoryServiceIntegrationTest {
     return categoryService.saveCategory(categoryDto);
   }
 }
+

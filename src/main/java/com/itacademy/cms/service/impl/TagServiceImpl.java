@@ -18,11 +18,13 @@ import org.springframework.stereotype.Service;
 public class TagServiceImpl implements TagService {
 
   private final TagRepository tagRepository;
+
   private final MapStructMapper tagMapper;
 
 
   @Override
   public List<Tag> getAllTags() throws TagNotFoundException {
+
     List<Tag> tagList = tagRepository.findAll();
     if (tagList.isEmpty()) {
       throw new TagNotFoundException("No tags found!");
@@ -32,12 +34,15 @@ public class TagServiceImpl implements TagService {
 
   @Override
   public void saveTag(TagDto tagDto) {
+
     tagRepository.save(tagMapper.tagDtoToTag(tagDto));
+
   }
 
 
   @Override
   public Tag findTagbyId(UUID id) throws TagNotFoundException {
+
     Optional<Tag> tag = tagRepository.findById(id);
     return tag.orElseThrow(() -> new TagNotFoundException("Tag with id " + id + " not found!"));
   }
@@ -53,6 +58,7 @@ public class TagServiceImpl implements TagService {
 
   @Override
   public void deleteTag(UUID id) throws TagNotFoundException {
+
     if (id == null) {
       throw new ParameterMissingException("Tag id is missing!");
     } else if (tagRepository.existsById(id)) {

@@ -22,15 +22,15 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class CourseServiceImpl implements CourseService {
-  private final CourseRepository courseDAO;
-  private final CategoryRepository categoryDAO;
-  private final TagRepository tagDAO;
-  private final CertificateRepository certificateDAO;
+  private final CourseRepository courseDao;
+  private final CategoryRepository categoryDao;
+  private final TagRepository tagDao;
+  private final CertificateRepository certificateDao;
   private final MapStructMapper mapper;
 
   @Override
   public List<Course> getAllCourses() throws CourseNotFoundException {
-    Optional<List<Course>> courses = Optional.ofNullable(courseDAO.findAll());
+    Optional<List<Course>> courses = Optional.ofNullable(courseDao.findAll());
     if (courses.isEmpty()) {
       throw new CourseNotFoundException("Courses were not found");
     }
@@ -39,8 +39,8 @@ public class CourseServiceImpl implements CourseService {
 
   @Override
   public List<Course> getAllCoursesByCategory(String categoryName) throws CourseNotFoundException {
-    Optional<List<Course>> courses = Optional.ofNullable(courseDAO.findCourseByCategory(
-        categoryDAO.findByCategoryName(categoryName)));
+    Optional<List<Course>> courses = Optional.ofNullable(courseDao.findCourseByCategory(
+        categoryDao.findByCategoryName(categoryName)));
     if (courses.isEmpty()) {
       throw new CourseNotFoundException("Courses were not found");
     }
@@ -55,14 +55,14 @@ public class CourseServiceImpl implements CourseService {
     userToCourse.setUser(user);
     userToCourse.setAuthor(true);
     userToCourse.setCourseStatus(CourseStatus.DEFAULT);
-    courseDAO.save(course);
-    return courseDAO.findAll();
+    courseDao.save(course);
+    return courseDao.findAll();
   }
 
   @Override
   public List<Course> getAllCoursesByTag(String tagName) throws CourseNotFoundException {
-    Optional<List<Course>> courses = Optional.ofNullable(courseDAO.findCourseByCourseTags(
-        tagDAO.findByName(tagName)));
+    Optional<List<Course>> courses = Optional.ofNullable(courseDao.findCourseByCourseTags(
+        tagDao.findByName(tagName)));
     if (courses.isEmpty()) {
       throw new CourseNotFoundException("Courses were not found");
     }
@@ -79,32 +79,36 @@ public class CourseServiceImpl implements CourseService {
   }
 
   @Override
+
   public void updateCourse(CoursePostDto coursePostDto, UUID id) {
     Optional<Course> course = Optional.ofNullable(courseDAO.findCourseById(id));
+
     if (course.isEmpty()) {
-      courseDAO.save(course.get());
+      courseDao.save(course.get());
     } else {
       Course courseOld = course.get();
       Course courseNew = mapper.courseDtoToCourse(coursePostDto);
       courseOld.setCourseName(courseNew.getCourseName());
       courseOld.setDescription(courseNew.getDescription());
       courseOld.setPrice(courseNew.getPrice());
-      Category category = categoryDAO.findByCategoryName(courseNew.getCategory().getCategoryName());
+      Category category = categoryDao.findByCategoryName(courseNew.getCategory().getCategoryName());
       courseOld.setCategory(category);
       courseOld.setUpdateDate(courseNew.getUpdateDate());
       courseOld.setDuration(courseNew.getDuration());
       courseOld.setLanguage(courseNew.getLanguage());
-      courseDAO.save(courseOld);
+      courseDao.save(courseOld);
     }
   }
 
   @Override
+
   public void deleteCourseById(UUID id) throws CourseNotFoundException {
     Optional<Course> course = Optional.ofNullable(courseDAO.findCourseById(id));
+
     if (course.isEmpty()) {
       throw new CourseNotFoundException("This course was not found");
     } else {
-      courseDAO.deleteById(id);
+      courseDao.deleteById(id);
     }
   }
 }
