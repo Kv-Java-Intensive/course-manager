@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface TagService {
 
+
   List<Tag> getAllTags() throws TagNotFoundException;
 
   void saveTag(TagDto tagDto);
@@ -19,3 +20,4 @@ public interface TagService {
 
 
 }
+

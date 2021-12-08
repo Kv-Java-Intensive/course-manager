@@ -49,7 +49,8 @@
 //
 //    Category updateCategory = categoryService.findById(initCategory.getId());
 //
-//    Assertions.assertEquals(categoryDtoUpdate.getCategoryName(), updateCategory.getCategoryName());
+//    Assertions.assertEquals(categoryDtoUpdate.getCategoryName(),
+//    updateCategory.getCategoryName());
 //  }
 //
 //  @Test

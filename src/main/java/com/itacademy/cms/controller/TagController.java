@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TagController {
 
   private final TagService tagService;
+
   private final MapStructMapper tagMapper;
 
 
@@ -33,6 +34,7 @@ public class TagController {
   @GetMapping("/tags/{id}")
   public TagDto getTagById(@PathVariable("id") Long tagId) throws TagNotFoundException {
     return tagMapper.tagToTagDto(tagService.findTagbyId(tagId));
+
   }
 
   @PostMapping("/tags")
