@@ -7,15 +7,13 @@ import java.util.UUID;
 
 public interface CertificateService {
 
-
   List<Certificate> findAll();
 
   Certificate findById(UUID id);
 
-  // void updateCertificate(CertificateDto certificateDto, UUID id);
+  void updateCertificate(CertificateDto certificateDto, UUID id);
 
-  void saveCertificate(CertificateDto certificateDto);
+  Certificate saveCertificate(CertificateDto certificateDto);
 
   void deleteCertificateById(UUID id);
 }
-

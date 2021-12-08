@@ -34,7 +34,6 @@ public class CertificateServiceTest {
   @Test
   void findByIdTestExpectedException() {
     UUID id = UUID.randomUUID();
-    ;
     Assertions.assertThrows(CertificateNotFoundException.class,
         () -> certificateServiceImpl.findById(id));
     Mockito.verify(certificateRepository).findById(id);
@@ -43,7 +42,6 @@ public class CertificateServiceTest {
   @Test
   void findByIdTestExpectedCertificate() {
     UUID id = UUID.randomUUID();
-    ;
 
     Certificate certificate = new Certificate();
     certificate.setId(id);
