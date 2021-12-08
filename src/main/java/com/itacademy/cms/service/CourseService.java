@@ -9,17 +9,17 @@ import java.util.List;
 
 public interface CourseService {
 
-  public List<Course> getAllCourses() throws CourseNotFoundException;
+  List<Course> getAllCourses() throws CourseNotFoundException;
 
-  public List<Course> getAllCoursesByCategory(String category) throws CourseNotFoundException;
+  List<Course> getAllCoursesByCategory(String category) throws CourseNotFoundException;
 
-  public List<Course> addCourse(CoursePostDto coursePostDto, User user);
+  List<Course> addCourse(CoursePostDto coursePostDto, User user);
 
-  public List<Course> getAllCoursesByTag(String tagName) throws CourseNotFoundException;
+  List<Course> getAllCoursesByTag(String tagName) throws CourseNotFoundException;
 
-  public Course getCourseById(Long id) throws CourseNotFoundException;
+  Course getCourseById(Long id) throws CourseNotFoundException;
 
-  public void updateCourse(CoursePostDto coursePostDto, Long id);
+  void updateCourse(CoursePostDto coursePostDto, Long id);
 
-  public void deleteCourseById(Long id) throws CourseNotFoundException;
+  void deleteCourseById(Long id) throws CourseNotFoundException;
 }
