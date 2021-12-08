@@ -32,7 +32,9 @@ public class CertificateServiceTest {
 
   @Test
   void findByIdTestExpectedException() {
+
     Long id = 1L;
+
     Assertions.assertThrows(CertificateNotFoundException.class,
         () -> certificateServiceImpl.findById(id));
     Mockito.verify(certificateRepository).findById(id);
@@ -40,7 +42,9 @@ public class CertificateServiceTest {
 
   @Test
   void findByIdTestExpectedCertificate() {
+
     Long id = 1L;
+
 
     Certificate certificate = new Certificate();
     certificate.setId(id);

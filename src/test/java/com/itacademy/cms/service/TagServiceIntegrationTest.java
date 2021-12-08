@@ -16,7 +16,6 @@ import org.springframework.test.context.ActiveProfiles;
 @Transactional(Transactional.TxType.REQUIRED)
 @ActiveProfiles(profiles = "test")
 public class TagServiceIntegrationTest {
-  public static Long ID = 1L;
 
   @Autowired
   TagService tagService;
@@ -33,8 +32,8 @@ public class TagServiceIntegrationTest {
   private Tag createAndGetTag() throws TagNotFoundException {
     TagDto tagDto = new TagDto();
     tagDto.setName("tagTest");
-    tagService.saveTag(tagDto);
-    return tagService.findTagbyId(ID++);
+    return tagService.saveTag(tagDto);
+
   }
 
   @Test

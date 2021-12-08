@@ -9,6 +9,7 @@ import com.itacademy.cms.repository.TagRepository;
 import com.itacademy.cms.service.TagService;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -32,22 +33,22 @@ public class TagServiceImpl implements TagService {
   }
 
   @Override
-  public void saveTag(TagDto tagDto) {
+  public Tag saveTag(TagDto tagDto) {
 
-    tagRepository.save(tagMapper.tagDtoToTag(tagDto));
+    return tagRepository.save(tagMapper.tagDtoToTag(tagDto));
 
   }
 
 
   @Override
+  public Tag findTagbyId(UUID id) throws TagNotFoundException {
 
-  public Tag findTagbyId(Long id) throws TagNotFoundException {
     Optional<Tag> tag = tagRepository.findById(id);
     return tag.orElseThrow(() -> new TagNotFoundException("Tag with id " + id + " not found!"));
   }
 
   @Override
-  public void updateTag(TagDto tagDto, Long id) {
+  public void updateTag(TagDto tagDto, UUID id) {
     Optional<Tag> tagOptional = tagRepository.findById(id);
     tagOptional.ifPresent(tag -> {
       tag.setName(tagDto.getName());
@@ -56,8 +57,7 @@ public class TagServiceImpl implements TagService {
   }
 
   @Override
-
-  public void deleteTag(Long id) throws TagNotFoundException {
+  public void deleteTag(UUID id) throws TagNotFoundException {
 
     if (id == null) {
       throw new ParameterMissingException("Tag id is missing!");

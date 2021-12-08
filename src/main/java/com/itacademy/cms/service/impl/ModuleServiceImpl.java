@@ -9,6 +9,7 @@ import com.itacademy.cms.repository.ModuleRepository;
 import com.itacademy.cms.service.ModuleService;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +30,7 @@ public class ModuleServiceImpl implements ModuleService {
   }
 
   @Override
-  public void updateModule(ModuleDto moduleDto, Long id) {
+  public void updateModule(ModuleDto moduleDto, UUID id) {
     Optional<Module> moduleOptional = moduleRepository.findById(id);
     moduleOptional.ifPresent(x -> {
       x.setContent(moduleDto.getContent());
@@ -42,7 +43,7 @@ public class ModuleServiceImpl implements ModuleService {
 
 
   @Override
-  public Module findById(Long id) throws EntityNotFoundException {
+  public Module findById(UUID id) throws EntityNotFoundException {
     Optional<Module> module = moduleRepository.findById(id);
     if (module.isPresent()) {
       return moduleRepository.getById(id);
@@ -56,7 +57,7 @@ public class ModuleServiceImpl implements ModuleService {
   }
 
   @Override
-  public void deleteModuleById(Long id) throws EntityNotFoundException {
+  public void deleteModuleById(UUID id) throws EntityNotFoundException {
     if (id == null) {
       throw new ParameterMissingException("Module id is missing");
     } else if (moduleRepository.existsById(id)) {

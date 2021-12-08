@@ -3,6 +3,7 @@ package com.itacademy.cms.service;
 import com.itacademy.cms.model.Certificate;
 import com.itacademy.cms.model.dto.CertificateDto;
 import java.util.List;
+import java.util.UUID;
 
 public interface CertificateService {
 
@@ -15,4 +16,5 @@ public interface CertificateService {
   Certificate saveCertificate(CertificateDto certificateDto);
 
   void deleteCertificateById(Long id);
+
 }
