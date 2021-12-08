@@ -5,7 +5,6 @@ import com.itacademy.cms.model.Category;
 import com.itacademy.cms.repository.CategoryRepository;
 import com.itacademy.cms.service.impl.CategoryServiceImpl;
 import java.util.Optional;
-import java.util.UUID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

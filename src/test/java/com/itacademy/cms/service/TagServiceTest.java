@@ -1,19 +1,11 @@
 package com.itacademy.cms.service;
 
 import com.itacademy.cms.exeption.TagNotFoundException;
-import com.itacademy.cms.exeption.UserNotFoundException;
 import com.itacademy.cms.model.Tag;
-import com.itacademy.cms.model.User;
 import com.itacademy.cms.repository.TagRepository;
-import com.itacademy.cms.repository.UserRepository;
 import com.itacademy.cms.service.impl.TagServiceImpl;
-import com.itacademy.cms.service.impl.UserServiceImpl;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

@@ -1,11 +1,8 @@
 package com.itacademy.cms.service;
 
 import com.itacademy.cms.exeption.EntityNotFoundException;
-import com.itacademy.cms.exeption.UserNotFoundException;
 import com.itacademy.cms.model.Module;
 import com.itacademy.cms.model.dto.ModuleDto;
-import com.itacademy.cms.model.dto.UserDto;
-import com.itacademy.cms.model.enums.Role;
 import com.itacademy.cms.repository.ModuleRepository;
 import javax.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
