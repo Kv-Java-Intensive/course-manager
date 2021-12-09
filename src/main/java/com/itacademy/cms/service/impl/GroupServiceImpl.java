@@ -1,6 +1,6 @@
 package com.itacademy.cms.service.impl;
 
-import com.itacademy.cms.exeption..EntityNotFoundException;
+import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Group;
 import com.itacademy.cms.model.dto.GroupDto;
@@ -30,7 +30,7 @@ public class GroupServiceImpl implements GroupService {
     if (group != null) {
       return group;
     } else {
-      throw new  EntityNotFoundException("Group with id = " + id + " does not exist!");
+      throw new EntityNotFoundException("Group with id = " + id + " does not exist!");
     }
   }
 

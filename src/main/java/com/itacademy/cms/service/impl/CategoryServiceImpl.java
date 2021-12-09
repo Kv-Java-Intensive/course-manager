@@ -48,8 +48,8 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public Category saveCategory(CategoryDto categoryDto) {
-    return categoryRepository.save(entityMapper.categoryDtoToCategory(categoryDto));
+  public void saveCategory(CategoryDto categoryDto) {
+    categoryRepository.save(entityMapper.categoryDtoToCategory(categoryDto));
   }
 
   @Override

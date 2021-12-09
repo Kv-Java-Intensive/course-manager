@@ -20,7 +20,7 @@ public class CourseGetDto {
   private Double price;
 
   @JsonProperty("category")
-  private CategoryDto categoryDto;
+  private CategoryGetDto categoryDto;
 
   @JsonProperty("updateDate")
   private Date updateDate;

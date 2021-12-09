@@ -81,16 +81,18 @@ public class CourseServiceImpl implements CourseService {
 
   public void updateCourse(CoursePostDto coursePostDto, Long id) {
     Optional<Course> course = Optional.ofNullable(courseDao.findCourseById(id));
-
+    Course courseNew = mapper.courseDtoToCourse(coursePostDto);
     if (course.isEmpty()) {
-      courseDao.save(course.get());
+      courseDao.save(courseNew);
     } else {
       Course courseOld = course.get();
-      Course courseNew = mapper.courseDtoToCourse(coursePostDto);
       courseOld.setCourseName(courseNew.getCourseName());
       courseOld.setDescription(courseNew.getDescription());
       courseOld.setPrice(courseNew.getPrice());
-      Category category = categoryDao.findByCategoryName(courseNew.getCategory().getCategoryName());
+      String categoryName =
+          courseNew.getCategory() == null ? null : courseNew.getCategory().getCategoryName();
+      Category category =
+          categoryName == null ? null : categoryDao.findByCategoryName(categoryName);
       courseOld.setCategory(category);
       courseOld.setUpdateDate(courseNew.getUpdateDate());
       courseOld.setDuration(courseNew.getDuration());

@@ -49,8 +49,8 @@ public class ModuleServiceImpl implements ModuleService {
   }
 
   @Override
-  public Module saveModule(ModuleDto moduleDto) {
-    return moduleRepository.save(moduleMapper.moduleDtoToModule(moduleDto));
+  public void saveModule(ModuleDto moduleDto) {
+    moduleRepository.save(moduleMapper.moduleDtoToModule(moduleDto));
 
   }
 

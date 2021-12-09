@@ -8,7 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
-import javax.persistence.Enumerated
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -59,7 +59,7 @@ public class Course extends BaseEntity {
   @Column(name = "duration")
   private Double duration;
 
-  @NotNull
+  //@NotNull
   @Column(name = "language")
   @Enumerated(EnumType.STRING)
   private Language language;
