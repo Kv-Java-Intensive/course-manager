@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -59,6 +61,7 @@ public class Course extends BaseEntity {
 
   @NotNull
   @Column(name = "language")
+  @Enumerated(EnumType.STRING)
   private Language language;
 
   @OneToMany(mappedBy = "course", cascade = {CascadeType.MERGE, CascadeType.DETACH,

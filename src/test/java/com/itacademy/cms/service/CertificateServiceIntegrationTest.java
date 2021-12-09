@@ -1,6 +1,6 @@
 package com.itacademy.cms.service;
 
-import com.itacademy.cms.exeption.CertificateNotFoundException;
+import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.model.Certificate;
 import com.itacademy.cms.model.dto.CertificateDto;
 import com.itacademy.cms.repository.CertificateRepository;
@@ -46,7 +46,7 @@ public class CertificateServiceIntegrationTest {
 
     certificateService.deleteCertificateById(initCertificate.getId());
 
-    Assertions.assertThrows(CertificateNotFoundException.class,
+    Assertions.assertThrows(EntityNotFoundException.class,
         () -> certificateService.findById(initCertificate.getId()));
   }
 

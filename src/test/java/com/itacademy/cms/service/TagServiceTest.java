@@ -1,6 +1,6 @@
 package com.itacademy.cms.service;
 
-import com.itacademy.cms.exeption.TagNotFoundException;
+import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.model.Tag;
 import com.itacademy.cms.repository.TagRepository;
 import com.itacademy.cms.service.impl.TagServiceImpl;
@@ -28,14 +28,14 @@ public class TagServiceTest {
 
   @Test
   void findAllTest() {
-    Assertions.assertThrows(TagNotFoundException.class, () -> tagServiceImpl.getAllTags());
+    Assertions.assertThrows(EntityNotFoundException.class, () -> tagServiceImpl.getAllTags());
     Mockito.verify(tagRepository).findAll();
   }
 
   @Test
   void findByIdTestExpectedException() {
     Long id = 1L;
-    Assertions.assertThrows(TagNotFoundException.class, () -> tagServiceImpl.findTagbyId(id));
+    Assertions.assertThrows(EntityNotFoundException.class, () -> tagServiceImpl.findTagbyId(id));
     Mockito.verify(tagRepository).findById(id);
   }
 

@@ -1,6 +1,6 @@
 package com.itacademy.cms.service;
 
-import com.itacademy.cms.exeption.CategoryNotFoundException;
+import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.model.Category;
 import com.itacademy.cms.model.dto.CategoryDto;
 import com.itacademy.cms.repository.CategoryRepository;
@@ -29,7 +29,7 @@ public class CategoryServiceIntegrationTest {
   }
 
   @Test
-  void categorySaveAndFindByIdTest() throws CategoryNotFoundException {
+  void categorySaveAndFindByIdTest() {
     Category savedCategory = getSavedCategory();
 
     Category categoryById = categoryService.findById(savedCategory.getId());
@@ -38,7 +38,7 @@ public class CategoryServiceIntegrationTest {
   }
 
   @Test
-  void categoryUpdateTest() throws CategoryNotFoundException {
+  void categoryUpdateTest() {
     CategoryDto categoryDtoUpdate = new CategoryDto();
 
     categoryDtoUpdate.setCategoryName("testName");
@@ -53,14 +53,14 @@ public class CategoryServiceIntegrationTest {
   }
 
   @Test
-  void categoryDeleteTest() throws CategoryNotFoundException {
+  void categoryDeleteTest() {
     Category initCategory = getSavedCategory();
 
     Assertions.assertNotNull(categoryService.findById(initCategory.getId()));
 
     categoryService.deleteCategoryById(initCategory.getId());
 
-    Assertions.assertThrows(CategoryNotFoundException.class,
+    Assertions.assertThrows(EntityNotFoundException.class,
         () -> categoryService.findById(initCategory.getId()));
   }
 

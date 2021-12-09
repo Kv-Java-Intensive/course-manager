@@ -1,6 +1,6 @@
 package com.itacademy.cms.service.impl;
 
-import com.itacademy.cms.exeption.CategoryNotFoundException;
+import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.exeption.ParameterMissingException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Category;
@@ -22,10 +22,10 @@ public class CategoryServiceImpl implements CategoryService {
 
 
   @Override
-  public List<Category> findAll() throws CategoryNotFoundException {
+  public List<Category> findAll() {
     List<Category> categoriesList = (List<Category>) categoryRepository.findAll();
     if (categoriesList.isEmpty()) {
-      throw new CategoryNotFoundException("No categories found!");
+      throw new EntityNotFoundException("No categories found!");
     }
     return categoriesList;
   }
@@ -41,10 +41,10 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public Category findById(Long id) throws CategoryNotFoundException {
+  public Category findById(Long id) {
     Optional<Category> category = categoryRepository.findById(id);
     return category.orElseThrow(
-        () -> new CategoryNotFoundException("Category with id " + id + " not found!"));
+        () -> new EntityNotFoundException("Category with id " + id + " not found!"));
   }
 
   @Override
@@ -53,14 +53,14 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public void deleteCategoryById(Long id) throws CategoryNotFoundException {
+  public void deleteCategoryById(Long id) {
     if (id == null) {
       throw new ParameterMissingException("Category id is missing");
     } else if (categoryRepository.existsById(id)) {
       categoryRepository.deleteById(id);
       return;
     }
-    throw new CategoryNotFoundException("Category with id " + id + " not found!");
+    throw new EntityNotFoundException("Category with id " + id + " not found!");
   }
 
 }

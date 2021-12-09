@@ -1,6 +1,6 @@
 package com.itacademy.cms.service.impl;
 
-import com.itacademy.cms.exeption.CourseNotFoundException;
+import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Category;
 import com.itacademy.cms.model.Course;
@@ -28,20 +28,20 @@ public class CourseServiceImpl implements CourseService {
   private final MapStructMapper mapper;
 
   @Override
-  public List<Course> getAllCourses() throws CourseNotFoundException {
+  public List<Course> getAllCourses() {
     Optional<List<Course>> courses = Optional.ofNullable(courseDao.findAll());
     if (courses.isEmpty()) {
-      throw new CourseNotFoundException("Courses were not found");
+      throw new EntityNotFoundException("Courses were not found");
     }
     return courses.get();
   }
 
   @Override
-  public List<Course> getAllCoursesByCategory(String categoryName) throws CourseNotFoundException {
+  public List<Course> getAllCoursesByCategory(String categoryName) {
     Optional<List<Course>> courses = Optional.ofNullable(courseDao.findCourseByCategory(
         categoryDao.findByCategoryName(categoryName)));
     if (courses.isEmpty()) {
-      throw new CourseNotFoundException("Courses were not found");
+      throw new EntityNotFoundException("Courses were not found");
     }
     return courses.get();
   }
@@ -59,20 +59,20 @@ public class CourseServiceImpl implements CourseService {
   }
 
   @Override
-  public List<Course> getAllCoursesByTag(String tagName) throws CourseNotFoundException {
+  public List<Course> getAllCoursesByTag(String tagName) {
     Optional<List<Course>> courses = Optional.ofNullable(courseDao.findCourseByCourseTags(
         tagDao.findByName(tagName)));
     if (courses.isEmpty()) {
-      throw new CourseNotFoundException("Courses were not found");
+      throw new EntityNotFoundException("Courses were not found");
     }
     return courses.get();
   }
 
   @Override
-  public Course getCourseById(Long id) throws CourseNotFoundException {
+  public Course getCourseById(Long id) {
     Optional<Course> course = Optional.ofNullable(courseDao.findCourseById(id));
     if (course.isEmpty()) {
-      throw new CourseNotFoundException("This course was not found");
+      throw new EntityNotFoundException("This course was not found");
     }
     return course.get();
   }
@@ -101,11 +101,11 @@ public class CourseServiceImpl implements CourseService {
 
   @Override
 
-  public void deleteCourseById(Long id) throws CourseNotFoundException {
+  public void deleteCourseById(Long id) {
     Optional<Course> course = Optional.ofNullable(courseDao.findCourseById(id));
 
     if (course.isEmpty()) {
-      throw new CourseNotFoundException("This course was not found");
+      throw new EntityNotFoundException("This course was not found");
     } else {
       courseDao.deleteById(id);
     }
