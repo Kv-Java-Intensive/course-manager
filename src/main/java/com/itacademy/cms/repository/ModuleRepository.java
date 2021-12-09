@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ModuleRepository extends CrudRepository<Module, Long> {
-  Module getById(Long id);
 }

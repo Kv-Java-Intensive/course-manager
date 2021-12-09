@@ -43,15 +43,13 @@ public class CategoryServiceImpl implements CategoryService {
   @Override
   public Category findById(Long id) throws CategoryNotFoundException {
     Optional<Category> category = categoryRepository.findById(id);
-    if (category.isPresent()) {
-      return categoryRepository.getById(id);
-    }
-    throw new CategoryNotFoundException("Category with id " + id + " not found!");
+    return category.orElseThrow(
+        () -> new CategoryNotFoundException("Category with id " + id + " not found!"));
   }
 
   @Override
-  public void saveCategory(CategoryDto categoryDto) {
-    categoryRepository.save(entityMapper.categoryDtoToCategory(categoryDto));
+  public Category saveCategory(CategoryDto categoryDto) {
+    return categoryRepository.save(entityMapper.categoryDtoToCategory(categoryDto));
   }
 
   @Override
@@ -60,6 +58,7 @@ public class CategoryServiceImpl implements CategoryService {
       throw new ParameterMissingException("Category id is missing");
     } else if (categoryRepository.existsById(id)) {
       categoryRepository.deleteById(id);
+      return;
     }
     throw new CategoryNotFoundException("Category with id " + id + " not found!");
   }

@@ -32,16 +32,16 @@ public class TagServiceImpl implements TagService {
   }
 
   @Override
-  public void saveTag(TagDto tagDto) {
+  public Tag saveTag(TagDto tagDto) {
 
-    tagRepository.save(tagMapper.tagDtoToTag(tagDto));
+    return tagRepository.save(tagMapper.tagDtoToTag(tagDto));
 
   }
 
 
   @Override
-
   public Tag findTagbyId(Long id) throws TagNotFoundException {
+
     Optional<Tag> tag = tagRepository.findById(id);
     return tag.orElseThrow(() -> new TagNotFoundException("Tag with id " + id + " not found!"));
   }
@@ -56,7 +56,6 @@ public class TagServiceImpl implements TagService {
   }
 
   @Override
-
   public void deleteTag(Long id) throws TagNotFoundException {
 
     if (id == null) {

@@ -78,8 +78,10 @@ public class CourseServiceImpl implements CourseService {
   }
 
   @Override
+
   public void updateCourse(CoursePostDto coursePostDto, Long id) {
     Optional<Course> course = Optional.ofNullable(courseDao.findCourseById(id));
+
     if (course.isEmpty()) {
       courseDao.save(course.get());
     } else {
@@ -98,8 +100,10 @@ public class CourseServiceImpl implements CourseService {
   }
 
   @Override
+
   public void deleteCourseById(Long id) throws CourseNotFoundException {
     Optional<Course> course = Optional.ofNullable(courseDao.findCourseById(id));
+
     if (course.isEmpty()) {
       throw new CourseNotFoundException("This course was not found");
     } else {

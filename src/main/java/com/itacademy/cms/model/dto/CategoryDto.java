@@ -10,5 +10,6 @@ import lombok.Setter;
 public class CategoryDto {
 
   public List<Course> courses;
+
   private String categoryName;
 }
