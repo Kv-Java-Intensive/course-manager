@@ -23,7 +23,6 @@ public class UserController {
 
   private final MapStructMapper entityMapper;
 
-
   @GetMapping("/users")
   public List<UserDto> getAllUser() {
     return userService.findAll().stream()
@@ -35,7 +34,7 @@ public class UserController {
     return entityMapper.userToUserDto(userService.findById(id));
   }
 
-  @PostMapping("/users")
+  @PostMapping("/users/new")
   public void saveUser(@RequestBody UserDto userDto) {
     userService.saveUser(userDto);
   }
