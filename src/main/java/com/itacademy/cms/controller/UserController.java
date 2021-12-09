@@ -1,7 +1,7 @@
 package com.itacademy.cms.controller;
 
-import com.itacademy.cms.exeption.UserNotFoundException;
-import com.itacademy.cms.mapper.UserMapper;
+
+import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.dto.UserDto;
 import com.itacademy.cms.service.UserService;
 import java.util.List;
@@ -20,17 +20,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
   private final UserService userService;
-  private final UserMapper userMapper;
+
+  private final MapStructMapper entityMapper;
+
 
   @GetMapping("/users")
-  public List<UserDto> getAllUser() throws UserNotFoundException {
+  public List<UserDto> getAllUser() {
     return userService.findAll().stream()
-        .map(userMapper::userToUserDto).collect(Collectors.toList());
+        .map(entityMapper::userToUserDto).collect(Collectors.toList());
   }
 
   @GetMapping("/users/{id}")
-  public UserDto getUserById(@PathVariable("id") Long id) throws UserNotFoundException {
-    return userMapper.userToUserDto(userService.findById(id));
+  public UserDto getUserById(@PathVariable("id") Long id) {
+    return entityMapper.userToUserDto(userService.findById(id));
   }
 
   @PostMapping("/users")
@@ -39,13 +41,12 @@ public class UserController {
   }
 
   @PutMapping("/users/{id}")
-  public void updateUser(@RequestBody UserDto userDto, @PathVariable Long id)
-      throws UserNotFoundException {
+  public void updateUser(@RequestBody UserDto userDto, @PathVariable Long id) {
     userService.updateUser(userDto, id);
   }
 
   @DeleteMapping("/users/{id}")
-  public void deleteUser(@PathVariable("id") Long id) throws UserNotFoundException {
+  public void deleteUser(@PathVariable("id") Long id) {
     userService.deleteUserById(id);
   }
 }
