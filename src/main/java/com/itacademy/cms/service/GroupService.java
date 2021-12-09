@@ -9,12 +9,12 @@ public interface GroupService {
 
   List<Group> findAll();
 
-  Group findById(Long id) throws NoSuchGroupException;
+  Group findById(Long id);
 
-  //void updateGroup(GroupDto groupDto, Long id) throws NoSuchGroupException;
+  //void updateGroup(GroupDto groupDto, Long id);
 
   void saveGroup(Group group);
 
-  void deleteGroup(Long id) throws NoSuchGroupException;
+  void deleteGroup(Long id);
 
 }

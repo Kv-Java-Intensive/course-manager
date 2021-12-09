@@ -1,6 +1,6 @@
 package com.itacademy.cms.service.impl;
 
-import com.itacademy.cms.exeption.NoSuchGroupException;
+import com.itacademy.cms.exeption..EntityNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Group;
 import com.itacademy.cms.model.dto.GroupDto;
@@ -25,12 +25,12 @@ public class GroupServiceImpl implements GroupService {
   }
 
   @Override
-  public Group findById(Long id) throws NoSuchGroupException {
+  public Group findById(Long id) {
     Group group = groupRepository.getById(id);
     if (group != null) {
       return group;
     } else {
-      throw new NoSuchGroupException("Group with id = " + id + " does not exist!");
+      throw new  EntityNotFoundException("Group with id = " + id + " does not exist!");
     }
   }
 
@@ -45,7 +45,7 @@ public class GroupServiceImpl implements GroupService {
 //      group.setUsers(groupDto.getUsers());
 //      groupRepository.save(group);
 //    });
-//}
+//  }
 
   @Override
   public void saveGroup(Group group) {
@@ -53,7 +53,7 @@ public class GroupServiceImpl implements GroupService {
   }
 
   @Override
-  public void deleteGroup(Long id) throws NoSuchGroupException {
+  public void deleteGroup(Long id) {
     Group group = groupRepository.getById(id);
     groupRepository.delete(group);
   }

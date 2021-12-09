@@ -1,6 +1,5 @@
 package com.itacademy.cms.controller;
 
-import com.itacademy.cms.exeption.CategoryNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.dto.CategoryDto;
 import com.itacademy.cms.service.CategoryService;
@@ -23,13 +22,13 @@ public class CategoryController {
   private final MapStructMapper entityMapper;
 
   @GetMapping("/categories")
-  public List<CategoryDto> getAllCategories() throws CategoryNotFoundException {
+  public List<CategoryDto> getAllCategories(){
     return categoryService.findAll().stream()
         .map(entityMapper::categoryToCategoryDto).collect(Collectors.toList());
   }
 
   @GetMapping("/categories/{id}")
-  public CategoryDto getCategoryById(@PathVariable("id") Long id) throws CategoryNotFoundException {
+  public CategoryDto getCategoryById(@PathVariable("id") Long id)  {
     return entityMapper.categoryToCategoryDto(categoryService.findById(id));
   }
 
@@ -45,7 +44,7 @@ public class CategoryController {
 //  }
 
   @DeleteMapping("/categories/{id}")
-  public void deleteCategory(@PathVariable("id") Long id) throws CategoryNotFoundException {
+  public void deleteCategory(@PathVariable("id") Long id) {
     categoryService.deleteCategoryById(id);
   }
 }

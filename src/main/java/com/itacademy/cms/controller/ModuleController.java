@@ -1,6 +1,5 @@
 package com.itacademy.cms.controller;
 
-import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Module;
 import com.itacademy.cms.model.dto.ModuleDto;
@@ -24,12 +23,12 @@ public class ModuleController {
   private final MapStructMapper moduleMapper;
 
   @GetMapping("/modules")
-  public List<Module> getAllModules() throws EntityNotFoundException {
+  public List<Module> getAllModules() {
     return moduleService.findAll();
   }
 
   @GetMapping("/modules/{id}")
-  public ModuleDto getModuleById(@PathVariable("id") Long id) throws EntityNotFoundException {
+  public ModuleDto getModuleById(@PathVariable("id") Long id) {
     return moduleMapper.moduleToModuleDto(moduleService.findById(id));
   }
 
@@ -45,7 +44,7 @@ public class ModuleController {
 //  }
 
   @DeleteMapping("/modules/{id}")
-  public void deleteModule(@PathVariable("id") Long id) throws EntityNotFoundException {
+  public void deleteModule(@PathVariable("id") Long id) {
     moduleService.deleteModuleById(id);
   }
 
