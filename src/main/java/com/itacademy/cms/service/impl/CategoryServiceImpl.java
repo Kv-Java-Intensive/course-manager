@@ -71,6 +71,7 @@ public class CategoryServiceImpl implements CategoryService {
       throw new ParameterMissingException("Category id is missing");
     } else if (categoryRepository.existsByUuid(uuid)) {
       categoryRepository.deleteByUuid(uuid);
+      return;
     }
     throw new CategoryNotFoundException("Category with uuid " + uuid + " not found!");
   }
