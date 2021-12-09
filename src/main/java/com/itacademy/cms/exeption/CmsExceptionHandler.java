@@ -11,17 +11,18 @@ public class CmsExceptionHandler extends ResponseEntityExceptionHandler {
 
   @ExceptionHandler(EntityNotFoundException.class)
   public ResponseEntity<ErrorResponse> entityNotFoundException(EntityNotFoundException exception) {
-    ErrorResponse error = new ErrorResponse(exception.getMessage(), HttpStatus.NOT_FOUND, 404);
-
-    return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+    ErrorResponse error = new ErrorResponse(exception.getMessage(), HttpStatus.NO_CONTENT,
+        HttpStatus.NO_CONTENT.value());
+    return new ResponseEntity<>(error, HttpStatus.NO_CONTENT);
   }
 
   @ExceptionHandler(ParameterMissingException.class)
   public ResponseEntity<ErrorResponse> parameterMissingException(
       ParameterMissingException exception) {
     ErrorResponse error =
-        new ErrorResponse(exception.getMessage(), HttpStatus.UNPROCESSABLE_ENTITY, 422);
+        new ErrorResponse(exception.getMessage(), HttpStatus.BAD_REQUEST,
+            HttpStatus.BAD_REQUEST.value());
 
-    return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+    return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
   }
 }

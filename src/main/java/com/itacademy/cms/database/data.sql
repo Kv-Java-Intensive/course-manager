@@ -1,5 +1,3 @@
--- Inserting tags into tags table
-
 insert into tags (id, name)
 values (1, 'consectetuer');
 insert into tags (id, name)
@@ -100,213 +98,6 @@ insert into tags (id, name)
 values (49, 'auctor sed');
 insert into tags (id, name)
 values (50, 'sit amet');
-
-
--- Inserting certificates into certificates table
-
-insert into certificates (id, name, user_id)
-values (1, 'nonummy integer', 10);
-insert into certificates (id, name, user_id)
-values (2, 'platea dictumst maecenas', 22);
-insert into certificates (id, name, user_id)
-values (3, 'pede justo', 47);
-insert into certificates (id, name, user_id)
-values (4, 'mi integer ac', 11);
-insert into certificates (id, name, user_id)
-values (5, 'vitae nisi', 8);
-insert into certificates (id, name, user_id)
-values (6, 'morbi ut', 16);
-insert into certificates (id, name, user_id)
-values (7, 'convallis duis consequat', 48);
-insert into certificates (id, name, user_id)
-values (8, 'felis eu sapien', 36);
-insert into certificates (id, name, user_id)
-values (9, 'ac est', 26);
-insert into certificates (id, name, user_id)
-values (10, 'donec quis orci', 12);
-insert into certificates (id, name, user_id)
-values (11, 'viverra pede ac', 22);
-insert into certificates (id, name, user_id)
-values (12, 'condimentum neque', 25);
-insert into certificates (id, name, user_id)
-values (13, 'rhoncus dui', 50);
-insert into certificates (id, name, user_id)
-values (14, 'dolor morbi', 26);
-insert into certificates (id, name, user_id)
-values (15, 'condimentum id', 2);
-insert into certificates (id, name, user_id)
-values (16, 'proin risus', 23);
-insert into certificates (id, name, user_id)
-values (17, 'dolor quis', 44);
-insert into certificates (id, name, user_id)
-values (18, 'ipsum dolor', 8);
-insert into certificates (id, name, user_id)
-values (19, 'adipiscing elit', 46);
-insert into certificates (id, name, user_id)
-values (20, 'magna at nunc', 32);
-insert into certificates (id, name, user_id)
-values (21, 'vulputate luctus cum', 36);
-insert into certificates (id, name, user_id)
-values (22, 'faucibus accumsan odio', 18);
-insert into certificates (id, name, user_id)
-values (23, 'semper est', 35);
-insert into certificates (id, name, user_id)
-values (24, 'sapien cum', 43);
-insert into certificates (id, name, user_id)
-values (25, 'at ipsum', 8);
-insert into certificates (id, name, user_id)
-values (26, 'ligula pellentesque ultrices', 13);
-insert into certificates (id, name, user_id)
-values (27, 'vestibulum sed', 7);
-insert into certificates (id, name, user_id)
-values (28, 'orci mauris lacinia', 21);
-insert into certificates (id, name, user_id)
-values (29, 'dapibus at', 33);
-insert into certificates (id, name, user_id)
-values (30, 'pede morbi', 36);
-insert into certificates (id, name, user_id)
-values (31, 'ornare consequat', 16);
-insert into certificates (id, name, user_id)
-values (32, 'sapien cum sociis', 11);
-insert into certificates (id, name, user_id)
-values (33, 'justo nec', 35);
-insert into certificates (id, name, user_id)
-values (34, 'cum sociis', 27);
-insert into certificates (id, name, user_id)
-values (35, 'nunc commodo', 33);
-insert into certificates (id, name, user_id)
-values (36, 'massa id nisl', 17);
-insert into certificates (id, name, user_id)
-values (37, 'eros vestibulum', 2);
-insert into certificates (id, name, user_id)
-values (38, 'id lobortis convallis', 4);
-insert into certificates (id, name, user_id)
-values (39, 'eu sapien', 17);
-insert into certificates (id, name, user_id)
-values (40, 'turpis elementum', 38);
-insert into certificates (id, name, user_id)
-values (41, 'aliquam sit amet', 27);
-insert into certificates (id, name, user_id)
-values (42, 'ac enim', 40);
-insert into certificates (id, name, user_id)
-values (43, 'at lorem', 46);
-insert into certificates (id, name, user_id)
-values (44, 'ipsum primis', 41);
-insert into certificates (id, name, user_id)
-values (45, 'aliquam non mauris', 26);
-insert into certificates (id, name, user_id)
-values (46, 'nulla tellus', 20);
-insert into certificates (id, name, user_id)
-values (47, 'nisi volutpat', 28);
-insert into certificates (id, name, user_id)
-values (48, 'odio condimentum id', 31);
-insert into certificates (id, name, user_id)
-values (49, 'nam nulla', 3);
-insert into certificates (id, name, user_id)
-values (50, 'libero ut', 35);
-
--- Inserting modules into modules table
-
-insert into modules (id, description, content, lesson_num, course_id)
-values (1, 'nec sem', 'dignissim vestibulum vestibulum', 5, 22);
-insert into modules (id, description, content, lesson_num, course_id)
-values (2, 'leo odio condimentum', 'nulla nisl', 8, 26);
-insert into modules (id, description, content, lesson_num, course_id)
-values (3, 'mi integer', 'eu interdum', 8, 36);
-insert into modules (id, description, content, lesson_num, course_id)
-values (4, 'orci eget orci', 'in lacus curabitur', 4, 42);
-insert into modules (id, description, content, lesson_num, course_id)
-values (5, 'eleifend quam', 'hac habitasse', 9, 34);
-insert into modules (id, description, content, lesson_num, course_id)
-values (6, 'tincidunt in', 'justo sollicitudin ut', 20, 38);
-insert into modules (id, description, content, lesson_num, course_id)
-values (7, 'ipsum primis', 'elementum pellentesque quisque', 11, 47);
-insert into modules (id, description, content, lesson_num, course_id)
-values (8, 'in libero', 'lacus curabitur at', 8, 50);
-insert into modules (id, description, content, lesson_num, course_id)
-values (9, 'mi in porttitor', 'elementum nullam varius', 6, 27);
-insert into modules (id, description, content, lesson_num, course_id)
-values (10, 'nibh quisque', 'lobortis sapien', 14, 42);
-insert into modules (id, description, content, lesson_num, course_id)
-values (11, 'neque libero', 'montes nascetur ridiculus', 11, 8);
-insert into modules (id, description, content, lesson_num, course_id)
-values (12, 'metus sapien', 'fermentum donec ut', 17, 49);
-insert into modules (id, description, content, lesson_num, course_id)
-values (13, 'felis ut', 'odio consequat varius', 20, 23);
-insert into modules (id, description, content, lesson_num, course_id)
-values (14, 'posuere felis sed', 'lorem ipsum dolor', 13, 1);
-insert into modules (id, description, content, lesson_num, course_id)
-values (15, 'odio odio', 'non mattis pulvinar', 18, 20);
-insert into modules (id, description, content, lesson_num, course_id)
-values (16, 'pede morbi', 'venenatis lacinia', 7, 7);
-insert into modules (id, description, content, lesson_num, course_id)
-values (17, 'risus dapibus augue', 'non lectus', 14, 16);
-insert into modules (id, description, content, lesson_num, course_id)
-values (18, 'pulvinar nulla', 'felis fusce', 6, 17);
-insert into modules (id, description, content, lesson_num, course_id)
-values (19, 'at nibh', 'vestibulum ante', 6, 40);
-insert into modules (id, description, content, lesson_num, course_id)
-values (20, 'in hac', 'proin risus', 14, 1);
-insert into modules (id, description, content, lesson_num, course_id)
-values (21, 'morbi sem', 'erat vestibulum sed', 5, 31);
-insert into modules (id, description, content, lesson_num, course_id)
-values (22, 'hac habitasse platea', 'orci vehicula', 20, 19);
-insert into modules (id, description, content, lesson_num, course_id)
-values (23, 'vel nulla', 'volutpat convallis', 6, 27);
-insert into modules (id, description, content, lesson_num, course_id)
-values (24, 'ac enim', 'amet eros suspendisse', 11, 26);
-insert into modules (id, description, content, lesson_num, course_id)
-values (25, 'eu interdum eu', 'placerat praesent blandit', 9, 17);
-insert into modules (id, description, content, lesson_num, course_id)
-values (26, 'ipsum aliquam non', 'id nisl', 10, 36);
-insert into modules (id, description, content, lesson_num, course_id)
-values (27, 'lacinia sapien quis', 'nunc vestibulum ante', 6, 50);
-insert into modules (id, description, content, lesson_num, course_id)
-values (28, 'commodo placerat', 'eget elit', 6, 35);
-insert into modules (id, description, content, lesson_num, course_id)
-values (29, 'nisl venenatis', 'mauris eget', 15, 44);
-insert into modules (id, description, content, lesson_num, course_id)
-values (30, 'nisi vulputate nonummy', 'nulla suspendisse', 15, 20);
-insert into modules (id, description, content, lesson_num, course_id)
-values (31, 'sit amet', 'aliquet maecenas leo', 16, 13);
-insert into modules (id, description, content, lesson_num, course_id)
-values (32, 'vestibulum sit amet', 'morbi ut odio', 9, 17);
-insert into modules (id, description, content, lesson_num, course_id)
-values (33, 'turpis adipiscing lorem', 'nibh in', 17, 15);
-insert into modules (id, description, content, lesson_num, course_id)
-values (34, 'aliquet ultrices', 'nec molestie sed', 19, 24);
-insert into modules (id, description, content, lesson_num, course_id)
-values (35, 'montes nascetur ridiculus', 'porta volutpat erat', 5, 25);
-insert into modules (id, description, content, lesson_num, course_id)
-values (36, 'orci nullam', 'pulvinar nulla', 20, 17);
-insert into modules (id, description, content, lesson_num, course_id)
-values (37, 'sed lacus', 'lacinia erat', 20, 2);
-insert into modules (id, description, content, lesson_num, course_id)
-values (38, 'est et tempus', 'at dolor quis', 11, 28);
-insert into modules (id, description, content, lesson_num, course_id)
-values (39, 'bibendum felis', 'diam id', 9, 29);
-insert into modules (id, description, content, lesson_num, course_id)
-values (40, 'eleifend donec', 'nullam molestie nibh', 19, 6);
-insert into modules (id, description, content, lesson_num, course_id)
-values (41, 'porttitor id consequat', 'in leo', 19, 19);
-insert into modules (id, description, content, lesson_num, course_id)
-values (42, 'sapien iaculis congue', 'vitae ipsum', 20, 3);
-insert into modules (id, description, content, lesson_num, course_id)
-values (43, 'feugiat et eros', 'etiam vel augue', 19, 48);
-insert into modules (id, description, content, lesson_num, course_id)
-values (44, 'lobortis convallis tortor', 'iaculis justo in', 10, 5);
-insert into modules (id, description, content, lesson_num, course_id)
-values (45, 'amet eleifend pede', 'sit amet consectetuer', 7, 10);
-insert into modules (id, description, content, lesson_num, course_id)
-values (46, 'pede justo eu', 'est congue', 16, 23);
-insert into modules (id, description, content, lesson_num, course_id)
-values (47, 'mus vivamus vestibulum', 'nunc donec quis', 17, 42);
-insert into modules (id, description, content, lesson_num, course_id)
-values (48, 'nulla justo aliquam', 'non velit', 4, 39);
-insert into modules (id, description, content, lesson_num, course_id)
-values (49, 'proin leo odio', 'amet nunc viverra', 18, 34);
-insert into modules (id, description, content, lesson_num, course_id)
-values (50, 'erat nulla tempus', 'libero ut massa', 15, 43);
 
 -- Inserting categories into categories table
 
@@ -411,6 +202,109 @@ values (49, 'convallis');
 insert into categories (id, category_name)
 values (50, 'curabitur at');
 
+-- Inserting courses into courses table
+
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (1, 'Dooley, Aufderhar and Hyatt', 'justo in', 21, 'UKRAINIAN', 61, '2022-03-08', 45);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (2, 'Morar LLC', 'orci luctus', 18, 'UKRAINIAN', 40, '2021-03-30', 16);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (3, 'Senger-Hane', 'platea dictumst etiam', 22, 'UKRAINIAN', 68, '2021-10-22', 4);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (4, 'Friesen-Emmerich', 'erat tortor sollicitudin', 16, 'UKRAINIAN', 60, '2022-03-11', 37);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (5, 'Larson-Leannon', 'sed accumsan', 22, 'UKRAINIAN', 51, '2022-01-31', 23);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (6, 'Donnelly, Murazik and Gulgowski', 'vestibulum ante ipsum', 23, 'UKRAINIAN', 48, '2021-04-15', 4);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (7, 'Cremin-Hansen', 'fusce congue diam', 17, 'UKRAINIAN', 76, '2022-04-29', 5);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (8, 'Pfeffer, Shanahan and Emmerich', 'ipsum primis', 23, 'UKRAINIAN', 47, '2021-02-26', 50);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (9, 'Herzog, Weimann and Bogan', 'maecenas pulvinar', 23, 'UKRAINIAN', 77, '2022-01-22', 16);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (10, 'Oberbrunner and Sons', 'luctus et ultrices', 20, 'UKRAINIAN', 40, '2022-04-03', 36);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (11, 'Littel and Sons', 'odio porttitor id', 23, 'UKRAINIAN', 59, '2021-02-25', 42);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (12, 'Schuppe, Ward and Wunsch', 'diam nam tristique', 16, 'UKRAINIAN', 42, '2021-06-09', 5);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (13, 'Terry, Gusikowski and Trantow', 'eget tempus', 23, 'UKRAINIAN', 74, '2021-05-20', 28);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (14, 'Harber, Crona and Champlin', 'curabitur in', 19, 'UKRAINIAN', 76, '2021-02-06', 34);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (15, 'Howell-Farrell', 'nulla sed vel', 16, 'UKRAINIAN', 56, '2021-08-10', 37);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (16, 'Kohler Group', 'vestibulum aliquet ultrices', 17, 'UKRAINIAN', 62, '2021-02-14', 45);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (17, 'Bogan LLC', 'quis lectus', 22, 'UKRAINIAN', 69, '2022-02-08', 8);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (18, 'Pacocha, Jacobs and Streich', 'turpis nec euismod', 19, 'UKRAINIAN', 51, '2021-08-03', 23);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (19, 'Mosciski, Hoeger and Auer', 'consequat metus sapien', 15, 'UKRAINIAN', 41, '2022-01-20', 17);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (20, 'Sipes and Sons', 'quis odio consequat', 23, 'UKRAINIAN', 58, '2021-01-30', 44);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (21, 'Cruickshank-Greenholt', 'nascetur ridiculus mus', 18, 'UKRAINIAN', 57, '2021-08-30', 4);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (22, 'Heller-Armstrong', 'rutrum at lorem', 17, 'UKRAINIAN', 50, '2021-07-28', 23);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (23, 'Shields, Hudson and Koch', 'id turpis integer', 22, 'UKRAINIAN', 69, '2021-05-01', 14);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (24, 'Stiedemann and Sons', 'a pede', 19, 'UKRAINIAN', 62, '2022-04-20', 43);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (25, 'Kessler-Hettinger', 'erat vestibulum sed', 20, 'UKRAINIAN', 52, '2021-11-18', 15);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (26, 'Weissnat-Osinski', 'luctus cum', 18, 'UKRAINIAN', 43, '2021-10-29', 10);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (27, 'Bradtke, Fisher and Leuschke', 'in porttitor', 21, 'UKRAINIAN', 46, '2022-05-16', 31);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (28, 'O''Reilly, Kiehn and McCullough', 'justo aliquam quis', 19, 'UKRAINIAN', 40, '2021-05-14', 13);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (29, 'Rolfson Group', 'donec semper sapien', 17, 'UKRAINIAN', 69, '2021-03-05', 34);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (30, 'Ferry Inc', 'ultricies eu', 19, 'UKRAINIAN', 58, '2022-01-17', 50);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (31, 'Stark, Yost and Jacobi', 'vulputate justo in', 19, 'UKRAINIAN', 69, '2021-02-10', 39);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (32, 'Wolf, Wyman and Dietrich', 'rutrum at lorem', 20, 'UKRAINIAN', 56, '2021-05-21', 13);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (33, 'Lemke Group', 'tempus semper est', 19, 'UKRAINIAN', 79, '2022-05-19', 14);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (34, 'Zieme, Schroeder and Morar', 'orci eget', 17, 'UKRAINIAN', 74, '2021-06-23', 13);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (35, 'Carter, Gibson and Stracke', 'convallis morbi', 15, 'UKRAINIAN', 58, '2021-01-02', 8);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (36, 'O''Conner-Oberbrunner', 'enim lorem', 15, 'UKRAINIAN', 75, '2021-05-15', 30);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (37, 'O''Hara-Waelchi', 'phasellus in', 16, 'UKRAINIAN', 60, '2021-06-26', 49);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (38, 'Fritsch, West and Wilkinson', 'justo aliquam quis', 15, 'UKRAINIAN', 42, '2021-01-06', 26);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (39, 'Nikolaus-Gleichner', 'suscipit ligula', 21, 'UKRAINIAN', 59, '2022-02-04', 25);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (40, 'Ryan, Turcotte and Haley', 'morbi odio odio', 19, 'UKRAINIAN', 76, '2022-02-13', 12);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (41, 'Harris, Oberbrunner and Bechtelar', 'quam sapien varius', 17, 'UKRAINIAN', 76, '2022-04-11', 33);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (42, 'Champlin LLC', 'porttitor id', 20, 'UKRAINIAN', 53, '2021-11-17', 39);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (43, 'Lowe, Cassin and Mante', 'adipiscing elit', 19, 'UKRAINIAN', 63, '2021-03-07', 9);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (44, 'Heathcote-Lindgren', 'venenatis lacinia', 19, 'UKRAINIAN', 57, '2022-05-19', 38);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (45, 'Wolf Inc', 'quis odio consequat', 15, 'UKRAINIAN', 62, '2022-04-17', 30);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (46, 'Wyman-Walker', 'id consequat', 22, 'UKRAINIAN', 44, '2021-06-24', 14);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (47, 'Maggio, Hettinger and Ryan', 'at velit', 22, 'UKRAINIAN', 65, '2021-08-12', 39);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (48, 'Sauer and Sons', 'leo pellentesque ultrices', 19, 'UKRAINIAN', 58, '2021-03-30', 21);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (49, 'Rippin-Hackett', 'tellus nulla', 18, 'UKRAINIAN', 77, '2021-06-28', 42);
+insert into courses (id, course_name, description, duration, language, price, update_date, course_category)
+values (50, 'Price Group', 'pede ullamcorper augue', 23, 'UKRAINIAN', 64, '2021-04-24', 23);
+
 -- Inserting course_tags into course_tags table
 
 insert into course_tags (course_id, tag_id)
@@ -514,158 +408,108 @@ values (22, 10);
 insert into course_tags (course_id, tag_id)
 values (24, 42);
 
--- Inserting courses into courses table
+-- Inserting modules into modules table
 
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (1, 'Koelpin Group', 'duis bibendum', '3:06:07', 1, 30, '2021-01-31', 9, 14, 3);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (2, 'Adams Inc', 'ornare', '10:29:22', 1, 47, '2021-08-31', 14, 50, 35);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (3, 'McLaughlin-Stracke', 'est risus auctor', '6:48:16', 2, 26, '2021-11-02', 21, 14, 21);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (4, 'Hickle-Mosciski', 'maecenas pulvinar lobortis', '4:02:35', 1, 31, '2021-08-20', 49, 8, 27);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (5, 'Dickens, Zemlak and Rowe', 'non ligula pellentesque', '17:31:31', 2, 37, '2021-05-04', 35, 19, 8);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (6, 'Tremblay, Wilkinson and Bailey', 'faucibus', '14:36:31', 1, 24, '2021-10-21', 33, 16, 33);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (7, 'Luettgen and Sons', 'aenean', '4:43:57', 1, 30, '2021-11-15', 17, 36, 29);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (8, 'Quitzon, Harber and Effertz', 'integer tincidunt', '11:26:06', 1, 23, '2021-02-24', 21, 32, 31);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (9, 'Grimes, Kertzmann and Miller', 'posuere cubilia curae', '15:56:28', 2, 28, '2021-02-06', 50, 4, 8);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (10, 'Halvorson Group', 'nulla ac enim', '20:15:58', 2, 24, '2021-06-16', 40, 20, 17);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (11, 'Von-Schaden', 'sociis natoque', '12:47:04', 2, 31, '2021-04-21', 40, 34, 10);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (12, 'Jenkins and Sons', 'erat volutpat in', '1:37:13', 2, 43, '2021-05-26', 30, 25, 11);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (13, 'Pollich, Wisozk and Hodkiewicz', 'sed', '3:28:58', 1, 33, '2021-11-27', 33, 14, 22);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (14, 'Littel-Marquardt', 'pede', '5:32:11', 2, 39, '2021-07-23', 42, 9, 35);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (15, 'Davis and Sons', 'nam nulla integer', '7:03:38', 1, 46, '2021-02-26', 15, 24, 4);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (16, 'Jerde, Klein and Russel', 'nulla', '8:37:24', 1, 36, '2021-01-02', 50, 25, 1);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (17, 'Schultz Inc', 'est et tempus', '1:09:04', 1, 29, '2021-03-23', 17, 35, 48);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (18, 'Fahey Inc', 'libero rutrum ac', '14:59:04', 2, 47, '2020-12-20', 2, 41, 3);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (19, 'Pfeffer-Jacobi', 'elit proin risus', '16:18:02', 1, 40, '2020-12-26', 20, 42, 38);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (20, 'Connelly Inc', 'justo lacinia', '20:16:10', 1, 35, '2021-05-12', 13, 17, 48);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (21, 'Predovic, Heaney and Leuschke', 'etiam', '17:03:27', 2, 28, '2021-04-03', 42, 44, 10);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (22, 'Schamberger, Bins and Rempel', 'a suscipit', '14:40:02', 2, 41, '2021-06-26', 44, 28, 13);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (23, 'Schmidt Group', 'in hac habitasse', '9:50:28', 1, 28, '2020-12-21', 18, 45, 34);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (24, 'Gaylord LLC', 'ridiculus', '15:23:16', 2, 33, '2021-07-10', 34, 14, 48);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (25, 'Towne, Brown and Cartwright', 'orci', '11:18:31', 1, 29, '2021-05-24', 11, 21, 11);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (26, 'Leannon, Tremblay and Kiehn', 'cum', '3:24:11', 2, 45, '2021-11-26', 28, 16, 9);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (27, 'Altenwerth-Weimann', 'libero nam dui', '4:09:04', 1, 28, '2021-11-11', 44, 46, 10);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (28, 'Weimann Group', 'sem', '7:13:55', 1, 42, '2021-03-02', 20, 37, 27);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (29, 'Grant, Mayert and Konopelski', 'porta', '12:43:10', 2, 19, '2021-03-16', 41, 20, 4);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (30, 'Torp Group', 'nam ultrices libero', '1:03:19', 1, 40, '2021-07-29', 31, 23, 47);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (31, 'McCullough LLC', 'vestibulum', '2:45:02', 1, 44, '2021-02-18', 28, 24, 3);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (32, 'Marquardt-Mraz', 'eget elit sodales', '13:12:10', 2, 34, '2021-01-01', 40, 15, 4);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (33, 'Volkman, Schmidt and Lesch', 'vulputate nonummy', '4:43:59', 1, 26, '2021-02-05', 32, 13, 33);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (34, 'Lowe-Boyer', 'metus', '19:33:59', 2, 19, '2021-06-28', 2, 28, 42);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (35, 'Sanford and Sons', 'ultrices', '6:08:58', 1, 22, '2021-11-28', 8, 10, 35);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (36, 'Bayer, Ledner and Oberbrunner', 'vel augue', '5:32:31', 2, 34, '2021-03-19', 1, 40, 5);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (37, 'McGlynn, Oberbrunner and O''Hara', 'iaculis congue vivamus', '6:32:18', 2, 39, '2021-07-25', 21, 38, 33);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (38, 'Hilll Group', 'arcu sed augue', '15:06:07', 2, 20, '2020-12-15', 24, 47, 8);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (39, 'Medhurst, Gusikowski and Purdy', 'in quis', '12:09:03', 2, 47, '2021-04-20', 46, 42, 18);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (40, 'Koss LLC', 'eu est', '13:49:56', 2, 36, '2021-05-19', 24, 49, 43);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (41, 'Mayert, Yost and Feest', 'quam turpis', '9:22:54', 1, 47, '2021-08-29', 23, 12, 34);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (42, 'Walker and Sons', 'sollicitudin', '23:17:19', 2, 39, '2021-03-11', 14, 8, 2);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (43, 'Reichel-Yundt', 'nonummy', '14:18:28', 1, 30, '2021-11-08', 39, 16, 30);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (44, 'McLaughlin LLC', 'curae duis faucibus', '15:11:18', 2, 22, '2021-03-05', 8, 34, 37);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (45, 'Bashirian Inc', 'ipsum praesent', '21:23:44', 2, 32, '2021-08-19', 35, 7, 16);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (46, 'Carroll LLC', 'molestie nibh', '6:26:55', 2, 49, '2021-07-08', 29, 45, 16);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (47, 'Frami-Hahn', 'nam congue risus', '2:56:17', 2, 29, '2021-06-05', 3, 29, 49);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (48, 'Wunsch, Schulist and Bogan', 'eget', '11:05:50', 2, 32, '2021-07-29', 17, 49, 18);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (49, 'Yundt Group', 'pretium quis lectus', '11:11:05', 1, 37, '2021-04-23', 45, 48, 27);
-insert into courses (id, course_name, description, duration, language, price, update_date, course_category, tag_id,
-                     course_id)
-values (50, 'Weimann, Lemke and Tillman', 'quis turpis', '20:19:56', 2, 20, '2021-07-10', 16, 39, 9);
+insert into modules (id, description, content, lesson_num, course_id)
+values (1, 'nec sem', 'dignissim vestibulum vestibulum', 5, 22);
+insert into modules (id, description, content, lesson_num, course_id)
+values (2, 'leo odio condimentum', 'nulla nisl', 8, 26);
+insert into modules (id, description, content, lesson_num, course_id)
+values (3, 'mi integer', 'eu interdum', 8, 36);
+insert into modules (id, description, content, lesson_num, course_id)
+values (4, 'orci eget orci', 'in lacus curabitur', 4, 42);
+insert into modules (id, description, content, lesson_num, course_id)
+values (5, 'eleifend quam', 'hac habitasse', 9, 34);
+insert into modules (id, description, content, lesson_num, course_id)
+values (6, 'tincidunt in', 'justo sollicitudin ut', 20, 38);
+insert into modules (id, description, content, lesson_num, course_id)
+values (7, 'ipsum primis', 'elementum pellentesque quisque', 11, 47);
+insert into modules (id, description, content, lesson_num, course_id)
+values (8, 'in libero', 'lacus curabitur at', 8, 50);
+insert into modules (id, description, content, lesson_num, course_id)
+values (9, 'mi in porttitor', 'elementum nullam varius', 6, 27);
+insert into modules (id, description, content, lesson_num, course_id)
+values (10, 'nibh quisque', 'lobortis sapien', 14, 42);
+insert into modules (id, description, content, lesson_num, course_id)
+values (11, 'neque libero', 'montes nascetur ridiculus', 11, 8);
+insert into modules (id, description, content, lesson_num, course_id)
+values (12, 'metus sapien', 'fermentum donec ut', 17, 49);
+insert into modules (id, description, content, lesson_num, course_id)
+values (13, 'felis ut', 'odio consequat varius', 20, 23);
+insert into modules (id, description, content, lesson_num, course_id)
+values (14, 'posuere felis sed', 'lorem ipsum dolor', 13, 1);
+insert into modules (id, description, content, lesson_num, course_id)
+values (15, 'odio odio', 'non mattis pulvinar', 18, 20);
+insert into modules (id, description, content, lesson_num, course_id)
+values (16, 'pede morbi', 'venenatis lacinia', 7, 7);
+insert into modules (id, description, content, lesson_num, course_id)
+values (17, 'risus dapibus augue', 'non lectus', 14, 16);
+insert into modules (id, description, content, lesson_num, course_id)
+values (18, 'pulvinar nulla', 'felis fusce', 6, 17);
+insert into modules (id, description, content, lesson_num, course_id)
+values (19, 'at nibh', 'vestibulum ante', 6, 40);
+insert into modules (id, description, content, lesson_num, course_id)
+values (20, 'in hac', 'proin risus', 14, 1);
+insert into modules (id, description, content, lesson_num, course_id)
+values (21, 'morbi sem', 'erat vestibulum sed', 5, 31);
+insert into modules (id, description, content, lesson_num, course_id)
+values (22, 'hac habitasse platea', 'orci vehicula', 20, 19);
+insert into modules (id, description, content, lesson_num, course_id)
+values (23, 'vel nulla', 'volutpat convallis', 6, 27);
+insert into modules (id, description, content, lesson_num, course_id)
+values (24, 'ac enim', 'amet eros suspendisse', 11, 26);
+insert into modules (id, description, content, lesson_num, course_id)
+values (25, 'eu interdum eu', 'placerat praesent blandit', 9, 17);
+insert into modules (id, description, content, lesson_num, course_id)
+values (26, 'ipsum aliquam non', 'id nisl', 10, 36);
+insert into modules (id, description, content, lesson_num, course_id)
+values (27, 'lacinia sapien quis', 'nunc vestibulum ante', 6, 50);
+insert into modules (id, description, content, lesson_num, course_id)
+values (28, 'commodo placerat', 'eget elit', 6, 35);
+insert into modules (id, description, content, lesson_num, course_id)
+values (29, 'nisl venenatis', 'mauris eget', 15, 44);
+insert into modules (id, description, content, lesson_num, course_id)
+values (30, 'nisi vulputate nonummy', 'nulla suspendisse', 15, 20);
+insert into modules (id, description, content, lesson_num, course_id)
+values (31, 'sit amet', 'aliquet maecenas leo', 16, 13);
+insert into modules (id, description, content, lesson_num, course_id)
+values (32, 'vestibulum sit amet', 'morbi ut odio', 9, 17);
+insert into modules (id, description, content, lesson_num, course_id)
+values (33, 'turpis adipiscing lorem', 'nibh in', 17, 15);
+insert into modules (id, description, content, lesson_num, course_id)
+values (34, 'aliquet ultrices', 'nec molestie sed', 19, 24);
+insert into modules (id, description, content, lesson_num, course_id)
+values (35, 'montes nascetur ridiculus', 'porta volutpat erat', 5, 25);
+insert into modules (id, description, content, lesson_num, course_id)
+values (36, 'orci nullam', 'pulvinar nulla', 20, 17);
+insert into modules (id, description, content, lesson_num, course_id)
+values (37, 'sed lacus', 'lacinia erat', 20, 2);
+insert into modules (id, description, content, lesson_num, course_id)
+values (38, 'est et tempus', 'at dolor quis', 11, 28);
+insert into modules (id, description, content, lesson_num, course_id)
+values (39, 'bibendum felis', 'diam id', 9, 29);
+insert into modules (id, description, content, lesson_num, course_id)
+values (40, 'eleifend donec', 'nullam molestie nibh', 19, 6);
+insert into modules (id, description, content, lesson_num, course_id)
+values (41, 'porttitor id consequat', 'in leo', 19, 19);
+insert into modules (id, description, content, lesson_num, course_id)
+values (42, 'sapien iaculis congue', 'vitae ipsum', 20, 3);
+insert into modules (id, description, content, lesson_num, course_id)
+values (43, 'feugiat et eros', 'etiam vel augue', 19, 48);
+insert into modules (id, description, content, lesson_num, course_id)
+values (44, 'lobortis convallis tortor', 'iaculis justo in', 10, 5);
+insert into modules (id, description, content, lesson_num, course_id)
+values (45, 'amet eleifend pede', 'sit amet consectetuer', 7, 10);
+insert into modules (id, description, content, lesson_num, course_id)
+values (46, 'pede justo eu', 'est congue', 16, 23);
+insert into modules (id, description, content, lesson_num, course_id)
+values (47, 'mus vivamus vestibulum', 'nunc donec quis', 17, 42);
+insert into modules (id, description, content, lesson_num, course_id)
+values (48, 'nulla justo aliquam', 'non velit', 4, 39);
+insert into modules (id, description, content, lesson_num, course_id)
+values (49, 'proin leo odio', 'amet nunc viverra', 18, 34);
+insert into modules (id, description, content, lesson_num, course_id)
+values (50, 'erat nulla tempus', 'libero ut massa', 15, 43);
 
 -- Inserting groups into groups table
 
@@ -1014,6 +858,110 @@ values (50, '4041377101432156',
         'libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis',
         'fklain1d@umich.edu', 'Forrest', 'Klain',
         'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'AHYhfy');
+
+-- Inserting certificates into certificates table
+
+insert into certificates (id, name, course_id, user_id)
+values (1, 'Conn Group', 16, 1);
+insert into certificates (id, name, course_id, user_id)
+values (2, 'Hessel, Sauer and Koch', 27, 2);
+insert into certificates (id, name, course_id, user_id)
+values (3, 'Torphy-Romaguera', 17, 29);
+insert into certificates (id, name, course_id, user_id)
+values (4, 'Labadie LLC', 32, 43);
+insert into certificates (id, name, course_id, user_id)
+values (5, 'Pfannerstill, O''Keefe and Greenfelder', 2, 35);
+insert into certificates (id, name, course_id, user_id)
+values (6, 'Wehner Group', 24, 35);
+insert into certificates (id, name, course_id, user_id)
+values (7, 'Morissette, Kuhic and Padberg', 16, 49);
+insert into certificates (id, name, course_id, user_id)
+values (8, 'Schneider LLC', 37, 46);
+insert into certificates (id, name, course_id, user_id)
+values (9, 'Larson, Bergnaum and Beier', 20, 10);
+insert into certificates (id, name, course_id, user_id)
+values (10, 'Funk Inc', 31, 26);
+insert into certificates (id, name, course_id, user_id)
+values (11, 'Halvorson, Kuvalis and Okuneva', 13, 2);
+insert into certificates (id, name, course_id, user_id)
+values (12, 'Littel, Schowalter and Buckridge', 26, 30);
+insert into certificates (id, name, course_id, user_id)
+values (13, 'Bergstrom Group', 23, 10);
+insert into certificates (id, name, course_id, user_id)
+values (14, 'Lubowitz Inc', 35, 22);
+insert into certificates (id, name, course_id, user_id)
+values (15, 'Leannon-Leuschke', 22, 18);
+insert into certificates (id, name, course_id, user_id)
+values (16, 'Wyman-Abbott', 2, 4);
+insert into certificates (id, name, course_id, user_id)
+values (17, 'Herman, Mertz and Fahey', 11, 23);
+insert into certificates (id, name, course_id, user_id)
+values (18, 'Kautzer, Kunde and Rosenbaum', 28, 29);
+insert into certificates (id, name, course_id, user_id)
+values (19, 'Ernser, Wehner and Purdy', 38, 14);
+insert into certificates (id, name, course_id, user_id)
+values (20, 'Veum, Bernier and Abbott', 19, 42);
+insert into certificates (id, name, course_id, user_id)
+values (21, 'Sawayn-Emmerich', 10, 38);
+insert into certificates (id, name, course_id, user_id)
+values (22, 'Kihn, Padberg and Parisian', 13, 32);
+insert into certificates (id, name, course_id, user_id)
+values (23, 'Kassulke, Stokes and Deckow', 45, 4);
+insert into certificates (id, name, course_id, user_id)
+values (24, 'Pagac Inc', 13, 14);
+insert into certificates (id, name, course_id, user_id)
+values (25, 'Reichert-Carroll', 23, 26);
+insert into certificates (id, name, course_id, user_id)
+values (26, 'Shields-Jerde', 47, 43);
+insert into certificates (id, name, course_id, user_id)
+values (27, 'Weissnat-Upton', 7, 38);
+insert into certificates (id, name, course_id, user_id)
+values (28, 'McKenzie-Schumm', 36, 7);
+insert into certificates (id, name, course_id, user_id)
+values (29, 'Harris-Anderson', 49, 4);
+insert into certificates (id, name, course_id, user_id)
+values (30, 'Kilback Group', 34, 21);
+insert into certificates (id, name, course_id, user_id)
+values (31, 'Wuckert, Stark and Nikolaus', 32, 33);
+insert into certificates (id, name, course_id, user_id)
+values (32, 'Dibbert, Baumbach and Nolan', 42, 46);
+insert into certificates (id, name, course_id, user_id)
+values (33, 'Pollich and Sons', 27, 40);
+insert into certificates (id, name, course_id, user_id)
+values (34, 'Boehm, Rogahn and Parisian', 44, 16);
+insert into certificates (id, name, course_id, user_id)
+values (35, 'Nienow-Cruickshank', 18, 19);
+insert into certificates (id, name, course_id, user_id)
+values (36, 'Jast-Hessel', 40, 47);
+insert into certificates (id, name, course_id, user_id)
+values (37, 'Bechtelar-Stiedemann', 36, 5);
+insert into certificates (id, name, course_id, user_id)
+values (38, 'Hermann and Sons', 13, 25);
+insert into certificates (id, name, course_id, user_id)
+values (39, 'Bartell-Hodkiewicz', 33, 11);
+insert into certificates (id, name, course_id, user_id)
+values (40, 'Koepp LLC', 20, 29);
+insert into certificates (id, name, course_id, user_id)
+values (41, 'McGlynn-Shanahan', 35, 40);
+insert into certificates (id, name, course_id, user_id)
+values (42, 'Kulas-Glover', 3, 48);
+insert into certificates (id, name, course_id, user_id)
+values (43, 'Nienow-Deckow', 42, 32);
+insert into certificates (id, name, course_id, user_id)
+values (44, 'Ankunding LLC', 38, 31);
+insert into certificates (id, name, course_id, user_id)
+values (45, 'Swaniawski, Brakus and Braun', 1, 32);
+insert into certificates (id, name, course_id, user_id)
+values (46, 'Roberts Group', 33, 24);
+insert into certificates (id, name, course_id, user_id)
+values (47, 'Kutch, McClure and Quigley', 37, 27);
+insert into certificates (id, name, course_id, user_id)
+values (48, 'Feeney-Boehm', 21, 6);
+insert into certificates (id, name, course_id, user_id)
+values (49, 'Hickle, Bechtelar and Schmidt', 39, 36);
+insert into certificates (id, name, course_id, user_id)
+values (50, 'Medhurst Inc', 35, 18);
+
 
 -- Inserting user_course into user_course table
 
