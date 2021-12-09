@@ -4,6 +4,7 @@ import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.repository.UserRepository;
 
+import com.itacademy.cms.service.impl.UserServiceImpl;
 import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
