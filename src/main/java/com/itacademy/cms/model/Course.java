@@ -67,8 +67,8 @@ public class Course extends BaseEntity {
 
 
   @ManyToMany(cascade = CascadeType.ALL)
-  @JoinTable(name = "course_tags", joinColumns = @JoinColumn(name = "tag_id"),
-      inverseJoinColumns = @JoinColumn(name = "course_id"))
+  @JoinTable(name = "course_tags", joinColumns = @JoinColumn(name = "course_id"),
+      inverseJoinColumns = @JoinColumn(name = "tag_id"))
   private List<Tag> courseTags;
 
   @OneToMany(cascade = {CascadeType.MERGE, CascadeType.DETACH,
