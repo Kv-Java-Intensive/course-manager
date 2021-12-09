@@ -1,6 +1,5 @@
 package com.itacademy.cms.controller;
 
-import com.itacademy.cms.exeption.CategoryNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.dto.CategoryDto;
 import com.itacademy.cms.service.CategoryService;
@@ -21,18 +20,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class CategoryController {
 
   private final CategoryService categoryService;
-  private final MapStructMapper categoryMapper;
+  private final MapStructMapper entityMapper;
 
   @GetMapping("/categories")
-  public List<CategoryDto> getAllCategories() throws CategoryNotFoundException {
+  public List<CategoryDto> getAllCategories() {
     return categoryService.findAll().stream()
-        .map(categoryMapper::categoryToCategoryDto).collect(Collectors.toList());
+        .map(entityMapper::categoryToCategoryDto).collect(Collectors.toList());
   }
 
   @GetMapping("/categories/{id}")
-  public CategoryDto getCategoryById(@PathVariable("id") String uuid)
-      throws CategoryNotFoundException {
-    return categoryMapper.categoryToCategoryDto(categoryService.findByUuid(uuid));
+  public CategoryDto getCategoryById(@PathVariable("id") String uuid) {
+    return entityMapper.categoryToCategoryDto(categoryService.findByUuid(uuid));
+
   }
 
   @PostMapping("/categories")
@@ -41,14 +40,14 @@ public class CategoryController {
   }
 
   @PutMapping("/categories/{id}")
-  public void updateCategory(@RequestBody CategoryDto categoryDto, @PathVariable("id") String uuid)
-      throws CategoryNotFoundException {
+  public void updateCategory(@RequestBody CategoryDto categoryDto,
+                             @PathVariable("id") String uuid) {
     categoryService.updateCategory(categoryDto, uuid);
   }
-  
+
   @Transactional
-  @DeleteMapping("/categories/{uuid}")
-  public void deleteCategory(@PathVariable("uuid") String uuid) throws CategoryNotFoundException {
+  @DeleteMapping("/categories/{id}")
+  public void deleteCategory(@PathVariable("id") String uuid) {
     categoryService.deleteCategoryByUuid(uuid);
   }
 }

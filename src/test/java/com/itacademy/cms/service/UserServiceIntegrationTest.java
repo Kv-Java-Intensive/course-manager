@@ -1,6 +1,6 @@
 package com.itacademy.cms.service;
 
-import com.itacademy.cms.exeption.UserNotFoundException;
+import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.dto.UserDto;
 import com.itacademy.cms.model.enums.Role;
@@ -79,7 +79,7 @@ public class UserServiceIntegrationTest {
 
     userService.deleteUserById(initUser.getId());
 
-    Assertions.assertThrows(UserNotFoundException.class,
+    Assertions.assertThrows(EntityNotFoundException.class,
         () -> userService.findById(initUser.getId()));
   }
 

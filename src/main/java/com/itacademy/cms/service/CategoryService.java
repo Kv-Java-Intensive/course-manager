@@ -1,24 +1,20 @@
 package com.itacademy.cms.service;
 
-import com.itacademy.cms.exeption.CategoryNotFoundException;
 import com.itacademy.cms.model.Category;
 import com.itacademy.cms.model.dto.CategoryDto;
 import java.util.List;
 
 public interface CategoryService {
 
-  List<Category> findAll() throws CategoryNotFoundException;
+  List<Category> findAll();
 
-  //  Category findById(Long id) throws CategoryNotFoundException;
-  Category findByUuid(String uuid) throws CategoryNotFoundException;
+  Category findByUuid(String uuid);
 
-  void updateCategory(CategoryDto categoryDto, String uuid) throws CategoryNotFoundException;
+  void updateCategory(CategoryDto categoryDto, String uuid);
 
   Category saveCategory(CategoryDto categoryDto);
 
-  void deleteCategoryById(Long id) throws CategoryNotFoundException;
+  void deleteCategoryById(Long id);
 
-//  Category findById(Long id) throws CategoryNotFoundException;
-
-  void deleteCategoryByUuid(String uuid) throws CategoryNotFoundException;
+  void deleteCategoryByUuid(String uuid);
 }

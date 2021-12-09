@@ -1,6 +1,6 @@
 package com.itacademy.cms.service;
 
-import com.itacademy.cms.exeption.CategoryNotFoundException;
+import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.model.Category;
 import com.itacademy.cms.repository.CategoryRepository;
 import com.itacademy.cms.service.impl.CategoryServiceImpl;
@@ -25,20 +25,20 @@ public class CategoryServiceTest {
 
   @Test
   void findAllTest() {
-    Assertions.assertThrows(CategoryNotFoundException.class, () -> categoryServiceImpl.findAll());
+    Assertions.assertThrows(EntityNotFoundException.class, () -> categoryServiceImpl.findAll());
     Mockito.verify(categoryRepository).findAll();
   }
 
   @Test
   void findByIdTestExpectedException() {
     String uuid = UUID.randomUUID().toString();
-    Assertions.assertThrows(CategoryNotFoundException.class,
+    Assertions.assertThrows(EntityNotFoundException.class,
         () -> categoryServiceImpl.findByUuid(uuid));
     Mockito.verify(categoryRepository).findByUuid(uuid);
   }
 
   @Test
-  void findByUuidTestExpectedCategory() throws CategoryNotFoundException {
+  void findByUuidTestExpectedCategory() {
     String uuid = UUID.randomUUID().toString();
 
     Category category = new Category();

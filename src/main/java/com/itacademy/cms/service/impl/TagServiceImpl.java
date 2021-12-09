@@ -1,7 +1,7 @@
 package com.itacademy.cms.service.impl;
 
+import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.exeption.ParameterMissingException;
-import com.itacademy.cms.exeption.TagNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Tag;
 import com.itacademy.cms.model.dto.TagDto;
@@ -22,11 +22,11 @@ public class TagServiceImpl implements TagService {
 
 
   @Override
-  public List<Tag> getAllTags() throws TagNotFoundException {
+  public List<Tag> getAllTags() {
 
     List<Tag> tagList = tagRepository.findAll();
     if (tagList.isEmpty()) {
-      throw new TagNotFoundException("No tags found!");
+      throw new EntityNotFoundException("No tags found!");
     }
     return tagList;
   }
@@ -38,12 +38,11 @@ public class TagServiceImpl implements TagService {
 
   }
 
-
   @Override
-  public Tag findTagbyId(Long id) throws TagNotFoundException {
+  public Tag findTagbyId(Long id) {
 
     Optional<Tag> tag = tagRepository.findById(id);
-    return tag.orElseThrow(() -> new TagNotFoundException("Tag with id " + id + " not found!"));
+    return tag.orElseThrow(() -> new EntityNotFoundException("Tag with id " + id + " not found!"));
   }
 
   @Override
@@ -56,7 +55,7 @@ public class TagServiceImpl implements TagService {
   }
 
   @Override
-  public void deleteTag(Long id) throws TagNotFoundException {
+  public void deleteTag(Long id) {
 
     if (id == null) {
       throw new ParameterMissingException("Tag id is missing!");
@@ -64,7 +63,7 @@ public class TagServiceImpl implements TagService {
       tagRepository.deleteById(id);
       return;
     }
-    throw new TagNotFoundException("Tag with id " + id + " not found!");
+    throw new EntityNotFoundException("Tag with id " + id + " not found!");
   }
 
 

@@ -1,8 +1,7 @@
 package com.itacademy.cms.service.impl;
 
-import com.itacademy.cms.exeption.CategoryNotFoundException;
+import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.exeption.ParameterMissingException;
-
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Category;
 import com.itacademy.cms.model.dto.CategoryDto;
@@ -23,31 +22,29 @@ public class CategoryServiceImpl implements CategoryService {
 
 
   @Override
-  public List<Category> findAll() throws CategoryNotFoundException {
+  public List<Category> findAll() {
     List<Category> categoriesList = categoryRepository.findAll();
     if (categoriesList.isEmpty()) {
-      throw new CategoryNotFoundException("No categories found!");
+      throw new EntityNotFoundException("No categories found!");
     }
     return categoriesList;
   }
 
   @Override
-  public void updateCategory(CategoryDto categoryDto, String uuid)
-      throws CategoryNotFoundException {
+  public void updateCategory(CategoryDto categoryDto, String uuid) {
     Optional<Category> categoryOptional = categoryRepository.findByUuid(uuid);
     categoryOptional.ifPresent(category -> {
       category.setCourses(categoryDto.getCourses());
       category.setCategoryName(categoryDto.getCategoryName());
-//      category.setUuid(categoryDto.getUuid());
       categoryRepository.save(category);
     });
   }
 
   @Override
-  public Category findByUuid(String uuid) throws CategoryNotFoundException {
+  public Category findByUuid(String uuid) {
     Optional<Category> category = categoryRepository.findByUuid(uuid);
     return category.orElseThrow(
-        () -> new CategoryNotFoundException("Category with id " + uuid + " not found!"));
+        () -> new EntityNotFoundException("Category with id " + uuid + " not found!"));
   }
 
   @Override
@@ -56,31 +53,23 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public void deleteCategoryById(Long id) throws CategoryNotFoundException {
+  public void deleteCategoryById(Long id) {
     if (id == null) {
       throw new ParameterMissingException("Category id is missing");
     } else if (categoryRepository.existsById(id)) {
       categoryRepository.deleteById(id);
     }
-    throw new CategoryNotFoundException("Category with id " + id + " not found!");
+    throw new EntityNotFoundException("Category with id " + id + " not found!");
   }
 
   @Override
-  public void deleteCategoryByUuid(String uuid) throws CategoryNotFoundException {
+  public void deleteCategoryByUuid(String uuid) {
     if (uuid == null) {
       throw new ParameterMissingException("Category id is missing");
     } else if (categoryRepository.existsByUuid(uuid)) {
       categoryRepository.deleteByUuid(uuid);
       return;
     }
-    throw new CategoryNotFoundException("Category with uuid " + uuid + " not found!");
   }
-
-//  @Override
-//  public Category findById(Long id) throws CategoryNotFoundException {
-//    Optional<Category> category = categoryRepository.findById(id);
-//    return category.orElseThrow(
-//        () -> new CategoryNotFoundException("Category with id " + id + " not found!"));
-//  }
 
 }

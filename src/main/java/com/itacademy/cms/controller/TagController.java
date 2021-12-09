@@ -1,7 +1,6 @@
 package com.itacademy.cms.controller;
 
 
-import com.itacademy.cms.exeption.TagNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.dto.TagDto;
 import com.itacademy.cms.service.TagService;
@@ -26,13 +25,13 @@ public class TagController {
 
 
   @GetMapping("/tags")
-  public List<TagDto> showAllTags() throws TagNotFoundException {
+  public List<TagDto> showAllTags() {
     return tagService.getAllTags().stream()
         .map(tagMapper::tagToTagDto).collect(Collectors.toList());
   }
 
   @GetMapping("/tags/{id}")
-  public TagDto getTagById(@PathVariable("id") Long tagId) throws TagNotFoundException {
+  public TagDto getTagById(@PathVariable("id") Long tagId) {
     return tagMapper.tagToTagDto(tagService.findTagbyId(tagId));
 
   }
@@ -48,7 +47,7 @@ public class TagController {
   }
 
   @DeleteMapping("/tags/{id}")
-  public void delete(@PathVariable Long id) throws TagNotFoundException {
+  public void delete(@PathVariable Long id) {
     tagService.deleteTag(id);
   }
 }
