@@ -20,17 +20,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class CategoryController {
 
   private final CategoryService categoryService;
-  private final MapStructMapper entityMapper;
+  private final MapStructMapper categoryMapper;
 
   @GetMapping("/categories")
   public List<CategoryDto> getAllCategories() throws CategoryNotFoundException {
     return categoryService.findAll().stream()
-        .map(entityMapper::categoryToCategoryDto).collect(Collectors.toList());
+        .map(categoryMapper::categoryToCategoryDto).collect(Collectors.toList());
   }
 
   @GetMapping("/categories/{id}")
-  public CategoryDto getCategoryById(@PathVariable("id") Long id) throws CategoryNotFoundException {
-    return entityMapper.categoryToCategoryDto(categoryService.findById(id));
+  public CategoryDto getCategoryById(@PathVariable("id") String uuid)
+      throws CategoryNotFoundException {
+    return categoryMapper.categoryToCategoryDto(categoryService.findByUuid(uuid));
   }
 
   @PostMapping("/categories")
@@ -39,9 +40,9 @@ public class CategoryController {
   }
 
   @PutMapping("/categories/{id}")
-  public void updateCategory(@RequestBody CategoryDto categoryDto, @PathVariable Long id)
+  public void updateCategory(@RequestBody CategoryDto categoryDto, @PathVariable("id") String uuid)
       throws CategoryNotFoundException {
-    categoryService.updateCategory(categoryDto, id);
+    categoryService.updateCategory(categoryDto, uuid);
   }
 
   @DeleteMapping("/categories/{id}")

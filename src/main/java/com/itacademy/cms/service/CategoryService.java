@@ -9,11 +9,14 @@ public interface CategoryService {
 
   List<Category> findAll() throws CategoryNotFoundException;
 
-  Category findById(Long id) throws CategoryNotFoundException;
+  //  Category findById(Long id) throws CategoryNotFoundException;
+  Category findByUuid(String uuid) throws CategoryNotFoundException;
 
-  void updateCategory(CategoryDto categoryDto, Long id) throws CategoryNotFoundException;
+  void updateCategory(CategoryDto categoryDto, String uuid) throws CategoryNotFoundException;
 
   Category saveCategory(CategoryDto categoryDto);
 
   void deleteCategoryById(Long id) throws CategoryNotFoundException;
+
+  Category findById(Long id);
 }

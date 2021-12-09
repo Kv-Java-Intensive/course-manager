@@ -8,7 +8,7 @@ import com.itacademy.cms.model.dto.CoursePostDto;
 import com.itacademy.cms.service.CourseService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+//import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,11 +51,11 @@ public class CourseController {
     return mapStructMapper.courseToCourseGetDto(courseService.getCourseById(id));
   }
 
-  @PostMapping
-  public void addNewCourse(@AuthenticationPrincipal User user,
-                           @RequestBody CoursePostDto coursePostDto) {
-    courseService.addCourse(coursePostDto, user);
-  }
+//  @PostMapping
+//  public void addNewCourse(@AuthenticationPrincipal User user,
+//                           @RequestBody CoursePostDto coursePostDto) {
+//    courseService.addCourse(coursePostDto, user);
+//  }
 
   @PutMapping("/{id}")
   public void updateCourseById(@RequestBody CoursePostDto coursePostDto,
