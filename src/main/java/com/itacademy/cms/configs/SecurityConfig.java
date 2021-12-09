@@ -35,6 +35,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
         .logout().invalidateHttpSession(true)
         .clearAuthentication(true).permitAll();
+
+//    http.antMatcher("/register")
   }
 
   @Override
