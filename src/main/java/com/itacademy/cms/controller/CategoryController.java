@@ -6,6 +6,7 @@ import com.itacademy.cms.model.dto.CategoryDto;
 import com.itacademy.cms.service.CategoryService;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,9 +45,10 @@ public class CategoryController {
       throws CategoryNotFoundException {
     categoryService.updateCategory(categoryDto, uuid);
   }
-
-  @DeleteMapping("/categories/{id}")
-  public void deleteCategory(@PathVariable("id") Long id) throws CategoryNotFoundException {
-    categoryService.deleteCategoryById(id);
+  
+  @Transactional
+  @DeleteMapping("/categories/{uuid}")
+  public void deleteCategory(@PathVariable("uuid") String uuid) throws CategoryNotFoundException {
+    categoryService.deleteCategoryByUuid(uuid);
   }
 }

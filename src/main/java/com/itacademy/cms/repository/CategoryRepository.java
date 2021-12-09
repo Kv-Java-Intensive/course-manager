@@ -12,4 +12,8 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
   Category getByUuid(String uuid);
 
   Category findByCategoryName(String categoryName);
+
+  boolean existsByUuid(String uuid);
+
+  void deleteByUuid(String uuid);
 }

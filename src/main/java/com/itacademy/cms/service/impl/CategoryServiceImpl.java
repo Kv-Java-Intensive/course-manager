@@ -46,16 +46,13 @@ public class CategoryServiceImpl implements CategoryService {
   @Override
   public Category findByUuid(String uuid) throws CategoryNotFoundException {
     Optional<Category> category = categoryRepository.findByUuid(uuid);
-    if (category.isPresent()) {
-      return categoryRepository.getByUuid(uuid);
-    }
-    throw new CategoryNotFoundException("Category with id " + uuid + " not found!");
+    return category.orElseThrow(
+        () -> new CategoryNotFoundException("Category with id " + uuid + " not found!"));
   }
 
   @Override
   public Category saveCategory(CategoryDto categoryDto) {
-    categoryRepository.save(categoryMapper.categoryDtoToCategory(categoryDto));
-    return null;
+    return categoryRepository.save(categoryMapper.categoryDtoToCategory(categoryDto));
   }
 
   @Override
@@ -69,8 +66,20 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public Category findById(Long id) {
-    return null;
+  public void deleteCategoryByUuid(String uuid) throws CategoryNotFoundException {
+    if (uuid == null) {
+      throw new ParameterMissingException("Category id is missing");
+    } else if (categoryRepository.existsByUuid(uuid)) {
+      categoryRepository.deleteByUuid(uuid);
+    }
+    throw new CategoryNotFoundException("Category with uuid " + uuid + " not found!");
   }
+
+//  @Override
+//  public Category findById(Long id) throws CategoryNotFoundException {
+//    Optional<Category> category = categoryRepository.findById(id);
+//    return category.orElseThrow(
+//        () -> new CategoryNotFoundException("Category with id " + id + " not found!"));
+//  }
 
 }

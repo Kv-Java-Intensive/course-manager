@@ -18,5 +18,7 @@ public interface CategoryService {
 
   void deleteCategoryById(Long id) throws CategoryNotFoundException;
 
-  Category findById(Long id);
+//  Category findById(Long id) throws CategoryNotFoundException;
+
+  void deleteCategoryByUuid(String uuid) throws CategoryNotFoundException;
 }
