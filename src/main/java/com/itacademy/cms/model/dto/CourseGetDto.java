@@ -32,15 +32,15 @@ public class CourseGetDto {
   private String language;
 
   @JsonProperty("tags")
-  private List<TagDto> tags;
+  private List<TagGetDto> tags;
 
-  @JsonProperty("certificate")
-  private CertificateDto certificateDto;
+//  @JsonProperty("certificate")
+//  private CertificateDto certificateDto;
 
   @JsonProperty("groups")
-  private List<GroupDto> groups;
+  private List<GroupGetDto> groups;
 
   @JsonProperty("modules")
-  private List<ModuleDto> modules;
+  private List<ModuleGetDto> modules;
 }
 
