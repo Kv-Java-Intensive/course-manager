@@ -11,7 +11,7 @@ public interface ModuleService {
 
   Module findById(Long id) throws EntityNotFoundException;
 
-  void updateModule(ModuleDto moduleDto, Long id) throws EntityNotFoundException;
+  //void updateModule(ModuleDto moduleDto, Long id) throws EntityNotFoundException;
 
   void saveModule(ModuleDto moduleDto);
 

@@ -38,11 +38,11 @@ public class CategoryController {
     categoryService.saveCategory(categoryDto);
   }
 
-  @PutMapping("/categories/{id}")
-  public void updateCategory(@RequestBody CategoryDto categoryDto, @PathVariable Long id)
-      throws CategoryNotFoundException {
-    categoryService.updateCategory(categoryDto, id);
-  }
+//  @PutMapping("/categories/{id}")
+//  public void updateCategory(@RequestBody CategoryDto categoryDto, @PathVariable Long id)
+//      throws CategoryNotFoundException {
+//    categoryService.updateCategory(categoryDto, id);
+//  }
 
   @DeleteMapping("/categories/{id}")
   public void deleteCategory(@PathVariable("id") Long id) throws CategoryNotFoundException {

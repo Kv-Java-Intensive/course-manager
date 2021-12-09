@@ -11,7 +11,7 @@ public interface CategoryService {
 
   Category findById(Long id) throws CategoryNotFoundException;
 
-  void updateCategory(CategoryDto categoryDto, Long id) throws CategoryNotFoundException;
+  //void updateCategory(CategoryDto categoryDto, Long id) throws CategoryNotFoundException;
 
   void saveCategory(CategoryDto categoryDto);
 

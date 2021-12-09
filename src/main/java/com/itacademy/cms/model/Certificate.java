@@ -29,7 +29,7 @@ public class Certificate extends BaseEntity {
 
 
   @OneToOne
-  @JoinColumn(name = "certificate")
+  //@JoinColumn(name = "certificate")
   private Course course;
 
 

@@ -11,7 +11,7 @@ public interface GroupService {
 
   Group findById(Long id) throws NoSuchGroupException;
 
-  void updateGroup(GroupDto groupDto, Long id) throws NoSuchGroupException;
+  //void updateGroup(GroupDto groupDto, Long id) throws NoSuchGroupException;
 
   void saveGroup(Group group);
 

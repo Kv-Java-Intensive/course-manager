@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ModuleDto {
-  private Course course;
+  private CoursePostDto course;
 
   private int lessonNumber;
 

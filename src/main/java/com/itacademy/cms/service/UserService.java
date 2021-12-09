@@ -10,7 +10,7 @@ public interface UserService {
 
   User findById(Long id);
 
-  void updateUser(UserDto userDto, Long id);
+  //void updateUser(UserDto userDto, Long id);
 
   User saveUser(UserDto userDto);
 

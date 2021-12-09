@@ -34,18 +34,18 @@ public class GroupServiceImpl implements GroupService {
     }
   }
 
-  @Override
-  public void updateGroup(GroupDto groupDto, Long id) throws NoSuchGroupException {
-    Optional<Group> opt = groupRepository.findById(id);
-    opt.ifPresent(group -> {
-      group.setName(groupDto.getName());
-      group.setCourse(groupDto.getCourse());
-      group.setCapacity(group.getCapacity());
-      group.setStartDate(groupDto.getStartDate());
-      group.setUsers(groupDto.getUsers());
-      groupRepository.save(group);
-    });
-  }
+//  @Override
+//  public void updateGroup(GroupDto groupDto, Long id) throws NoSuchGroupException {
+//    Optional<Group> opt = groupRepository.findById(id);
+//    opt.ifPresent(group -> {
+//      group.setName(groupDto.getName());
+//      group.setCourse(groupDto.getCourse());
+//      group.setCapacity(group.getCapacity());
+//      group.setStartDate(groupDto.getStartDate());
+//      group.setUsers(groupDto.getUsers());
+//      groupRepository.save(group);
+//    });
+//}
 
   @Override
   public void saveGroup(Group group) {

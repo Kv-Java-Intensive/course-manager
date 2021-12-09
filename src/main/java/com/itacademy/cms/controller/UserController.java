@@ -40,10 +40,10 @@ public class UserController {
     userService.saveUser(userDto);
   }
 
-  @PutMapping("/users/{id}")
-  public void updateUser(@RequestBody UserDto userDto, @PathVariable Long id) {
-    userService.updateUser(userDto, id);
-  }
+//  @PutMapping("/users/{id}")
+//  public void updateUser(@RequestBody UserDto userDto, @PathVariable Long id) {
+//    userService.updateUser(userDto, id);
+//  }
 
   @DeleteMapping("/users/{id}")
   public void deleteUser(@PathVariable("id") Long id) {

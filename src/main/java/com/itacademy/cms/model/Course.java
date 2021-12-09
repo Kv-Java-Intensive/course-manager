@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -30,7 +31,8 @@ import lombok.Setter;
 @Entity
 @Table(name = "courses")
 public class Course extends BaseEntity {
-
+  //  @Id
+//  Long id;
   @Column(name = "course_name")
   @NotNull
   private String courseName;
@@ -39,13 +41,14 @@ public class Course extends BaseEntity {
   @NotNull
   private String description;
 
-  @NotNull
+  //@NotNull
   @Column(name = "price")
   private Double price;
 
-  @NotNull
+  //@NotNull
   @ManyToOne
-  @JoinColumn(name = "course_category")
+  @JoinColumn(name = "course")
+  //@JoinTable(name = "course_category")
   private Category category;
 
   @NotNull
@@ -79,7 +82,8 @@ public class Course extends BaseEntity {
       CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "course")
   private List<Module> modules;
 
-  @NotNull
-  @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "course")
+  //@NotNull
+  @OneToOne(cascade = CascadeType.ALL, mappedBy = "course")
+  // @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "course")
   private Certificate certificate;
 }
