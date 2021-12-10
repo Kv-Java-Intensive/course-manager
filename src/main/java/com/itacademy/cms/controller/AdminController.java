@@ -8,11 +8,10 @@ import java.security.InvalidParameterException;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,32 +33,44 @@ public class AdminController {
   }
 
   @GetMapping("/findUserByName")
-  public String findByName(@RequestParam("name") String name, Model model) {
+  public User findByName(@RequestParam("name") String name, Model model) {
     if (name == null) {
       throw new InvalidParameterException();
     }
     User user = userService.findByFirstName(name);
     model.addAttribute("user", user);
-    return "...";
+    return user;
   }
 
   @GetMapping("/findUserByLastName")
-  public String findByLastName(@RequestParam("lastName") String lastName, Model model) {
+  public User findByLastName(@RequestParam("lastName") String lastName, Model model) {
     if (lastName == null) {
       throw new InvalidParameterException();
     }
     User user = userService.findByLastName(lastName);
     model.addAttribute("user", user);
-    return "...";
+    return user;
   }
 
   @GetMapping("/findUserByEmail")
-  public String findByEmail(@RequestParam("email") String email, Model model) {
+  public User findByEmail(@RequestParam("email") String email, Model model) {
     if (email == null) {
       throw new InvalidParameterException();
     }
     User user = userService.findByEmail(email);
     model.addAttribute("user", user);
-    return "...";
+    return user;
+  }
+
+  @PostMapping("/listUser/block")
+  public List<User> block(@RequestParam(name = "id") Long id,
+                          @RequestParam(name = "active") boolean active,
+                          Model model) {
+
+    userService.changeActive(id, active);
+
+    List<User> users = userService.findAll();
+    model.addAttribute("people", users);
+    return users;
   }
 }

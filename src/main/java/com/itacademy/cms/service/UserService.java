@@ -16,10 +16,11 @@ public interface UserService {
 
   void deleteUserById(Long id);
 
-  public User findByFirstName(String name);
+  User findByFirstName(String name);
 
-  public User findByLastName(String surname);
+  User findByLastName(String surname);
 
-  public User findByEmail(String email);
+  User findByEmail(String email);
 
+  boolean changeActive(Long id, boolean active);
 }

@@ -83,4 +83,15 @@ public class UserServiceImpl implements UserService {
   public User findByEmail(String email) {
     return userRepository.getUserByEmail(email);
   }
+
+  public boolean changeActive(Long id, boolean active) {
+    Optional<User> user = userRepository.findById(id);
+//    if (active) {
+//      user.setActive(false);
+//    } else {
+//      user.setActive(true);
+//    }
+//    userRepository.save(user);
+    return true;
+  }
 }

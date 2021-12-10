@@ -28,4 +28,6 @@ public class UserDto {
   private Role role;
 
   private String about;
+
+  private boolean active;
 }
