@@ -4,6 +4,7 @@ import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Module;
 import com.itacademy.cms.model.dto.ModuleDto;
 import com.itacademy.cms.service.ModuleService;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,8 +24,13 @@ public class ModuleController {
   private final MapStructMapper moduleMapper;
 
   @GetMapping("/modules")
-  public List<Module> getAllModules() {
-    return moduleService.findAll();
+  public List<ModuleDto> getAllModules() {
+    List<Module> modules = moduleService.findAll();
+    List<ModuleDto> moduleDtos = new ArrayList<>();
+    for (Module module : modules) {
+      moduleDtos.add(moduleMapper.moduleToModuleDto(module));
+    }
+    return moduleDtos;
   }
 
   @GetMapping("/modules/{id}")

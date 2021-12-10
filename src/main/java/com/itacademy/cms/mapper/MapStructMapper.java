@@ -14,6 +14,7 @@ import com.itacademy.cms.model.dto.CoursePostDto;
 import com.itacademy.cms.model.dto.GroupDto;
 import com.itacademy.cms.model.dto.ModuleDto;
 import com.itacademy.cms.model.dto.TagDto;
+import com.itacademy.cms.model.dto.TagGetDto;
 import com.itacademy.cms.model.dto.UserDto;
 import java.util.List;
 import org.mapstruct.Mapper;
@@ -23,6 +24,7 @@ import org.mapstruct.factory.Mappers;
 public interface MapStructMapper {
   MapStructMapper MAPPER = Mappers.getMapper(MapStructMapper.class);
 
+  //courseToCourseGetDto
   Course courseDtoToCourse(CoursePostDto coursePostDto);
 
   CourseGetDto courseToCourseGetDto(Course course);
@@ -54,5 +56,7 @@ public interface MapStructMapper {
   TagDto tagToTagDto(Tag tag);
 
   Tag tagDtoToTag(TagDto tagDto);
+
+  TagGetDto tagToTagGetDto(Tag tag);
 
 }
