@@ -30,7 +30,7 @@ import org.hibernate.annotations.Immutable;
 public class UserToCourse {
 
   @EmbeddedId
-  protected Id id = new Id();
+  protected UserToCourseId id = new UserToCourseId();
   @ManyToOne
   @JoinColumn(name = "user_id", insertable = false, updatable = false)
   private User user;
@@ -56,7 +56,7 @@ public class UserToCourse {
   }
 
   @Embeddable
-  public static class Id implements Serializable {
+  public static class UserToCourseId implements Serializable {
 
     @Column(name = "user_id")
     protected Long userId;
@@ -64,10 +64,10 @@ public class UserToCourse {
     @Column(name = "course_id")
     protected Long courseId;
 
-    public Id() {
+    public UserToCourseId() {
     }
 
-    public Id(Long userId, Long courseId) {
+    public UserToCourseId(Long userId, Long courseId) {
       this.userId = userId;
       this.courseId = courseId;
     }

@@ -54,4 +54,5 @@ public interface MapStructMapper {
   TagDto tagToTagDto(Tag tag);
 
   Tag tagDtoToTag(TagDto tagDto);
+
 }

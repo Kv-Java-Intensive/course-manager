@@ -22,13 +22,13 @@ public class CategoryController {
   private final MapStructMapper entityMapper;
 
   @GetMapping("/categories")
-  public List<CategoryDto> getAllCategories() {
+  public List<CategoryDto> getAllCategories(){
     return categoryService.findAll().stream()
         .map(entityMapper::categoryToCategoryDto).collect(Collectors.toList());
   }
 
   @GetMapping("/categories/{id}")
-  public CategoryDto getCategoryById(@PathVariable("id") Long id) {
+  public CategoryDto getCategoryById(@PathVariable("id") Long id)  {
     return entityMapper.categoryToCategoryDto(categoryService.findById(id));
   }
 
@@ -37,10 +37,11 @@ public class CategoryController {
     categoryService.saveCategory(categoryDto);
   }
 
-  @PutMapping("/categories/{id}")
-  public void updateCategory(@RequestBody CategoryDto categoryDto, @PathVariable Long id) {
-    categoryService.updateCategory(categoryDto, id);
-  }
+//  @PutMapping("/categories/{id}")
+//  public void updateCategory(@RequestBody CategoryDto categoryDto, @PathVariable Long id)
+//      throws CategoryNotFoundException {
+//    categoryService.updateCategory(categoryDto, id);
+//  }
 
   @DeleteMapping("/categories/{id}")
   public void deleteCategory(@PathVariable("id") Long id) {
