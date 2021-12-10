@@ -1,10 +1,7 @@
 package com.itacademy.cms.service.impl;
 
-import com.itacademy.cms.exeption.NoSuchGroupException;
-import com.itacademy.cms.mapper.GroupMapper;
-
 import com.itacademy.cms.exeption.EntityNotFoundException;
-import com.itacademy.cms.mapper.MapStructMapper;
+import com.itacademy.cms.exeption.NoSuchGroupException;
 import com.itacademy.cms.model.Group;
 import com.itacademy.cms.model.dto.GroupDto;
 import com.itacademy.cms.repository.GroupRepository;
@@ -15,9 +12,6 @@ import java.util.Optional;
 public class GroupServiceImpl implements GroupService {
 
   private GroupRepository groupRepository;
-  private GroupMapper groupMapper;
-
-  private MapStructMapper groupMapper;
 
   public List<Group> getGroupsByUserId(Long id) {
     return groupRepository.getAllByUser(id);
@@ -25,8 +19,10 @@ public class GroupServiceImpl implements GroupService {
 
   @Override
   public List<Group> findAll() {
-    List<Group> groups = groupRepository.findAll();
-
+    List<Group> groups = (List<Group>) groupRepository.findAll();
+    if (groups.isEmpty()) {
+      throw new EntityNotFoundException("No groups found!");
+    }
     return groups;
   }
 
