@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -23,12 +24,13 @@ import lombok.Setter;
 @Table(name = "tags")
 public class Tag extends BaseEntity {
 
-
+  //  @Id
+//  Long id;
   @NotNull
   @Column(name = "name")
   private String name;
 
-  @ManyToMany(cascade = CascadeType.ALL)
+  @ManyToMany(cascade = CascadeType.ALL)//, mappedBy = "tags")
   @JoinTable(
       name = "course_tags",
       joinColumns = @JoinColumn(name = "tag_id"),

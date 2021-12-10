@@ -620,244 +620,244 @@ insert into users (id, account_card, about, email, first_name, last_name, role, 
 values (1, '4041377234034',
         'in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis fusce posuere felis',
         'pworters0@unicef.org', 'Peri', 'Worters',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'L0fKqFvNc');
+        'USER', 'L0fKqFvNc');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (2, '4041373489714802',
         'interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in',
         'djanuszewski1@nationalgeographic.com', 'Drusy', 'Januszewski',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'dcXsDqA');
+        'USER', 'dcXsDqA');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (3, '4017950595264',
         'quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere',
         'mritchman2@issuu.com', 'Mommy', 'Ritchman',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'H9mRVjyFq');
+        'USER', 'H9mRVjyFq');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (4, '4041379172021025',
         'libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis',
         'kpagel3@nationalgeographic.com', 'Korella', 'Pagel',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'sUOFQf6XY6');
+        'USER', 'sUOFQf6XY6');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (5, '4041379087192457',
         'nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed',
         'kromeril4@blogs.com', 'Karola', 'Romeril',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'ODNOeuK3yNH');
+        'USER', 'ODNOeuK3yNH');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (6, '4041596819399981', 'augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis',
         'rnewman5@plala.or.jp', 'Ruy', 'Newman',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'pY763iG');
+        'USER', 'pY763iG');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (7, '4041370894750',
         'massa tempor convallis nulla neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien dignissim',
         'ajarvie6@exblog.jp', 'Ardenia', 'Jarvie',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'IJZhiIERhy');
+        'USER', 'IJZhiIERhy');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (8, '4041370000085597',
         'molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque penatibus',
         'mchuter7@usatoday.com', 'Mark', 'Chuter',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'BNajZkx8Jo');
+        'USER', 'BNajZkx8Jo');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (9, '4041379935539', 'arcu sed augue aliquam erat volutpat in congue etiam justo', 'tralestone8@wordpress.org',
         'Tawnya', 'Ralestone',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.',
+        'USER',
         '0PSoXvC2u3lE');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (10, '4041594613527493',
         'fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui',
         'nrushby9@wordpress.com', 'Nalani', 'Rushby',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'x6D0VjRfd');
+        'USER', 'x6D0VjRfd');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (11, '4041370296063', 'felis donec semper sapien a libero nam dui proin leo', 'clebruma@gizmodo.com', 'Cherice',
-        'Le Brum', 'error: Please use field(''USER'') to access USER because it starts with an upper case letter.',
+        'Le Brum', 'USER',
         '0CI9Ie');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (12, '4041597932986027',
         'vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget tempus vel',
         'ltimbrellb@earthlink.net', 'Lebbie', 'Timbrell',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', '3wXP8dcK');
+        'USER', '3wXP8dcK');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (13, '4041592191332',
         'parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis natoque penatibus',
         'craccioc@ovh.net', 'Cloe', 'Raccio',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'RhBvIGT');
+        'USER', 'RhBvIGT');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (14, '4041596910161678',
         'pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in',
         'cgombyd@surveymonkey.com', 'Cate', 'Gomby',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'ByTCGvD3');
+        'USER', 'ByTCGvD3');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (15, '4041370243693',
         'volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis',
         'gsquirrelle@goodreads.com', 'Gretal', 'Squirrell',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', '3wi9koiawe');
+        'USER', '3wi9koiawe');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (16, '4041370196420',
         'vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris',
         'ahalledayf@ft.com', 'Adriano', 'Halleday',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'tiwdqqH4P');
+        'USER', 'tiwdqqH4P');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (17, '4041373967454',
         'augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis elementum ligula vehicula consequat',
         'lisardg@slideshare.net', 'Les', 'Isard',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'tP2toL');
+        'USER', 'tP2toL');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (18, '4764733176884',
         'orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam',
         'santyukhinh@wired.com', 'Skipp', 'Antyukhin',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'WRzm2rvE');
+        'USER', 'WRzm2rvE');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (19, '4017959286154',
         'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis',
         'feldertoni@reference.com', 'Fidel', 'Elderton',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'odWVmlqi8Z');
+        'USER', 'odWVmlqi8Z');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (20, '4041370939358669', 'nisl venenatis lacinia aenean sit amet justo morbi ut odio',
         'hgreenacrej@prnewswire.com', 'Helge', 'Greenacre',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.',
+        'USER',
         'aty50BvRmhin');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (21, '4017957143845', 'non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis',
         'plaverenzk@e-recht24.de', 'Pierre', 'Laverenz',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'KgDgBrGN');
+        'USER', 'KgDgBrGN');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (22, '4791916489099',
         'potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam non mauris',
         'caisthorpel@buzzfeed.com', 'Cass', 'Aisthorpe',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'ij36KxrBS');
+        'USER', 'ij36KxrBS');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (23, '4041591223086',
         'sem praesent id massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada',
         'naleksidzem@globo.com', 'Nick', 'Aleksidze',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.',
+        'USER',
         '4Kh2XD5toSu7');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (24, '4041595557947274',
         'condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque',
         'dbartoszekn@state.gov', 'Daisy', 'Bartoszek',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', '53ogKOl');
+        'USER', '53ogKOl');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (25, '4041377637772',
         'molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est',
         'pmarneyo@berkeley.edu', 'Pauly', 'Marney',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'QiLp767Rnq6');
+        'USER', 'QiLp767Rnq6');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (26, '4041372908020',
         'convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate',
         'yzanazzip@ning.com', 'Yasmin', 'Zanazzi',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'fTZebAu3');
+        'USER', 'fTZebAu3');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (27, '4041594805348252', 'nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus',
         'nlewendonq@latimes.com', 'Niles', 'Lewendon',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.',
+        'USER',
         'cne4axR4VxxD');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (28, '4407080660704381',
         'volutpat eleifend donec ut dolor morbi vel lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit',
         'epriggr@1und1.de', 'Edee', 'Prigg',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'XezrXJMdOee');
+        'USER', 'XezrXJMdOee');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (29, '4041591064043',
         'ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac', 'ggumbs@wisc.edu',
         'Gabbi', 'Gumb',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', '12NLjg');
+        'USER', '12NLjg');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (30, '4041598516363708',
         'nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi',
         'eeytont@noaa.gov', 'Ellsworth', 'Eyton',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'kWV4nxHBXgk');
+        'USER', 'kWV4nxHBXgk');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (31, '4816950868256852', 'nulla dapibus dolor vel est donec odio justo sollicitudin ut', 'gmatteacciu@yandex.ru',
         'Greggory', 'Matteacci',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'n3UNcPNI8mF');
+        'USER', 'n3UNcPNI8mF');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (32, '4041371449394178', 'et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet',
         'rtrazziv@unicef.org', 'Raina', 'Trazzi',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.',
+        'USER',
         'PhWR9nbQGsRn');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (33, '4041591622436',
         'eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed',
         'ttryhornw@xrea.com', 'Trent', 'Tryhorn',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', '64kFmodNA');
+        'USER', '64kFmodNA');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (34, '4041599268141', 'nisl nunc rhoncus dui vel sem sed sagittis nam congue', 'bdallemorex@answers.com', 'Bill',
-        'Dallemore', 'error: Please use field(''USER'') to access USER because it starts with an upper case letter.',
+        'Dallemore', 'USER',
         'jyvwC6');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (35, '4017954958677131', 'hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis',
         'kjohannesy@businessweek.com', 'Ketty', 'Johannes',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', '6KOEvHFV');
+        'USER', '6KOEvHFV');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (36, '4490733719569902',
         'nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus vel nulla eget eros elementum pellentesque',
         'ndavenellz@dell.com', 'Natalya', 'Davenell',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', '2lbeTZVM');
+        'USER', '2lbeTZVM');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (37, '4219305208995',
         'rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis lacinia aenean',
         'ggwillim10@shop-pro.jp', 'Germaine', 'Gwillim',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'n2C4A6H');
+        'USER', 'n2C4A6H');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (38, '4017957591092', 'eget massa tempor convallis nulla neque libero convallis eget eleifend luctus',
         'mrosenbarg11@squidoo.com', 'Misti', 'Rosenbarg',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', '5kkEUH40gdc');
+        'USER', '5kkEUH40gdc');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (39, '4017955879896171',
         'habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida',
         'asumshon12@ning.com', 'Alejandra', 'Sumshon',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'aJLebFH8mB');
+        'USER', 'aJLebFH8mB');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (40, '4041378288832598', 'mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at',
         'pnorth13@mit.edu', 'Paulina', 'North',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'N4y6j7c');
+        'USER', 'N4y6j7c');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (41, '4781914415188', 'suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum',
         'brozycki14@indiegogo.com', 'Brittany', 'Rozycki',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.',
+        'USER',
         'ULeUeR4KyKFz');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (42, '4041599267978',
         'diam id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam',
         'mdefond15@usda.gov', 'Morten', 'Defond',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'ECWkgxE');
+        'USER', 'ECWkgxE');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (43, '4041373995208331',
         'tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis elementum', 'dbramo16@google.nl',
         'Dory', 'Bramo',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'uEGYYwBtdj');
+        'USER', 'uEGYYwBtdj');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (44, '4041372378091', 'tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet',
         'sesmond17@arizona.edu', 'Sari', 'Esmond',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.',
+        'USER',
         'VtPA26pYAI9k');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (45, '4041373531450140',
         'quam turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin at turpis a pede',
         'berskin18@dell.com', 'Brewer', 'Erskin',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'O1zbNY');
+        'USER', 'O1zbNY');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (46, '4659660742031',
         'libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis justo',
         'lkidston19@sohu.com', 'Lorita', 'Kidston',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'anvqCEs5j');
+        'USER', 'anvqCEs5j');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (47, '4041378884456',
         'orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin ut suscipit',
         'jthorold1a@topsy.com', 'Jeffy', 'Thorold',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'cEEfaT8');
+        'USER', 'cEEfaT8');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (48, '4055547469551',
         'consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo eu',
         'djecks1b@google.com', 'Dorisa', 'Jecks',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'Kd3NhwqrD');
+        'USER', 'Kd3NhwqrD');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (49, '4017959369360607', 'ullamcorper purus sit amet nulla quisque arcu libero rutrum ac',
         'emullett1c@toplist.cz', 'Elysha', 'Mullett',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'lJfINNjKX');
+        'USER', 'lJfINNjKX');
 insert into users (id, account_card, about, email, first_name, last_name, role, password)
 values (50, '4041377101432156',
         'libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis',
         'fklain1d@umich.edu', 'Forrest', 'Klain',
-        'error: Please use field(''USER'') to access USER because it starts with an upper case letter.', 'AHYhfy');
+        'USER', 'AHYhfy');
 
 -- Inserting certificates into certificates table
 

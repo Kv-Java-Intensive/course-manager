@@ -28,17 +28,17 @@ public class ModuleServiceImpl implements ModuleService {
     return moduleList;
   }
 
-  @Override
-  public void updateModule(ModuleDto moduleDto, Long id) {
-    Optional<Module> moduleOptional = moduleRepository.findById(id);
-    moduleOptional.ifPresent(x -> {
-      x.setContent(moduleDto.getContent());
-      x.setCourse(moduleDto.getCourse());
-      x.setLessonNumber(moduleDto.getLessonNumber());
-      x.setDescription(moduleDto.getDescription());
-      moduleRepository.save(x);
-    });
-  }
+//  @Override
+//  public void updateModule(ModuleDto moduleDto, Long id) {
+//    Optional<Module> moduleOptional = moduleRepository.findById(id);
+//    moduleOptional.ifPresent(x -> {
+//      x.setContent(moduleDto.getContent());
+//      x.setCourse(moduleDto.getCourse());
+//      x.setLessonNumber(moduleDto.getLessonNumber());
+//      x.setDescription(moduleDto.getDescription());
+//      moduleRepository.save(x);
+//    });
+//  }
 
 
   @Override
@@ -49,8 +49,8 @@ public class ModuleServiceImpl implements ModuleService {
   }
 
   @Override
-  public Module saveModule(ModuleDto moduleDto) {
-    return moduleRepository.save(moduleMapper.moduleDtoToModule(moduleDto));
+  public void saveModule(ModuleDto moduleDto) {
+    moduleRepository.save(moduleMapper.moduleDtoToModule(moduleDto));
 
   }
 

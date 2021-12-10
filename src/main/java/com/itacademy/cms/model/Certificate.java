@@ -1,5 +1,6 @@
 package com.itacademy.cms.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -27,10 +28,10 @@ public class Certificate extends BaseEntity {
   private String name;
 
 
-  @OneToOne
+  @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
   private Course course;
 
 
-  @ManyToOne
-  private User user;
+  //@ManyToOne
+  //private User user;
 }

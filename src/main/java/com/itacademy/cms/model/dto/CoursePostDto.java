@@ -19,8 +19,8 @@ public class CoursePostDto {
   @JsonProperty("price")
   private Double price;
 
-  @JsonProperty("category")
-  private CategoryDto categoryDto;
+//  @JsonProperty("category")
+//  private CategoryDto categoryDto;
 
   @JsonProperty("updateDate")
   private Date updateDate;
@@ -34,6 +34,6 @@ public class CoursePostDto {
   @JsonProperty("tags")
   private List<TagDto> tags;
 
-  @JsonProperty("certificate")
-  private CertificateDto certificateDto;
+//  @JsonProperty("certificate")
+//  private CertificateDto certificateDto;
 }

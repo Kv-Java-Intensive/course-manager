@@ -10,7 +10,7 @@ public interface CourseService {
 
   List<Course> getAllCourses();
 
-  List<Course> getAllCoursesByCategory(String category);
+  //List<Course> getAllCoursesByCategory(String category);
 
   List<Course> addCourse(CoursePostDto coursePostDto, User user);
 
