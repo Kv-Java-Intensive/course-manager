@@ -46,9 +46,9 @@ public class Course extends BaseEntity {
   private Double price;
 
 
-  @ManyToOne
-  @JoinColumn(name = "course_category")
-  private Category category;
+  //@ManyToOne
+  ////@JoinColumn(name = "course_category")
+  //private Category category;
 
   @NotNull
   @Column(name = "update_date")
@@ -83,6 +83,6 @@ public class Course extends BaseEntity {
   private List<Module> modules;
 
 
-  @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "course")
-  private Certificate certificate;
+//  @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "course")
+//  private Certificate certificate;
 }

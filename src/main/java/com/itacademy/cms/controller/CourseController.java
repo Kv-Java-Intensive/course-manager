@@ -28,15 +28,17 @@ public class CourseController {
 
   @GetMapping
   public List<CourseGetDto> showAllCourses() {
-    return mapStructMapper.courseAllToCourseGetDto(courseService.getAllCourses());
+    return mapStructMapper
+        .courseAllToCourseGetDto(
+            courseService.getAllCourses());
   }
 
-  @GetMapping(value = "/search/{category}")
-  public List<CourseGetDto> showAllCoursesByCategory(@PathVariable("category")
-                                                         String categoryName) {
-    return mapStructMapper.courseAllToCourseGetDto(
-        courseService.getAllCoursesByCategory(categoryName));
-  }
+//  @GetMapping(value = "/search/{category}")
+//  public List<CourseGetDto> showAllCoursesByCategory(@PathVariable("category")
+//                                                         String categoryName) {
+//    return mapStructMapper.courseAllToCourseGetDto(
+//        courseService.getAllCoursesByCategory(categoryName));
+//  }
 
   @GetMapping("/search/{tag}")
   public List<CourseGetDto> showAllCourseByTag(@PathVariable("tag")

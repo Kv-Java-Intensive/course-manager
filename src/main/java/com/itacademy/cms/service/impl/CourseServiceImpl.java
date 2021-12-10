@@ -6,6 +6,7 @@ import com.itacademy.cms.model.Category;
 import com.itacademy.cms.model.Course;
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.UserToCourse;
+import com.itacademy.cms.model.dto.CourseGetDto;
 import com.itacademy.cms.model.dto.CoursePostDto;
 import com.itacademy.cms.model.enums.CourseStatus;
 import com.itacademy.cms.repository.CategoryRepository;
@@ -36,15 +37,15 @@ public class CourseServiceImpl implements CourseService {
     return courses.get();
   }
 
-  @Override
-  public List<Course> getAllCoursesByCategory(String categoryName) {
-    Optional<List<Course>> courses = Optional.ofNullable(courseDao.findCourseByCategory(
-        categoryDao.findByCategoryName(categoryName)));
-    if (courses.isEmpty()) {
-      throw new EntityNotFoundException("Courses were not found");
-    }
-    return courses.get();
-  }
+//  @Override
+//  public List<Course> getAllCoursesByCategory(String categoryName) {
+//    Optional<List<Course>> courses = Optional.ofNullable(courseDao.findCourseByCategory(
+//        categoryDao.findByCategoryName(categoryName)));
+//    if (courses.isEmpty()) {
+//      throw new EntityNotFoundException("Courses were not found");
+//    }
+//    return courses.get();
+//  }
 
   @Override
   public List<Course> addCourse(CoursePostDto coursePostDto, User user) {
@@ -89,11 +90,11 @@ public class CourseServiceImpl implements CourseService {
       courseOld.setCourseName(courseNew.getCourseName());
       courseOld.setDescription(courseNew.getDescription());
       courseOld.setPrice(courseNew.getPrice());
-      String categoryName =
-          courseNew.getCategory() == null ? null : courseNew.getCategory().getCategoryName();
-      Category category =
-          categoryName == null ? null : categoryDao.findByCategoryName(categoryName);
-      courseOld.setCategory(category);
+      //String categoryName =
+      // courseNew.getCategory() == null ? null : courseNew.getCategory().getCategoryName();
+      // Category category =
+      // categoryName == null ? null : categoryDao.findByCategoryName(categoryName);
+      // courseOld.setCategory(category);
       courseOld.setUpdateDate(courseNew.getUpdateDate());
       courseOld.setDuration(courseNew.getDuration());
       courseOld.setLanguage(courseNew.getLanguage());

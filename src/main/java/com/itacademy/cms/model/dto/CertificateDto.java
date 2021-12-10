@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 public class CertificateDto {
   private String name;
-  private Course course;
-  private User user;
+  private CourseGetDto course;
+  private UserDto user;
 }

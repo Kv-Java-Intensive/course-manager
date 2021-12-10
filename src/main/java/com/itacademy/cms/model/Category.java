@@ -1,6 +1,7 @@
 package com.itacademy.cms.model;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -20,7 +21,7 @@ import lombok.Setter;
 @Setter
 public class Category extends BaseEntity {
 
-  @OneToMany
+  @OneToMany(cascade = CascadeType.ALL)//, mappedBy = "category")
   @JoinColumn(name = "course_category")
   private List<Course> courses;
 
