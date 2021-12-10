@@ -3,6 +3,7 @@ package com.itacademy.cms.model;
 import com.itacademy.cms.model.enums.Role;
 import com.sun.istack.NotNull;
 import java.util.List;
+import java.util.UUID;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -58,5 +60,13 @@ public class User extends BaseEntity {
   private Role role;
 
   private String about;
+
+  @Column(name = "uuid")
+  private String uuid;
+
+  @PrePersist
+  public void autofill() {
+    this.setUuid(UUID.randomUUID().toString());
+  }
 }
 
