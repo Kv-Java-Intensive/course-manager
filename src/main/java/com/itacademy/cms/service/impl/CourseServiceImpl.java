@@ -1,13 +1,11 @@
 package com.itacademy.cms.service.impl;
 
 import com.itacademy.cms.exeption.EntityNotFoundException;
+import com.itacademy.cms.exeption.ParameterMissingException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Category;
 import com.itacademy.cms.model.Course;
-import com.itacademy.cms.model.User;
-import com.itacademy.cms.model.UserToCourse;
 import com.itacademy.cms.model.dto.CoursePostDto;
-import com.itacademy.cms.model.enums.CourseStatus;
 import com.itacademy.cms.repository.CategoryRepository;
 import com.itacademy.cms.repository.CertificateRepository;
 import com.itacademy.cms.repository.CourseRepository;
@@ -46,16 +44,21 @@ public class CourseServiceImpl implements CourseService {
     return courses.get();
   }
 
+//  @Override
+//  public List<Course> addCourse(CoursePostDto coursePostDto, User user) {
+//    Course course = mapper.courseDtoToCourse(coursePostDto);
+//    UserToCourse userToCourse = new UserToCourse();
+//    userToCourse.setCourse(course);
+//    userToCourse.setUser(user);
+//    userToCourse.setAuthor(true);
+//    userToCourse.setCourseStatus(CourseStatus.DEFAULT);
+//    courseDao.save(course);
+//    return courseDao.findAll();
+//  }
+
   @Override
-  public List<Course> addCourse(CoursePostDto coursePostDto, User user) {
-    Course course = mapper.courseDtoToCourse(coursePostDto);
-    UserToCourse userToCourse = new UserToCourse();
-    userToCourse.setCourse(course);
-    userToCourse.setUser(user);
-    userToCourse.setAuthor(true);
-    userToCourse.setCourseStatus(CourseStatus.DEFAULT);
-    courseDao.save(course);
-    return courseDao.findAll();
+  public Course saveCourse(CoursePostDto coursePostDtoDto) {
+    return courseDao.save(mapper.courseDtoToCourse(coursePostDtoDto));
   }
 
   @Override
@@ -69,12 +72,10 @@ public class CourseServiceImpl implements CourseService {
   }
 
   @Override
-  public Course getCourseById(Long id) {
-    Optional<Course> course = Optional.ofNullable(courseDao.findCourseById(id));
-    if (course.isEmpty()) {
-      throw new EntityNotFoundException("This course was not found");
-    }
-    return course.get();
+  public Course getCourseByUuid(String uuid) {
+    Optional<Course> course = courseDao.findCourseByUuid(uuid);
+    return course.orElseThrow(
+        () -> new EntityNotFoundException("Course with uuid " + uuid + " not found!"));
   }
 
   @Override
@@ -101,13 +102,13 @@ public class CourseServiceImpl implements CourseService {
 
   @Override
 
-  public void deleteCourseById(Long id) {
-    Optional<Course> course = Optional.ofNullable(courseDao.findCourseById(id));
-
-    if (course.isEmpty()) {
-      throw new EntityNotFoundException("This course was not found");
-    } else {
-      courseDao.deleteById(id);
+  public void deleteCourseByUuid(String uuid) {
+    if (uuid == null) {
+      throw new ParameterMissingException("Course uuid is missing");
+    } else if (courseDao.existsByUuid(uuid)) {
+      courseDao.deleteByUuid(uuid);
+      return;
     }
+    throw new EntityNotFoundException("Category with uuid " + uuid + " not found!");
   }
 }
