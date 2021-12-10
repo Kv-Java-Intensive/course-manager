@@ -5,6 +5,7 @@ import com.itacademy.cms.model.Tag;
 import com.itacademy.cms.repository.TagRepository;
 import com.itacademy.cms.service.impl.TagServiceImpl;
 import java.util.Optional;
+import java.util.UUID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -34,22 +35,22 @@ public class TagServiceTest {
 
   @Test
   void findByIdTestExpectedException() {
-    Long id = 1L;
-    Assertions.assertThrows(EntityNotFoundException.class, () -> tagServiceImpl.findTagbyId(id));
-    Mockito.verify(tagRepository).findById(id);
+    String uuid = UUID.randomUUID().toString();
+    Assertions.assertThrows(EntityNotFoundException.class, () -> tagServiceImpl.findByUuid(uuid));
+    Mockito.verify(tagRepository).findByUuid(uuid);
   }
 
   @Test
   void findByIdTestExpectedTag() {
-    Long id = 1L;
+    String uuid = UUID.randomUUID().toString();
 
     Tag tag = new Tag();
-    tag.setId(id);
+    tag.setUuid(uuid);
     tag.setName("newName");
 
     Optional<Tag> optionalTag = Optional.of(tag);
-    Mockito.when(tagRepository.findById(id)).thenReturn(optionalTag);
-    Tag savedTag = tagServiceImpl.findTagbyId(id);
+    Mockito.when(tagRepository.findByUuid(uuid)).thenReturn(optionalTag);
+    Tag savedTag = tagServiceImpl.findByUuid(uuid);
 
     Assertions.assertEquals(tag.getId(), savedTag.getId());
     Assertions.assertEquals(tag.getName(), savedTag.getName());
