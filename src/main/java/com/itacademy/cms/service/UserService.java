@@ -15,4 +15,11 @@ public interface UserService {
   User saveUser(UserDto userDto);
 
   void deleteUserById(Long id);
+
+  public User findByFirstName(String name);
+
+  public User findByLastName(String surname);
+
+  public User findByEmail(String email);
+
 }
