@@ -28,8 +28,8 @@ public class ModuleController {
   }
 
   @GetMapping("/modules/{id}")
-  public ModuleDto getModuleById(@PathVariable("id") Long id) {
-    return moduleMapper.moduleToModuleDto(moduleService.findById(id));
+  public ModuleDto getModuleByUuid(@PathVariable("id") String uuid) {
+    return moduleMapper.moduleToModuleDto(moduleService.findByUuid(uuid));
   }
 
   @PostMapping("/modules")
@@ -38,13 +38,13 @@ public class ModuleController {
   }
 
   @PutMapping("/modules/{id}")
-  public void updateModule(@RequestBody ModuleDto moduleDto, @PathVariable Long id) {
-    moduleService.updateModule(moduleDto, id);
+  public void updateModule(@RequestBody ModuleDto moduleDto, @PathVariable("id") String uuid) {
+    moduleService.updateModule(moduleDto, uuid);
   }
 
   @DeleteMapping("/modules/{id}")
-  public void deleteModule(@PathVariable("id") Long id) {
-    moduleService.deleteModuleById(id);
+  public void deleteModule(@PathVariable("id") String uuid) {
+    moduleService.deleteModuleByUuid(uuid);
   }
 
 }

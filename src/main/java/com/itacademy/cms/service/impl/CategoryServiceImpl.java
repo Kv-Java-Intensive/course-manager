@@ -44,7 +44,7 @@ public class CategoryServiceImpl implements CategoryService {
   public Category findByUuid(String uuid) {
     Optional<Category> category = categoryRepository.findByUuid(uuid);
     return category.orElseThrow(
-        () -> new EntityNotFoundException("Category with id " + uuid + " not found!"));
+        () -> new EntityNotFoundException("Category with uuid " + uuid + " not found!"));
   }
 
   @Override
@@ -53,23 +53,14 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public void deleteCategoryById(Long id) {
-    if (id == null) {
-      throw new ParameterMissingException("Category id is missing");
-    } else if (categoryRepository.existsById(id)) {
-      categoryRepository.deleteById(id);
-    }
-    throw new EntityNotFoundException("Category with id " + id + " not found!");
-  }
-
-  @Override
   public void deleteCategoryByUuid(String uuid) {
     if (uuid == null) {
-      throw new ParameterMissingException("Category id is missing");
+      throw new ParameterMissingException("Category uuid is missing");
     } else if (categoryRepository.existsByUuid(uuid)) {
       categoryRepository.deleteByUuid(uuid);
       return;
     }
+    throw new EntityNotFoundException("Category with uuid " + uuid + " not found!");
   }
 
 }

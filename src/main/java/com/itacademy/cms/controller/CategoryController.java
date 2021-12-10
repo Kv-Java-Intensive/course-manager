@@ -29,7 +29,7 @@ public class CategoryController {
   }
 
   @GetMapping("/categories/{id}")
-  public CategoryDto getCategoryById(@PathVariable("id") String uuid) {
+  public CategoryDto getCategoryByUuid(@PathVariable("id") String uuid) {
     return entityMapper.categoryToCategoryDto(categoryService.findByUuid(uuid));
 
   }

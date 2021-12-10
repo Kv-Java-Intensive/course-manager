@@ -14,7 +14,5 @@ public interface CategoryService {
 
   Category saveCategory(CategoryDto categoryDto);
 
-  void deleteCategoryById(Long id);
-
   void deleteCategoryByUuid(String uuid);
 }
