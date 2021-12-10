@@ -23,7 +23,6 @@ public class TagController {
 
   private final MapStructMapper tagMapper;
 
-
   @GetMapping("/tags")
   public List<TagDto> showAllTags() {
     return tagService.getAllTags().stream()

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CourseRepository extends CrudRepository<Course, Long> {
-  //List<Course> findCourseByCategory(Category category);
 
   List<Course> findCourseByCourseTags(Tag tag);
 
@@ -17,4 +16,5 @@ public interface CourseRepository extends CrudRepository<Course, Long> {
 
   Course findCourseById(Long id);
 
+  List<Course> findCourseByCategory(Category byCategoryName);
 }

@@ -28,22 +28,22 @@ public class UserServiceImpl implements UserService {
     return userList;
   }
 
-//  @Override
-//  public void updateUser(UserDto userDto, Long id) {
-//    Optional<User> userOptional = userRepository.findById(id);
-//    userOptional.ifPresent(user -> {
+  @Override
+  public void updateUser(UserDto userDto, Long id) {
+    Optional<User> userOptional = userRepository.findById(id);
+    userOptional.ifPresent(user -> {
 //      user.setGroups(userDto.getGroups());
-//      user.setUserCourse(userDto.getUserCourse());
-//      user.setFirstName(userDto.getFirstName());
-//      user.setLastName(userDto.getLastName());
-//      user.setEmail(userDto.getEmail());
-//      user.setPassword(userDto.getPassword());
-//      user.setRole(userDto.getRole());
-//      user.setAccountCard(userDto.getAccountCard());
-//      user.setAbout(userDto.getAbout());
-//      userRepository.save(user);
-//    });
-//  }
+      user.setUserCourse(userDto.getUserCourse());
+      user.setFirstName(userDto.getFirstName());
+      user.setLastName(userDto.getLastName());
+      user.setEmail(userDto.getEmail());
+      user.setPassword(userDto.getPassword());
+      user.setRole(userDto.getRole());
+      user.setAccountCard(userDto.getAccountCard());
+      user.setAbout(userDto.getAbout());
+      userRepository.save(user);
+    });
+  }
 
 
   @Override

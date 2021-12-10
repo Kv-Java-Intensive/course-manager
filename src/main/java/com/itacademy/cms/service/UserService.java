@@ -10,9 +10,9 @@ public interface UserService {
 
   User findById(Long id);
 
-  //void updateUser(UserDto userDto, Long id);
-
   User saveUser(UserDto userDto);
 
   void deleteUserById(Long id);
+
+  void updateUser(UserDto userDto, Long id);
 }

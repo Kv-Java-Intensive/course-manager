@@ -33,12 +33,12 @@ public class CourseController {
             courseService.getAllCourses());
   }
 
-//  @GetMapping(value = "/search/{category}")
-//  public List<CourseGetDto> showAllCoursesByCategory(@PathVariable("category")
-//                                                         String categoryName) {
-//    return mapStructMapper.courseAllToCourseGetDto(
-//        courseService.getAllCoursesByCategory(categoryName));
-//  }
+  @GetMapping(value = "/search/{category}")
+  public List<CourseGetDto> showAllCoursesByCategory(@PathVariable("category")
+                                                         String categoryName) {
+    return mapStructMapper.courseAllToCourseGetDto(
+        courseService.getAllCoursesByCategory(categoryName));
+  }
 
   @GetMapping("/search/{tag}")
   public List<CourseGetDto> showAllCourseByTag(@PathVariable("tag")

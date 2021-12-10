@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 public class UserDto {
 
-  //private List<UserToCourse> userCourse;
+  private List<UserToCourse> userCourse;
 
   private List<GroupDto> groups;
 

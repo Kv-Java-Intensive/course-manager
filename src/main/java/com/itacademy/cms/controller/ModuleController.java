@@ -37,11 +37,10 @@ public class ModuleController {
     moduleService.saveModule(moduleDto);
   }
 
-//  @PutMapping("/modules/{id}")
-//  public void updateModule(@RequestBody ModuleDto moduleDto, @PathVariable Long id)
-//      throws EntityNotFoundException {
-//    moduleService.updateModule(moduleDto, id);
-//  }
+  @PutMapping("/modules/{id}")
+  public void updateModule(@RequestBody ModuleDto moduleDto, @PathVariable Long id) {
+    moduleService.updateModule(moduleDto, id);
+  }
 
   @DeleteMapping("/modules/{id}")
   public void deleteModule(@PathVariable("id") Long id) {

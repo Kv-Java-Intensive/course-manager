@@ -46,9 +46,9 @@ public class Course extends BaseEntity {
   private Double price;
 
 
-  //@ManyToOne
-  ////@JoinColumn(name = "course_category")
-  //private Category category;
+  @ManyToOne
+  @JoinColumn(name = "course_category")
+  private Category category;
 
   @NotNull
   @Column(name = "update_date")

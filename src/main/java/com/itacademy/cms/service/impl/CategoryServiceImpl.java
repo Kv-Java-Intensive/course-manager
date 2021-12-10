@@ -4,6 +4,7 @@ import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.exeption.ParameterMissingException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Category;
+import com.itacademy.cms.model.Course;
 import com.itacademy.cms.model.dto.CategoryDto;
 import com.itacademy.cms.repository.CategoryRepository;
 import com.itacademy.cms.service.CategoryService;
@@ -30,15 +31,16 @@ public class CategoryServiceImpl implements CategoryService {
     return categoriesList;
   }
 
-//  @Override
-//  public void updateCategory(CategoryDto categoryDto, Long id) {
-//    Optional<Category> categoryOptional = categoryRepository.findById(id);
-//    categoryOptional.ifPresent(category -> {
-//      category.setCourses(categoryDto.getCourses());
-//      category.setCategoryName(categoryDto.getCategoryName());
-//      categoryRepository.save(category);
-//    });
-//  }
+  @Override
+  public void updateCategory(CategoryDto categoryDto, Long id) {
+    Optional<Category> categoryOptional = categoryRepository.findById(id);
+    categoryOptional.ifPresent(category -> {
+      category.setCourses(
+          (List<Course>) entityMapper.categoryToCategoryDto((Category) categoryDto.getCourses()));
+      category.setCategoryName(categoryDto.getCategoryName());
+      categoryRepository.save(category);
+    });
+  }
 
   @Override
   public Category findById(Long id) {
@@ -48,8 +50,8 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public void saveCategory(CategoryDto categoryDto) {
-    categoryRepository.save(entityMapper.categoryDtoToCategory(categoryDto));
+  public Category saveCategory(CategoryDto categoryDto) {
+    return categoryRepository.save(entityMapper.categoryDtoToCategory(categoryDto));
   }
 
   @Override
