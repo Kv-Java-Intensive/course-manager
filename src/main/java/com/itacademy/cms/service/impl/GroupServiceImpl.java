@@ -47,7 +47,6 @@ public class GroupServiceImpl implements GroupService {
       group.setCourse(groupDto.getCourse());
       group.setCapacity(group.getCapacity());
       group.setStartDate(groupDto.getStartDate());
-      group.setUsers(groupDto.getUsers());
       groupRepository.save(group);
     });
   }
