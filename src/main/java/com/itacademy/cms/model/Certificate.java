@@ -32,6 +32,6 @@ public class Certificate extends BaseEntity {
   private Course course;
 
 
-  @ManyToOne
-  private User user;
+  //@ManyToOne
+  //private User user;
 }
