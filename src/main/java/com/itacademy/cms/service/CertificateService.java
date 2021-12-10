@@ -8,11 +8,11 @@ public interface CertificateService {
 
   List<Certificate> findAll();
 
-  Certificate findById(Long id);
-
-  void updateCertificate(CertificateDto certificateDto, Long id);
+  void updateCertificate(CertificateDto certificateDto, String uuid);
 
   Certificate saveCertificate(CertificateDto certificateDto);
 
-  void deleteCertificateById(Long id);
+  Certificate findByUuid(String uuid);
+
+  void deleteCertificateByUuid(String uuid);
 }

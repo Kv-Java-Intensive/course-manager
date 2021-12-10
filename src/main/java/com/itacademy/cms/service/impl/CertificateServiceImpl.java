@@ -36,15 +36,15 @@ public class CertificateServiceImpl implements CertificateService {
   }
 
   @Override
-  public Certificate findById(Long id) {
-    Optional<Certificate> certificate = certificatesRepository.findById(id);
+  public Certificate findByUuid(String uuid) {
+    Optional<Certificate> certificate = certificatesRepository.findByUuid(uuid);
     return certificate.orElseThrow(
-        () -> new EntityNotFoundException("Certificate with id " + id + " not found!"));
+        () -> new EntityNotFoundException("Certificate with uuid " + uuid + " not found!"));
   }
 
   @Override
-  public void updateCertificate(CertificateDto certificateDto, Long id) {
-    Optional<Certificate> certificateOptional = certificatesRepository.findById(id);
+  public void updateCertificate(CertificateDto certificateDto, String uuid) {
+    Optional<Certificate> certificateOptional = certificatesRepository.findByUuid(uuid);
     certificateOptional.ifPresent(certificate -> {
           certificate.setName(certificateDto.getName());
           certificatesRepository.save(certificate);
@@ -53,13 +53,13 @@ public class CertificateServiceImpl implements CertificateService {
   }
 
   @Override
-  public void deleteCertificateById(Long id) {
-    if (id == null) {
-      throw new ParameterMissingException("Certificate id is missing");
-    } else if (certificatesRepository.existsById(id)) {
-      certificatesRepository.deleteById(id);
+  public void deleteCertificateByUuid(String uuid) {
+    if (uuid == null) {
+      throw new ParameterMissingException("Certificate uuid is missing");
+    } else if (certificatesRepository.existsByUuid(uuid)) {
+      certificatesRepository.deleteByUuid(uuid);
       return;
     }
-    throw new EntityNotFoundException("Certificate with id " + id + " not found!");
+    throw new EntityNotFoundException("Certificate with uuid " + uuid + " not found!");
   }
 }

@@ -52,7 +52,7 @@ public class TagServiceTest {
     Mockito.when(tagRepository.findByUuid(uuid)).thenReturn(optionalTag);
     Tag savedTag = tagServiceImpl.findByUuid(uuid);
 
-    Assertions.assertEquals(tag.getId(), savedTag.getId());
+    Assertions.assertEquals(tag.getUuid(), savedTag.getUuid());
     Assertions.assertEquals(tag.getName(), savedTag.getName());
   }
 
