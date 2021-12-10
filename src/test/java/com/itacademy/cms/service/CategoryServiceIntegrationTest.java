@@ -28,48 +28,48 @@ public class CategoryServiceIntegrationTest {
     categoryRepository.deleteAll();
   }
 
-  @Test
-  void categorySaveAndFindByIdTest() {
-    Category savedCategory = getSavedCategory();
+//  @Test
+//  void categorySaveAndFindByIdTest() {
+//    Category savedCategory = getSavedCategory();
+//
+//    Category categoryById = categoryService.findById(savedCategory.getId());
+//
+//    Assertions.assertEquals(savedCategory.getCategoryName(), categoryById.getCategoryName());
+//  }
 
-    Category categoryById = categoryService.findById(savedCategory.getId());
+//  @Test
+//  void categoryUpdateTest() {
+//    CategoryDto categoryDtoUpdate = new CategoryDto();
+//
+//    categoryDtoUpdate.setCategoryName("testName");
+//
+//    //Category initCategory = getSavedCategory();
+//
+//    //categoryService.updateCategory(categoryDtoUpdate, initCategory.getId());
+//
+//    Category updateCategory = categoryService.findById(initCategory.getId());
+//
+//    Assertions.assertEquals(categoryDtoUpdate.getCategoryName(), updateCategory.getCategoryName());
+//  }
 
-    Assertions.assertEquals(savedCategory.getCategoryName(), categoryById.getCategoryName());
-  }
+//  @Test
+//  void categoryDeleteTest() {
+//    Category initCategory = getSavedCategory();
+//
+//    Assertions.assertNotNull(categoryService.findById(initCategory.getId()));
+//
+//    categoryService.deleteCategoryById(initCategory.getId());
+//
+//    Assertions.assertThrows(EntityNotFoundException.class,
+//        () -> categoryService.findById(initCategory.getId()));
+//  }
 
-  @Test
-  void categoryUpdateTest() {
-    CategoryDto categoryDtoUpdate = new CategoryDto();
-
-    categoryDtoUpdate.setCategoryName("testName");
-
-    Category initCategory = getSavedCategory();
-
-    categoryService.updateCategory(categoryDtoUpdate, initCategory.getId());
-
-    Category updateCategory = categoryService.findById(initCategory.getId());
-
-    Assertions.assertEquals(categoryDtoUpdate.getCategoryName(), updateCategory.getCategoryName());
-  }
-
-  @Test
-  void categoryDeleteTest() {
-    Category initCategory = getSavedCategory();
-
-    Assertions.assertNotNull(categoryService.findById(initCategory.getId()));
-
-    categoryService.deleteCategoryById(initCategory.getId());
-
-    Assertions.assertThrows(EntityNotFoundException.class,
-        () -> categoryService.findById(initCategory.getId()));
-  }
-
-  private Category getSavedCategory() {
-    CategoryDto categoryDto = new CategoryDto();
-
-    categoryDto.setCategoryName("testName");
-
-    return categoryService.saveCategory(categoryDto);
-  }
+//  private Category getSavedCategory() {
+//    CategoryDto categoryDto = new CategoryDto();
+//
+//    categoryDto.setCategoryName("testName");
+//
+//    return categoryService.saveCategory(categoryDto);
+//  }
 }
 

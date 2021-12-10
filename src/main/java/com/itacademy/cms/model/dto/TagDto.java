@@ -10,7 +10,7 @@ import lombok.Setter;
 public class TagDto {
 
   private String name;
-  private List<Course> courses;
+  private List<CoursePostDto> courses;
 
 }
 

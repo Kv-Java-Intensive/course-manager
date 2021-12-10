@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CourseRepository extends CrudRepository<Course, Long> {
-  List<Course> findCourseByCategory(Category category);
+  //List<Course> findCourseByCategory(Category category);
 
   List<Course> findCourseByCourseTags(Tag tag);
 

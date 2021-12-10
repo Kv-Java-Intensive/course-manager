@@ -30,15 +30,15 @@ public class CategoryServiceImpl implements CategoryService {
     return categoriesList;
   }
 
-  @Override
-  public void updateCategory(CategoryDto categoryDto, Long id) {
-    Optional<Category> categoryOptional = categoryRepository.findById(id);
-    categoryOptional.ifPresent(category -> {
-      category.setCourses(categoryDto.getCourses());
-      category.setCategoryName(categoryDto.getCategoryName());
-      categoryRepository.save(category);
-    });
-  }
+//  @Override
+//  public void updateCategory(CategoryDto categoryDto, Long id) {
+//    Optional<Category> categoryOptional = categoryRepository.findById(id);
+//    categoryOptional.ifPresent(category -> {
+//      category.setCourses(categoryDto.getCourses());
+//      category.setCategoryName(categoryDto.getCategoryName());
+//      categoryRepository.save(category);
+//    });
+//  }
 
   @Override
   public Category findById(Long id) {
@@ -48,8 +48,8 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public Category saveCategory(CategoryDto categoryDto) {
-    return categoryRepository.save(entityMapper.categoryDtoToCategory(categoryDto));
+  public void saveCategory(CategoryDto categoryDto) {
+    categoryRepository.save(entityMapper.categoryDtoToCategory(categoryDto));
   }
 
   @Override
