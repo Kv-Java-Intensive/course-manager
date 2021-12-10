@@ -5,6 +5,7 @@ import com.itacademy.cms.model.Module;
 import com.itacademy.cms.model.dto.ModuleDto;
 import com.itacademy.cms.service.ModuleService;
 import java.util.List;
+import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,6 +43,7 @@ public class ModuleController {
     moduleService.updateModule(moduleDto, uuid);
   }
 
+  @Transactional
   @DeleteMapping("/modules/{id}")
   public void deleteModule(@PathVariable("id") String uuid) {
     moduleService.deleteModuleByUuid(uuid);
