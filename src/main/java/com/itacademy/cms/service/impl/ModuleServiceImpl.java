@@ -33,7 +33,6 @@ public class ModuleServiceImpl implements ModuleService {
     Optional<Module> moduleOptional = moduleRepository.findById(id);
     moduleOptional.ifPresent(x -> {
       x.setContent(moduleDto.getContent());
-//      x.setCourse(moduleDto.getCourse());
       x.setLessonNumber(moduleDto.getLessonNumber());
       x.setDescription(moduleDto.getDescription());
       moduleRepository.save(x);
@@ -49,8 +48,8 @@ public class ModuleServiceImpl implements ModuleService {
   }
 
   @Override
-  public void saveModule(ModuleDto moduleDto) {
-    moduleRepository.save(moduleMapper.moduleDtoToModule(moduleDto));
+  public Module saveModule(ModuleDto moduleDto) {
+    return moduleRepository.save(moduleMapper.moduleDtoToModule(moduleDto));
 
   }
 

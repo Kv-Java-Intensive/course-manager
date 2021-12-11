@@ -32,7 +32,6 @@ public class UserServiceImpl implements UserService {
   public void updateUser(UserDto userDto, Long id) {
     Optional<User> userOptional = userRepository.findById(id);
     userOptional.ifPresent(user -> {
-//      user.setGroups(userDto.getGroups());
       user.setUserCourse(userDto.getUserCourse());
       user.setFirstName(userDto.getFirstName());
       user.setLastName(userDto.getLastName());

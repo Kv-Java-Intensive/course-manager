@@ -34,24 +34,34 @@ public class User extends BaseEntity {
   List<Certificate> certificates;
   @OneToMany(mappedBy = "user", orphanRemoval = true)
   private List<UserToCourse> userCourse;
+
+
   @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
 
   private List<Group> groups;
+
   @NotNull
   @Column(name = "first_name")
   private String firstName;
+
   @NotNull
   @Column(name = "last_name")
   private String lastName;
+
   @NotNull
   private String email;
+
   @NotNull
   private String password;
+
+
   @Column(name = "account_card")
   private double accountCard;
+
   @NotNull
   @Enumerated(EnumType.STRING)
   private Role role;
+
   private String about;
 }
 

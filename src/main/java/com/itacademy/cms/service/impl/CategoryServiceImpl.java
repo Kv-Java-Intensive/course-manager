@@ -35,8 +35,6 @@ public class CategoryServiceImpl implements CategoryService {
   public void updateCategory(CategoryDto categoryDto, Long id) {
     Optional<Category> categoryOptional = categoryRepository.findById(id);
     categoryOptional.ifPresent(category -> {
-      category.setCourses(
-          (List<Course>) entityMapper.categoryToCategoryDto((Category) categoryDto.getCourses()));
       category.setCategoryName(categoryDto.getCategoryName());
       categoryRepository.save(category);
     });
