@@ -8,11 +8,15 @@ public interface UserService {
 
   List<User> findAll();
 
-  User findById(Long id);
+//  User findById(Long id);
+
+  void updateUser(UserDto userDto, String uuid);
 
   User saveUser(UserDto userDto);
 
-  void deleteUserById(Long id);
+//  void deleteUserById(Long id);
 
-  void updateUser(UserDto userDto, Long id);
+  User findByUuid(String uuid);
+
+  void deleteUserByUuid(String uuid);
 }

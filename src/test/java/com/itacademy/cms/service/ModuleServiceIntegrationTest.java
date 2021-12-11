@@ -1,13 +1,9 @@
 package com.itacademy.cms.service;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.model.Module;
 import com.itacademy.cms.model.dto.ModuleDto;
 import com.itacademy.cms.repository.ModuleRepository;
-import java.util.Optional;
 import javax.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -36,7 +32,7 @@ public class ModuleServiceIntegrationTest {
   void moduleSaveAndFindByIdTest() throws EntityNotFoundException {
     Module savedModule = getSavedModule();
 
-    Module moduleById = moduleService.findById(savedModule.getId());
+    Module moduleById = moduleService.findByUuid(savedModule.getUuid());
 
     Assertions.assertEquals(savedModule.getContent(), moduleById.getContent());
     Assertions.assertEquals(savedModule.getDescription(), moduleById.getDescription());
@@ -53,9 +49,9 @@ public class ModuleServiceIntegrationTest {
 
     Module initModule = getSavedModule();
 
-    moduleService.updateModule(moduleDtoToUpdate, initModule.getId());
+    moduleService.updateModule(moduleDtoToUpdate, initModule.getUuid());
 
-    Module updatedModule = moduleService.findById(initModule.getId());
+    Module updatedModule = moduleService.findByUuid(initModule.getUuid());
 
     Assertions.assertEquals(moduleDtoToUpdate.getContent(), updatedModule.getContent());
     Assertions.assertEquals(moduleDtoToUpdate.getDescription(), updatedModule.getDescription());
@@ -66,12 +62,12 @@ public class ModuleServiceIntegrationTest {
   void moduleDeleteTest() throws EntityNotFoundException {
     Module initModule = getSavedModule();
 
-    Assertions.assertNotNull(moduleService.findById(initModule.getId()));
+    Assertions.assertNotNull(moduleService.findByUuid(initModule.getUuid()));
 
-    moduleService.deleteModuleById(initModule.getId());
+    moduleService.deleteModuleByUuid(initModule.getUuid());
 
     Assertions.assertThrows(EntityNotFoundException.class,
-        () -> moduleService.findById(initModule.getId()));
+        () -> moduleService.findByUuid(initModule.getUuid()));
   }
 
   private Module getSavedModule() {

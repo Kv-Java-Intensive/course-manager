@@ -9,11 +9,11 @@ public interface CategoryService {
 
   List<Category> findAll();
 
-  Category findById(Long id);
+  Category findByUuid(String uuid);
+
+  void updateCategory(CategoryDto categoryDto, String uuid);
 
   Category saveCategory(CategoryDto categoryDto);
 
-  void deleteCategoryById(Long id);
-
-  void updateCategory(CategoryDto categoryDto, Long id);
+  void deleteCategoryByUuid(String uuid);
 }

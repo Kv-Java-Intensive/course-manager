@@ -29,8 +29,8 @@ public class ModuleServiceImpl implements ModuleService {
   }
 
   @Override
-  public void updateModule(ModuleDto moduleDto, Long id) {
-    Optional<Module> moduleOptional = moduleRepository.findById(id);
+  public void updateModule(ModuleDto moduleDto, String uuid) {
+    Optional<Module> moduleOptional = moduleRepository.findByUuid(uuid);
     moduleOptional.ifPresent(x -> {
       x.setContent(moduleDto.getContent());
       x.setLessonNumber(moduleDto.getLessonNumber());
@@ -41,10 +41,10 @@ public class ModuleServiceImpl implements ModuleService {
 
 
   @Override
-  public Module findById(Long id) {
-    Optional<Module> module = moduleRepository.findById(id);
+  public Module findByUuid(String uuid) {
+    Optional<Module> module = moduleRepository.findByUuid(uuid);
     return module.orElseThrow(
-        () -> new EntityNotFoundException("Module with id " + id + " not found!"));
+        () -> new EntityNotFoundException("Module with uuid " + uuid + " not found!"));
   }
 
   @Override
@@ -54,13 +54,13 @@ public class ModuleServiceImpl implements ModuleService {
   }
 
   @Override
-  public void deleteModuleById(Long id) {
-    if (id == null) {
-      throw new ParameterMissingException("Module id is missing");
-    } else if (moduleRepository.existsById(id)) {
-      moduleRepository.deleteById(id);
+  public void deleteModuleByUuid(String uuid) {
+    if (uuid == null) {
+      throw new ParameterMissingException("Module uuid is missing");
+    } else if (moduleRepository.existsByUuid(uuid)) {
+      moduleRepository.deleteByUuid(uuid);
       return;
     }
-    throw new EntityNotFoundException("Module with id " + id + " not found!");
+    throw new EntityNotFoundException("Module with uuid " + uuid + " not found!");
   }
 }

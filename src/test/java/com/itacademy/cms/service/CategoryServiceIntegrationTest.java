@@ -29,12 +29,13 @@ public class CategoryServiceIntegrationTest {
   }
 
   @Test
-  void categorySaveAndFindByIdTest() {
+  void categorySaveAndFindByUuidTest() {
+
     Category savedCategory = getSavedCategory();
 
-    Category categoryById = categoryService.findById(savedCategory.getId());
+    Category categoryByUuid = categoryService.findByUuid(savedCategory.getUuid());
 
-    Assertions.assertEquals(savedCategory.getCategoryName(), categoryById.getCategoryName());
+    Assertions.assertEquals(savedCategory.getCategoryName(), categoryByUuid.getCategoryName());
   }
 
   @Test
@@ -45,9 +46,9 @@ public class CategoryServiceIntegrationTest {
 
     Category initCategory = getSavedCategory();
 
-    categoryService.updateCategory(categoryDtoUpdate, initCategory.getId());
+    categoryService.updateCategory(categoryDtoUpdate, initCategory.getUuid());
 
-    Category updateCategory = categoryService.findById(initCategory.getId());
+    Category updateCategory = categoryService.findByUuid(initCategory.getUuid());
 
     Assertions.assertEquals(categoryDtoUpdate.getCategoryName(), updateCategory.getCategoryName());
   }
@@ -56,12 +57,12 @@ public class CategoryServiceIntegrationTest {
   void categoryDeleteTest() {
     Category initCategory = getSavedCategory();
 
-    Assertions.assertNotNull(categoryService.findById(initCategory.getId()));
+    Assertions.assertNotNull(categoryService.findByUuid(initCategory.getUuid()));
 
-    categoryService.deleteCategoryById(initCategory.getId());
+    categoryService.deleteCategoryByUuid(initCategory.getUuid());
 
     Assertions.assertThrows(EntityNotFoundException.class,
-        () -> categoryService.findById(initCategory.getId()));
+        () -> categoryService.findByUuid(initCategory.getUuid()));
   }
 
   private Category getSavedCategory() {

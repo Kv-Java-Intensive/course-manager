@@ -12,6 +12,9 @@ CREATE TABLE IF NOT EXISTS tags
     name
         character
             varying(255),
+    uuid
+        character
+            varying(255),
     PRIMARY KEY
         (
          id
@@ -26,6 +29,9 @@ CREATE TABLE IF NOT EXISTS categories
         NOT
             NULL,
     category_name
+        character
+            varying(255),
+    uuid
         character
             varying(255),
     PRIMARY KEY
@@ -51,6 +57,9 @@ CREATE TABLE IF NOT EXISTS courses
     price           double precision,
     update_date     date,
     course_category bigint,
+    uuid
+                    character
+                        varying(255),
     PRIMARY KEY
         (
          id
@@ -142,6 +151,9 @@ CREATE TABLE IF NOT EXISTS modules
     description character varying(255),
     lesson_num  integer,
     course_id   bigint,
+    uuid
+                character
+                    varying(255),
     PRIMARY KEY
         (
          id
@@ -172,6 +184,9 @@ CREATE TABLE IF NOT EXISTS users
     last_name    character varying(255),
     password     character varying(255),
     role         character varying(255),
+    uuid
+                 character
+                     varying(255),
     PRIMARY KEY
         (
          id
@@ -191,6 +206,9 @@ CREATE TABLE IF NOT EXISTS certificates
                   varying(255),
     user_id   bigint NOT NULL,
     course_id bigint NOT NULL,
+    uuid
+              character
+                  varying(255),
     PRIMARY KEY
         (
          id

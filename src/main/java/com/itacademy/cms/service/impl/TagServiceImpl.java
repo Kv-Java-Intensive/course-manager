@@ -39,15 +39,16 @@ public class TagServiceImpl implements TagService {
   }
 
   @Override
-  public Tag findTagbyId(Long id) {
+  public Tag findByUuid(String uuid) {
 
-    Optional<Tag> tag = tagRepository.findById(id);
-    return tag.orElseThrow(() -> new EntityNotFoundException("Tag with id " + id + " not found!"));
+    Optional<Tag> tag = tagRepository.findByUuid(uuid);
+    return tag.orElseThrow(
+        () -> new EntityNotFoundException("Tag with iduuid " + uuid + " not found!"));
   }
 
   @Override
-  public void updateTag(TagDto tagDto, Long id) {
-    Optional<Tag> tagOptional = tagRepository.findById(id);
+  public void updateTag(TagDto tagDto, String uuid) {
+    Optional<Tag> tagOptional = tagRepository.findByUuid(uuid);
     tagOptional.ifPresent(tag -> {
       tag.setName(tagDto.getName());
       tagRepository.save(tag);
@@ -55,15 +56,14 @@ public class TagServiceImpl implements TagService {
   }
 
   @Override
-  public void deleteTag(Long id) {
-
-    if (id == null) {
-      throw new ParameterMissingException("Tag id is missing!");
-    } else if (tagRepository.existsById(id)) {
-      tagRepository.deleteById(id);
+  public void deleteTagByUuid(String uuid) {
+    if (uuid == null) {
+      throw new ParameterMissingException("Tag uuid is missing!");
+    } else if (tagRepository.existsByUuid(uuid)) {
+      tagRepository.deleteByUuid(uuid);
       return;
     }
-    throw new EntityNotFoundException("Tag with id " + id + " not found!");
+    throw new EntityNotFoundException("Tag with uuid " + uuid + " not found!");
   }
 
 

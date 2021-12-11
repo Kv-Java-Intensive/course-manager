@@ -4,7 +4,6 @@ import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.exeption.ParameterMissingException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Category;
-import com.itacademy.cms.model.Course;
 import com.itacademy.cms.model.dto.CategoryDto;
 import com.itacademy.cms.repository.CategoryRepository;
 import com.itacademy.cms.service.CategoryService;
@@ -19,12 +18,12 @@ public class CategoryServiceImpl implements CategoryService {
 
 
   private final CategoryRepository categoryRepository;
-  private final MapStructMapper entityMapper;
+  private final MapStructMapper categoryMapper;
 
 
   @Override
   public List<Category> findAll() {
-    List<Category> categoriesList = (List<Category>) categoryRepository.findAll();
+    List<Category> categoriesList = categoryRepository.findAll();
     if (categoriesList.isEmpty()) {
       throw new EntityNotFoundException("No categories found!");
     }
@@ -32,8 +31,8 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public void updateCategory(CategoryDto categoryDto, Long id) {
-    Optional<Category> categoryOptional = categoryRepository.findById(id);
+  public void updateCategory(CategoryDto categoryDto, String uuid) {
+    Optional<Category> categoryOptional = categoryRepository.findByUuid(uuid);
     categoryOptional.ifPresent(category -> {
       category.setCategoryName(categoryDto.getCategoryName());
       categoryRepository.save(category);
@@ -41,26 +40,26 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public Category findById(Long id) {
-    Optional<Category> category = categoryRepository.findById(id);
+  public Category findByUuid(String uuid) {
+    Optional<Category> category = categoryRepository.findByUuid(uuid);
     return category.orElseThrow(
-        () -> new EntityNotFoundException("Category with id " + id + " not found!"));
+        () -> new EntityNotFoundException("Category with uuid " + uuid + " not found!"));
   }
 
   @Override
   public Category saveCategory(CategoryDto categoryDto) {
-    return categoryRepository.save(entityMapper.categoryDtoToCategory(categoryDto));
+    return categoryRepository.save(categoryMapper.categoryDtoToCategory(categoryDto));
   }
 
   @Override
-  public void deleteCategoryById(Long id) {
-    if (id == null) {
-      throw new ParameterMissingException("Category id is missing");
-    } else if (categoryRepository.existsById(id)) {
-      categoryRepository.deleteById(id);
+  public void deleteCategoryByUuid(String uuid) {
+    if (uuid == null) {
+      throw new ParameterMissingException("Category uuid is missing");
+    } else if (categoryRepository.existsByUuid(uuid)) {
+      categoryRepository.deleteByUuid(uuid);
       return;
     }
-    throw new EntityNotFoundException("Category with id " + id + " not found!");
+    throw new EntityNotFoundException("Category with uuid " + uuid + " not found!");
   }
 
 }
