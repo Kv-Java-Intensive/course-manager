@@ -11,12 +11,10 @@ public interface TagService {
 
   Tag saveTag(TagDto tagDto);
 
-  Tag findTagbyId(Long id);
+  void updateTag(TagDto tagDto, String uuid);
 
-  void updateTag(TagDto tagDto, Long id);
+  Tag findByUuid(String uuid);
 
-  void deleteTag(Long id);
-
-
+  void deleteTagByUuid(String uuid);
 }
 

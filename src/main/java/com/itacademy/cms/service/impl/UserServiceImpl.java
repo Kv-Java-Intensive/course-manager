@@ -28,29 +28,28 @@ public class UserServiceImpl implements UserService {
     return userList;
   }
 
-//  @Override
-//  public void updateUser(UserDto userDto, Long id) {
-//    Optional<User> userOptional = userRepository.findById(id);
-//    userOptional.ifPresent(user -> {
-//      user.setGroups(userDto.getGroups());
-//      user.setUserCourse(userDto.getUserCourse());
-//      user.setFirstName(userDto.getFirstName());
-//      user.setLastName(userDto.getLastName());
-//      user.setEmail(userDto.getEmail());
-//      user.setPassword(userDto.getPassword());
-//      user.setRole(userDto.getRole());
-//      user.setAccountCard(userDto.getAccountCard());
-//      user.setAbout(userDto.getAbout());
-//      userRepository.save(user);
-//    });
-//  }
+  @Override
+  public void updateUser(UserDto userDto, String uuid) {
+    Optional<User> userOptional = userRepository.findByUuid(uuid);
+    userOptional.ifPresent(user -> {
+      user.setUserCourse(userDto.getUserCourse());
+      user.setFirstName(userDto.getFirstName());
+      user.setLastName(userDto.getLastName());
+      user.setEmail(userDto.getEmail());
+      user.setPassword(userDto.getPassword());
+      user.setRole(userDto.getRole());
+      user.setAccountCard(userDto.getAccountCard());
+      user.setAbout(userDto.getAbout());
+      userRepository.save(user);
+    });
+  }
 
 
   @Override
-  public User findById(Long id) {
-    Optional<User> user = userRepository.findById(id);
+  public User findByUuid(String uuid) {
+    Optional<User> user = userRepository.findByUuid(uuid);
     return user.orElseThrow(
-        () -> new EntityNotFoundException("User with id " + id + " not found!"));
+        () -> new EntityNotFoundException("User with uuid " + uuid + " not found!"));
   }
 
   @Override
@@ -59,13 +58,13 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public void deleteUserById(Long id) {
-    if (id == null) {
-      throw new ParameterMissingException("User id is missing");
-    } else if (userRepository.existsById(id)) {
-      userRepository.deleteById(id);
+  public void deleteUserByUuid(String uuid) {
+    if (uuid == null) {
+      throw new ParameterMissingException("User uuid is missing");
+    } else if (userRepository.existsByUuid(uuid)) {
+      userRepository.deleteByUuid(uuid);
       return;
     }
-    throw new EntityNotFoundException("User with id " + id + " not found!");
+    throw new EntityNotFoundException("User with uuid " + uuid + " not found!");
   }
 }

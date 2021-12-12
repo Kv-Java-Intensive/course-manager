@@ -6,6 +6,7 @@ import com.itacademy.cms.model.dto.UserDto;
 import com.itacademy.cms.service.UserService;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,8 +32,8 @@ public class UserController {
   }
 
   @GetMapping("/users/{id}")
-  public UserDto getUserById(@PathVariable("id") Long id) {
-    return entityMapper.userToUserDto(userService.findById(id));
+  public UserDto getUserByUuid(@PathVariable("id") String uuid) {
+    return entityMapper.userToUserDto(userService.findByUuid(uuid));
   }
 
   @PostMapping("/users")
@@ -40,13 +41,14 @@ public class UserController {
     userService.saveUser(userDto);
   }
 
-//  @PutMapping("/users/{id}")
-//  public void updateUser(@RequestBody UserDto userDto, @PathVariable Long id) {
-//    userService.updateUser(userDto, id);
-//  }
+  @PutMapping("/users/{id}")
+  public void updateUser(@RequestBody UserDto userDto, @PathVariable("id") String uuid) {
+    userService.updateUser(userDto, uuid);
+  }
 
+  @Transactional
   @DeleteMapping("/users/{id}")
-  public void deleteUser(@PathVariable("id") Long id) {
-    userService.deleteUserById(id);
+  public void deleteUser(@PathVariable("id") String uuid) {
+    userService.deleteUserByUuid(uuid);
   }
 }

@@ -7,12 +7,13 @@ import java.util.List;
 
 public interface CategoryService {
 
-  List<Category> findAll() ;
-  Category findById(Long id);
+  List<Category> findAll();
 
-  //void updateCategory(CategoryDto categoryDto, Long id);
+  Category findByUuid(String uuid);
 
-  void saveCategory(CategoryDto categoryDto);
+  void updateCategory(CategoryDto categoryDto, String uuid);
 
-  void deleteCategoryById(Long id);
+  Category saveCategory(CategoryDto categoryDto);
+
+  void deleteCategoryByUuid(String uuid);
 }
