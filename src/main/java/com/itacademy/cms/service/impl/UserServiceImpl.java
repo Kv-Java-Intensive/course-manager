@@ -67,4 +67,14 @@ public class UserServiceImpl implements UserService {
     }
     throw new EntityNotFoundException("User with uuid " + uuid + " not found!");
   }
+
+
+  @Override
+  public void blockUser(String uuid) {
+    try {
+      userRepository.blockUser(uuid);
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+  }
 }
