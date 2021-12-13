@@ -1,8 +1,6 @@
 package com.itacademy.cms.controller;
 
-import com.itacademy.cms.model.User;
 import com.itacademy.cms.service.UserService;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,9 +15,8 @@ public class AdminController {
 
   @PostMapping("/listUser/block")
   @PreAuthorize("hasRole('ROLE_ADMIN')")
-  public List<User> block(@RequestParam(name = "id") String uuid) {
-    userService.blockUser(uuid);
-    List<User> users = userService.findAll();
-    return users;
+  public void block(@RequestParam(name = "id") String uuid,
+                    @RequestParam(name = "active") boolean active) {
+    userService.blockUser(uuid, active);
   }
 }

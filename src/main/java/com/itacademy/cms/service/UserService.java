@@ -16,5 +16,5 @@ public interface UserService {
 
   void deleteUserByUuid(String uuid);
 
-  void blockUser(String uuid);
+  void blockUser(String uuid, boolean active);
 }

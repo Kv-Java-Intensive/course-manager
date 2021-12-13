@@ -2,6 +2,7 @@ package com.itacademy.cms.repository;
 
 import com.itacademy.cms.model.User;
 import java.util.Optional;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -14,6 +15,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
   void deleteByUuid(String uuid);
 
-  @Query(value = "UPDATE users SET active=false WHERE id = ?1", nativeQuery = true)
-  void blockUser(String uuid);
+  @Query(value = "UPDATE User SET active=?2 WHERE id = ?1")
+  @Modifying
+  void blockUser(String uuid, boolean active);
 }
