@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class TagController {
 
   private final TagService tagService;
-
   private final MapStructMapper tagMapper;
 
   @GetMapping("/tags")
