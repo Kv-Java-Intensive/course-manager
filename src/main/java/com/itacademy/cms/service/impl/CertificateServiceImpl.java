@@ -10,20 +10,27 @@ import com.itacademy.cms.service.CertificateService;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class CertificateServiceImpl implements CertificateService {
+
+  private static final Logger logger = LoggerFactory.getLogger(CertificateServiceImpl.class);
 
   private final CertificateRepository certificatesRepository;
   private final MapStructMapper certificateMapper;
 
-
   @Override
   public List<Certificate> findAll() {
+    log.info("GET ALL CERTIFICATES");
     List<Certificate> certificateList = certificatesRepository.findAll();
     if (certificateList.isEmpty()) {
+      logger.error("NO CATEGORIES CERTIFICATES");
       throw new EntityNotFoundException("No certificates found!");
     }
     return certificateList;
@@ -31,19 +38,26 @@ public class CertificateServiceImpl implements CertificateService {
 
   @Override
   public Certificate saveCertificate(CertificateDto certificateDto) {
+    logger.info("CREATE NEW CERTIFICATES");
     return certificatesRepository.save(
         certificateMapper.certificateDtoToCertificate(certificateDto));
   }
 
   @Override
   public Certificate findByUuid(String uuid) {
+    logger.info("GET CERTIFICATE WITH ID = {}", uuid);
     Optional<Certificate> certificate = certificatesRepository.findByUuid(uuid);
-    return certificate.orElseThrow(
-        () -> new EntityNotFoundException("Certificate with uuid " + uuid + " not found!"));
+    if (certificate.isPresent()) {
+      return certificate.get();
+    } else {
+      logger.error("CERTIFICATE WITH ID = {} DOES NOT EXIST", uuid);
+      throw new EntityNotFoundException("Certificate with uuid " + uuid + " not found!");
+    }
   }
 
   @Override
   public void updateCertificate(CertificateDto certificateDto, String uuid) {
+    logger.info("UPDATE CERTIFICATE WITH ID = {}", uuid);
     Optional<Certificate> certificateOptional = certificatesRepository.findByUuid(uuid);
     certificateOptional.ifPresent(certificate -> {
           certificate.setName(certificateDto.getName());
@@ -55,11 +69,14 @@ public class CertificateServiceImpl implements CertificateService {
   @Override
   public void deleteCertificateByUuid(String uuid) {
     if (uuid == null) {
+      logger.error("UUID IS EMPTY");
       throw new ParameterMissingException("Certificate uuid is missing");
     } else if (certificatesRepository.existsByUuid(uuid)) {
+      logger.info("REMOVE CERTIFICATE WITH ID = {}", uuid);
       certificatesRepository.deleteByUuid(uuid);
       return;
     }
+    logger.error("CERTIFICATE WITH ID = {} DOES NOT EXIST", uuid);
     throw new EntityNotFoundException("Certificate with uuid " + uuid + " not found!");
   }
 }

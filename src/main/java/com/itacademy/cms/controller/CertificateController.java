@@ -24,7 +24,6 @@ public class CertificateController {
   private final CertificateService certificateService;
   private final MapStructMapper certificateMapper;
 
-
   @GetMapping("/certificates")
   public List<CertificateDto> getAllCertificates() {
     return certificateService.findAll().stream()

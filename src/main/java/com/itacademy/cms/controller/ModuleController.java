@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class ModuleController {
 
-
   private final ModuleService moduleService;
   private final MapStructMapper moduleMapper;
 
