@@ -663,248 +663,248 @@ values (50, 5, 'Huel, Little and Pacocha', '2022-02-12', 46);
 
 -- Inserting users into users table
 
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (1, '4041377234034',
         'in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis fusce posuere felis',
         'pworters0@unicef.org', 'Peri', 'Worters',
-        'USER', 'L0fKqFvNc', '6ea30879-e345-4e3c-8ee4-e840550bda1d');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'L0fKqFvNc', '6ea30879-e345-4e3c-8ee4-e840550bda1d');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (2, '4041373489714802',
         'interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in',
         'djanuszewski1@nationalgeographic.com', 'Drusy', 'Januszewski',
-        'USER', 'dcXsDqA', '5a0c961b-e92a-43a3-b426-2d93987c17f6');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'dcXsDqA', '5a0c961b-e92a-43a3-b426-2d93987c17f6');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (3, '4017950595264',
         'quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere',
         'mritchman2@issuu.com', 'Mommy', 'Ritchman',
-        'USER', 'H9mRVjyFq', '20e39502-7f53-43c5-803e-8ec278b08a4d');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'H9mRVjyFq', '20e39502-7f53-43c5-803e-8ec278b08a4d');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (4, '4041379172021025',
         'libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis',
         'kpagel3@nationalgeographic.com', 'Korella', 'Pagel',
-        'USER', 'sUOFQf6XY6', '929fb762-9f21-42a5-b371-c933c7bc0b4f');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'sUOFQf6XY6', '929fb762-9f21-42a5-b371-c933c7bc0b4f');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (5, '4041379087192457',
         'nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed',
         'kromeril4@blogs.com', 'Karola', 'Romeril',
-        'USER', 'ODNOeuK3yNH', '0095746f-0ab6-45f7-b8fd-6f3f1b3fb045');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'ODNOeuK3yNH', '0095746f-0ab6-45f7-b8fd-6f3f1b3fb045');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (6, '4041596819399981', 'augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis',
         'rnewman5@plala.or.jp', 'Ruy', 'Newman',
-        'USER', 'pY763iG', 'a77708b7-8d20-4099-9c7e-b96f2fa0e307');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'pY763iG', 'a77708b7-8d20-4099-9c7e-b96f2fa0e307');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (7, '4041370894750',
         'massa tempor convallis nulla neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien dignissim',
         'ajarvie6@exblog.jp', 'Ardenia', 'Jarvie',
-        'USER', 'IJZhiIERhy', '42cd9a57-d5a2-4701-a494-fe7ed4b85fc9');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'IJZhiIERhy', '42cd9a57-d5a2-4701-a494-fe7ed4b85fc9');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (8, '4041370000085597',
         'molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque penatibus',
         'mchuter7@usatoday.com', 'Mark', 'Chuter',
-        'USER', 'BNajZkx8Jo', '3726e29b-90c3-4c7a-b89c-4a4b4c10d12b');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'BNajZkx8Jo', '3726e29b-90c3-4c7a-b89c-4a4b4c10d12b');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (9, '4041379935539', 'arcu sed augue aliquam erat volutpat in congue etiam justo', 'tralestone8@wordpress.org',
         'Tawnya', 'Ralestone',
-        'USER',
+        'USER', 'true',
         '0PSoXvC2u3lE', 'd57507f1-5a21-4e96-94d6-fad11697422e');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (10, '4041594613527493',
         'fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui',
         'nrushby9@wordpress.com', 'Nalani', 'Rushby',
-        'USER', 'x6D0VjRfd', 'b62a603f-4fd6-4093-86d4-289021dc0363');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'x6D0VjRfd', 'b62a603f-4fd6-4093-86d4-289021dc0363');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (11, '4041370296063', 'felis donec semper sapien a libero nam dui proin leo', 'clebruma@gizmodo.com', 'Cherice',
-        'Le Brum', 'USER',
+        'Le Brum', 'USER', 'true',
         '0CI9Ie', '489663f6-f2f9-470c-9e26-95a26f0ca16a');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (12, '4041597932986027',
         'vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget tempus vel',
         'ltimbrellb@earthlink.net', 'Lebbie', 'Timbrell',
-        'USER', '3wXP8dcK', 'c98a43ef-02ec-4156-b542-30d3c6923c15');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', '3wXP8dcK', 'c98a43ef-02ec-4156-b542-30d3c6923c15');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (13, '4041592191332',
         'parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis natoque penatibus',
         'craccioc@ovh.net', 'Cloe', 'Raccio',
-        'USER', 'RhBvIGT', '96a52688-d9cc-4a9f-b3b8-19fc5b2c03e0');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'RhBvIGT', '96a52688-d9cc-4a9f-b3b8-19fc5b2c03e0');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (14, '4041596910161678',
         'pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in',
         'cgombyd@surveymonkey.com', 'Cate', 'Gomby',
-        'USER', 'ByTCGvD3', 'e1aecda3-94a3-4575-ba89-d4948a826562');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'ByTCGvD3', 'e1aecda3-94a3-4575-ba89-d4948a826562');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (15, '4041370243693',
         'volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis',
         'gsquirrelle@goodreads.com', 'Gretal', 'Squirrell',
-        'USER', '3wi9koiawe', 'c20ca389-9c09-49b3-bbc4-41e7e4acb8ef');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', '3wi9koiawe', 'c20ca389-9c09-49b3-bbc4-41e7e4acb8ef');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (16, '4041370196420',
         'vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris',
         'ahalledayf@ft.com', 'Adriano', 'Halleday',
-        'USER', 'tiwdqqH4P', '2dcf9cb6-5350-4bfb-9ba1-650c98a81f5f');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'tiwdqqH4P', '2dcf9cb6-5350-4bfb-9ba1-650c98a81f5f');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (17, '4041373967454',
         'augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis elementum ligula vehicula consequat',
         'lisardg@slideshare.net', 'Les', 'Isard',
-        'USER', 'tP2toL', 'a626e171-a2a2-4acf-b7e1-647dc31ba331');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'tP2toL', 'a626e171-a2a2-4acf-b7e1-647dc31ba331');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (18, '4764733176884',
         'orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam',
         'santyukhinh@wired.com', 'Skipp', 'Antyukhin',
-        'USER', 'WRzm2rvE', 'd59c42ba-0762-4be8-8bf6-086a4946c7af');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'WRzm2rvE', 'd59c42ba-0762-4be8-8bf6-086a4946c7af');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (19, '4017959286154',
         'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis',
         'feldertoni@reference.com', 'Fidel', 'Elderton',
-        'USER', 'odWVmlqi8Z', '81d13bb2-f303-4d15-a3c8-697991cf2023');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'odWVmlqi8Z', '81d13bb2-f303-4d15-a3c8-697991cf2023');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (20, '4041370939358669', 'nisl venenatis lacinia aenean sit amet justo morbi ut odio',
         'hgreenacrej@prnewswire.com', 'Helge', 'Greenacre',
-        'USER',
+        'USER', 'true',
         'aty50BvRmhin', 'fff397d0-6f73-491c-afa0-67caea132946');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (21, '4017957143845', 'non quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis',
         'plaverenzk@e-recht24.de', 'Pierre', 'Laverenz',
-        'USER', 'KgDgBrGN', 'f33e76c8-ab99-40f5-8ffb-068c409412b4');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'KgDgBrGN', 'f33e76c8-ab99-40f5-8ffb-068c409412b4');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (22, '4791916489099',
         'potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam non mauris',
         'caisthorpel@buzzfeed.com', 'Cass', 'Aisthorpe',
-        'USER', 'ij36KxrBS', '71d05dd6-3291-440c-99c5-7d9224c28533');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'ij36KxrBS', '71d05dd6-3291-440c-99c5-7d9224c28533');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (23, '4041591223086',
         'sem praesent id massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada',
         'naleksidzem@globo.com', 'Nick', 'Aleksidze',
-        'USER',
+        'USER', 'true',
         '4Kh2XD5toSu7', '8d3b0d95-8463-4563-bfff-a2ba0115f5af');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (24, '4041595557947274',
         'condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque',
         'dbartoszekn@state.gov', 'Daisy', 'Bartoszek',
-        'USER', '53ogKOl', '02e274c4-3e71-4b13-9ce5-16be65bf99c8');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', '53ogKOl', '02e274c4-3e71-4b13-9ce5-16be65bf99c8');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (25, '4041377637772',
         'molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est',
         'pmarneyo@berkeley.edu', 'Pauly', 'Marney',
-        'USER', 'QiLp767Rnq6', '4153126b-3c90-41a8-b95f-c708b2459d99');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'QiLp767Rnq6', '4153126b-3c90-41a8-b95f-c708b2459d99');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (26, '4041372908020',
         'convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate',
         'yzanazzip@ning.com', 'Yasmin', 'Zanazzi',
-        'USER', 'fTZebAu3', '50796dfe-40c8-4eec-9dab-354c00da14a9');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'fTZebAu3', '50796dfe-40c8-4eec-9dab-354c00da14a9');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (27, '4041594805348252', 'nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus',
         'nlewendonq@latimes.com', 'Niles', 'Lewendon',
-        'USER',
+        'USER', 'true',
         'cne4axR4VxxD', '469066c1-2416-4440-9648-782f134bd89e');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (28, '4407080660704381',
         'volutpat eleifend donec ut dolor morbi vel lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit',
         'epriggr@1und1.de', 'Edee', 'Prigg',
-        'USER', 'XezrXJMdOee', '33837047-e813-421c-9999-922834e93eb2');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'XezrXJMdOee', '33837047-e813-421c-9999-922834e93eb2');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (29, '4041591064043',
         'ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac', 'ggumbs@wisc.edu',
         'Gabbi', 'Gumb',
-        'USER', '12NLjg', '1fb554b7-686c-4875-a573-66244a41c07b');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', '12NLjg', '1fb554b7-686c-4875-a573-66244a41c07b');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (30, '4041598516363708',
         'nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi',
         'eeytont@noaa.gov', 'Ellsworth', 'Eyton',
-        'USER', 'kWV4nxHBXgk', '30bf3aec-f4db-4c62-9096-b5e480593f08');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'kWV4nxHBXgk', '30bf3aec-f4db-4c62-9096-b5e480593f08');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (31, '4816950868256852', 'nulla dapibus dolor vel est donec odio justo sollicitudin ut', 'gmatteacciu@yandex.ru',
         'Greggory', 'Matteacci',
-        'USER', 'n3UNcPNI8mF', '3250fa69-dee0-4f1c-bef4-2d65d7383140');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'n3UNcPNI8mF', '3250fa69-dee0-4f1c-bef4-2d65d7383140');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (32, '4041371449394178', 'et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet',
         'rtrazziv@unicef.org', 'Raina', 'Trazzi',
-        'USER',
+        'USER', 'true',
         'PhWR9nbQGsRn', 'c95200b3-65cf-4e36-9595-983b57491d70');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (33, '4041591622436',
         'eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed',
         'ttryhornw@xrea.com', 'Trent', 'Tryhorn',
-        'USER', '64kFmodNA', '02eb8797-8153-49fe-aa9b-2892dc02da2f');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', '64kFmodNA', '02eb8797-8153-49fe-aa9b-2892dc02da2f');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (34, '4041599268141', 'nisl nunc rhoncus dui vel sem sed sagittis nam congue', 'bdallemorex@answers.com', 'Bill',
-        'Dallemore', 'USER',
+        'Dallemore', 'USER', 'true',
         'jyvwC6', 'a13a1dbb-6f53-491c-b29d-63fddf47c8ce');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (35, '4017954958677131', 'hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis',
         'kjohannesy@businessweek.com', 'Ketty', 'Johannes',
-        'USER', '6KOEvHFV', '9d998fe3-c2c6-40ae-a43a-77d4a8843985');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', '6KOEvHFV', '9d998fe3-c2c6-40ae-a43a-77d4a8843985');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (36, '4490733719569902',
         'nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus vel nulla eget eros elementum pellentesque',
         'ndavenellz@dell.com', 'Natalya', 'Davenell',
-        'USER', '2lbeTZVM', '34cb08e7-a66f-423f-8bbf-5707be95a405');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', '2lbeTZVM', '34cb08e7-a66f-423f-8bbf-5707be95a405');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (37, '4219305208995',
         'rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis lacinia aenean',
         'ggwillim10@shop-pro.jp', 'Germaine', 'Gwillim',
-        'USER', 'n2C4A6H', '02325520-7b68-400b-ab49-ed1617313d1b');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'n2C4A6H', '02325520-7b68-400b-ab49-ed1617313d1b');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (38, '4017957591092', 'eget massa tempor convallis nulla neque libero convallis eget eleifend luctus',
         'mrosenbarg11@squidoo.com', 'Misti', 'Rosenbarg',
-        'USER', '5kkEUH40gdc', '54d1d4f4-8a92-4e53-84f6-c12bbae01b1c');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', '5kkEUH40gdc', '54d1d4f4-8a92-4e53-84f6-c12bbae01b1c');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (39, '4017955879896171',
         'habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida',
         'asumshon12@ning.com', 'Alejandra', 'Sumshon',
-        'USER', 'aJLebFH8mB', '0daa3542-00d6-47c1-9ff8-27eeaab4eb42');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'aJLebFH8mB', '0daa3542-00d6-47c1-9ff8-27eeaab4eb42');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (40, '4041378288832598', 'mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at',
         'pnorth13@mit.edu', 'Paulina', 'North',
-        'USER', 'N4y6j7c', '6e2b4943-3bf5-4a70-bf94-a75e9010ae10');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'N4y6j7c', '6e2b4943-3bf5-4a70-bf94-a75e9010ae10');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (41, '4781914415188', 'suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum',
         'brozycki14@indiegogo.com', 'Brittany', 'Rozycki',
-        'USER',
+        'USER', 'true',
         'ULeUeR4KyKFz', '8911bf10-2ffe-48a9-a313-a3cafe37a295');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (42, '4041599267978',
         'diam id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam',
         'mdefond15@usda.gov', 'Morten', 'Defond',
-        'USER', 'ECWkgxE', 'f1a7b9b7-e202-45fc-8a3c-edad95b02e93');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'ECWkgxE', 'f1a7b9b7-e202-45fc-8a3c-edad95b02e93');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (43, '4041373995208331',
         'tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis elementum', 'dbramo16@google.nl',
         'Dory', 'Bramo',
-        'USER', 'uEGYYwBtdj', '693d6889-4b99-4365-90c3-cdbfd4abf58c');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'uEGYYwBtdj', '693d6889-4b99-4365-90c3-cdbfd4abf58c');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (44, '4041372378091', 'tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet',
         'sesmond17@arizona.edu', 'Sari', 'Esmond',
-        'USER',
+        'USER', 'true',
         'VtPA26pYAI9k', '73c2cec1-e515-4843-8a44-a75e7c5f4f31');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (45, '4041373531450140',
         'quam turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin at turpis a pede',
         'berskin18@dell.com', 'Brewer', 'Erskin',
-        'USER', 'O1zbNY', '34958bd7-53ea-4029-a8d5-8dadc4fc7e29');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'O1zbNY', '34958bd7-53ea-4029-a8d5-8dadc4fc7e29');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (46, '4659660742031',
         'libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis justo',
         'lkidston19@sohu.com', 'Lorita', 'Kidston',
-        'USER', 'anvqCEs5j', '9a68850a-8cd3-4213-a17c-dc3d52dd02f2');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'anvqCEs5j', '9a68850a-8cd3-4213-a17c-dc3d52dd02f2');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (47, '4041378884456',
         'orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin ut suscipit',
         'jthorold1a@topsy.com', 'Jeffy', 'Thorold',
-        'USER', 'cEEfaT8', '0672e6ad-def1-492b-9af4-1169f6fb75cc');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'cEEfaT8', '0672e6ad-def1-492b-9af4-1169f6fb75cc');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (48, '4055547469551',
         'consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo eu',
         'djecks1b@google.com', 'Dorisa', 'Jecks',
-        'USER', 'Kd3NhwqrD', 'a33a6e0e-0027-438b-bae8-961ea031358a');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'Kd3NhwqrD', 'a33a6e0e-0027-438b-bae8-961ea031358a');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (49, '4017959369360607', 'ullamcorper purus sit amet nulla quisque arcu libero rutrum ac',
         'emullett1c@toplist.cz', 'Elysha', 'Mullett',
-        'USER', 'lJfINNjKX', '2dd8f830-8a48-4800-b61c-5e1f2b407efa');
-insert into users (id, account_card, about, email, first_name, last_name, role, password, uuid)
+        'USER', 'true', 'lJfINNjKX', '2dd8f830-8a48-4800-b61c-5e1f2b407efa');
+insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (50, '4041377101432156',
         'libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis',
         'fklain1d@umich.edu', 'Forrest', 'Klain',
-        'USER', 'AHYhfy', 'b45cdc76-9709-46ad-8a85-ca5010752776');
+        'USER', 'true', 'AHYhfy', 'b45cdc76-9709-46ad-8a85-ca5010752776');
 
 -- Inserting certificates into certificates table
 

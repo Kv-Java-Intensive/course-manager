@@ -26,7 +26,7 @@ public class ModuleServiceImpl implements ModuleService {
   @Override
   public List<Module> findAll() {
     logger.info("GET ALL MODULES");
-    List<Module> moduleList = (List) moduleRepository.findAll();
+    List<Module> moduleList = moduleRepository.findAll();
     if (moduleList.isEmpty()) {
       logger.error("MODULES LIST IS EMPTY");
       throw new EntityNotFoundException("No module found!");
