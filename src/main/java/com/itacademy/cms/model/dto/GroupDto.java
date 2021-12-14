@@ -1,7 +1,6 @@
 package com.itacademy.cms.model.dto;
 
 import com.itacademy.cms.model.Course;
-import com.itacademy.cms.model.User;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Getter;
