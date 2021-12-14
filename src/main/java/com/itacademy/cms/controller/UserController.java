@@ -1,6 +1,5 @@
 package com.itacademy.cms.controller;
 
-
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.dto.UserDto;
 import com.itacademy.cms.service.UserService;
@@ -21,9 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
   private final UserService userService;
-
   private final MapStructMapper entityMapper;
-
 
   @GetMapping("/users")
   public List<UserDto> getAllUser() {

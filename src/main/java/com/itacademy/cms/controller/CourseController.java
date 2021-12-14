@@ -24,7 +24,6 @@ public class CourseController {
   private final CourseService courseService;
   private final MapStructMapper mapStructMapper;
 
-
   @GetMapping
   public List<CourseGetDto> showAllCourses() {
     return mapStructMapper
