@@ -238,6 +238,9 @@ CREATE TABLE IF NOT EXISTS users
 (
     255
 ),
+    active
+    boolean
+    ,
     uuid
     character
     varying
