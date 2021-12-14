@@ -68,6 +68,8 @@ public class User extends BaseEntity {
   @Column(name = "uuid")
   private String uuid;
 
+  private boolean active;
+
   @PrePersist
   public void autofill() {
     this.setUuid(UUID.randomUUID().toString());

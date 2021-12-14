@@ -83,4 +83,9 @@ public class UserServiceImpl implements UserService {
     logger.error("USER WITH ID = {} DOES NOT EXIST", uuid);
     throw new EntityNotFoundException("User with uuid " + uuid + " not found!");
   }
+
+  @Override
+  public void blockUser(String uuid, boolean active) {
+    userRepository.blockUser(uuid, active);
+  }
 }

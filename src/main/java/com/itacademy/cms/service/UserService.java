@@ -7,7 +7,7 @@ import java.util.List;
 public interface UserService {
 
   List<User> findAll();
-  
+
   void updateUser(UserDto userDto, String uuid);
 
   User saveUser(UserDto userDto);
@@ -15,4 +15,6 @@ public interface UserService {
   User findByUuid(String uuid);
 
   void deleteUserByUuid(String uuid);
+
+  void blockUser(String uuid, boolean active);
 }
