@@ -6,6 +6,7 @@ import com.itacademy.cms.model.dto.TagDto;
 import com.itacademy.cms.service.TagService;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,9 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TagController {
 
   private final TagService tagService;
-
   private final MapStructMapper tagMapper;
-
 
   @GetMapping("/tags")
   public List<TagDto> showAllTags() {
@@ -31,8 +30,8 @@ public class TagController {
   }
 
   @GetMapping("/tags/{id}")
-  public TagDto getTagById(@PathVariable("id") Long tagId) {
-    return tagMapper.tagToTagDto(tagService.findTagbyId(tagId));
+  public TagDto getTagByUuid(@PathVariable("id") String uuid) {
+    return tagMapper.tagToTagDto(tagService.findByUuid(uuid));
 
   }
 
@@ -42,12 +41,13 @@ public class TagController {
   }
 
   @PutMapping("/tags/{id}")
-  public void updateUser(@RequestBody TagDto tagDto, @PathVariable Long id) {
-    tagService.updateTag(tagDto, id);
+  public void updateUser(@RequestBody TagDto tagDto, @PathVariable("id") String uuid) {
+    tagService.updateTag(tagDto, uuid);
   }
 
+  @Transactional
   @DeleteMapping("/tags/{id}")
-  public void delete(@PathVariable Long id) {
-    tagService.deleteTag(id);
+  public void deleteTag(@PathVariable("id") String uuid) {
+    tagService.deleteTagByUuid(uuid);
   }
 }
