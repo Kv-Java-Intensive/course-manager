@@ -35,8 +35,9 @@ public class User extends BaseEntity {
   @OneToMany(mappedBy = "user", orphanRemoval = true)
   private List<UserToCourse> userCourse;
   @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
-
   private List<Group> groups;
+  //  @Column()
+//  private String username;
   @NotNull
   @Column(name = "first_name")
   private String firstName;
@@ -44,6 +45,7 @@ public class User extends BaseEntity {
   @Column(name = "last_name")
   private String lastName;
   @NotNull
+  @Column(name = "username")
   private String email;
   @NotNull
   private String password;

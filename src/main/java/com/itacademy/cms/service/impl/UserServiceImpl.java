@@ -10,6 +10,7 @@ import com.itacademy.cms.service.UserService;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,22 +29,22 @@ public class UserServiceImpl implements UserService {
     return userList;
   }
 
-//  @Override
-//  public void updateUser(UserDto userDto, Long id) {
-//    Optional<User> userOptional = userRepository.findById(id);
-//    userOptional.ifPresent(user -> {
-//      user.setGroups(userDto.getGroups());
-//      user.setUserCourse(userDto.getUserCourse());
-//      user.setFirstName(userDto.getFirstName());
-//      user.setLastName(userDto.getLastName());
-//      user.setEmail(userDto.getEmail());
-//      user.setPassword(userDto.getPassword());
-//      user.setRole(userDto.getRole());
-//      user.setAccountCard(userDto.getAccountCard());
-//      user.setAbout(userDto.getAbout());
-//      userRepository.save(user);
-//    });
-//  }
+  @Override
+  public void updateUser(UserDto userDto, Long id) {
+    Optional<User> userOptional = userRepository.findById(id);
+    userOptional.ifPresent(user -> {
+      //user.setGroups(userDto.getGroups());
+      // user.setUserCourse(userDto.getUserCourse());
+      user.setFirstName(userDto.getFirstName());
+      user.setLastName(userDto.getLastName());
+      user.setEmail(userDto.getEmail());
+      user.setPassword(userDto.getPassword());
+      user.setRole(userDto.getRole());
+      user.setAccountCard(userDto.getAccountCard());
+      user.setAbout(userDto.getAbout());
+      userRepository.save(user);
+    });
+  }
 
 
   @Override
@@ -68,4 +69,19 @@ public class UserServiceImpl implements UserService {
     }
     throw new EntityNotFoundException("User with id " + id + " not found!");
   }
+
+  public User findUserByEmail(String email) {
+//    List<User> users = userRepository.findAll();
+//    User user = null;
+//    for (User myuser : users) {
+//      if (myuser.getEmail().equals(email)) {
+//        user = myuser;
+//      }
+//    }
+    User user = userRepository.findUserByEmail(email);
+    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    user.setPassword(encoder.encode(user.getPassword()));
+    return user;
+  }
 }
+

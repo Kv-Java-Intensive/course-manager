@@ -192,7 +192,7 @@ CREATE TABLE IF NOT EXISTS users
     255
 ) ,
     account_card double precision,
-    email character varying
+    username character varying
 (
     255
 ) ,
@@ -290,7 +290,7 @@ CREATE TABLE IF NOT EXISTS user_course
 (
     user_id
 )
-    REFERENCES public.users
+    REFERENCES users
 (
     id
 )
@@ -323,10 +323,8 @@ CREATE TABLE IF NOT EXISTS users_groups
 (
     group_id
 )
-    REFERENCES public.groups
+    REFERENCES groups
 (
     id
-) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION
+)
     );
