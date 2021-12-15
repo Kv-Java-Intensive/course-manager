@@ -9,6 +9,12 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
+  @Query("SELECT u FROM User u WHERE u.email = ?1")
+  User findByEmail(String email);
+
+  @Query("SELECT u FROM User u WHERE u.firstName = ?1")
+  User findByName(String name);
+
   Optional<User> findByUuid(String uuid);
 
   boolean existsByUuid(String uuid);

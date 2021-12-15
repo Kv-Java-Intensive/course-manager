@@ -7,6 +7,7 @@ import com.itacademy.cms.service.CourseService;
 import java.util.List;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,13 +26,15 @@ public class CourseController {
   private final MapStructMapper mapStructMapper;
 
   @GetMapping
+  @PreAuthorize("permitAll()")
   public List<CourseGetDto> showAllCourses() {
     return mapStructMapper
         .courseAllToCourseGetDto(
             courseService.getAllCourses());
   }
 
-  @GetMapping(value = "/search/{category}")
+  @GetMapping("/search/{category}")
+  @PreAuthorize("permitAll()")
   public List<CourseGetDto> showAllCoursesByCategory(@PathVariable("category")
                                                          String categoryName) {
     return mapStructMapper.courseAllToCourseGetDto(
@@ -39,22 +42,26 @@ public class CourseController {
   }
 
   @GetMapping("/search/{tag}")
+  @PreAuthorize("permitAll()")
   public List<CourseGetDto> showAllCourseByTag(@PathVariable("tag")
                                                    String tagName) {
     return mapStructMapper.courseAllToCourseGetDto(courseService.getAllCoursesByTag(tagName));
   }
 
   @GetMapping("/{id}")
+  @PreAuthorize("hasAuthority('ADMIN')")
   public CourseGetDto showCourseByUuid(@PathVariable("id") String uuid) {
     return mapStructMapper.courseToCourseGetDto(courseService.getCourseByUuid(uuid));
   }
 
   @PostMapping
+  @PreAuthorize("permitAll()")
   public void addNewCourse(@RequestBody CoursePostDto coursePostDto) {
     courseService.saveCourse(coursePostDto);
   }
 
   @PutMapping("/{id}")
+  @PreAuthorize("hasAnyAuthority('ADMIN', 'AUTHOR')")
   public void updateCourseById(@RequestBody CoursePostDto coursePostDto,
                                @PathVariable("id") Long id) {
     courseService.updateCourse(coursePostDto, id);
@@ -62,6 +69,7 @@ public class CourseController {
 
   @Transactional
   @DeleteMapping("/{id}")
+  @PreAuthorize("hasAnyAuthority('ADMIN', 'AUTHOR')")
   public void deleteCourseById(@PathVariable("id") String uuid) {
     courseService.deleteCourseByUuid(uuid);
   }

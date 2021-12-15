@@ -667,7 +667,8 @@ insert into users (id, account_card, about, email, first_name, last_name, role, 
 values (1, '4041377234034',
         'in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis fusce posuere felis',
         'pworters0@unicef.org', 'Peri', 'Worters',
-        'USER', 'true', 'L0fKqFvNc', '6ea30879-e345-4e3c-8ee4-e840550bda1d');
+        'USER', 'true', '$2y$12$z4MKhBMNJZdWdeizjoYjW.R3ZdQwCDJFx3W18VNvQ.YgH.BasKagO',
+        '6ea30879-e345-4e3c-8ee4-e840550bda1d');
 insert into users (id, account_card, about, email, first_name, last_name, role, active, password, uuid)
 values (2, '4041373489714802',
         'interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in',
