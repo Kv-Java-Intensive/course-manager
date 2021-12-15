@@ -15,6 +15,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -65,8 +66,7 @@ public class Course extends BaseEntity {
   @Enumerated(EnumType.STRING)
   private Language language;
 
-  @OneToMany(mappedBy = "course", cascade = {CascadeType.MERGE, CascadeType.DETACH,
-      CascadeType.PERSIST, CascadeType.REFRESH})
+  @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
   private List<UserToCourse> userCourses;
 
 
@@ -75,17 +75,16 @@ public class Course extends BaseEntity {
       inverseJoinColumns = @JoinColumn(name = "tag_id"))
   private List<Tag> courseTags;
 
-  @OneToMany(cascade = {CascadeType.MERGE, CascadeType.DETACH,
-      CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "course")
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
   private List<Group> groups;
 
   @OneToMany(cascade = {CascadeType.MERGE, CascadeType.DETACH,
       CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "course")
   private List<Module> modules;
 
-//  @NotNull
-//  @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "course")
-//  private Certificate certificate;
+  @NotNull
+  @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "course")
+  private Certificate certificate;
 
   @Column(name = "uuid")
   private String uuid;

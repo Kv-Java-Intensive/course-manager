@@ -4,6 +4,7 @@ import java.util.UUID;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
@@ -32,8 +33,8 @@ public class Certificate extends BaseEntity {
   @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
   private Course course;
 
-//  @ManyToOne
-//  private User user;
+  @ManyToOne
+  private User user;
 
   @Column(name = "uuid")
   private String uuid;

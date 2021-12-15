@@ -1013,105 +1013,105 @@ values (50, 'Medhurst Inc', 35, 18, '1910c6bf-e243-473b-9317-f18f489207aa');
 -- Inserting user_course into user_course table
 
 insert into user_course (course_id, user_id, course_status, is_author)
-values (1, 46, 5, true);
+values (1, 46, 1, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (2, 29, 14, false);
+values (2, 29, 2, false);
 insert into user_course (course_id, user_id, course_status, is_author)
 values (3, 11, 1, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (4, 46, 16, true);
+values (4, 46, 3, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (5, 38, 20, true);
+values (5, 38, 0, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (6, 36, 10, false);
+values (6, 36, 1, false);
 insert into user_course (course_id, user_id, course_status, is_author)
 values (7, 34, 2, false);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (8, 23, 6, true);
+values (8, 23, 2, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (9, 38, 17, false);
+values (9, 38, 3, false);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (10, 25, 10, true);
+values (10, 25, 1, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (11, 47, 10, false);
+values (11, 47, 2, false);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (12, 46, 16, true);
+values (12, 46, 0, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (13, 42, 9, false);
+values (13, 42, 3, false);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (14, 25, 8, true);
+values (14, 25, 2, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (15, 48, 17, false);
+values (15, 48, 1, false);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (16, 23, 20, false);
+values (16, 23, 2, false);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (17, 37, 17, true);
+values (17, 37, 3, true);
 insert into user_course (course_id, user_id, course_status, is_author)
 values (18, 39, 2, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (19, 46, 20, true);
+values (19, 46, 0, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (20, 36, 17, true);
+values (20, 36, 1, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (21, 12, 19, false);
+values (21, 12, 2, false);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (22, 24, 15, false);
+values (22, 24, 1, false);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (23, 45, 10, true);
+values (23, 45, 3, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (24, 10, 10, false);
+values (24, 10, 0, false);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (25, 33, 12, false);
+values (25, 33, 1, false);
 insert into user_course (course_id, user_id, course_status, is_author)
 values (26, 43, 1, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (27, 39, 15, true);
+values (27, 39, 2, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (28, 42, 16, true);
+values (28, 42, 3, true);
 insert into user_course (course_id, user_id, course_status, is_author)
 values (29, 9, 2, false);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (30, 24, 5, false);
+values (30, 24, 1, false);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (31, 28, 8, true);
+values (31, 28, 2, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (32, 19, 7, true);
+values (32, 19, 1, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (33, 5, 4, true);
+values (33, 5, 3, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (34, 9, 6, false);
+values (34, 9, 0, false);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (35, 32, 4, false);
+values (35, 32, 0, false);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (36, 22, 17, true);
+values (36, 22, 1, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (37, 29, 4, true);
+values (37, 29, 0, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (38, 49, 17, true);
+values (38, 49, 2, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (39, 33, 9, false);
+values (39, 33, 3, false);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (40, 38, 16, true);
+values (40, 38, 0, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (41, 12, 17, true);
+values (41, 12, 1, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (42, 35, 4, true);
+values (42, 35, 0, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (43, 42, 14, false);
+values (43, 42, 2, false);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (44, 19, 12, true);
+values (44, 19, 2, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (45, 45, 9, true);
+values (45, 45, 3, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (46, 34, 14, false);
+values (46, 34, 0, false);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (47, 20, 5, true);
+values (47, 20, 1, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (48, 39, 7, true);
+values (48, 39, 2, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (49, 16, 5, true);
+values (49, 16, 3, true);
 insert into user_course (course_id, user_id, course_status, is_author)
-values (50, 24, 20, true);
+values (50, 24, 2, true);
 
 -- Inserting users_groups into users_groups table
 
@@ -1215,3 +1215,11 @@ insert into users_groups (group_id, user_id)
 values (30, 19);
 insert into users_groups (group_id, user_id)
 values (49, 20);
+
+SELECT setval('courses_id_seq', 50, true);
+SELECT setval('categories_id_seq', 50, true);
+SELECT setval('certificates_id_seq', 50, true);
+SELECT setval('groups_id_seq', 50, true);
+SELECT setval('modules_id_seq', 50, true);
+SELECT setval('tags_id_seq', 50, true);
+SELECT setval('users_id_seq', 50, true);
