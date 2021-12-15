@@ -28,48 +28,49 @@ public class CategoryServiceIntegrationTest {
     categoryRepository.deleteAll();
   }
 
-//  @Test
-//  void categorySaveAndFindByIdTest() {
-//    Category savedCategory = getSavedCategory();
-//
-//    Category categoryById = categoryService.findById(savedCategory.getId());
-//
-//    Assertions.assertEquals(savedCategory.getCategoryName(), categoryById.getCategoryName());
-//  }
+  @Test
+  void categorySaveAndFindByUuidTest() {
 
-//  @Test
-//  void categoryUpdateTest() {
-//    CategoryDto categoryDtoUpdate = new CategoryDto();
-//
-//    categoryDtoUpdate.setCategoryName("testName");
-//
-//    //Category initCategory = getSavedCategory();
-//
-//    //categoryService.updateCategory(categoryDtoUpdate, initCategory.getId());
-//
-//    Category updateCategory = categoryService.findById(initCategory.getId());
-//
-//    Assertions.assertEquals(categoryDtoUpdate.getCategoryName(), updateCategory.getCategoryName());
-//  }
+    Category savedCategory = getSavedCategory();
 
-//  @Test
-//  void categoryDeleteTest() {
-//    Category initCategory = getSavedCategory();
-//
-//    Assertions.assertNotNull(categoryService.findById(initCategory.getId()));
-//
-//    categoryService.deleteCategoryById(initCategory.getId());
-//
-//    Assertions.assertThrows(EntityNotFoundException.class,
-//        () -> categoryService.findById(initCategory.getId()));
-//  }
+    Category categoryByUuid = categoryService.findByUuid(savedCategory.getUuid());
 
-//  private Category getSavedCategory() {
-//    CategoryDto categoryDto = new CategoryDto();
-//
-//    categoryDto.setCategoryName("testName");
-//
-//    return categoryService.saveCategory(categoryDto);
-//  }
+    Assertions.assertEquals(savedCategory.getCategoryName(), categoryByUuid.getCategoryName());
+  }
+
+  @Test
+  void categoryUpdateTest() {
+    CategoryDto categoryDtoUpdate = new CategoryDto();
+
+    categoryDtoUpdate.setCategoryName("testName");
+
+    Category initCategory = getSavedCategory();
+
+    categoryService.updateCategory(categoryDtoUpdate, initCategory.getUuid());
+
+    Category updateCategory = categoryService.findByUuid(initCategory.getUuid());
+
+    Assertions.assertEquals(categoryDtoUpdate.getCategoryName(), updateCategory.getCategoryName());
+  }
+
+  @Test
+  void categoryDeleteTest() {
+    Category initCategory = getSavedCategory();
+
+    Assertions.assertNotNull(categoryService.findByUuid(initCategory.getUuid()));
+
+    categoryService.deleteCategoryByUuid(initCategory.getUuid());
+
+    Assertions.assertThrows(EntityNotFoundException.class,
+        () -> categoryService.findByUuid(initCategory.getUuid()));
+  }
+
+  private Category getSavedCategory() {
+    CategoryDto categoryDto = new CategoryDto();
+
+    categoryDto.setCategoryName("testName");
+
+    return categoryService.saveCategory(categoryDto);
+  }
 }
 

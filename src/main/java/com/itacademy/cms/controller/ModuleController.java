@@ -6,6 +6,7 @@ import com.itacademy.cms.model.dto.ModuleDto;
 import com.itacademy.cms.service.ModuleService;
 import java.util.ArrayList;
 import java.util.List;
+import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 public class ModuleController {
-
 
   private final ModuleService moduleService;
   private final MapStructMapper moduleMapper;
@@ -34,8 +34,8 @@ public class ModuleController {
   }
 
   @GetMapping("/modules/{id}")
-  public ModuleDto getModuleById(@PathVariable("id") Long id) {
-    return moduleMapper.moduleToModuleDto(moduleService.findById(id));
+  public ModuleDto getModuleByUuid(@PathVariable("id") String uuid) {
+    return moduleMapper.moduleToModuleDto(moduleService.findByUuid(uuid));
   }
 
   @PostMapping("/modules")
@@ -43,15 +43,15 @@ public class ModuleController {
     moduleService.saveModule(moduleDto);
   }
 
-//  @PutMapping("/modules/{id}")
-//  public void updateModule(@RequestBody ModuleDto moduleDto, @PathVariable Long id)
-//      throws EntityNotFoundException {
-//    moduleService.updateModule(moduleDto, id);
-//  }
+  @PutMapping("/modules/{id}")
+  public void updateModule(@RequestBody ModuleDto moduleDto, @PathVariable("id") String uuid) {
+    moduleService.updateModule(moduleDto, uuid);
+  }
 
+  @Transactional
   @DeleteMapping("/modules/{id}")
-  public void deleteModule(@PathVariable("id") Long id) {
-    moduleService.deleteModuleById(id);
+  public void deleteModule(@PathVariable("id") String uuid) {
+    moduleService.deleteModuleByUuid(uuid);
   }
 
 }

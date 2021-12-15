@@ -39,7 +39,7 @@ public class TagServiceIntegrationTest {
   @Test
   void findTagbyIdTest() {
     Tag actualTag = createAndGetTag();
-    Tag expectedTag = tagService.findTagbyId(actualTag.getId());
+    Tag expectedTag = tagService.findByUuid(actualTag.getUuid());
     Assertions.assertEquals(actualTag.getName(), expectedTag.getName());
   }
 
@@ -50,8 +50,8 @@ public class TagServiceIntegrationTest {
     TagDto newTag = new TagDto();
     newTag.setName("newName");
     Tag actualTag = createAndGetTag();
-    tagService.updateTag(newTag, actualTag.getId());
-    Tag expectedTag = tagService.findTagbyId(actualTag.getId());
+    tagService.updateTag(newTag, actualTag.getUuid());
+    Tag expectedTag = tagService.findByUuid(actualTag.getUuid());
     Assertions.assertEquals(newTag.getName(), expectedTag.getName());
 
   }
@@ -59,10 +59,10 @@ public class TagServiceIntegrationTest {
   @Test
   void tagDeleteTest() {
     Tag actualTag = createAndGetTag();
-    Assertions.assertNotNull(tagService.findTagbyId(actualTag.getId()));
-    tagService.deleteTag(actualTag.getId());
+    Assertions.assertNotNull(tagService.findByUuid(actualTag.getUuid()));
+    tagService.deleteTagByUuid(actualTag.getUuid());
     Assertions.assertThrows(EntityNotFoundException.class,
-        () -> tagService.findTagbyId(actualTag.getId()));
+        () -> tagService.findByUuid(actualTag.getUuid()));
 
   }
 

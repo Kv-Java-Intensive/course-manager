@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -31,8 +30,6 @@ public class Tag extends BaseEntity {
   @Column(name = "name")
   private String name;
 
-  //  @ManyToMany(fetch = FetchType.LAZY,
-//      mappedBy = "tags")
   @ManyToMany(cascade = CascadeType.ALL)//, mappedBy = "tags")
   @JoinTable(
       name = "course_tags",

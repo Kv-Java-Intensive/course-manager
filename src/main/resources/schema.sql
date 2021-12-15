@@ -15,6 +15,12 @@ CREATE TABLE IF NOT EXISTS tags
 (
     255
 ),
+    uuid
+    character
+    varying
+(
+    255
+),
     PRIMARY KEY
 (
     id
@@ -29,6 +35,12 @@ CREATE TABLE IF NOT EXISTS categories
     NOT
     NULL,
     category_name
+    character
+    varying
+(
+    255
+),
+    uuid
     character
     varying
 (
@@ -66,6 +78,12 @@ CREATE TABLE IF NOT EXISTS courses
     price double precision,
     update_date date,
     course_category bigint,
+    uuid
+    character
+    varying
+(
+    255
+),
     PRIMARY KEY
 (
     id
@@ -77,7 +95,8 @@ CREATE TABLE IF NOT EXISTS courses
     REFERENCES categories
 (
     id
-) );
+)
+    );
 
 
 
@@ -100,7 +119,8 @@ CREATE TABLE IF NOT EXISTS course_tags
     REFERENCES courses
 (
     id
-), FOREIGN KEY
+),
+    FOREIGN KEY
 (
     tag_id
 )
@@ -161,9 +181,15 @@ CREATE TABLE IF NOT EXISTS modules
     description character varying
 (
     255
-) ,
+),
     lesson_num integer,
     course_id bigint,
+    uuid
+    character
+    varying
+(
+    255
+),
     PRIMARY KEY
 (
     id
@@ -190,28 +216,37 @@ CREATE TABLE IF NOT EXISTS users
     varying
 (
     255
-) ,
+),
     account_card double precision,
     username character varying
 (
     255
-) ,
+),
     first_name character varying
 (
     255
-) ,
+),
     last_name character varying
 (
     255
-) ,
+),
     password character varying
 (
     255
-) ,
+),
     role character varying
 (
     255
-) ,
+),
+    active
+    boolean
+    ,
+    uuid
+    character
+    varying
+(
+    255
+),
     PRIMARY KEY
 (
     id
@@ -234,6 +269,12 @@ CREATE TABLE IF NOT EXISTS certificates
 ),
     user_id bigint NOT NULL,
     course_id bigint NOT NULL,
+    uuid
+    character
+    varying
+(
+    255
+),
     PRIMARY KEY
 (
     id
@@ -244,7 +285,8 @@ CREATE TABLE IF NOT EXISTS certificates
 ) REFERENCES users
 (
     id
-), FOREIGN KEY
+),
+    FOREIGN KEY
 (
     course_id
 ) REFERENCES courses
@@ -285,7 +327,7 @@ CREATE TABLE IF NOT EXISTS user_course
     REFERENCES courses
 (
     id
-) ,
+),
     FOREIGN KEY
 (
     user_id
@@ -318,7 +360,7 @@ CREATE TABLE IF NOT EXISTS users_groups
     REFERENCES users
 (
     id
-) ,
+),
     FOREIGN KEY
 (
     group_id

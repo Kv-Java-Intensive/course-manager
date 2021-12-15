@@ -1,18 +1,19 @@
 package com.itacademy.cms.repository;
 
-import com.itacademy.cms.model.Group;
 import com.itacademy.cms.model.User;
-import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends CrudRepository<User, Long> {
+  Optional<User> findByUuid(String uuid);
 
-  // @Query(value = "select * from users u where u.email = ?1", nativeQuery = true)
-  //User findByEmail(String email);
+  boolean existsByUuid(String uuid);
+
+  void deleteByUuid(String uuid);
+
+  @Query(value = "UPDATE User SET active=?2 WHERE id = ?1")
+  @Modifying
+  void blockUser(String uuid, boolean active);
   User findUserByEmail(String email);
 }

@@ -5,6 +5,7 @@ import com.itacademy.cms.model.Category;
 import com.itacademy.cms.repository.CategoryRepository;
 import com.itacademy.cms.service.impl.CategoryServiceImpl;
 import java.util.Optional;
+import java.util.UUID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -30,25 +31,25 @@ public class CategoryServiceTest {
 
   @Test
   void findByIdTestExpectedException() {
-    Long id = 1L;
+    String uuid = UUID.randomUUID().toString();
     Assertions.assertThrows(EntityNotFoundException.class,
-        () -> categoryServiceImpl.findById(id));
-    Mockito.verify(categoryRepository).findById(id);
+        () -> categoryServiceImpl.findByUuid(uuid));
+    Mockito.verify(categoryRepository).findByUuid(uuid);
   }
 
   @Test
-  void findByIdTestExpectedCategory() {
-    Long id = 1L;
+  void findByUuidTestExpectedCategory() {
+    String uuid = UUID.randomUUID().toString();
 
     Category category = new Category();
-    category.setId(id);
+    category.setUuid(uuid);
     category.setCategoryName("testName");
 
     Optional<Category> optionalCategory = Optional.of(category);
-    Mockito.when(categoryRepository.findById(id)).thenReturn(optionalCategory);
-    Category savedCategory = categoryServiceImpl.findById(id);
+    Mockito.when(categoryRepository.findByUuid(uuid)).thenReturn(optionalCategory);
+    Category savedCategory = categoryServiceImpl.findByUuid(uuid);
 
-    Assertions.assertEquals(category.getId(), savedCategory.getId());
+    Assertions.assertEquals(category.getUuid(), savedCategory.getUuid());
     Assertions.assertEquals(category.getCategoryName(), savedCategory.getCategoryName());
   }
 }

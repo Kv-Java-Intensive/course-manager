@@ -33,7 +33,7 @@ public class UserServiceIntegrationTest {
   void userSaveAndFindByIdTest() {
     User savedUser = getSavedUser();
 
-    User userById = userService.findById(savedUser.getId());
+    User userById = userService.findByUuid(savedUser.getUuid());
 
     Assertions.assertEquals(savedUser.getFirstName(), userById.getFirstName());
     Assertions.assertEquals(savedUser.getLastName(), userById.getLastName());
@@ -44,43 +44,43 @@ public class UserServiceIntegrationTest {
     Assertions.assertEquals(savedUser.getAbout(), userById.getAbout());
   }
 
-//  @Test
-//  void userUpdateTest() {
-//    UserDto userDtoToUpdate = new UserDto();
-//
-//    userDtoToUpdate.setFirstName("updated");
-//    userDtoToUpdate.setLastName("updated");
-//    userDtoToUpdate.setEmail("updated@gmail.com");
-//    userDtoToUpdate.setPassword("updated");
-//    userDtoToUpdate.setRole(Role.USER);
-//    userDtoToUpdate.setAccountCard(1111111);
-//    userDtoToUpdate.setAbout("updated");
-//
-//    User initUser = getSavedUser();
-//
-//    userService.updateUser(userDtoToUpdate, initUser.getId());
-//
-//    User updatedUser = userService.findById(initUser.getId());
-//
-//    Assertions.assertEquals(userDtoToUpdate.getFirstName(), updatedUser.getFirstName());
-//    Assertions.assertEquals(userDtoToUpdate.getLastName(), updatedUser.getLastName());
-//    Assertions.assertEquals(userDtoToUpdate.getEmail(), updatedUser.getEmail());
-//    Assertions.assertEquals(userDtoToUpdate.getPassword(), updatedUser.getPassword());
-//    Assertions.assertEquals(userDtoToUpdate.getRole(), updatedUser.getRole());
-//    Assertions.assertEquals(userDtoToUpdate.getAccountCard(), updatedUser.getAccountCard());
-//    Assertions.assertEquals(userDtoToUpdate.getAbout(), updatedUser.getAbout());
-//  }
+  @Test
+  void userUpdateTest() {
+    UserDto userDtoToUpdate = new UserDto();
+
+    userDtoToUpdate.setFirstName("updated");
+    userDtoToUpdate.setLastName("updated");
+    userDtoToUpdate.setEmail("updated@gmail.com");
+    userDtoToUpdate.setPassword("updated");
+    userDtoToUpdate.setRole(Role.USER);
+    userDtoToUpdate.setAccountCard(1111111);
+    userDtoToUpdate.setAbout("updated");
+
+    User initUser = getSavedUser();
+
+    userService.updateUser(userDtoToUpdate, initUser.getUuid());
+
+    User updatedUser = userService.findByUuid(initUser.getUuid());
+
+    Assertions.assertEquals(userDtoToUpdate.getFirstName(), updatedUser.getFirstName());
+    Assertions.assertEquals(userDtoToUpdate.getLastName(), updatedUser.getLastName());
+    Assertions.assertEquals(userDtoToUpdate.getEmail(), updatedUser.getEmail());
+    Assertions.assertEquals(userDtoToUpdate.getPassword(), updatedUser.getPassword());
+    Assertions.assertEquals(userDtoToUpdate.getRole(), updatedUser.getRole());
+    Assertions.assertEquals(userDtoToUpdate.getAccountCard(), updatedUser.getAccountCard());
+    Assertions.assertEquals(userDtoToUpdate.getAbout(), updatedUser.getAbout());
+  }
 
   @Test
   void userDeleteTest() {
     User initUser = getSavedUser();
 
-    Assertions.assertNotNull(userService.findById(initUser.getId()));
+    Assertions.assertNotNull(userService.findByUuid(initUser.getUuid()));
 
-    userService.deleteUserById(initUser.getId());
+    userService.deleteUserByUuid(initUser.getUuid());
 
     Assertions.assertThrows(EntityNotFoundException.class,
-        () -> userService.findById(initUser.getId()));
+        () -> userService.findByUuid(initUser.getUuid()));
   }
 
   private User getSavedUser() {
