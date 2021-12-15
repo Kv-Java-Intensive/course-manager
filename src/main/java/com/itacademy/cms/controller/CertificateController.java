@@ -49,7 +49,7 @@ public class CertificateController {
     return certificateDto;
   }
 
-  @PutMapping("/employees/{id}")
+  @PutMapping("/certificates/{id}")
   public void updateCertificate(@RequestBody CertificateDto certificateDto,
                                 @PathVariable("id") String uuid) {
     certificateService.updateCertificate(certificateDto, uuid);

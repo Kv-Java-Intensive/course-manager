@@ -2,6 +2,7 @@ package com.itacademy.cms.repository;
 
 import com.itacademy.cms.model.User;
 import java.util.Optional;
+import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -16,7 +17,8 @@ public interface UserRepository extends CrudRepository<User, Long>, JpaSpecifica
 
   void deleteByUuid(String uuid);
 
-  @Query(value = "UPDATE User SET active=?2 WHERE id = ?1")
+  @Query(value = "UPDATE User SET active=?1 WHERE uuid = ?2")
   @Modifying
-  void blockUser(String uuid, boolean active);
+  @Transactional
+  void blockUser(boolean active, String uuid);
 }

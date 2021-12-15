@@ -105,7 +105,7 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public void blockUser(String uuid, boolean active) {
-    userRepository.blockUser(uuid, active);
+  public void blockUser(boolean active, String uuid) {
+    userRepository.blockUser(active, uuid);
   }
 }
