@@ -30,12 +30,11 @@ public class RegistrationController {
       return "...";
     }
 
-//    test
-//    user.setFirstName("nick");
-//    user.setLastName("kose");
-//    user.setEmail("nick@gmail.com");
-//    user.setPassword("qwerty");
-//    test
+    user.setFirstName("nick");
+    user.setLastName("kose");
+    user.setEmail("nick@gmail.com");
+    user.setPassword("qwerty");
+    user.setActive(true);
 
     user.setRole(Role.USER);
     userService.saveUser(user);

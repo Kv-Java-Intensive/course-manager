@@ -67,7 +67,12 @@ public class UserServiceImpl implements UserService {
   @Override
   public User saveUser(UserDto userDto) {
     logger.info("CREATE NEW USER");
-    return userRepository.save(userMapper.userDtoToUser(userDto));
+    try {
+      return userRepository.save(userMapper.userDtoToUser(userDto));
+    } catch (Exception ex) {
+      logger.error("ERROR WHILE SAVING NEW USER");
+      return null;
+    }
   }
 
   @Override
