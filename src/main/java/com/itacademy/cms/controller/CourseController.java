@@ -5,8 +5,10 @@ import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.dto.CourseGetDto;
 import com.itacademy.cms.model.dto.CoursePostDto;
+import com.itacademy.cms.model.dto.SearchCriteriaDto;
 import com.itacademy.cms.service.CourseService;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,19 +34,26 @@ public class CourseController {
     return mapStructMapper.courseAllToCourseGetDto(courseService.getAllCourses());
   }
 
-  @GetMapping(value = "/search/{category}")
-  public List<CourseGetDto> showAllCoursesByCategory(@PathVariable("category")
-                                                         String categoryName)
-      throws CourseNotFoundException {
-    return mapStructMapper.courseAllToCourseGetDto(
-        courseService.getAllCoursesByCategory(categoryName));
+  @PostMapping("/search")
+  public List<CourseGetDto> getCoursesBySearch(
+      @RequestBody SearchCriteriaDto searchCriteriaDto) {
+    return courseService.findCourseBySearch(searchCriteriaDto).stream()
+        .map(mapStructMapper::courseToCourseGetDto).collect(Collectors.toList());
   }
 
-  @GetMapping("/search/{tag}")
-  public List<CourseGetDto> showAllCourseByTag(@PathVariable("tag")
-                                                   String tagName) throws CourseNotFoundException {
-    return mapStructMapper.courseAllToCourseGetDto(courseService.getAllCoursesByTag(tagName));
-  }
+//  @GetMapping(value = "/search/{category}")
+//  public List<CourseGetDto> showAllCoursesByCategory(@PathVariable("category")
+//                                                         String categoryName)
+//      throws CourseNotFoundException {
+//    return mapStructMapper.courseAllToCourseGetDto(
+//        courseService.getAllCoursesByCategory(categoryName));
+//  }
+
+//  @GetMapping("/search/{tag}")
+//  public List<CourseGetDto> showAllCourseByTag(@PathVariable("tag")
+//                                                   String tagName) throws CourseNotFoundException {
+//    return mapStructMapper.courseAllToCourseGetDto(courseService.getAllCoursesByTag(tagName));
+//  }
 
   @GetMapping("/{id}")
   public CourseGetDto showCourseById(@PathVariable("id") Long id) throws CourseNotFoundException {
