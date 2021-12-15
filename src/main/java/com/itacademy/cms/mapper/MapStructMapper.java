@@ -16,6 +16,7 @@ import com.itacademy.cms.model.dto.ModuleDto;
 import com.itacademy.cms.model.dto.TagDto;
 import com.itacademy.cms.model.dto.TagGetDto;
 import com.itacademy.cms.model.dto.UserDto;
+import com.itacademy.cms.model.dto.UserGetDto;
 import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -58,5 +59,7 @@ public interface MapStructMapper {
   Tag tagDtoToTag(TagDto tagDto);
 
   TagGetDto tagToTagGetDto(Tag tag);
+
+  UserGetDto userToUserGetDto(User user);
 
 }
