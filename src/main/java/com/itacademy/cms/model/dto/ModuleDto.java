@@ -1,6 +1,5 @@
 package com.itacademy.cms.model.dto;
 
-import com.itacademy.cms.model.Course;
 import lombok.Getter;
 import lombok.Setter;
 

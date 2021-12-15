@@ -10,62 +10,87 @@ import com.itacademy.cms.service.UserService;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
+  private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+
   private final UserRepository userRepository;
   private final MapStructMapper userMapper;
 
   @Override
   public List<User> findAll() {
+    logger.info("GET ALL USERS");
     List<User> userList = (List) userRepository.findAll();
     if (userList.isEmpty()) {
+      logger.error("USERS LIST IS EMPTY");
       throw new EntityNotFoundException("No users found!");
     }
     return userList;
   }
 
-//  @Override
-//  public void updateUser(UserDto userDto, Long id) {
-//    Optional<User> userOptional = userRepository.findById(id);
-//    userOptional.ifPresent(user -> {
-//      user.setGroups(userDto.getGroups());
-//      user.setUserCourse(userDto.getUserCourse());
-//      user.setFirstName(userDto.getFirstName());
-//      user.setLastName(userDto.getLastName());
-//      user.setEmail(userDto.getEmail());
-//      user.setPassword(userDto.getPassword());
-//      user.setRole(userDto.getRole());
-//      user.setAccountCard(userDto.getAccountCard());
-//      user.setAbout(userDto.getAbout());
-//      userRepository.save(user);
-//    });
-//  }
+  @Override
+  public void updateUser(UserDto userDto, String uuid) {
+    logger.info("UPDATE USER WITH ID = {}", uuid);
+    Optional<User> userOptional = userRepository.findByUuid(uuid);
+    userOptional.ifPresent(user -> {
+      user.setUserCourse(userDto.getUserCourse());
+      user.setFirstName(userDto.getFirstName());
+      user.setLastName(userDto.getLastName());
+      user.setEmail(userDto.getEmail());
+      user.setPassword(userDto.getPassword());
+      user.setRole(userDto.getRole());
+      user.setAccountCard(userDto.getAccountCard());
+      user.setAbout(userDto.getAbout());
+      userRepository.save(user);
+    });
+  }
 
 
   @Override
-  public User findById(Long id) {
-    Optional<User> user = userRepository.findById(id);
-    return user.orElseThrow(
-        () -> new EntityNotFoundException("User with id " + id + " not found!"));
+  public User findByUuid(String uuid) {
+    logger.info("GET USER WITH ID = {}", uuid);
+    Optional<User> user = userRepository.findByUuid(uuid);
+    if (user.isPresent()) {
+      return user.get();
+    } else {
+      logger.error("USER WITH ID = {} DOES NOT EXIST", uuid);
+      throw new EntityNotFoundException("User with uuid " + uuid + " not found!");
+    }
   }
 
   @Override
   public User saveUser(UserDto userDto) {
-    return userRepository.save(userMapper.userDtoToUser(userDto));
+    logger.info("CREATE NEW USER");
+    try {
+      return userRepository.save(userMapper.userDtoToUser(userDto));
+    } catch (Exception ex) {
+      logger.error("ERROR WHILE SAVING NEW USER");
+      return null;
+    }
   }
 
   @Override
-  public void deleteUserById(Long id) {
-    if (id == null) {
-      throw new ParameterMissingException("User id is missing");
-    } else if (userRepository.existsById(id)) {
-      userRepository.deleteById(id);
+  public void deleteUserByUuid(String uuid) {
+    if (uuid == null) {
+      logger.error("UUID IS EMPTY");
+      throw new ParameterMissingException("User uuid is missing");
+    } else if (userRepository.existsByUuid(uuid)) {
+      logger.info("REMOVE USER WITH ID = {}", uuid);
+      userRepository.deleteByUuid(uuid);
       return;
     }
-    throw new EntityNotFoundException("User with id " + id + " not found!");
+    logger.error("USER WITH ID = {} DOES NOT EXIST", uuid);
+    throw new EntityNotFoundException("User with uuid " + uuid + " not found!");
+  }
+
+  @Override
+  public void blockUser(String uuid, boolean active) {
+    userRepository.blockUser(uuid, active);
   }
 }
