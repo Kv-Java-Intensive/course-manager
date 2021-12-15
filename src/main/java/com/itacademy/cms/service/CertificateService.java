@@ -10,7 +10,7 @@ public interface CertificateService {
   List<Certificate> findAll();
 
   void updateCertificate(CertificateDto certificateDto, String uuid);
-  
+
   List<Certificate> findCertificateBySearch(SearchCriteriaDto searchCriteriaDto);
 
   Certificate saveCertificate(CertificateDto certificateDto);

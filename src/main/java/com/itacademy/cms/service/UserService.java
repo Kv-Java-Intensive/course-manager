@@ -10,7 +10,7 @@ public interface UserService {
   List<User> findAll();
 
   void updateUser(UserDto userDto, String uuid);
-  
+
   List<User> findUserBySearch(SearchCriteriaDto searchCriteriaDto);
 
   User saveUser(UserDto userDto);

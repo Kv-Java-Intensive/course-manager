@@ -27,7 +27,7 @@ public class CourseController {
 
 
   @GetMapping("/courses")
-  public List<CourseGetDto> showAllCourses() throws CourseNotFoundException {
+  public List<CourseGetDto> showAllCourses() {
     return mapStructMapper.courseAllToCourseGetDto(courseService.getAllCourses());
   }
 
@@ -55,7 +55,7 @@ public class CourseController {
   }
 
   @DeleteMapping("/courses/{id}")
-  public void deleteCourseById(@PathVariable("id") Long id) throws CourseNotFoundException {
-    courseService.deleteCourseById(id);
+  public void deleteCourseByUuid(@PathVariable("id") String uuid) {
+    courseService.deleteCourseByUuid(uuid);
   }
 }

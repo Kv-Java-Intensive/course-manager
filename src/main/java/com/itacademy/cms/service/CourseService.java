@@ -13,7 +13,7 @@ public interface CourseService {
   List<Course> findCourseBySearch(SearchCriteriaDto searchCriteriaDto);
 
   void updateCourse(CoursePostDto coursePostDto, Long id);
-  
+
   Course getCourseByUuid(String uuid);
 
   void deleteCourseByUuid(String uuid);

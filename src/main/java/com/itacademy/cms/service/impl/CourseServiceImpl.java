@@ -7,7 +7,6 @@ import com.itacademy.cms.model.Category;
 import com.itacademy.cms.model.Course;
 import com.itacademy.cms.model.dto.CoursePostDto;
 import com.itacademy.cms.model.dto.SearchCriteriaDto;
-import com.itacademy.cms.model.enums.CourseStatus;
 import com.itacademy.cms.repository.CategoryRepository;
 import com.itacademy.cms.repository.CourseRepository;
 import com.itacademy.cms.repository.specification.CourseSpecificationsBuilder;
@@ -15,9 +14,9 @@ import com.itacademy.cms.service.CourseService;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.jpa.domain.Specification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 @Service

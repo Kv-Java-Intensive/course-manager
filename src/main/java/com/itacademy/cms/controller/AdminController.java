@@ -13,7 +13,7 @@ public class AdminController {
   private final UserService userService;
 
   @PostMapping("/listUser/block")
-//  @PreAuthorize("hasRole('ROLE_ADMIN')")
+  //  @PreAuthorize("hasRole('ROLE_ADMIN')")
   public void block(@RequestParam(name = "id") String uuid,
                     @RequestParam(name = "active") boolean active) {
     userService.blockUser(uuid, active);

@@ -32,8 +32,8 @@ public class Certificate extends BaseEntity {
   @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
   private Course course;
 
-//  @ManyToOne
-//  private User user;
+  //  @ManyToOne
+  //  private User user;
 
   @Column(name = "uuid")
   private String uuid;

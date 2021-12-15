@@ -19,8 +19,8 @@ public class CourseGetDto {
   @JsonProperty("price")
   private Double price;
 
-//  @JsonProperty("category")
-//  private CategoryGetDto categoryDto;
+  //  @JsonProperty("category")
+  //  private CategoryGetDto categoryDto;
 
   @JsonProperty("updateDate")
   private Date updateDate;
@@ -34,8 +34,8 @@ public class CourseGetDto {
   @JsonProperty("tags")
   private List<TagGetDto> tags;
 
-//  @JsonProperty("certificate")
-//  private CertificateDto certificateDto;
+  //  @JsonProperty("certificate")
+  //  private CertificateDto certificateDto;
 
   //@JsonProperty("groups")
   //private List<GroupGetDto> groups;
