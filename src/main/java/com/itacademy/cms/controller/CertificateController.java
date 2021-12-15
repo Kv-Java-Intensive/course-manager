@@ -2,6 +2,7 @@ package com.itacademy.cms.controller;
 
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.dto.CertificateDto;
+import com.itacademy.cms.model.dto.SearchCriteriaDto;
 import com.itacademy.cms.service.CertificateService;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,6 +28,13 @@ public class CertificateController {
   @GetMapping("/certificates")
   public List<CertificateDto> getAllCertificates() {
     return certificateService.findAll().stream()
+        .map(certificateMapper::certificateToCertificateDto).collect(Collectors.toList());
+  }
+
+  @PostMapping("/certificates/search")
+  public List<CertificateDto> getCertificatesByName(
+      @RequestBody SearchCriteriaDto searchCriteriaDto) {
+    return certificateService.findCertificateBySearch(searchCriteriaDto).stream()
         .map(certificateMapper::certificateToCertificateDto).collect(Collectors.toList());
   }
 
