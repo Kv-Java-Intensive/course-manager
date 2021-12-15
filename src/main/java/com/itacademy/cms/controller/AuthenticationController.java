@@ -46,18 +46,15 @@ public class AuthenticationController {
       authenticationManager.authenticate(
           new UsernamePasswordAuthenticationToken(username, requestDto.getPassword()));
       User user = userService.findUserByEmail(username);
-
       if (user == null) {
         throw new UsernameNotFoundException("User with username: " + username + " not found");
       }
       List<Role> roles = new ArrayList<>();
       roles.add(user.getRole());
       String token = jwtTokenProvider.createToken(username, roles);
-
       Map<Object, Object> response = new HashMap<>();
       response.put("username", username);
       response.put("token", token);
-
       return ResponseEntity.ok(response);
     } catch (AuthenticationException e) {
       throw new BadCredentialsException("Invalid username or password");

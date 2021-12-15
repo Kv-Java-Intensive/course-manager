@@ -3,13 +3,10 @@ package com.itacademy.cms.controller;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.dto.CourseGetDto;
-import com.itacademy.cms.model.dto.UserDto;
 import com.itacademy.cms.model.dto.UserGetDto;
 import com.itacademy.cms.service.CourseService;
 import com.itacademy.cms.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,13 +31,7 @@ public class AdminController {
   @GetMapping(value = "users/{id}")
   public UserGetDto getUserById(@PathVariable(name = "id") Long id) {
     User user = userService.findById(id);
-
-//    if (user == null) {
-//      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//    }
-
     UserGetDto result = mapper.userToUserGetDto(user);
-
     return result;
   }
 

@@ -22,7 +22,6 @@ public class CmsExceptionHandler extends ResponseEntityExceptionHandler {
     ErrorResponse error =
         new ErrorResponse(exception.getMessage(), HttpStatus.BAD_REQUEST,
             HttpStatus.BAD_REQUEST.value());
-
     return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
   }
 }

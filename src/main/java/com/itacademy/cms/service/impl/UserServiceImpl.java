@@ -33,8 +33,6 @@ public class UserServiceImpl implements UserService {
   public void updateUser(UserDto userDto, Long id) {
     Optional<User> userOptional = userRepository.findById(id);
     userOptional.ifPresent(user -> {
-      //user.setGroups(userDto.getGroups());
-      // user.setUserCourse(userDto.getUserCourse());
       user.setFirstName(userDto.getFirstName());
       user.setLastName(userDto.getLastName());
       user.setEmail(userDto.getEmail());
@@ -71,13 +69,6 @@ public class UserServiceImpl implements UserService {
   }
 
   public User findUserByEmail(String email) {
-//    List<User> users = userRepository.findAll();
-//    User user = null;
-//    for (User myuser : users) {
-//      if (myuser.getEmail().equals(email)) {
-//        user = myuser;
-//      }
-//    }
     User user = userRepository.findUserByEmail(email);
     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     user.setPassword(encoder.encode(user.getPassword()));

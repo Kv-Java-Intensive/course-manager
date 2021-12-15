@@ -12,7 +12,6 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.security.core.Authentication;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -98,7 +97,6 @@ public class JwtTokenProvider {
 
   private List<String> getRoleNames(List<Role> userRoles) {
     List<String> result = new ArrayList<>();
-
     userRoles.forEach(role -> {
       result.add(role.getName());
     });

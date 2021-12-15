@@ -30,16 +30,6 @@ public class CategoryServiceImpl implements CategoryService {
     return categoriesList;
   }
 
-//  @Override
-//  public void updateCategory(CategoryDto categoryDto, Long id) {
-//    Optional<Category> categoryOptional = categoryRepository.findById(id);
-//    categoryOptional.ifPresent(category -> {
-//      category.setCourses(categoryDto.getCourses());
-//      category.setCategoryName(categoryDto.getCategoryName());
-//      categoryRepository.save(category);
-//    });
-//  }
-
   @Override
   public Category findById(Long id) {
     Optional<Category> category = categoryRepository.findById(id);

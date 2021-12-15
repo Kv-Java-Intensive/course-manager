@@ -12,8 +12,6 @@ public interface GroupService {
 
   Group findById(Long id);
 
-  //void updateGroup(GroupDto groupDto, Long id);
-
   void saveGroup(Group group);
 
   void deleteGroup(Long id);

@@ -29,6 +29,4 @@ public class JwtUserDetailsService implements UserDetailsService {
     JwtUser jwtUser = JwtUserFactory.create(user);
     return jwtUser;
   }
-
-
 }

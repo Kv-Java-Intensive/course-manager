@@ -10,8 +10,6 @@ public interface ModuleService {
 
   Module findById(Long id);
 
-  //void updateModule(ModuleDto moduleDto, Long id);
-
   void saveModule(ModuleDto moduleDto);
 
   void deleteModuleById(Long id);

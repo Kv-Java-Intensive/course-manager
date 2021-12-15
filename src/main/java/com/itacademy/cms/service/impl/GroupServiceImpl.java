@@ -3,11 +3,9 @@ package com.itacademy.cms.service.impl;
 import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Group;
-import com.itacademy.cms.model.dto.GroupDto;
 import com.itacademy.cms.repository.GroupRepository;
 import com.itacademy.cms.service.GroupService;
 import java.util.List;
-import java.util.Optional;
 
 public class GroupServiceImpl implements GroupService {
 
@@ -34,18 +32,6 @@ public class GroupServiceImpl implements GroupService {
     }
   }
 
-//  @Override
-//  public void updateGroup(GroupDto groupDto, Long id) throws NoSuchGroupException {
-//    Optional<Group> opt = groupRepository.findById(id);
-//    opt.ifPresent(group -> {
-//      group.setName(groupDto.getName());
-//      group.setCourse(groupDto.getCourse());
-//      group.setCapacity(group.getCapacity());
-//      group.setStartDate(groupDto.getStartDate());
-//      group.setUsers(groupDto.getUsers());
-//      groupRepository.save(group);
-//    });
-//  }
 
   @Override
   public void saveGroup(Group group) {
