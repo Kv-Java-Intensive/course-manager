@@ -35,16 +35,6 @@ public class CourseServiceImpl implements CourseService {
     return courses.get();
   }
 
-//  @Override
-//  public List<Course> getAllCoursesByCategory(String categoryName) throws CourseNotFoundException {
-//    Optional<List<Course>> courses = Optional.ofNullable(courseDao.findCourseByCategory(
-//        categoryDao.findByCategoryName(categoryName)));
-//    if (courses.isEmpty()) {
-//      throw new CourseNotFoundException("Courses were not found");
-//    }
-//    return courses.get();
-//  }
-
   @Override
   public List<Course> findCourseBySearch(SearchCriteriaDto searchCriteriaDto) {
     CourseSpecificationsBuilder builder = new CourseSpecificationsBuilder();
@@ -69,16 +59,6 @@ public class CourseServiceImpl implements CourseService {
     return courseDao.findAll();
   }
 
-//  @Override
-//  public List<Course> getAllCoursesByTag(String tagName) throws CourseNotFoundException {
-//    Optional<List<Course>> courses = Optional.ofNullable(courseDao.findCourseByCourseTags(
-//        tagDao.findByName(tagName)));
-//    if (courses.isEmpty()) {
-//      throw new CourseNotFoundException("Courses were not found");
-//    }
-//    return courses.get();
-//  }
-
   @Override
   public Course getCourseById(Long id) throws CourseNotFoundException {
     Optional<Course> course = Optional.ofNullable(courseDao.findCourseById(id));
@@ -89,7 +69,6 @@ public class CourseServiceImpl implements CourseService {
   }
 
   @Override
-
   public void updateCourse(CoursePostDto coursePostDto, Long id) {
     Optional<Course> course = Optional.ofNullable(courseDao.findCourseById(id));
 
@@ -111,7 +90,6 @@ public class CourseServiceImpl implements CourseService {
   }
 
   @Override
-
   public void deleteCourseById(Long id) throws CourseNotFoundException {
     Optional<Course> course = Optional.ofNullable(courseDao.findCourseById(id));
 

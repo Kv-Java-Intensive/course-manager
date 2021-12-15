@@ -41,20 +41,6 @@ public class CourseController {
         .map(mapStructMapper::courseToCourseGetDto).collect(Collectors.toList());
   }
 
-//  @GetMapping(value = "/search/{category}")
-//  public List<CourseGetDto> showAllCoursesByCategory(@PathVariable("category")
-//                                                         String categoryName)
-//      throws CourseNotFoundException {
-//    return mapStructMapper.courseAllToCourseGetDto(
-//        courseService.getAllCoursesByCategory(categoryName));
-//  }
-
-//  @GetMapping("/search/{tag}")
-//  public List<CourseGetDto> showAllCourseByTag(@PathVariable("tag")
-//                                                   String tagName) throws CourseNotFoundException {
-//    return mapStructMapper.courseAllToCourseGetDto(courseService.getAllCoursesByTag(tagName));
-//  }
-
   @GetMapping("/{id}")
   public CourseGetDto showCourseById(@PathVariable("id") Long id) throws CourseNotFoundException {
     return mapStructMapper.courseToCourseGetDto(courseService.getCourseById(id));

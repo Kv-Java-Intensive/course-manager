@@ -12,13 +12,9 @@ public interface CourseService {
 
   List<Course> getAllCourses() throws CourseNotFoundException;
 
-//  List<Course> getAllCoursesByCategory(String category) throws CourseNotFoundException;
-
   List<Course> findCourseBySearch(SearchCriteriaDto searchCriteriaDto);
 
   List<Course> addCourse(CoursePostDto coursePostDto, User user);
-
-//  List<Course> getAllCoursesByTag(String tagName) throws CourseNotFoundException;
 
   Course getCourseById(Long id) throws CourseNotFoundException;
 

@@ -32,7 +32,7 @@ public class CertificateController {
   }
 
   @PostMapping("/certificates/search")
-  public List<CertificateDto> getCertificatesByName(
+  public List<CertificateDto> getCertificatesBySearch(
       @RequestBody SearchCriteriaDto searchCriteriaDto) {
     return certificateService.findCertificateBySearch(searchCriteriaDto).stream()
         .map(certificateMapper::certificateToCertificateDto).collect(Collectors.toList());
