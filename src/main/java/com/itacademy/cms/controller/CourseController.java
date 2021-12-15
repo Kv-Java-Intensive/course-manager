@@ -7,7 +7,9 @@ import com.itacademy.cms.model.dto.SearchCriteriaDto;
 import com.itacademy.cms.service.CourseService;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,10 +27,12 @@ public class CourseController {
   private final CourseService courseService;
   private final MapStructMapper mapStructMapper;
 
-
   @GetMapping("/courses")
+  @PreAuthorize("permitAll()")
   public List<CourseGetDto> showAllCourses() {
-    return mapStructMapper.courseAllToCourseGetDto(courseService.getAllCourses());
+    return mapStructMapper
+        .courseAllToCourseGetDto(
+            courseService.getAllCourses());
   }
 
   @PostMapping("/courses/search")
@@ -39,22 +43,27 @@ public class CourseController {
   }
 
   @GetMapping("/courses/{id}")
+  @PreAuthorize("hasAuthority('ADMIN')")
   public CourseGetDto showCourseByUuid(@PathVariable("id") String uuid) {
     return mapStructMapper.courseToCourseGetDto(courseService.getCourseByUuid(uuid));
   }
 
-  @PostMapping
+  @PostMapping("/courses")
+  @PreAuthorize("permitAll()")
   public void addNewCourse(@RequestBody CoursePostDto coursePostDto) {
     courseService.saveCourse(coursePostDto);
   }
 
   @PutMapping("/courses/{id}")
+  @PreAuthorize("hasAnyAuthority('ADMIN', 'AUTHOR')")
   public void updateCourseById(@RequestBody CoursePostDto coursePostDto,
                                @PathVariable("id") Long id) {
     courseService.updateCourse(coursePostDto, id);
   }
 
+  @Transactional
   @DeleteMapping("/courses/{id}")
+  @PreAuthorize("hasAnyAuthority('ADMIN', 'AUTHOR')")
   public void deleteCourseByUuid(@PathVariable("id") String uuid) {
     courseService.deleteCourseByUuid(uuid);
   }

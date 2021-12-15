@@ -80,6 +80,12 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
+  public User saveUser(User user) {
+    logger.info("CREATE NEW USER");
+    return userRepository.save(user);
+  }
+
+  @Override
   public User saveUser(UserDto userDto) {
     logger.info("CREATE NEW USER");
     try {
@@ -107,5 +113,15 @@ public class UserServiceImpl implements UserService {
   @Override
   public void blockUser(boolean active, String uuid) {
     userRepository.blockUser(active, uuid);
+  }
+
+  @Override
+  public User loadUserByName(String name) {
+    try {
+      User user = userRepository.findByName(name);
+      return user;
+    } catch (Exception ex) {
+      return null;
+    }
   }
 }

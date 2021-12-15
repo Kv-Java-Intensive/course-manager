@@ -12,6 +12,8 @@ public interface UserService {
   void updateUser(UserDto userDto, String uuid);
 
   List<User> findUserBySearch(SearchCriteriaDto searchCriteriaDto);
+  
+  User saveUser(User user);
 
   User saveUser(UserDto userDto);
 
@@ -20,4 +22,6 @@ public interface UserService {
   void deleteUserByUuid(String uuid);
 
   void blockUser(boolean active, String uuid);
+
+  User loadUserByName(String name);
 }
