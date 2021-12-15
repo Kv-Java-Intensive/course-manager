@@ -33,7 +33,7 @@ public class UserController {
     return entityMapper.userToUserDto(userService.findByUuid(uuid));
   }
 
-  @PostMapping("/users")
+  @PostMapping("/users/new")
   public void saveUser(@RequestBody UserDto userDto) {
     userService.saveUser(userDto);
   }
