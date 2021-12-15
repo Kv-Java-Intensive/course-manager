@@ -1,6 +1,7 @@
 package com.itacademy.cms.controller;
 
 import com.itacademy.cms.mapper.MapStructMapper;
+import com.itacademy.cms.model.dto.SearchCriteriaDto;
 import com.itacademy.cms.model.dto.UserDto;
 import com.itacademy.cms.service.UserService;
 import java.util.List;
@@ -11,12 +12,15 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api")
 public class UserController {
 
   private final UserService userService;
@@ -26,6 +30,13 @@ public class UserController {
   @PreAuthorize("hasAuthority('ADMIN')")
   public List<UserDto> getAllUser() {
     return userService.findAll().stream()
+        .map(entityMapper::userToUserDto).collect(Collectors.toList());
+  }
+
+  @PostMapping("/users/search")
+  public List<UserDto> getUsersBySearch(
+      @RequestBody SearchCriteriaDto searchCriteriaDto) {
+    return userService.findUserBySearch(searchCriteriaDto).stream()
         .map(entityMapper::userToUserDto).collect(Collectors.toList());
   }
 

@@ -16,7 +16,8 @@ public class AdminController {
   @PostMapping("/listUser/block")
   @PreAuthorize("hasAuthority('ADMIN')")
   public void block(@RequestParam(name = "id") String uuid,
-                    @RequestParam(name = "active") boolean active) {
-    userService.blockUser(uuid, active);
+                    @RequestParam(name = "active") boolean active
+  ) {
+    userService.blockUser(active, uuid);
   }
 }

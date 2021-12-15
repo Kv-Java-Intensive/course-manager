@@ -3,8 +3,10 @@ package com.itacademy.cms.controller;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.dto.CourseGetDto;
 import com.itacademy.cms.model.dto.CoursePostDto;
+import com.itacademy.cms.model.dto.SearchCriteriaDto;
 import com.itacademy.cms.service.CourseService;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,14 +20,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/courses")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class CourseController {
 
   private final CourseService courseService;
   private final MapStructMapper mapStructMapper;
 
-  @GetMapping
+  @GetMapping("/courses")
   @PreAuthorize("permitAll()")
   public List<CourseGetDto> showAllCourses() {
     return mapStructMapper
@@ -33,34 +35,26 @@ public class CourseController {
             courseService.getAllCourses());
   }
 
-  @GetMapping("/search/{category}")
-  @PreAuthorize("permitAll()")
-  public List<CourseGetDto> showAllCoursesByCategory(@PathVariable("category")
-                                                         String categoryName) {
-    return mapStructMapper.courseAllToCourseGetDto(
-        courseService.getAllCoursesByCategory(categoryName));
+  @PostMapping("/courses/search")
+  public List<CourseGetDto> getCoursesBySearch(
+      @RequestBody SearchCriteriaDto searchCriteriaDto) {
+    return courseService.findCourseBySearch(searchCriteriaDto).stream()
+        .map(mapStructMapper::courseToCourseGetDto).collect(Collectors.toList());
   }
 
-  @GetMapping("/search/{tag}")
-  @PreAuthorize("permitAll()")
-  public List<CourseGetDto> showAllCourseByTag(@PathVariable("tag")
-                                                   String tagName) {
-    return mapStructMapper.courseAllToCourseGetDto(courseService.getAllCoursesByTag(tagName));
-  }
-
-  @GetMapping("/{id}")
+  @GetMapping("/courses/{id}")
   @PreAuthorize("hasAuthority('ADMIN')")
   public CourseGetDto showCourseByUuid(@PathVariable("id") String uuid) {
     return mapStructMapper.courseToCourseGetDto(courseService.getCourseByUuid(uuid));
   }
 
-  @PostMapping
+  @PostMapping("/courses")
   @PreAuthorize("permitAll()")
   public void addNewCourse(@RequestBody CoursePostDto coursePostDto) {
     courseService.saveCourse(coursePostDto);
   }
 
-  @PutMapping("/{id}")
+  @PutMapping("/courses/{id}")
   @PreAuthorize("hasAnyAuthority('ADMIN', 'AUTHOR')")
   public void updateCourseById(@RequestBody CoursePostDto coursePostDto,
                                @PathVariable("id") Long id) {
@@ -68,9 +62,9 @@ public class CourseController {
   }
 
   @Transactional
-  @DeleteMapping("/{id}")
+  @DeleteMapping("/courses/{id}")
   @PreAuthorize("hasAnyAuthority('ADMIN', 'AUTHOR')")
-  public void deleteCourseById(@PathVariable("id") String uuid) {
+  public void deleteCourseByUuid(@PathVariable("id") String uuid) {
     courseService.deleteCourseByUuid(uuid);
   }
 }

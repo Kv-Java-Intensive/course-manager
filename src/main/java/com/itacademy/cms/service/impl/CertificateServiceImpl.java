@@ -5,7 +5,9 @@ import com.itacademy.cms.exeption.ParameterMissingException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Certificate;
 import com.itacademy.cms.model.dto.CertificateDto;
+import com.itacademy.cms.model.dto.SearchCriteriaDto;
 import com.itacademy.cms.repository.CertificateRepository;
+import com.itacademy.cms.repository.specification.CertificateSpecificationsBuilder;
 import com.itacademy.cms.service.CertificateService;
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -34,6 +37,17 @@ public class CertificateServiceImpl implements CertificateService {
       throw new EntityNotFoundException("No certificates found!");
     }
     return certificateList;
+  }
+
+  public List<Certificate> findCertificateBySearch(SearchCriteriaDto searchCriteriaDto) {
+    CertificateSpecificationsBuilder builder = new CertificateSpecificationsBuilder();
+    for (int i = 0; i < searchCriteriaDto.getCriteriaList().size(); i++) {
+      builder.with(searchCriteriaDto.getCriteriaList().get(i).getKey(),
+          searchCriteriaDto.getCriteriaList().get(i).getOperation(),
+          searchCriteriaDto.getCriteriaList().get(i).getValue());
+    }
+    Specification<Certificate> spec = builder.build();
+    return certificatesRepository.findAll(spec);
   }
 
   @Override

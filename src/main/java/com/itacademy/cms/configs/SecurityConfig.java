@@ -29,11 +29,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     auth.authenticationProvider(authProvider());
   }
 
-  @Bean
-  protected AuthProvider authProvider() {
-    return new AuthProvider();
-  }
-
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http
@@ -42,11 +37,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .authorizeRequests()
         .antMatchers(HttpMethod.GET, "/user/register", "/courses", "/category", "/", "/home")
         .permitAll()
-//        .antMatchers("/users/**").hasAuthority(Role.ADMIN.name())
+        //.antMatchers("/users/**").hasAuthority(Role.ADMIN.name())
         .anyRequest()
         .authenticated()
         .and()
         .httpBasic();
+  }
+
+  @Bean
+  protected AuthProvider authProvider() {
+    return new AuthProvider();
   }
 
   @Bean

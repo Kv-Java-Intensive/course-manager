@@ -6,16 +6,17 @@ import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.Category;
 import com.itacademy.cms.model.Course;
 import com.itacademy.cms.model.dto.CoursePostDto;
+import com.itacademy.cms.model.dto.SearchCriteriaDto;
 import com.itacademy.cms.repository.CategoryRepository;
-import com.itacademy.cms.repository.CertificateRepository;
 import com.itacademy.cms.repository.CourseRepository;
-import com.itacademy.cms.repository.TagRepository;
+import com.itacademy.cms.repository.specification.CourseSpecificationsBuilder;
 import com.itacademy.cms.service.CourseService;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,8 +27,6 @@ public class CourseServiceImpl implements CourseService {
 
   private final CourseRepository courseDao;
   private final CategoryRepository categoryDao;
-  private final TagRepository tagDao;
-  private final CertificateRepository certificateDao;
   private final MapStructMapper mapper;
 
   @Override
@@ -42,33 +41,21 @@ public class CourseServiceImpl implements CourseService {
   }
 
   @Override
-  public List<Course> getAllCoursesByCategory(String categoryName) {
-    logger.info("RETURN ALL COURSES WITH CATEGORY = {}", categoryName);
-    Optional<List<Course>> courses = Optional.ofNullable(courseDao.findCourseByCategory(
-        categoryDao.findByCategoryName(categoryName)));
-    if (courses.isEmpty()) {
-      logger.error("COURSE WITH CATEGORY = {} DOES NOT EXIST", categoryName);
-      throw new EntityNotFoundException("Courses were not found");
+  public List<Course> findCourseBySearch(SearchCriteriaDto searchCriteriaDto) {
+    CourseSpecificationsBuilder builder = new CourseSpecificationsBuilder();
+    for (int i = 0; i < searchCriteriaDto.getCriteriaList().size(); i++) {
+      builder.with(searchCriteriaDto.getCriteriaList().get(i).getKey(),
+          searchCriteriaDto.getCriteriaList().get(i).getOperation(),
+          searchCriteriaDto.getCriteriaList().get(i).getValue());
     }
-    return courses.get();
+    Specification<Course> spec = builder.build();
+    return courseDao.findAll(spec);
   }
 
   @Override
   public Course saveCourse(CoursePostDto coursePostDtoDto) {
     logger.info("CREATE NEW COURSE");
     return courseDao.save(mapper.courseDtoToCourse(coursePostDtoDto));
-  }
-
-  @Override
-  public List<Course> getAllCoursesByTag(String tagName) {
-    logger.info("RETURN ALL COURSES WITH TAG = {}", tagName);
-    Optional<List<Course>> courses = Optional.ofNullable(courseDao.findCourseByCourseTags(
-        tagDao.findByName(tagName)));
-    if (courses.isEmpty()) {
-      logger.error("COURSE WITH TAG = {} DOES NOT EXIST", tagName);
-      throw new EntityNotFoundException("Courses were not found");
-    }
-    return courses.get();
   }
 
   @Override
@@ -80,7 +67,6 @@ public class CourseServiceImpl implements CourseService {
   }
 
   @Override
-
   public void updateCourse(CoursePostDto coursePostDto, Long id) {
     logger.info("UPDATE COURSE WITH ID = {}", id);
     Optional<Course> course = Optional.ofNullable(courseDao.findCourseById(id));

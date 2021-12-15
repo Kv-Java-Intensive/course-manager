@@ -2,6 +2,7 @@ package com.itacademy.cms.controller;
 
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.dto.CertificateDto;
+import com.itacademy.cms.model.dto.SearchCriteriaDto;
 import com.itacademy.cms.service.CertificateService;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,6 +33,13 @@ public class CertificateController {
         .map(certificateMapper::certificateToCertificateDto).collect(Collectors.toList());
   }
 
+  @PostMapping("/certificates/search")
+  public List<CertificateDto> getCertificatesBySearch(
+      @RequestBody SearchCriteriaDto searchCriteriaDto) {
+    return certificateService.findCertificateBySearch(searchCriteriaDto).stream()
+        .map(certificateMapper::certificateToCertificateDto).collect(Collectors.toList());
+  }
+
   @GetMapping("/certificates/{id}")
   @PreAuthorize("hasAuthority('ADMIN')")
   public CertificateDto getCertificateByUuid(@PathVariable("id") String uuid) {
@@ -45,7 +53,7 @@ public class CertificateController {
     return certificateDto;
   }
 
-  @PutMapping("/employees/{id}")
+  @PutMapping("/certificates/{id}")
   @PreAuthorize("hasAuthority('ADMIN')")
   public void updateCertificate(@RequestBody CertificateDto certificateDto,
                                 @PathVariable("id") String uuid) {

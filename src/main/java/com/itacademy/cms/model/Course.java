@@ -79,13 +79,12 @@ public class Course extends BaseEntity {
       CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "course")
   private List<Group> groups;
 
-  @OneToMany(cascade = {CascadeType.MERGE, CascadeType.DETACH,
-      CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "course")
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
   private List<Module> modules;
 
-//  @NotNull
-//  @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "course")
-//  private Certificate certificate;
+  //  @NotNull
+  //  @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "course")
+  //  private Certificate certificate;
 
   @Column(name = "uuid")
   private String uuid;

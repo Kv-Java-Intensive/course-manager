@@ -26,7 +26,8 @@ public class SpringSwaggerConfig {
   private ApiInfo apiInfo() {
     return new ApiInfoBuilder().title("Course manager").version("1.0.0")
         .description(
-            "Created by softservians: Olga Demenko, Serhii Honchar, Volodymyr Koniukh,  Nikita Kosenko, Sasha Tiutiunnyk, Yarik Voitiuk, Ivan Zaborovets")
+            "Created by softservians: Olga Demenko, Serhii Honchar, Volodymyr Koniukh,"
+                + "  Nikita Kosenko, Sasha Tiutiunnyk, Yarik Voitiuk, Ivan Zaborovets")
         .build();
   }
 }
