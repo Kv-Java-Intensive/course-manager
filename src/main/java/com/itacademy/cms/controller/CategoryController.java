@@ -1,11 +1,11 @@
 package com.itacademy.cms.controller;
 
-import com.itacademy.cms.exeption.CategoryNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.dto.CategoryDto;
 import com.itacademy.cms.service.CategoryService;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,14 +25,15 @@ public class CategoryController {
   private final MapStructMapper entityMapper;
 
   @GetMapping("/categories")
-  public List<CategoryDto> getAllCategories() throws CategoryNotFoundException {
+  public List<CategoryDto> getAllCategories() {
     return categoryService.findAll().stream()
         .map(entityMapper::categoryToCategoryDto).collect(Collectors.toList());
   }
 
   @GetMapping("/categories/{id}")
-  public CategoryDto getCategoryById(@PathVariable("id") Long id) throws CategoryNotFoundException {
-    return entityMapper.categoryToCategoryDto(categoryService.findById(id));
+  public CategoryDto getCategoryByUuid(@PathVariable("id") String uuid) {
+    return entityMapper.categoryToCategoryDto(categoryService.findByUuid(uuid));
+
   }
 
   @PostMapping("/categories")
@@ -41,13 +42,14 @@ public class CategoryController {
   }
 
   @PutMapping("/categories/{id}")
-  public void updateCategory(@RequestBody CategoryDto categoryDto, @PathVariable Long id)
-      throws CategoryNotFoundException {
-    categoryService.updateCategory(categoryDto, id);
+  public void updateCategory(@RequestBody CategoryDto categoryDto,
+                             @PathVariable("id") String uuid) {
+    categoryService.updateCategory(categoryDto, uuid);
   }
 
+  @Transactional
   @DeleteMapping("/categories/{id}")
-  public void deleteCategory(@PathVariable("id") Long id) throws CategoryNotFoundException {
-    categoryService.deleteCategoryById(id);
+  public void deleteCategory(@PathVariable("id") String uuid) {
+    categoryService.deleteCategoryByUuid(uuid);
   }
 }

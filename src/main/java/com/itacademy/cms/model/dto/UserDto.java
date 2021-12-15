@@ -1,6 +1,5 @@
 package com.itacademy.cms.model.dto;
 
-import com.itacademy.cms.model.Group;
 import com.itacademy.cms.model.UserToCourse;
 import com.itacademy.cms.model.enums.Role;
 import java.util.List;
@@ -13,7 +12,7 @@ public class UserDto {
 
   private List<UserToCourse> userCourse;
 
-  private List<Group> groups;
+  private List<GroupDto> groups;
 
   private String firstName;
 
@@ -28,4 +27,6 @@ public class UserDto {
   private Role role;
 
   private String about;
+
+  private boolean active;
 }

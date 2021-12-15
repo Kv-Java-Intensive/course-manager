@@ -1,6 +1,6 @@
 package com.itacademy.cms.service;
 
-import com.itacademy.cms.exeption.CertificateNotFoundException;
+import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.model.Certificate;
 import com.itacademy.cms.model.dto.CertificateDto;
 import com.itacademy.cms.repository.CertificateRepository;
@@ -32,7 +32,7 @@ public class CertificateServiceIntegrationTest {
   void certificateSaveAndFindByIdTest() {
     Certificate savedCertificate = getSavedCertificate();
 
-    Certificate certificateById = certificateService.findById(savedCertificate.getId());
+    Certificate certificateById = certificateService.findByUuid(savedCertificate.getUuid());
 
     Assertions.assertEquals(savedCertificate.getName(), certificateById.getName());
   }
@@ -42,12 +42,12 @@ public class CertificateServiceIntegrationTest {
     Certificate initCertificate = getSavedCertificate();
 
     Assertions.assertNotNull(
-        certificateService.findById(initCertificate.getId()));
+        certificateService.findByUuid(initCertificate.getUuid()));
 
-    certificateService.deleteCertificateById(initCertificate.getId());
+    certificateService.deleteCertificateByUuid(initCertificate.getUuid());
 
-    Assertions.assertThrows(CertificateNotFoundException.class,
-        () -> certificateService.findById(initCertificate.getId()));
+    Assertions.assertThrows(EntityNotFoundException.class,
+        () -> certificateService.findByUuid(initCertificate.getUuid()));
   }
 
   private Certificate getSavedCertificate() {
@@ -64,10 +64,10 @@ public class CertificateServiceIntegrationTest {
 
     Certificate initCertificate = getSavedCertificate();
 
-    certificateService.updateCertificate(certificateDtoToUpdate, initCertificate.getId());
+    certificateService.updateCertificate(certificateDtoToUpdate, initCertificate.getUuid());
 
     Certificate updatedCertificate =
-        certificateService.findById(initCertificate.getId());
+        certificateService.findByUuid(initCertificate.getUuid());
 
     Assertions.assertEquals(certificateDtoToUpdate.getName(),
         updatedCertificate.getName());

@@ -1,6 +1,6 @@
 package com.itacademy.cms.service;
 
-import com.itacademy.cms.exeption.CategoryNotFoundException;
+import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.model.Category;
 import com.itacademy.cms.model.dto.CategoryDto;
 import com.itacademy.cms.repository.CategoryRepository;
@@ -29,39 +29,40 @@ public class CategoryServiceIntegrationTest {
   }
 
   @Test
-  void categorySaveAndFindByIdTest() throws CategoryNotFoundException {
+  void categorySaveAndFindByUuidTest() {
+
     Category savedCategory = getSavedCategory();
 
-    Category categoryById = categoryService.findById(savedCategory.getId());
+    Category categoryByUuid = categoryService.findByUuid(savedCategory.getUuid());
 
-    Assertions.assertEquals(savedCategory.getCategoryName(), categoryById.getCategoryName());
+    Assertions.assertEquals(savedCategory.getCategoryName(), categoryByUuid.getCategoryName());
   }
 
   @Test
-  void categoryUpdateTest() throws CategoryNotFoundException {
+  void categoryUpdateTest() {
     CategoryDto categoryDtoUpdate = new CategoryDto();
 
     categoryDtoUpdate.setCategoryName("testName");
 
     Category initCategory = getSavedCategory();
 
-    categoryService.updateCategory(categoryDtoUpdate, initCategory.getId());
+    categoryService.updateCategory(categoryDtoUpdate, initCategory.getUuid());
 
-    Category updateCategory = categoryService.findById(initCategory.getId());
+    Category updateCategory = categoryService.findByUuid(initCategory.getUuid());
 
     Assertions.assertEquals(categoryDtoUpdate.getCategoryName(), updateCategory.getCategoryName());
   }
 
   @Test
-  void categoryDeleteTest() throws CategoryNotFoundException {
+  void categoryDeleteTest() {
     Category initCategory = getSavedCategory();
 
-    Assertions.assertNotNull(categoryService.findById(initCategory.getId()));
+    Assertions.assertNotNull(categoryService.findByUuid(initCategory.getUuid()));
 
-    categoryService.deleteCategoryById(initCategory.getId());
+    categoryService.deleteCategoryByUuid(initCategory.getUuid());
 
-    Assertions.assertThrows(CategoryNotFoundException.class,
-        () -> categoryService.findById(initCategory.getId()));
+    Assertions.assertThrows(EntityNotFoundException.class,
+        () -> categoryService.findByUuid(initCategory.getUuid()));
   }
 
   private Category getSavedCategory() {

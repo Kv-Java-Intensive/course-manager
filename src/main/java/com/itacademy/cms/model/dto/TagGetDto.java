@@ -5,8 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CertificateDto {
+public class TagGetDto {
   private String name;
-  private CourseGetDto course;
-  private UserDto user;
 }

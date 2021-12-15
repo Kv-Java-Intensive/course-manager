@@ -6,6 +6,7 @@ import com.itacademy.cms.model.Tag;
 import java.util.List;
 import lombok.NonNull;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +20,11 @@ public interface CourseRepository extends CrudRepository<Course, Long>,
   @NonNull
   List<Course> findAll();
 
-  Course findCourseById(Long id);
+  Optional<Course> findCourseByUuid(String uuid);
 
+  boolean existsByUuid(String uuid);
+
+  void deleteByUuid(String uuid);
+
+  Course findCourseById(Long id);
 }

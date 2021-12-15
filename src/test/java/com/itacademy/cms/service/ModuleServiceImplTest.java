@@ -10,6 +10,7 @@ import com.itacademy.cms.model.Module;
 import com.itacademy.cms.model.dto.ModuleDto;
 import com.itacademy.cms.repository.ModuleRepository;
 import com.itacademy.cms.service.impl.ModuleServiceImpl;
+import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,10 +42,10 @@ public class ModuleServiceImplTest {
 
   @Test
   public void findById_notFound_throwException() {
-    Long moduleId = 1L;
+    String uuid = UUID.randomUUID().toString();
 
-    assertThrows(EntityNotFoundException.class, () -> moduleServiceImpl.findById(moduleId));
-    verify(moduleRepository, times(1)).findById(moduleId);
+    assertThrows(EntityNotFoundException.class, () -> moduleServiceImpl.findByUuid(uuid));
+    verify(moduleRepository, times(1)).findByUuid(uuid);
   }
 
   @Test

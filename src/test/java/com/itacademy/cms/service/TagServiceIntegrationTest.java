@@ -1,6 +1,6 @@
 package com.itacademy.cms.service;
 
-import com.itacademy.cms.exeption.TagNotFoundException;
+import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.model.Tag;
 import com.itacademy.cms.model.dto.TagDto;
 import com.itacademy.cms.repository.TagRepository;
@@ -29,7 +29,7 @@ public class TagServiceIntegrationTest {
   }
 
 
-  private Tag createAndGetTag() throws TagNotFoundException {
+  private Tag createAndGetTag() {
     TagDto tagDto = new TagDto();
     tagDto.setName("tagTest");
     return tagService.saveTag(tagDto);
@@ -37,32 +37,32 @@ public class TagServiceIntegrationTest {
   }
 
   @Test
-  void findTagbyIdTest() throws TagNotFoundException {
+  void findTagbyIdTest() {
     Tag actualTag = createAndGetTag();
-    Tag expectedTag = tagService.findTagbyId(actualTag.getId());
+    Tag expectedTag = tagService.findByUuid(actualTag.getUuid());
     Assertions.assertEquals(actualTag.getName(), expectedTag.getName());
   }
 
 
   @Test
-  void updateTagTest() throws TagNotFoundException {
+  void updateTagTest() {
 
     TagDto newTag = new TagDto();
     newTag.setName("newName");
     Tag actualTag = createAndGetTag();
-    tagService.updateTag(newTag, actualTag.getId());
-    Tag expectedTag = tagService.findTagbyId(actualTag.getId());
+    tagService.updateTag(newTag, actualTag.getUuid());
+    Tag expectedTag = tagService.findByUuid(actualTag.getUuid());
     Assertions.assertEquals(newTag.getName(), expectedTag.getName());
 
   }
 
   @Test
-  void tagDeleteTest() throws TagNotFoundException {
+  void tagDeleteTest() {
     Tag actualTag = createAndGetTag();
-    Assertions.assertNotNull(tagService.findTagbyId(actualTag.getId()));
-    tagService.deleteTag(actualTag.getId());
-    Assertions.assertThrows(TagNotFoundException.class,
-        () -> tagService.findTagbyId(actualTag.getId()));
+    Assertions.assertNotNull(tagService.findByUuid(actualTag.getUuid()));
+    tagService.deleteTagByUuid(actualTag.getUuid());
+    Assertions.assertThrows(EntityNotFoundException.class,
+        () -> tagService.findByUuid(actualTag.getUuid()));
 
   }
 

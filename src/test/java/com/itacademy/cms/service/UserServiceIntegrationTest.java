@@ -1,6 +1,6 @@
 package com.itacademy.cms.service;
 
-import com.itacademy.cms.exeption.UserNotFoundException;
+import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.dto.UserDto;
 import com.itacademy.cms.model.enums.Role;
@@ -33,7 +33,7 @@ public class UserServiceIntegrationTest {
   void userSaveAndFindByIdTest() {
     User savedUser = getSavedUser();
 
-    User userById = userService.findById(savedUser.getId());
+    User userById = userService.findByUuid(savedUser.getUuid());
 
     Assertions.assertEquals(savedUser.getFirstName(), userById.getFirstName());
     Assertions.assertEquals(savedUser.getLastName(), userById.getLastName());
@@ -58,9 +58,9 @@ public class UserServiceIntegrationTest {
 
     User initUser = getSavedUser();
 
-    userService.updateUser(userDtoToUpdate, initUser.getId());
+    userService.updateUser(userDtoToUpdate, initUser.getUuid());
 
-    User updatedUser = userService.findById(initUser.getId());
+    User updatedUser = userService.findByUuid(initUser.getUuid());
 
     Assertions.assertEquals(userDtoToUpdate.getFirstName(), updatedUser.getFirstName());
     Assertions.assertEquals(userDtoToUpdate.getLastName(), updatedUser.getLastName());
@@ -75,12 +75,12 @@ public class UserServiceIntegrationTest {
   void userDeleteTest() {
     User initUser = getSavedUser();
 
-    Assertions.assertNotNull(userService.findById(initUser.getId()));
+    Assertions.assertNotNull(userService.findByUuid(initUser.getUuid()));
 
-    userService.deleteUserById(initUser.getId());
+    userService.deleteUserByUuid(initUser.getUuid());
 
-    Assertions.assertThrows(UserNotFoundException.class,
-        () -> userService.findById(initUser.getId()));
+    Assertions.assertThrows(EntityNotFoundException.class,
+        () -> userService.findByUuid(initUser.getUuid()));
   }
 
   private User getSavedUser() {

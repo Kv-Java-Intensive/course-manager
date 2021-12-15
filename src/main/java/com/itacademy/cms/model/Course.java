@@ -4,15 +4,18 @@ import com.itacademy.cms.model.enums.Language;
 import com.sun.istack.NotNull;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -43,7 +46,7 @@ public class Course extends BaseEntity {
   @Column(name = "price")
   private Double price;
 
-  @NotNull
+
   @ManyToOne
   @JoinColumn(name = "course_category")
   private Category category;
@@ -57,8 +60,9 @@ public class Course extends BaseEntity {
   @Column(name = "duration")
   private Double duration;
 
-  @NotNull
+  //@NotNull
   @Column(name = "language")
+  @Enumerated(EnumType.STRING)
   private Language language;
 
   @OneToMany(mappedBy = "course", cascade = {CascadeType.MERGE, CascadeType.DETACH,
@@ -79,7 +83,15 @@ public class Course extends BaseEntity {
       CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "course")
   private List<Module> modules;
 
-  @NotNull
-  @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "course")
-  private Certificate certificate;
+//  @NotNull
+//  @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "course")
+//  private Certificate certificate;
+
+  @Column(name = "uuid")
+  private String uuid;
+
+  @PrePersist
+  public void autofill() {
+    this.setUuid(UUID.randomUUID().toString());
+  }
 }

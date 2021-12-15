@@ -1,8 +1,6 @@
 package com.itacademy.cms.controller;
 
-import com.itacademy.cms.exeption.CourseNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
-import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.dto.CourseGetDto;
 import com.itacademy.cms.model.dto.CoursePostDto;
 import com.itacademy.cms.model.dto.SearchCriteriaDto;
@@ -10,7 +8,6 @@ import com.itacademy.cms.service.CourseService;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,14 +39,13 @@ public class CourseController {
   }
 
   @GetMapping("/courses/{id}")
-  public CourseGetDto showCourseById(@PathVariable("id") Long id) throws CourseNotFoundException {
-    return mapStructMapper.courseToCourseGetDto(courseService.getCourseById(id));
+  public CourseGetDto showCourseByUuid(@PathVariable("id") String uuid) {
+    return mapStructMapper.courseToCourseGetDto(courseService.getCourseByUuid(uuid));
   }
 
   @PostMapping
-  public void addNewCourse(@AuthenticationPrincipal User user,
-                           @RequestBody CoursePostDto coursePostDto) {
-    courseService.addCourse(coursePostDto, user);
+  public void addNewCourse(@RequestBody CoursePostDto coursePostDto) {
+    courseService.saveCourse(coursePostDto);
   }
 
   @PutMapping("/courses/{id}")

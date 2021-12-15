@@ -9,13 +9,15 @@ public interface UserService {
 
   List<User> findAll();
 
+  void updateUser(UserDto userDto, String uuid);
+  
   List<User> findUserBySearch(SearchCriteriaDto searchCriteriaDto);
-
-  User findById(Long id);
-
-  void updateUser(UserDto userDto, Long id);
 
   User saveUser(UserDto userDto);
 
-  void deleteUserById(Long id);
+  User findByUuid(String uuid);
+
+  void deleteUserByUuid(String uuid);
+
+  void blockUser(String uuid, boolean active);
 }

@@ -1,10 +1,11 @@
 package com.itacademy.cms.service;
 
-import com.itacademy.cms.exeption.CategoryNotFoundException;
+import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.model.Category;
 import com.itacademy.cms.repository.CategoryRepository;
 import com.itacademy.cms.service.impl.CategoryServiceImpl;
 import java.util.Optional;
+import java.util.UUID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,31 +25,31 @@ public class CategoryServiceTest {
 
   @Test
   void findAllTest() {
-    Assertions.assertThrows(CategoryNotFoundException.class, () -> categoryServiceImpl.findAll());
+    Assertions.assertThrows(EntityNotFoundException.class, () -> categoryServiceImpl.findAll());
     Mockito.verify(categoryRepository).findAll();
   }
 
   @Test
   void findByIdTestExpectedException() {
-    Long id = 1L;
-    Assertions.assertThrows(CategoryNotFoundException.class,
-        () -> categoryServiceImpl.findById(id));
-    Mockito.verify(categoryRepository).findById(id);
+    String uuid = UUID.randomUUID().toString();
+    Assertions.assertThrows(EntityNotFoundException.class,
+        () -> categoryServiceImpl.findByUuid(uuid));
+    Mockito.verify(categoryRepository).findByUuid(uuid);
   }
 
   @Test
-  void findByIdTestExpectedCategory() throws CategoryNotFoundException {
-    Long id = 1L;
+  void findByUuidTestExpectedCategory() {
+    String uuid = UUID.randomUUID().toString();
 
     Category category = new Category();
-    category.setId(id);
+    category.setUuid(uuid);
     category.setCategoryName("testName");
 
     Optional<Category> optionalCategory = Optional.of(category);
-    Mockito.when(categoryRepository.findById(id)).thenReturn(optionalCategory);
-    Category savedCategory = categoryServiceImpl.findById(id);
+    Mockito.when(categoryRepository.findByUuid(uuid)).thenReturn(optionalCategory);
+    Category savedCategory = categoryServiceImpl.findByUuid(uuid);
 
-    Assertions.assertEquals(category.getId(), savedCategory.getId());
+    Assertions.assertEquals(category.getUuid(), savedCategory.getUuid());
     Assertions.assertEquals(category.getCategoryName(), savedCategory.getCategoryName());
   }
 }

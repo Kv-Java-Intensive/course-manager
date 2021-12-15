@@ -9,13 +9,13 @@ public interface CertificateService {
 
   List<Certificate> findAll();
 
+  void updateCertificate(CertificateDto certificateDto, String uuid);
+  
   List<Certificate> findCertificateBySearch(SearchCriteriaDto searchCriteriaDto);
-
-  Certificate findById(Long id);
-
-  void updateCertificate(CertificateDto certificateDto, Long id);
 
   Certificate saveCertificate(CertificateDto certificateDto);
 
-  void deleteCertificateById(Long id);
+  Certificate findByUuid(String uuid);
+
+  void deleteCertificateByUuid(String uuid);
 }

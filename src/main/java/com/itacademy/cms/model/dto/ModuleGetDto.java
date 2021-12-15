@@ -3,11 +3,9 @@ package com.itacademy.cms.model.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
-public class ModuleDto {
-  private CoursePostDto course;
-
+@Getter
+public class ModuleGetDto {
   private int lessonNumber;
 
   private String description;

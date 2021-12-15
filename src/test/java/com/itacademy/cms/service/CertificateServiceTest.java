@@ -1,10 +1,11 @@
 package com.itacademy.cms.service;
 
-import com.itacademy.cms.exeption.CertificateNotFoundException;
+import com.itacademy.cms.exeption.EntityNotFoundException;
 import com.itacademy.cms.model.Certificate;
 import com.itacademy.cms.repository.CertificateRepository;
 import com.itacademy.cms.service.impl.CertificateServiceImpl;
 import java.util.Optional;
+import java.util.UUID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,7 +25,7 @@ public class CertificateServiceTest {
 
   @Test
   void findAllTest() {
-    Assertions.assertThrows(CertificateNotFoundException.class,
+    Assertions.assertThrows(EntityNotFoundException.class,
         () -> certificateServiceImpl.findAll());
     Mockito.verify(certificateRepository).findAll();
   }
@@ -32,26 +33,26 @@ public class CertificateServiceTest {
 
   @Test
   void findByIdTestExpectedException() {
-    Long id = 1L;
-    Assertions.assertThrows(CertificateNotFoundException.class,
-        () -> certificateServiceImpl.findById(id));
-    Mockito.verify(certificateRepository).findById(id);
+    String uuid = UUID.randomUUID().toString();
+    Assertions.assertThrows(EntityNotFoundException.class,
+        () -> certificateServiceImpl.findByUuid(uuid));
+    Mockito.verify(certificateRepository).findByUuid(uuid);
   }
 
   @Test
   void findByIdTestExpectedCertificate() {
-    Long id = 1L;
+    String uuid = UUID.randomUUID().toString();
 
     Certificate certificate = new Certificate();
-    certificate.setId(id);
+    certificate.setUuid(uuid);
     certificate.setName("test");
 
     Optional<Certificate> optionalCertificate = Optional.of(certificate);
 
-    Mockito.when(certificateRepository.findById(id)).thenReturn(optionalCertificate);
-    Certificate savedCertificate = certificateServiceImpl.findById(id);
+    Mockito.when(certificateRepository.findByUuid(uuid)).thenReturn(optionalCertificate);
+    Certificate savedCertificate = certificateServiceImpl.findByUuid(uuid);
 
-    Assertions.assertEquals(certificate.getId(), savedCertificate.getId());
+    Assertions.assertEquals(certificate.getUuid(), savedCertificate.getUuid());
     Assertions.assertEquals(certificate.getName(), savedCertificate.getName());
   }
 }
