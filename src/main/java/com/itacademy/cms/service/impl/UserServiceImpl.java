@@ -93,4 +93,9 @@ public class UserServiceImpl implements UserService {
   public void blockUser(String uuid, boolean active) {
     userRepository.blockUser(uuid, active);
   }
+
+  @Override
+  public User findUserByEmail(String email) {
+    return userRepository.findUserByEmail(email);
+  }
 }

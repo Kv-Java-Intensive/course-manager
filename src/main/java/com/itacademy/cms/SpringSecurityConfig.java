@@ -1,11 +1,18 @@
 package com.itacademy.cms;
 
 
+import com.itacademy.cms.security.jwt.JwtConfigurer;
+import com.itacademy.cms.security.jwt.JwtTokenProvider;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -23,6 +30,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
   public AuthenticationManager authenticationManagerBean() throws Exception {
     return super.authenticationManagerBean();
   }
+
   // Create 2 users for demo
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -49,18 +57,19 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         //  .antMatchers(HttpMethod.PATCH, "/books/**").hasRole("ADMIN")
         // .antMatchers(HttpMethod.DELETE, "/books/**").hasRole("ADMIN")
         .and()
-        .csrf().disable()
-        .formLogin().disable();
-        .and()
         .authorizeRequests()
         .antMatchers(LOGIN_ENDPOINT).permitAll()
         .antMatchers(ADMIN_ENDPOINT).hasRole("ADMIN")
         .anyRequest().authenticated()
         .and()
-        .apply(new JwtConfigurer(jwtTokenProvider));
+        .apply(new JwtConfigurer(jwtTokenProvider))
+        .and()
+        .csrf().disable()
+        .formLogin().disable();
   }
-  @Bean
-  protected PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder(12);
-  }
+
+  //@Bean
+  //protected PasswordEncoder passwordEncoder() {
+  //return new BCryptPasswordEncoder(12);
+  //}
 }

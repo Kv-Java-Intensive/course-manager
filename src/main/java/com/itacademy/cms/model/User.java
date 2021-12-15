@@ -60,7 +60,8 @@ public class User extends BaseEntity {
   private String lastName;
 
   @NotNull
-  @Email(message = "Email should be of valid form")
+  @Column(name = "username")
+  //@Email(message = "Email should be of valid form")
   private String email;
 
   @NotNull

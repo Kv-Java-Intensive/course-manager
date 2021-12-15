@@ -2,13 +2,14 @@ package com.itacademy.cms.model;
 
 
 import java.util.List;
+import java.util.UUID;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -36,4 +37,12 @@ public class Tag extends BaseEntity {
       joinColumns = @JoinColumn(name = "tag_id"),
       inverseJoinColumns = @JoinColumn(name = "course_id"))
   private List<Course> courses;
+
+  @Column(name = "uuid")
+  private String uuid;
+
+  @PrePersist
+  public void autofill() {
+    this.setUuid(UUID.randomUUID().toString());
+  }
 }
