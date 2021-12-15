@@ -1,11 +1,9 @@
 package com.itacademy.cms.configs;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import com.itacademy.cms.security.AuthProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,45 +14,44 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-@Order(101)
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   private final UserDetailsService userDetailsService;
 
-  @Autowired
-  public SecurityConfig(
-      @Qualifier("userDetailsServiceImpl") UserDetailsService userDetailsService) {
+  public SecurityConfig(UserDetailsService userDetailsService) {
     this.userDetailsService = userDetailsService;
+  }
+
+  @Override
+  protected void configure(AuthenticationManagerBuilder auth) {
+    auth.authenticationProvider(authProvider());
+  }
+
+  @Bean
+  protected AuthProvider authProvider() {
+    return new AuthProvider();
   }
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http
-        .formLogin().loginPage("/login")
+        .cors().disable()
+        .csrf().disable()
+        .authorizeRequests()
+        .antMatchers(HttpMethod.GET, "/user/register", "/courses", "/category", "/", "/home")
+        .permitAll()
+//        .antMatchers("/users/**").hasAuthority(Role.ADMIN.name())
+        .anyRequest()
+        .authenticated()
         .and()
-        .logout().invalidateHttpSession(true)
-        .clearAuthentication(true);
-
-  }
-
-  @Override
-  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth.authenticationProvider(daoAuthenticationProvider());
+        .httpBasic();
   }
 
   @Bean
   protected PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder(12);
-  }
-
-  @Bean
-  protected DaoAuthenticationProvider daoAuthenticationProvider() {
-    DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-    daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-    daoAuthenticationProvider.setUserDetailsService(userDetailsService);
-    return daoAuthenticationProvider;
   }
 
 }

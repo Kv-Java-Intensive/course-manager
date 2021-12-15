@@ -1,44 +1,44 @@
 package com.itacademy.cms.controller;
 
+import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.dto.UserDto;
 import com.itacademy.cms.model.enums.Role;
 import com.itacademy.cms.service.UserService;
 import javax.validation.Valid;
-import lombok.RequiredArgsConstructor;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequiredArgsConstructor
 public class RegistrationController {
-  private final UserService userService;
 
-  @GetMapping("/users/register")
-  public String registrationPage(Model model) {
-    model.addAttribute("user", new UserDto());
-    return "...";
+  private final UserService userService;
+  private PasswordEncoder passwordEncoder;
+
+  @Autowired
+  public RegistrationController(UserService userService,
+                                PasswordEncoder passwordEncoder) {
+    this.userService = userService;
+    this.passwordEncoder = passwordEncoder;
   }
 
-  @PostMapping("/users/register")
-  public String collectData(@Valid @ModelAttribute("user") UserDto user,
-                            BindingResult bindingResult) {
-    if (bindingResult.hasErrors()) {
-      return "...";
-    }
+  @PostMapping("/user/register")
+  @PreAuthorize("permitAll()")
+  public String createNewUser(@Valid @RequestBody UserDto dto) {
 
-    user.setFirstName("nick");
-    user.setLastName("kose");
-    user.setEmail("nick@gmail.com");
-    user.setPassword("qwerty");
+    User user = new User();
+    user.setFirstName(dto.getFirstName());
+    user.setLastName(dto.getLastName());
+    user.setPassword(passwordEncoder.encode(dto.getPassword()));
     user.setActive(true);
+    user.setEmail(dto.getEmail());
+    user.setRole(Role.valueOf(dto.getRole().name()));
 
-    user.setRole(Role.USER);
     userService.saveUser(user);
-    return "/users/{id}/profile";
+    return user.getUuid();
   }
 
 }

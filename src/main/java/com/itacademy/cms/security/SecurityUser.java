@@ -3,10 +3,12 @@ package com.itacademy.cms.security;
 import com.itacademy.cms.model.User;
 import java.util.Collection;
 import java.util.List;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+@Data
 public class SecurityUser implements UserDetails {
 
   private final String username;
@@ -25,7 +27,7 @@ public class SecurityUser implements UserDetails {
   public static UserDetails fromUser(User user) {
     return new org.springframework.security.core.userdetails.User(
         user.getEmail(), user.getPassword(),
-        null
+        List.of(new SimpleGrantedAuthority(user.getRole().name()))
     );
   }
 

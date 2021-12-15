@@ -10,6 +10,8 @@ public interface UserService {
 
   void updateUser(UserDto userDto, String uuid);
 
+  User saveUser(User user);
+
   User saveUser(UserDto userDto);
 
   User findByUuid(String uuid);
@@ -17,4 +19,6 @@ public interface UserService {
   void deleteUserByUuid(String uuid);
 
   void blockUser(String uuid, boolean active);
+
+  User loadUserByName(String name);
 }
