@@ -2,7 +2,6 @@ package com.itacademy.cms.controller;
 
 import com.itacademy.cms.exeption.CourseNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
-import com.itacademy.cms.model.User;
 import com.itacademy.cms.model.dto.CourseGetDto;
 import com.itacademy.cms.model.dto.CoursePostDto;
 import com.itacademy.cms.model.dto.SearchCriteriaDto;
@@ -10,7 +9,6 @@ import com.itacademy.cms.service.CourseService;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/course")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class CourseController {
 
@@ -29,19 +27,19 @@ public class CourseController {
   private final MapStructMapper mapStructMapper;
 
 
-  @GetMapping
+  @GetMapping("/courses")
   public List<CourseGetDto> showAllCourses() throws CourseNotFoundException {
     return mapStructMapper.courseAllToCourseGetDto(courseService.getAllCourses());
   }
 
-  @PostMapping("/search")
+  @PostMapping("/courses/search")
   public List<CourseGetDto> getCoursesBySearch(
       @RequestBody SearchCriteriaDto searchCriteriaDto) {
     return courseService.findCourseBySearch(searchCriteriaDto).stream()
         .map(mapStructMapper::courseToCourseGetDto).collect(Collectors.toList());
   }
 
-  @GetMapping("/{id}")
+  @GetMapping("/courses/{id}")
   public CourseGetDto showCourseById(@PathVariable("id") Long id) throws CourseNotFoundException {
     return mapStructMapper.courseToCourseGetDto(courseService.getCourseById(id));
   }
@@ -52,13 +50,13 @@ public class CourseController {
     courseService.addCourse(coursePostDto, user);
   }
 
-  @PutMapping("/{id}")
+  @PutMapping("/courses/{id}")
   public void updateCourseById(@RequestBody CoursePostDto coursePostDto,
                                @PathVariable("id") Long id) {
     courseService.updateCourse(coursePostDto, id);
   }
 
-  @DeleteMapping("/{id}")
+  @DeleteMapping("/courses/{id}")
   public void deleteCourseById(@PathVariable("id") Long id) throws CourseNotFoundException {
     courseService.deleteCourseById(id);
   }
