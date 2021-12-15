@@ -2,6 +2,7 @@ package com.itacademy.cms.controller;
 
 
 import com.itacademy.cms.mapper.MapStructMapper;
+import com.itacademy.cms.model.dto.SearchCriteriaDto;
 import com.itacademy.cms.model.dto.UserDto;
 import com.itacademy.cms.service.UserService;
 import java.util.List;
@@ -27,6 +28,13 @@ public class UserController {
   @GetMapping("/users")
   public List<UserDto> getAllUser() {
     return userService.findAll().stream()
+        .map(entityMapper::userToUserDto).collect(Collectors.toList());
+  }
+
+  @PostMapping("/users/search")
+  public List<UserDto> getUsersBySearch(
+      @RequestBody SearchCriteriaDto searchCriteriaDto) {
+    return userService.findUserBySearch(searchCriteriaDto).stream()
         .map(entityMapper::userToUserDto).collect(Collectors.toList());
   }
 

@@ -4,12 +4,15 @@ import com.itacademy.cms.exeption.ParameterMissingException;
 import com.itacademy.cms.exeption.UserNotFoundException;
 import com.itacademy.cms.mapper.MapStructMapper;
 import com.itacademy.cms.model.User;
+import com.itacademy.cms.model.dto.SearchCriteriaDto;
 import com.itacademy.cms.model.dto.UserDto;
 import com.itacademy.cms.repository.UserRepository;
+import com.itacademy.cms.repository.specification.UserSpecificationsBuilder;
 import com.itacademy.cms.service.UserService;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,6 +29,18 @@ public class UserServiceImpl implements UserService {
       throw new UserNotFoundException("No users found!");
     }
     return userList;
+  }
+
+  @Override
+  public List<User> findUserBySearch(SearchCriteriaDto searchCriteriaDto) {
+    UserSpecificationsBuilder builder = new UserSpecificationsBuilder();
+    for (int i = 0; i < searchCriteriaDto.getCriteriaList().size(); i++) {
+      builder.with(searchCriteriaDto.getCriteriaList().get(i).getKey(),
+          searchCriteriaDto.getCriteriaList().get(i).getOperation(),
+          searchCriteriaDto.getCriteriaList().get(i).getValue());
+    }
+    Specification<User> spec = builder.build();
+    return userRepository.findAll(spec);
   }
 
   @Override

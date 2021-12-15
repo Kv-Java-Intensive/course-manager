@@ -1,12 +1,15 @@
 package com.itacademy.cms.service;
 
 import com.itacademy.cms.model.User;
+import com.itacademy.cms.model.dto.SearchCriteriaDto;
 import com.itacademy.cms.model.dto.UserDto;
 import java.util.List;
 
 public interface UserService {
 
   List<User> findAll();
+
+  List<User> findUserBySearch(SearchCriteriaDto searchCriteriaDto);
 
   User findById(Long id);
 
